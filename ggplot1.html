@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Basic Charts with ggplot2 | Computing With Data</title>
+  <meta name="description" content="This is a book for Concepts in Computing with Data" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Basic Charts with ggplot2 | Computing With Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for Concepts in Computing with Data" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Basic Charts with ggplot2 | Computing With Data" />
+  
+  <meta name="twitter:description" content="This is a book for Concepts in Computing with Data" />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="eda-dplyr.html"/>
+<link rel="next" href="eda-maps.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>Computing With Data</b></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-word-about-computing-with-data"><i class="fa fa-check"></i>A word about Computing with Data</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i>Why R?</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I The Big Picture</b></span></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> A Tiny Data Analysis</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#mens-long-jump-world-records"><i class="fa fa-check"></i><b>1.1</b> Men’s Long Jump World Records</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#what-to-analyze"><i class="fa fa-check"></i><b>1.2</b> What to Analyze?</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#analyzing-data-the-amateur-way"><i class="fa fa-check"></i><b>1.3</b> Analyzing Data the “Amateur” Way</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#getting-the-data"><i class="fa fa-check"></i><b>1.3.1</b> Getting the Data</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#transforming-and-cleaning"><i class="fa fa-check"></i><b>1.3.2</b> Transforming and Cleaning</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#graphing-timeline"><i class="fa fa-check"></i><b>1.3.3</b> Graphing Timeline</a></li>
+<li class="chapter" data-level="1.3.4" data-path="intro.html"><a href="intro.html#wysiwyg-tools"><i class="fa fa-check"></i><b>1.3.4</b> WYSIWYG Tools</a></li>
+<li class="chapter" data-level="1.3.5" data-path="intro.html"><a href="intro.html#what-is-wrong-with-a-wysiwyg-based-approach"><i class="fa fa-check"></i><b>1.3.5</b> What is wrong with a WYSIWYG-based approach?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#analyzing-data-the-pro-way"><i class="fa fa-check"></i><b>1.4</b> Analyzing Data the “Pro” Way</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#pros-and-cons"><i class="fa fa-check"></i><b>1.4.1</b> Pros and Cons</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#exercises"><i class="fa fa-check"></i><b>1.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="dac.html"><a href="dac.html"><i class="fa fa-check"></i><b>2</b> The Data Analysis Cycle</a><ul>
+<li class="chapter" data-level="2.1" data-path="dac.html"><a href="dac.html#understanding-the-data-analysis-process"><i class="fa fa-check"></i><b>2.1</b> Understanding the Data Analysis Process</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="dac.html"><a href="dac.html#data-analysis-is-a-lot-like-cooking"><i class="fa fa-check"></i><b>2.1.1</b> Data Analysis is a lot like Cooking</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="dac.html"><a href="dac.html#comments-on-data-analysis-cycle"><i class="fa fa-check"></i><b>2.2</b> Comments on Data Analysis Cycle</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="dac.html"><a href="dac.html#data-preparation"><i class="fa fa-check"></i><b>2.2.1</b> Data Preparation</a></li>
+<li class="chapter" data-level="2.2.2" data-path="dac.html"><a href="dac.html#actual-analysis"><i class="fa fa-check"></i><b>2.2.2</b> Actual Analysis</a></li>
+<li class="chapter" data-level="2.2.3" data-path="dac.html"><a href="dac.html#report-and-communication"><i class="fa fa-check"></i><b>2.2.3</b> Report and Communication</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="filestructure.html"><a href="filestructure.html"><i class="fa fa-check"></i><b>3</b> Organize Your Project</a><ul>
+<li class="chapter" data-level="3.1" data-path="filestructure.html"><a href="filestructure.html#files-and-directories-in-a-project"><i class="fa fa-check"></i><b>3.1</b> Files and directories in a Project</a></li>
+<li class="chapter" data-level="3.2" data-path="filestructure.html"><a href="filestructure.html#a-toy-project"><i class="fa fa-check"></i><b>3.2</b> A Toy Project</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="filestructure.html"><a href="filestructure.html#file-structure-minimalist-version"><i class="fa fa-check"></i><b>3.2.1</b> File structure: minimalist version</a></li>
+<li class="chapter" data-level="3.2.2" data-path="filestructure.html"><a href="filestructure.html#file-structure-less-minimal-version"><i class="fa fa-check"></i><b>3.2.2</b> File structure: less minimal version</a></li>
+<li class="chapter" data-level="3.2.3" data-path="filestructure.html"><a href="filestructure.html#file-structure-unorganized-version"><i class="fa fa-check"></i><b>3.2.3</b> File structure: unorganized version</a></li>
+<li class="chapter" data-level="3.2.4" data-path="filestructure.html"><a href="filestructure.html#organized-file-structure"><i class="fa fa-check"></i><b>3.2.4</b> Organized file structure</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="filestructure.html"><a href="filestructure.html#relationships-among-files"><i class="fa fa-check"></i><b>3.3</b> Relationships Among Files</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>4</b> Establish a Research Question</a><ul>
+<li class="chapter" data-level="4.1" data-path="question.html"><a href="question.html#example"><i class="fa fa-check"></i><b>4.1</b> Example</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="question.html"><a href="question.html#data"><i class="fa fa-check"></i><b>4.1.1</b> Data</a></li>
+<li class="chapter" data-level="4.1.2" data-path="question.html"><a href="question.html#filestructure-1"><i class="fa fa-check"></i><b>4.1.2</b> Filestructure</a></li>
+<li class="chapter" data-level="4.1.3" data-path="question.html"><a href="question.html#code"><i class="fa fa-check"></i><b>4.1.3</b> Code</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-views.html"><a href="data-views.html"><i class="fa fa-check"></i><b>5</b> What Do We Mean by Data?</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-views.html"><a href="data-views.html#ways-to-think-about-data"><i class="fa fa-check"></i><b>5.1</b> Ways to Think About Data</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
+<li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II R Survival Skills</b></span></li>
+<li class="chapter" data-level="6" data-path="rintro.html"><a href="rintro.html"><i class="fa fa-check"></i><b>6</b> Intro to R and RStudio</a><ul>
+<li class="chapter" data-level="6.1" data-path="rintro.html"><a href="rintro.html#r-as-a-scientific-calculator"><i class="fa fa-check"></i><b>6.1</b> R as a scientific calculator</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="rintro.html"><a href="rintro.html#first-contact-with-the-r-console"><i class="fa fa-check"></i><b>6.1.1</b> First contact with the R console</a></li>
+<li class="chapter" data-level="6.1.2" data-path="rintro.html"><a href="rintro.html#your-turn"><i class="fa fa-check"></i><b>6.1.2</b> Your Turn</a></li>
+<li class="chapter" data-level="6.1.3" data-path="rintro.html"><a href="rintro.html#object-names"><i class="fa fa-check"></i><b>6.1.3</b> Object Names</a></li>
+<li class="chapter" data-level="6.1.4" data-path="rintro.html"><a href="rintro.html#functions"><i class="fa fa-check"></i><b>6.1.4</b> Functions</a></li>
+<li class="chapter" data-level="6.1.5" data-path="rintro.html"><a href="rintro.html#comments-in-r"><i class="fa fa-check"></i><b>6.1.5</b> Comments in R</a></li>
+<li class="chapter" data-level="6.1.6" data-path="rintro.html"><a href="rintro.html#case-sensitive"><i class="fa fa-check"></i><b>6.1.6</b> Case Sensitive</a></li>
+<li class="chapter" data-level="6.1.7" data-path="rintro.html"><a href="rintro.html#your-turn-1"><i class="fa fa-check"></i><b>6.1.7</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="rintro.html"><a href="rintro.html#getting-help"><i class="fa fa-check"></i><b>6.2</b> Getting Help</a></li>
+<li class="chapter" data-level="6.3" data-path="rintro.html"><a href="rintro.html#installing-packages"><i class="fa fa-check"></i><b>6.3</b> Installing Packages</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="rintro.html"><a href="rintro.html#slides"><i class="fa fa-check"></i><b>6.3.1</b> Slides</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="rintro.html"><a href="rintro.html#exercises-1"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="rmdfiles.html"><a href="rmdfiles.html"><i class="fa fa-check"></i><b>7</b> Intro to R Markdown Files</a><ul>
+<li class="chapter" data-level="7.1" data-path="rmdfiles.html"><a href="rmdfiles.html#get-to-know-rmd-files"><i class="fa fa-check"></i><b>7.1</b> Get to know <code>Rmd</code> files</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="rmdfiles.html"><a href="rmdfiles.html#what-is-an-rmd-file"><i class="fa fa-check"></i><b>7.1.1</b> What is an <code>Rmd</code> file?</a></li>
+<li class="chapter" data-level="7.1.2" data-path="rmdfiles.html"><a href="rmdfiles.html#anatomy-of-an-rmd-file"><i class="fa fa-check"></i><b>7.1.2</b> Anatomy of an <code>Rmd</code> file</a></li>
+<li class="chapter" data-level="7.1.3" data-path="rmdfiles.html"><a href="rmdfiles.html#how-does-an-rmd-file-work"><i class="fa fa-check"></i><b>7.1.3</b> How does an Rmd file work?</a></li>
+<li class="chapter" data-level="7.1.4" data-path="rmdfiles.html"><a href="rmdfiles.html#yet-another-syntax-to-learn"><i class="fa fa-check"></i><b>7.1.4</b> Yet Another Syntax to Learn</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="rmdfiles.html"><a href="rmdfiles.html#code-chunks"><i class="fa fa-check"></i><b>7.2</b> Code chunks</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="rmdfiles.html"><a href="rmdfiles.html#resources-for-markdown"><i class="fa fa-check"></i><b>7.2.1</b> Resources for Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Tables (part 1)</b></span></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
+<li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
+<li class="chapter" data-level="9.3.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-month"><i class="fa fa-check"></i><b>9.3.2</b> Basic inspection of <code>month</code></a></li>
+<li class="chapter" data-level="9.3.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-day"><i class="fa fa-check"></i><b>9.3.3</b> Basic inspection of <code>day</code></a></li>
+<li class="chapter" data-level="9.3.4" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-storms-in-1975"><i class="fa fa-check"></i><b>9.3.4</b> Basic inspection of storms in 1975</a></li>
+<li class="chapter" data-level="9.3.5" data-path="eda-dplyr.html"><a href="eda-dplyr.html#group-by-operations"><i class="fa fa-check"></i><b>9.3.5</b> Group-by operations</a></li>
+<li class="chapter" data-level="9.3.6" data-path="eda-dplyr.html"><a href="eda-dplyr.html#arrange-operations"><i class="fa fa-check"></i><b>9.3.6</b> Arrange operations</a></li>
+<li class="chapter" data-level="9.3.7" data-path="eda-dplyr.html"><a href="eda-dplyr.html#inspecting-1975-storm-amy"><i class="fa fa-check"></i><b>9.3.7</b> Inspecting 1975 storm Amy</a></li>
+<li class="chapter" data-level="9.3.8" data-path="eda-dplyr.html"><a href="eda-dplyr.html#summary"><i class="fa fa-check"></i><b>9.3.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exercises-3"><i class="fa fa-check"></i><b>9.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ggplot1.html"><a href="ggplot1.html"><i class="fa fa-check"></i><b>10</b> Basic Charts with <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="10.1" data-path="ggplot1.html"><a href="ggplot1.html#introduction-1"><i class="fa fa-check"></i><b>10.1</b> Introduction</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="ggplot1.html"><a href="ggplot1.html#atlantic-hurricane-data-1"><i class="fa fa-check"></i><b>10.1.1</b> Atlantic Hurricane Data</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="ggplot1.html"><a href="ggplot1.html#first-contact-with-ggplot"><i class="fa fa-check"></i><b>10.2</b> First contact with <code>ggplot()</code></a><ul>
+<li class="chapter" data-level="10.2.1" data-path="ggplot1.html"><a href="ggplot1.html#barplots"><i class="fa fa-check"></i><b>10.2.1</b> Barplots</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ggplot1.html"><a href="ggplot1.html#number-of-storms-per-year"><i class="fa fa-check"></i><b>10.2.2</b> Number of Storms per Year</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ggplot1.html"><a href="ggplot1.html#storms-in-1975"><i class="fa fa-check"></i><b>10.2.3</b> Storms in 1975</a></li>
+<li class="chapter" data-level="10.2.4" data-path="ggplot1.html"><a href="ggplot1.html#visual-inspection-of-amy-1975"><i class="fa fa-check"></i><b>10.2.4</b> Visual Inspection of Amy 1975</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="ggplot1.html"><a href="ggplot1.html#exercises-4"><i class="fa fa-check"></i><b>10.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
+<li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-in-1990-to-1995"><i class="fa fa-check"></i><b>11.1.3</b> Storms in 1990 to 1995</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Data Objects in R</b></span></li>
+<li class="chapter" data-level="12" data-path="objects-intro.html"><a href="objects-intro.html"><i class="fa fa-check"></i><b>12</b> Introduction</a></li>
+<li class="chapter" data-level="13" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>13</b> Vectors</a><ul>
+<li class="chapter" data-level="13.1" data-path="vectors.html"><a href="vectors.html#motivation"><i class="fa fa-check"></i><b>13.1</b> Motivation</a></li>
+<li class="chapter" data-level="13.2" data-path="vectors.html"><a href="vectors.html#what-is-an-r-vector"><i class="fa fa-check"></i><b>13.2</b> What is an R vector?</a></li>
+<li class="chapter" data-level="13.3" data-path="vectors.html"><a href="vectors.html#vectors-are-atomic-structures"><i class="fa fa-check"></i><b>13.3</b> Vectors are Atomic structures</a></li>
+<li class="chapter" data-level="13.4" data-path="vectors.html"><a href="vectors.html#coercion"><i class="fa fa-check"></i><b>13.4</b> Coercion</a></li>
+<li class="chapter" data-level="13.5" data-path="vectors.html"><a href="vectors.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>13.5</b> Manipulating Vectors: Subsetting</a><ul>
+<li class="chapter" data-level="13.5.1" data-path="vectors.html"><a href="vectors.html#subsetting-with-numeric-indices"><i class="fa fa-check"></i><b>13.5.1</b> Subsetting with Numeric Indices</a></li>
+<li class="chapter" data-level="13.5.2" data-path="vectors.html"><a href="vectors.html#subsetting-with-logical-indices"><i class="fa fa-check"></i><b>13.5.2</b> Subsetting with Logical Indices</a></li>
+<li class="chapter" data-level="13.5.3" data-path="vectors.html"><a href="vectors.html#subsetting-with-character-vectors"><i class="fa fa-check"></i><b>13.5.3</b> Subsetting with Character Vectors</a></li>
+<li class="chapter" data-level="13.5.4" data-path="vectors.html"><a href="vectors.html#subsetting-with-character-vectors-1"><i class="fa fa-check"></i><b>13.5.4</b> Subsetting with Character Vectors</a></li>
+<li class="chapter" data-level="13.5.5" data-path="vectors.html"><a href="vectors.html#adding-more-elements"><i class="fa fa-check"></i><b>13.5.5</b> Adding more elements</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="vectors.html"><a href="vectors.html#vectorization"><i class="fa fa-check"></i><b>13.6</b> Vectorization</a></li>
+<li class="chapter" data-level="13.7" data-path="vectors.html"><a href="vectors.html#recycling"><i class="fa fa-check"></i><b>13.7</b> Recycling</a><ul>
+<li class="chapter" data-level="13.7.1" data-path="vectors.html"><a href="vectors.html#sequences"><i class="fa fa-check"></i><b>13.7.1</b> Sequences</a></li>
+<li class="chapter" data-level="13.7.2" data-path="vectors.html"><a href="vectors.html#repeated-vectors"><i class="fa fa-check"></i><b>13.7.2</b> Repeated Vectors</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#summary-slides"><i class="fa fa-check"></i>Summary Slides</a></li>
+</ul></li>
+<li class="chapter" data-level="13.8" data-path="vectors.html"><a href="vectors.html#exercises-6"><i class="fa fa-check"></i><b>13.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>14</b> Factors</a><ul>
+<li class="chapter" data-level="14.1" data-path="factors.html"><a href="factors.html#example-1"><i class="fa fa-check"></i><b>14.1</b> Example</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>14.1.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="14.1.2" data-path="factors.html"><a href="factors.html#how-does-r-store-factors"><i class="fa fa-check"></i><b>14.1.2</b> How does R store factors?</a></li>
+<li class="chapter" data-level="14.1.3" data-path="factors.html"><a href="factors.html#manipulating-factors"><i class="fa fa-check"></i><b>14.1.3</b> Manipulating Factors</a></li>
+<li class="chapter" data-level="14.1.4" data-path="factors.html"><a href="factors.html#why-using-r-factors"><i class="fa fa-check"></i><b>14.1.4</b> Why using R factors?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="factors.html"><a href="factors.html#what-is-an-r-factor"><i class="fa fa-check"></i><b>14.2</b> What is an R factor?</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="factors.html"><a href="factors.html#creating-factors-1"><i class="fa fa-check"></i><b>14.2.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="14.2.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>14.2.2</b> How R treats factors?</a></li>
+<li class="chapter" data-level="14.2.3" data-path="factors.html"><a href="factors.html#what-is-the-advantage-of-r-factors"><i class="fa fa-check"></i><b>14.2.3</b> What is the advantage of R factors?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>15</b> Strings</a><ul>
+<li class="chapter" data-level="15.1" data-path="strings.html"><a href="strings.html#text-everywhere"><i class="fa fa-check"></i><b>15.1</b> Text Everywhere</a></li>
+<li class="chapter" data-level="15.2" data-path="strings.html"><a href="strings.html#character-strings-in-r"><i class="fa fa-check"></i><b>15.2</b> Character Strings in R</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="strings.html"><a href="strings.html#empty-string"><i class="fa fa-check"></i><b>15.2.1</b> Empty String</a></li>
+<li class="chapter" data-level="15.2.2" data-path="strings.html"><a href="strings.html#empty-character-vector"><i class="fa fa-check"></i><b>15.2.2</b> Empty Character Vector</a></li>
+<li class="chapter" data-level="15.2.3" data-path="strings.html"><a href="strings.html#the-workhorse-function-paste"><i class="fa fa-check"></i><b>15.2.3</b> The workhorse function <code>paste()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="strings.html"><a href="strings.html#basic-manipulations"><i class="fa fa-check"></i><b>15.3</b> Basic Manipulations</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="strings.html"><a href="strings.html#counting-characters"><i class="fa fa-check"></i><b>15.3.1</b> Counting characters</a></li>
+<li class="chapter" data-level="15.3.2" data-path="strings.html"><a href="strings.html#casefolding"><i class="fa fa-check"></i><b>15.3.2</b> Casefolding</a></li>
+<li class="chapter" data-level="15.3.3" data-path="strings.html"><a href="strings.html#translating-characters"><i class="fa fa-check"></i><b>15.3.3</b> Translating characters</a></li>
+<li class="chapter" data-level="15.3.4" data-path="strings.html"><a href="strings.html#abbreviating-strings"><i class="fa fa-check"></i><b>15.3.4</b> Abbreviating strings</a></li>
+<li class="chapter" data-level="15.3.5" data-path="strings.html"><a href="strings.html#replacing-strings"><i class="fa fa-check"></i><b>15.3.5</b> Replacing strings</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="strings.html"><a href="strings.html#exercises-7"><i class="fa fa-check"></i><b>15.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="arrays.html"><a href="arrays.html"><i class="fa fa-check"></i><b>16</b> Matrices and Arrays</a><ul>
+<li class="chapter" data-level="16.1" data-path="arrays.html"><a href="arrays.html#from-vectors-to-arrays"><i class="fa fa-check"></i><b>16.1</b> From Vectors to Arrays</a></li>
+<li class="chapter" data-level="16.2" data-path="arrays.html"><a href="arrays.html#matrices"><i class="fa fa-check"></i><b>16.2</b> Matrices</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="arrays.html"><a href="arrays.html#bracket-notation"><i class="fa fa-check"></i><b>16.2.1</b> Bracket Notation</a></li>
+<li class="chapter" data-level="16.2.2" data-path="arrays.html"><a href="arrays.html#basic-matrix-operations"><i class="fa fa-check"></i><b>16.2.2</b> Basic Matrix Operations</a></li>
+<li class="chapter" data-level="16.2.3" data-path="arrays.html"><a href="arrays.html#transpose"><i class="fa fa-check"></i><b>16.2.3</b> Transpose</a></li>
+<li class="chapter" data-level="16.2.4" data-path="arrays.html"><a href="arrays.html#matrix-addition"><i class="fa fa-check"></i><b>16.2.4</b> Matrix Addition</a></li>
+<li class="chapter" data-level="16.2.5" data-path="arrays.html"><a href="arrays.html#scalar-multiplication"><i class="fa fa-check"></i><b>16.2.5</b> Scalar Multiplication</a></li>
+<li class="chapter" data-level="16.2.6" data-path="arrays.html"><a href="arrays.html#matrix-matrix-multiplication"><i class="fa fa-check"></i><b>16.2.6</b> Matrix-Matrix Multiplication</a></li>
+<li class="chapter" data-level="16.2.7" data-path="arrays.html"><a href="arrays.html#cross-products"><i class="fa fa-check"></i><b>16.2.7</b> Cross-Products</a></li>
+<li class="chapter" data-level="16.2.8" data-path="arrays.html"><a href="arrays.html#matrix-vector-multiplication"><i class="fa fa-check"></i><b>16.2.8</b> Matrix-Vector Multiplication</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="arrays.html"><a href="arrays.html#exercises-8"><i class="fa fa-check"></i><b>16.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>17</b> Lists</a><ul>
+<li class="chapter" data-level="17.1" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>17.1</b> Creating Lists</a></li>
+<li class="chapter" data-level="17.2" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>17.2</b> Manipulating Lists</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>17.2.1</b> Single brackets</a></li>
+<li class="chapter" data-level="17.2.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>17.2.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="17.2.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>17.2.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="17.2.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>17.2.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="17.2.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>17.2.5</b> Removing elements</a></li>
+<li class="chapter" data-level="17.2.6" data-path="lists.html"><a href="lists.html#slides-1"><i class="fa fa-check"></i><b>17.2.6</b> Slides</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="lists.html"><a href="lists.html#exercises-9"><i class="fa fa-check"></i><b>17.3</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>V Data Tables (part 2)</b></span></li>
+<li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
+<li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="tables2.html"><a href="tables2.html#types-of-tables"><i class="fa fa-check"></i><b>18.2</b> Types of Tables</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="tables2.html"><a href="tables2.html#heterogeneous-table"><i class="fa fa-check"></i><b>18.2.1</b> Heterogeneous Table</a></li>
+<li class="chapter" data-level="18.2.2" data-path="tables2.html"><a href="tables2.html#binary-table"><i class="fa fa-check"></i><b>18.2.2</b> Binary table</a></li>
+<li class="chapter" data-level="18.2.3" data-path="tables2.html"><a href="tables2.html#modalities-table"><i class="fa fa-check"></i><b>18.2.3</b> Modalities table</a></li>
+<li class="chapter" data-level="18.2.4" data-path="tables2.html"><a href="tables2.html#preference-table"><i class="fa fa-check"></i><b>18.2.4</b> Preference table</a></li>
+<li class="chapter" data-level="18.2.5" data-path="tables2.html"><a href="tables2.html#frequency-table"><i class="fa fa-check"></i><b>18.2.5</b> Frequency table</a></li>
+<li class="chapter" data-level="18.2.6" data-path="tables2.html"><a href="tables2.html#distance-table"><i class="fa fa-check"></i><b>18.2.6</b> Distance table</a></li>
+<li class="chapter" data-level="18.2.7" data-path="tables2.html"><a href="tables2.html#summary-1"><i class="fa fa-check"></i><b>18.2.7</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="table-storage.html"><a href="table-storage.html"><i class="fa fa-check"></i><b>19</b> Storage of Data Tables</a><ul>
+<li class="chapter" data-level="19.1" data-path="table-storage.html"><a href="table-storage.html#plain-text-formats"><i class="fa fa-check"></i><b>19.1</b> Plain Text Formats</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="table-storage.html"><a href="table-storage.html#plain-text-format"><i class="fa fa-check"></i><b>19.1.1</b> Plain Text Format</a></li>
+<li class="chapter" data-level="19.1.2" data-path="table-storage.html"><a href="table-storage.html#fixed-width-format"><i class="fa fa-check"></i><b>19.1.2</b> Fixed-Width Format</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="table-storage.html"><a href="table-storage.html#pros-and-cons-of-tables"><i class="fa fa-check"></i><b>19.2</b> Pros and Cons of Tables</a><ul>
+<li class="chapter" data-level="19.2.1" data-path="table-storage.html"><a href="table-storage.html#summary-slides-1"><i class="fa fa-check"></i><b>19.2.1</b> Summary Slides</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="table-storage.html"><a href="table-storage.html#exercises-10"><i class="fa fa-check"></i><b>19.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>20</b> Tables in Spreadsheets</a><ul>
+<li class="chapter" data-level="20.0.1" data-path="spreadsheets.html"><a href="spreadsheets.html#summary-slides-2"><i class="fa fa-check"></i><b>20.0.1</b> Summary Slides</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>21</b> R Data Frames</a><ul>
+<li class="chapter" data-level="21.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>21.1</b> R Data Frames</a></li>
+<li class="chapter" data-level="21.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>21.2</b> Inspecting data frames</a></li>
+<li class="chapter" data-level="21.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>21.3</b> Creating data frames</a></li>
+<li class="chapter" data-level="21.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>21.4</b> Basic Operations with Data Frames</a><ul>
+<li class="chapter" data-level="21.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements"><i class="fa fa-check"></i><b>21.4.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="21.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column"><i class="fa fa-check"></i><b>21.4.2</b> Adding a column</a></li>
+<li class="chapter" data-level="21.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column"><i class="fa fa-check"></i><b>21.4.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="21.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>21.4.4</b> Renaming a column</a></li>
+<li class="chapter" data-level="21.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column"><i class="fa fa-check"></i><b>21.4.5</b> Moving a column</a></li>
+<li class="chapter" data-level="21.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>21.4.6</b> Transforming a column</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="importing.html"><a href="importing.html"><i class="fa fa-check"></i><b>22</b> Importing Tables in R</a><ul>
+<li class="chapter" data-level="22.1" data-path="importing.html"><a href="importing.html#abalone-data-set"><i class="fa fa-check"></i><b>22.1</b> Abalone Data Set</a><ul>
+<li class="chapter" data-level="22.1.1" data-path="importing.html"><a href="importing.html#getting-a-local-copy-of-the-data"><i class="fa fa-check"></i><b>22.1.1</b> Getting a Local Copy of the Data</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="importing.html"><a href="importing.html#basic-importing"><i class="fa fa-check"></i><b>22.2</b> Basic Importing</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="importing.html"><a href="importing.html#detailed-information-about-the-columns"><i class="fa fa-check"></i><b>22.2.1</b> Detailed information about the columns</a></li>
+<li class="chapter" data-level="22.2.2" data-path="importing.html"><a href="importing.html#your-turn-2"><i class="fa fa-check"></i><b>22.2.2</b> Your Turn</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="importing.html"><a href="importing.html#filtering-slicing-and-selecting"><i class="fa fa-check"></i><b>22.3</b> Filtering, Slicing, and Selecting</a><ul>
+<li class="chapter" data-level="" data-path="importing.html"><a href="importing.html#your-turn-3"><i class="fa fa-check"></i>Your Turn</a></li>
+<li class="chapter" data-level="22.3.1" data-path="importing.html"><a href="importing.html#adding-new-variables-and-sorting-rows"><i class="fa fa-check"></i><b>22.3.1</b> Adding new variables and Sorting rows</a></li>
+<li class="chapter" data-level="" data-path="importing.html"><a href="importing.html#your-turn-4"><i class="fa fa-check"></i>Your Turn</a></li>
+<li class="chapter" data-level="22.3.2" data-path="importing.html"><a href="importing.html#basic-plots"><i class="fa fa-check"></i><b>22.3.2</b> Basic Plots</a></li>
+<li class="chapter" data-level="" data-path="importing.html"><a href="importing.html#your-turn-5"><i class="fa fa-check"></i>Your Turn</a></li>
+<li class="chapter" data-level="22.3.3" data-path="importing.html"><a href="importing.html#summary-slides-3"><i class="fa fa-check"></i><b>22.3.3</b> Summary Slides</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="dplyr2.html"><a href="dplyr2.html"><i class="fa fa-check"></i><b>23</b> Pipes and More dplyr</a><ul>
+<li class="chapter" data-level="23.1" data-path="dplyr2.html"><a href="dplyr2.html#introduction-2"><i class="fa fa-check"></i><b>23.1</b> Introduction</a><ul>
+<li class="chapter" data-level="23.1.1" data-path="dplyr2.html"><a href="dplyr2.html#starwars-data-set"><i class="fa fa-check"></i><b>23.1.1</b> Starwars Data Set</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="dplyr2.html"><a href="dplyr2.html#base-r-approach"><i class="fa fa-check"></i><b>23.2</b> Base R approach</a></li>
+<li class="chapter" data-level="23.3" data-path="dplyr2.html"><a href="dplyr2.html#with-dplyr"><i class="fa fa-check"></i><b>23.3</b> With <code>"dplyr"</code></a><ul>
+<li class="chapter" data-level="23.3.1" data-path="dplyr2.html"><a href="dplyr2.html#option-1-step-by-step"><i class="fa fa-check"></i><b>23.3.1</b> Option 1) Step-by-step</a></li>
+<li class="chapter" data-level="23.3.2" data-path="dplyr2.html"><a href="dplyr2.html#option-2-nested-embedded-code"><i class="fa fa-check"></i><b>23.3.2</b> Option 2) Nested (embedded) code</a></li>
+<li class="chapter" data-level="23.3.3" data-path="dplyr2.html"><a href="dplyr2.html#option-3-piping"><i class="fa fa-check"></i><b>23.3.3</b> Option 3) Piping</a></li>
+</ul></li>
+<li class="chapter" data-level="23.4" data-path="dplyr2.html"><a href="dplyr2.html#pipes-and-plots"><i class="fa fa-check"></i><b>23.4</b> Pipes and Plots</a></li>
+<li class="chapter" data-level="23.5" data-path="dplyr2.html"><a href="dplyr2.html#more-pipes"><i class="fa fa-check"></i><b>23.5</b> More Pipes</a></li>
+<li class="chapter" data-level="23.6" data-path="dplyr2.html"><a href="dplyr2.html#exercises-11"><i class="fa fa-check"></i><b>23.6</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>VI Programming Basics</b></span></li>
+<li class="chapter" data-level="24" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>24</b> Intro to Functions</a><ul>
+<li class="chapter" data-level="24.1" data-path="functions1.html"><a href="functions1.html#motivation-1"><i class="fa fa-check"></i><b>24.1</b> Motivation</a><ul>
+<li class="chapter" data-level="24.1.1" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>24.1.1</b> Writing a simple function</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="functions1.html"><a href="functions1.html#anatomy-of-a-function"><i class="fa fa-check"></i><b>24.2</b> Anatomy of a function</a><ul>
+<li class="chapter" data-level="24.2.1" data-path="functions1.html"><a href="functions1.html#scale-transformations"><i class="fa fa-check"></i><b>24.2.1</b> Scale Transformations</a></li>
+<li class="chapter" data-level="24.2.2" data-path="functions1.html"><a href="functions1.html#the-return-command"><i class="fa fa-check"></i><b>24.2.2</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="24.2.3" data-path="functions1.html"><a href="functions1.html#more-testing"><i class="fa fa-check"></i><b>24.2.3</b> More Testing</a></li>
+<li class="chapter" data-level="24.2.4" data-path="functions1.html"><a href="functions1.html#dealing-with-missing-values"><i class="fa fa-check"></i><b>24.2.4</b> Dealing with missing values</a></li>
+<li class="chapter" data-level="24.2.5" data-path="functions1.html"><a href="functions1.html#simplifying-the-body"><i class="fa fa-check"></i><b>24.2.5</b> Simplifying the body</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>25</b> Conditionals</a><ul>
+<li class="chapter" data-level="25.1" data-path="conditionals.html"><a href="conditionals.html#r-expressions"><i class="fa fa-check"></i><b>25.1</b> R Expressions</a><ul>
+<li class="chapter" data-level="25.1.1" data-path="conditionals.html"><a href="conditionals.html#compound-expressions"><i class="fa fa-check"></i><b>25.1.1</b> Compound Expressions</a></li>
+<li class="chapter" data-level="25.1.2" data-path="conditionals.html"><a href="conditionals.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>25.1.2</b> Every expression has a value</a></li>
+<li class="chapter" data-level="25.1.3" data-path="conditionals.html"><a href="conditionals.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>25.1.3</b> Assignments within Compound Expressions</a></li>
+</ul></li>
+<li class="chapter" data-level="25.2" data-path="conditionals.html"><a href="conditionals.html#if-then-else"><i class="fa fa-check"></i><b>25.2</b> If-then-Else</a><ul>
+<li class="chapter" data-level="25.2.1" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>25.2.1</b> Simple If’s</a></li>
+<li class="chapter" data-level="25.2.2" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>25.2.2</b> Multiple If’s</a></li>
+<li class="chapter" data-level="25.2.3" data-path="conditionals.html"><a href="conditionals.html#switch"><i class="fa fa-check"></i><b>25.2.3</b> Switch</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>26</b> Loops</a><ul>
+<li class="chapter" data-level="26.1" data-path="loops.html"><a href="loops.html#motivation-example"><i class="fa fa-check"></i><b>26.1</b> Motivation Example</a><ul>
+<li class="chapter" data-level="26.1.1" data-path="loops.html"><a href="loops.html#printing-prices-manually"><i class="fa fa-check"></i><b>26.1.1</b> Printing prices “manually”</a></li>
+<li class="chapter" data-level="26.1.2" data-path="loops.html"><a href="loops.html#printing-prices-with-a-for-loop"><i class="fa fa-check"></i><b>26.1.2</b> Printing prices with a <code>for</code> loop</a></li>
+<li class="chapter" data-level="26.1.3" data-path="loops.html"><a href="loops.html#printing-coffee-prices-with-a-for-loop"><i class="fa fa-check"></i><b>26.1.3</b> Printing coffee prices with a <code>for</code> loop</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="loops.html"><a href="loops.html#for-loops"><i class="fa fa-check"></i><b>26.2</b> For loops</a></li>
+<li class="chapter" data-level="26.3" data-path="loops.html"><a href="loops.html#for-loops-1"><i class="fa fa-check"></i><b>26.3</b> For Loops</a><ul>
+<li class="chapter" data-level="26.3.1" data-path="loops.html"><a href="loops.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>26.3.1</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="26.3.2" data-path="loops.html"><a href="loops.html#nested-loops"><i class="fa fa-check"></i><b>26.3.2</b> Nested Loops</a></li>
+<li class="chapter" data-level="26.3.3" data-path="loops.html"><a href="loops.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>26.3.3</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+</ul></li>
+<li class="chapter" data-level="26.4" data-path="loops.html"><a href="loops.html#practice-examples"><i class="fa fa-check"></i><b>26.4</b> Practice Examples</a><ul>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-summation-series"><i class="fa fa-check"></i>Your Turn: Summation Series</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-arithmetic-series"><i class="fa fa-check"></i>Your Turn: Arithmetic Series</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-geometric-sequence"><i class="fa fa-check"></i>Your Turn: Geometric Sequence</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-sine-approximation"><i class="fa fa-check"></i>Your Turn: Sine Approximation</a></li>
+</ul></li>
+<li class="chapter" data-level="26.5" data-path="loops.html"><a href="loops.html#for-loop-with-a-matrix"><i class="fa fa-check"></i><b>26.5</b> For loop with a matrix</a><ul>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-6"><i class="fa fa-check"></i>Your Turn</a></li>
+</ul></li>
+<li class="chapter" data-level="26.6" data-path="loops.html"><a href="loops.html#dividing-a-number-by-2-multiple-times"><i class="fa fa-check"></i><b>26.6</b> Dividing a number by 2 multiple times</a><ul>
+<li><a href="loops.html#using-a-repeat-loop">Using a <code>repeat</code> loop</a></li>
+<li><a href="loops.html#using-a-while-loop">Using a <code>while</code> Loop</a></li>
+<li><a href="loops.html#make-a-reduce-function">Make a <code>reduce()</code> function</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-average"><i class="fa fa-check"></i>Your Turn: Average</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-standard-deviation"><i class="fa fa-check"></i>Your Turn: Standard Deviation</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-geometric-mean"><i class="fa fa-check"></i>Your Turn: Geometric Mean</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-distance-matrix-of-letters"><i class="fa fa-check"></i>Your Turn: Distance Matrix of Letters</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-7"><i class="fa fa-check"></i>Your Turn</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="functions2.html"><a href="functions2.html"><i class="fa fa-check"></i><b>27</b> Understanding Functions</a><ul>
+<li class="chapter" data-level="27.0.1" data-path="functions2.html"><a href="functions2.html#simple-expressions"><i class="fa fa-check"></i><b>27.0.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="27.0.2" data-path="functions2.html"><a href="functions2.html#nested-functions"><i class="fa fa-check"></i><b>27.0.2</b> Nested Functions</a></li>
+<li class="chapter" data-level="27.1" data-path="functions2.html"><a href="functions2.html#function-output"><i class="fa fa-check"></i><b>27.1</b> Function Output</a><ul>
+<li class="chapter" data-level="27.1.1" data-path="functions2.html"><a href="functions2.html#the-return-command-1"><i class="fa fa-check"></i><b>27.1.1</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="27.1.2" data-path="functions2.html"><a href="functions2.html#variance-function-example"><i class="fa fa-check"></i><b>27.1.2</b> Variance Function Example</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="functions2.html"><a href="functions2.html#documenting-functions"><i class="fa fa-check"></i><b>27.2</b> Documenting Functions</a><ul>
+<li class="chapter" data-level="27.2.1" data-path="functions2.html"><a href="functions2.html#general-strategy-for-writing-functions"><i class="fa fa-check"></i><b>27.2.1</b> General Strategy for Writing Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="27.3" data-path="functions2.html"><a href="functions2.html#naming-functions"><i class="fa fa-check"></i><b>27.3</b> Naming Functions</a></li>
+<li class="chapter" data-level="27.4" data-path="functions2.html"><a href="functions2.html#recommendations"><i class="fa fa-check"></i><b>27.4</b> Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>28</b> Good Coding Practices</a><ul>
+<li class="chapter" data-level="28.1" data-path="coding.html"><a href="coding.html#syntax-highlighting"><i class="fa fa-check"></i><b>28.1</b> Syntax Highlighting</a></li>
+<li class="chapter" data-level="28.2" data-path="coding.html"><a href="coding.html#good-source-code"><i class="fa fa-check"></i><b>28.2</b> Good Source Code</a><ul>
+<li class="chapter" data-level="28.2.1" data-path="coding.html"><a href="coding.html#indentation"><i class="fa fa-check"></i><b>28.2.1</b> Indentation</a></li>
+<li class="chapter" data-level="28.2.2" data-path="coding.html"><a href="coding.html#reformat-code-in-rstudio"><i class="fa fa-check"></i><b>28.2.2</b> Reformat Code in RStudio</a></li>
+<li class="chapter" data-level="28.2.3" data-path="coding.html"><a href="coding.html#meaningful-names"><i class="fa fa-check"></i><b>28.2.3</b> Meaningful Names</a></li>
+<li class="chapter" data-level="28.2.4" data-path="coding.html"><a href="coding.html#white-spaces"><i class="fa fa-check"></i><b>28.2.4</b> White Spaces</a></li>
+<li class="chapter" data-level="28.2.5" data-path="coding.html"><a href="coding.html#white-spaces-1"><i class="fa fa-check"></i><b>28.2.5</b> White spaces</a></li>
+<li class="chapter" data-level="28.2.6" data-path="coding.html"><a href="coding.html#syntax-parentheses"><i class="fa fa-check"></i><b>28.2.6</b> Syntax: Parentheses</a></li>
+<li class="chapter" data-level="28.2.7" data-path="coding.html"><a href="coding.html#comments"><i class="fa fa-check"></i><b>28.2.7</b> Comments</a></li>
+<li class="chapter" data-level="28.2.8" data-path="coding.html"><a href="coding.html#source-code-files"><i class="fa fa-check"></i><b>28.2.8</b> Source Code Files</a></li>
+</ul></li>
+<li class="chapter" data-level="28.3" data-path="coding.html"><a href="coding.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>28.3</b> Don’t Repeat Yourself</a><ul>
+<li class="chapter" data-level="28.3.1" data-path="coding.html"><a href="coding.html#look-at-other-peoples-code"><i class="fa fa-check"></i><b>28.3.1</b> Look at other people’s code</a></li>
+<li class="chapter" data-level="28.3.2" data-path="coding.html"><a href="coding.html#exercises-12"><i class="fa fa-check"></i><b>28.3.2</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VII Programming Applications</b></span></li>
+<li class="chapter" data-level="29" data-path="shiny1.html"><a href="shiny1.html"><i class="fa fa-check"></i><b>29</b> Shiny Apps</a><ul>
+<li class="chapter" data-level="29.1" data-path="shiny1.html"><a href="shiny1.html#histogram-example"><i class="fa fa-check"></i><b>29.1</b> Histogram Example</a></li>
+<li class="chapter" data-level="29.2" data-path="shiny1.html"><a href="shiny1.html#whats-going-on"><i class="fa fa-check"></i><b>29.2</b> What’s going on?</a><ul>
+<li class="chapter" data-level="29.2.1" data-path="shiny1.html"><a href="shiny1.html#anatomy-of-r-script"><i class="fa fa-check"></i><b>29.2.1</b> Anatomy of R script</a></li>
+<li class="chapter" data-level="29.2.2" data-path="shiny1.html"><a href="shiny1.html#html-webpage-with-histogram"><i class="fa fa-check"></i><b>29.2.2</b> HTML webpage with histogram</a></li>
+<li class="chapter" data-level="29.2.3" data-path="shiny1.html"><a href="shiny1.html#resources"><i class="fa fa-check"></i><b>29.2.3</b> Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="simulations1.html"><a href="simulations1.html"><i class="fa fa-check"></i><b>30</b> Basic Simulations</a><ul>
+<li class="chapter" data-level="30.1" data-path="simulations1.html"><a href="simulations1.html#lets-flip-a-coin"><i class="fa fa-check"></i><b>30.1</b> Let’s flip a coin</a><ul>
+<li class="chapter" data-level="30.1.1" data-path="simulations1.html"><a href="simulations1.html#creating-a-coin"><i class="fa fa-check"></i><b>30.1.1</b> Creating a coin</a></li>
+</ul></li>
+<li class="chapter" data-level="30.2" data-path="simulations1.html"><a href="simulations1.html#tossing-a-coin"><i class="fa fa-check"></i><b>30.2</b> Tossing a coin</a><ul>
+<li class="chapter" data-level="30.2.1" data-path="simulations1.html"><a href="simulations1.html#function-sample.int"><i class="fa fa-check"></i><b>30.2.1</b> Function <code>sample.int()</code></a></li>
+<li class="chapter" data-level="30.2.2" data-path="simulations1.html"><a href="simulations1.html#random-samples"><i class="fa fa-check"></i><b>30.2.2</b> Random Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="30.3" data-path="simulations1.html"><a href="simulations1.html#the-random-seed"><i class="fa fa-check"></i><b>30.3</b> The Random Seed</a></li>
+<li class="chapter" data-level="30.4" data-path="simulations1.html"><a href="simulations1.html#sampling-with-different-probabilities"><i class="fa fa-check"></i><b>30.4</b> Sampling with different probabilities</a></li>
+<li class="chapter" data-level="30.5" data-path="simulations1.html"><a href="simulations1.html#simulating-tossing-a-coin"><i class="fa fa-check"></i><b>30.5</b> Simulating tossing a coin</a></li>
+<li class="chapter" data-level="30.6" data-path="simulations1.html"><a href="simulations1.html#tossing-function"><i class="fa fa-check"></i><b>30.6</b> Tossing function</a></li>
+<li class="chapter" data-level="30.7" data-path="simulations1.html"><a href="simulations1.html#counting-frequencies"><i class="fa fa-check"></i><b>30.7</b> Counting Frequencies</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="demere.html"><a href="demere.html"><i class="fa fa-check"></i><b>31</b> De Mere’s Games</a><ul>
+<li class="chapter" data-level="31.1" data-path="demere.html"><a href="demere.html#probability-example"><i class="fa fa-check"></i><b>31.1</b> Probability Example</a><ul>
+<li class="chapter" data-level="31.1.1" data-path="demere.html"><a href="demere.html#game-1"><i class="fa fa-check"></i><b>31.1.1</b> Game 1</a></li>
+<li class="chapter" data-level="31.1.2" data-path="demere.html"><a href="demere.html#game-2"><i class="fa fa-check"></i><b>31.1.2</b> Game 2</a></li>
+<li class="chapter" data-level="31.1.3" data-path="demere.html"><a href="demere.html#binomial-probability"><i class="fa fa-check"></i><b>31.1.3</b> Binomial Probability</a></li>
+<li class="chapter" data-level="31.1.4" data-path="demere.html"><a href="demere.html#simulating-one-die"><i class="fa fa-check"></i><b>31.1.4</b> Simulating one die</a></li>
+<li class="chapter" data-level="31.1.5" data-path="demere.html"><a href="demere.html#rolling-a-pair-of-dice"><i class="fa fa-check"></i><b>31.1.5</b> Rolling a pair of dice</a></li>
+<li class="chapter" data-level="31.1.6" data-path="demere.html"><a href="demere.html#de-meres-game-1"><i class="fa fa-check"></i><b>31.1.6</b> De Mere’s Game 1</a></li>
+<li class="chapter" data-level="31.1.7" data-path="demere.html"><a href="demere.html#de-meres-game-2"><i class="fa fa-check"></i><b>31.1.7</b> De Mere’s Game 2</a></li>
+</ul></li>
+<li class="chapter" data-level="31.2" data-path="demere.html"><a href="demere.html#chafa"><i class="fa fa-check"></i><b>31.2</b> Chafa</a></li>
+<li class="chapter" data-level="31.3" data-path="demere.html"><a href="demere.html#testing-whether-a-die-is-fair"><i class="fa fa-check"></i><b>31.3</b> Testing whether a die is fair</a></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="savings.html"><a href="savings.html"><i class="fa fa-check"></i><b>32</b> Savings Simulations</a><ul>
+<li class="chapter" data-level="32.1" data-path="savings.html"><a href="savings.html#do-you-regularly-save-some-money"><i class="fa fa-check"></i><b>32.1</b> Do you regularly save some money?</a></li>
+<li class="chapter" data-level="32.2" data-path="savings.html"><a href="savings.html#future-value-function"><i class="fa fa-check"></i><b>32.2</b> Future Value Function</a><ul>
+<li class="chapter" data-level="32.2.1" data-path="savings.html"><a href="savings.html#future_value"><i class="fa fa-check"></i><b>32.2.1</b> <code>future_value()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="32.3" data-path="savings.html"><a href="savings.html#future-value-of-annuity"><i class="fa fa-check"></i><b>32.3</b> Future Value of Annuity</a><ul>
+<li class="chapter" data-level="32.3.1" data-path="savings.html"><a href="savings.html#annuity"><i class="fa fa-check"></i><b>32.3.1</b> <code>annuity()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="32.4" data-path="savings.html"><a href="savings.html#future-value-of-growing-annuity"><i class="fa fa-check"></i><b>32.4</b> Future Value of Growing Annuity</a><ul>
+<li class="chapter" data-level="32.4.1" data-path="savings.html"><a href="savings.html#growing_annuity"><i class="fa fa-check"></i><b>32.4.1</b> <code>growing_annuity()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="32.5" data-path="savings.html"><a href="savings.html#investing-modalities"><i class="fa fa-check"></i><b>32.5</b> Investing Modalities</a><ul>
+<li class="chapter" data-level="32.5.1" data-path="savings.html"><a href="savings.html#for-loop-and-table"><i class="fa fa-check"></i><b>32.5.1</b> For-loop and Table</a></li>
+<li class="chapter" data-level="32.5.2" data-path="savings.html"><a href="savings.html#timeline-graph"><i class="fa fa-check"></i><b>32.5.2</b> Timeline Graph</a></li>
+</ul></li>
+<li class="chapter" data-level="32.6" data-path="savings.html"><a href="savings.html#savings-simulation"><i class="fa fa-check"></i><b>32.6</b> Savings Simulation</a><ul>
+<li class="chapter" data-level="32.6.1" data-path="savings.html"><a href="savings.html#simulation-variables"><i class="fa fa-check"></i><b>32.6.1</b> Simulation Variables</a></li>
+<li class="chapter" data-level="32.6.2" data-path="savings.html"><a href="savings.html#foor-loops"><i class="fa fa-check"></i><b>32.6.2</b> Foor Loops</a></li>
+<li class="chapter" data-level="32.6.3" data-path="savings.html"><a href="savings.html#facet-timeline-graph"><i class="fa fa-check"></i><b>32.6.3</b> Facet Timeline Graph</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VIII Command Line Tools</b></span></li>
+<li class="chapter" data-level="33" data-path="unix-intro.html"><a href="unix-intro.html"><i class="fa fa-check"></i><b>33</b> Introduction</a></li>
+<li class="chapter" data-level="34" data-path="terminal.html"><a href="terminal.html"><i class="fa fa-check"></i><b>34</b> Command Line</a><ul>
+<li class="chapter" data-level="34.1" data-path="terminal.html"><a href="terminal.html#guis--vs--clis"><i class="fa fa-check"></i><b>34.1</b> GUIs -vs- CLIs</a></li>
+<li class="chapter" data-level="34.2" data-path="terminal.html"><a href="terminal.html#command-line"><i class="fa fa-check"></i><b>34.2</b> Command Line</a><ul>
+<li class="chapter" data-level="34.2.1" data-path="terminal.html"><a href="terminal.html#some-vocabulary-and-technicalities"><i class="fa fa-check"></i><b>34.2.1</b> Some Vocabulary and Technicalities</a></li>
+<li class="chapter" data-level="34.2.2" data-path="terminal.html"><a href="terminal.html#anatomy-of-shell-commands"><i class="fa fa-check"></i><b>34.2.2</b> Anatomy of shell commands</a></li>
+<li class="chapter" data-level="34.2.3" data-path="terminal.html"><a href="terminal.html#manual-documentation"><i class="fa fa-check"></i><b>34.2.3</b> Manual Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="34.3" data-path="terminal.html"><a href="terminal.html#navigating-the-filesystem"><i class="fa fa-check"></i><b>34.3</b> Navigating the Filesystem</a></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>35</b> Working with Files</a></li>
+<li class="chapter" data-level="36" data-path="redirections.html"><a href="redirections.html"><i class="fa fa-check"></i><b>36</b> Redirecting Inputs and Outputs</a><ul>
+<li class="chapter" data-level="36.1" data-path="redirections.html"><a href="redirections.html#some-technical-background"><i class="fa fa-check"></i><b>36.1</b> Some Technical Background</a></li>
+<li class="chapter" data-level="36.2" data-path="redirections.html"><a href="redirections.html#standard-input-and-output"><i class="fa fa-check"></i><b>36.2</b> Standard Input and Output</a></li>
+<li class="chapter" data-level="36.3" data-path="redirections.html"><a href="redirections.html#using-standard-input-and-output"><i class="fa fa-check"></i><b>36.3</b> Using Standard Input and Output</a></li>
+</ul></li>
+<li class="chapter" data-level="37" data-path="filters.html"><a href="filters.html"><i class="fa fa-check"></i><b>37</b> Intro to Unix Filters</a><ul>
+<li class="chapter" data-level="37.1" data-path="filters.html"><a href="filters.html#crash-example"><i class="fa fa-check"></i><b>37.1</b> Crash Example</a><ul>
+<li class="chapter" data-level="37.1.1" data-path="filters.html"><a href="filters.html#redirecting-output-to-a-new-file-with"><i class="fa fa-check"></i><b>37.1.1</b> Redirecting output to a new file with <code>&gt;</code></a></li>
+<li class="chapter" data-level="37.1.2" data-path="filters.html"><a href="filters.html#selecting-columns-with-cut"><i class="fa fa-check"></i><b>37.1.2</b> Selecting columns with <code>cut</code></a></li>
+<li class="chapter" data-level="37.1.3" data-path="filters.html"><a href="filters.html#sorting-lines-with-sort"><i class="fa fa-check"></i><b>37.1.3</b> Sorting lines with <code>sort</code></a></li>
+<li class="chapter" data-level="37.1.4" data-path="filters.html"><a href="filters.html#listing-unique-occurrences-with-sort--u"><i class="fa fa-check"></i><b>37.1.4</b> Listing unique occurrences with <code>sort -u</code></a></li>
+<li class="chapter" data-level="37.1.5" data-path="filters.html"><a href="filters.html#counting-unique-occurrences-with-sort-and-uniq"><i class="fa fa-check"></i><b>37.1.5</b> Counting unique occurrences with <code>sort</code> and <code>uniq</code></a></li>
+<li class="chapter" data-level="37.1.6" data-path="filters.html"><a href="filters.html#all-in-one-pipeline"><i class="fa fa-check"></i><b>37.1.6</b> All in one pipeline</a></li>
+<li class="chapter" data-level="37.1.7" data-path="filters.html"><a href="filters.html#more-examples"><i class="fa fa-check"></i><b>37.1.7</b> More examples</a></li>
+</ul></li>
+<li class="chapter" data-level="37.2" data-path="filters.html"><a href="filters.html#filters-1"><i class="fa fa-check"></i><b>37.2</b> Filters</a></li>
+<li class="chapter" data-level="37.3" data-path="filters.html"><a href="filters.html#extracting-columns-with-cut"><i class="fa fa-check"></i><b>37.3</b> Extracting columns with <code>cut</code></a></li>
+<li class="chapter" data-level="37.4" data-path="filters.html"><a href="filters.html#sorting-lines-with-sort-1"><i class="fa fa-check"></i><b>37.4</b> Sorting lines with <code>sort</code></a></li>
+<li class="chapter" data-level="37.5" data-path="filters.html"><a href="filters.html#isolating-unique-lines-with-uniq"><i class="fa fa-check"></i><b>37.5</b> Isolating unique lines with <code>uniq</code></a></li>
+</ul></li>
+<li class="part"><span><b>IX Data Technologies</b></span></li>
+<li class="chapter" data-level="38" data-path="datatech-intro.html"><a href="datatech-intro.html"><i class="fa fa-check"></i><b>38</b> Introduction</a></li>
+<li class="chapter" data-level="39" data-path="regex.html"><a href="regex.html"><i class="fa fa-check"></i><b>39</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="39.1" data-path="regex.html"><a href="regex.html#what-are-regular-expressions"><i class="fa fa-check"></i><b>39.1</b> What are Regular Expressions?</a><ul>
+<li class="chapter" data-level="39.1.1" data-path="regex.html"><a href="regex.html#a-word-of-caution-about-regex"><i class="fa fa-check"></i><b>39.1.1</b> A word of caution about regex</a></li>
+<li class="chapter" data-level="39.1.2" data-path="regex.html"><a href="regex.html#regular-expressions-in-r"><i class="fa fa-check"></i><b>39.1.2</b> Regular Expressions in R</a></li>
+</ul></li>
+<li class="chapter" data-level="39.2" data-path="regex.html"><a href="regex.html#regex-basics"><i class="fa fa-check"></i><b>39.2</b> Regex Basics</a></li>
+<li class="chapter" data-level="39.3" data-path="regex.html"><a href="regex.html#literal-characters"><i class="fa fa-check"></i><b>39.3</b> Literal Characters</a></li>
+<li class="chapter" data-level="39.4" data-path="regex.html"><a href="regex.html#metacharacters"><i class="fa fa-check"></i><b>39.4</b> Metacharacters</a><ul>
+<li class="chapter" data-level="39.4.1" data-path="regex.html"><a href="regex.html#the-wild-metacharacter"><i class="fa fa-check"></i><b>39.4.1</b> The Wild Metacharacter</a></li>
+<li class="chapter" data-level="39.4.2" data-path="regex.html"><a href="regex.html#escaping-metacharacters"><i class="fa fa-check"></i><b>39.4.2</b> Escaping metacharacters</a></li>
+</ul></li>
+<li class="chapter" data-level="39.5" data-path="regex.html"><a href="regex.html#character-sets"><i class="fa fa-check"></i><b>39.5</b> Character Sets</a></li>
+<li class="chapter" data-level="39.6" data-path="regex.html"><a href="regex.html#character-ranges"><i class="fa fa-check"></i><b>39.6</b> Character ranges</a></li>
+<li class="chapter" data-level="39.7" data-path="regex.html"><a href="regex.html#negative-character-sets"><i class="fa fa-check"></i><b>39.7</b> Negative Character Sets</a></li>
+<li class="chapter" data-level="39.8" data-path="regex.html"><a href="regex.html#character-classes"><i class="fa fa-check"></i><b>39.8</b> Character Classes</a></li>
+<li class="chapter" data-level="39.9" data-path="regex.html"><a href="regex.html#posix-character-classes"><i class="fa fa-check"></i><b>39.9</b> POSIX Character Classes</a></li>
+</ul></li>
+<li class="chapter" data-level="40" data-path="xml.html"><a href="xml.html"><i class="fa fa-check"></i><b>40</b> Basics of XML</a><ul>
+<li class="chapter" data-level="40.1" data-path="xml.html"><a href="xml.html#what-is-xml"><i class="fa fa-check"></i><b>40.1</b> What is XML?</a><ul>
+<li class="chapter" data-level="40.1.1" data-path="xml.html"><a href="xml.html#comments-1"><i class="fa fa-check"></i><b>40.1.1</b> Comments</a></li>
+<li class="chapter" data-level="40.1.2" data-path="xml.html"><a href="xml.html#marks-in-xml"><i class="fa fa-check"></i><b>40.1.2</b> Marks in XML</a></li>
+<li class="chapter" data-level="40.1.3" data-path="xml.html"><a href="xml.html#minimalist-example"><i class="fa fa-check"></i><b>40.1.3</b> Minimalist Example</a></li>
+<li class="chapter" data-level="40.1.4" data-path="xml.html"><a href="xml.html#well-formedness"><i class="fa fa-check"></i><b>40.1.4</b> Well Formedness</a></li>
+<li class="chapter" data-level="40.1.5" data-path="xml.html"><a href="xml.html#additional-xml-elements"><i class="fa fa-check"></i><b>40.1.5</b> Additional XML Elements</a></li>
+<li class="chapter" data-level="40.1.6" data-path="xml.html"><a href="xml.html#another-example"><i class="fa fa-check"></i><b>40.1.6</b> Another Example</a></li>
+<li class="chapter" data-level="40.1.7" data-path="xml.html"><a href="xml.html#wrapping-up"><i class="fa fa-check"></i><b>40.1.7</b> Wrapping-Up</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="41" data-path="html.html"><a href="html.html"><i class="fa fa-check"></i><b>41</b> HTML Basics</a><ul>
+<li class="chapter" data-level="41.1" data-path="html.html"><a href="html.html#the-web"><i class="fa fa-check"></i><b>41.1</b> The Web</a><ul>
+<li class="chapter" data-level="41.1.1" data-path="html.html"><a href="html.html#how-does-the-web-work"><i class="fa fa-check"></i><b>41.1.1</b> How does the Web work?</a></li>
+</ul></li>
+<li class="chapter" data-level="41.2" data-path="html.html"><a href="html.html#a-quick-introduction-to-html"><i class="fa fa-check"></i><b>41.2</b> A quick introduction to HTML</a><ul>
+<li class="chapter" data-level="41.2.1" data-path="html.html"><a href="html.html#html-document-structure"><i class="fa fa-check"></i><b>41.2.1</b> HTML document structure</a></li>
+<li class="chapter" data-level="41.2.2" data-path="html.html"><a href="html.html#html-syntax"><i class="fa fa-check"></i><b>41.2.2</b> HTML Syntax</a></li>
+<li class="chapter" data-level="41.2.3" data-path="html.html"><a href="html.html#what-the-browser-does"><i class="fa fa-check"></i><b>41.2.3</b> What the browser does</a></li>
+<li class="chapter" data-level="41.2.4" data-path="html.html"><a href="html.html#web-scraping"><i class="fa fa-check"></i><b>41.2.4</b> Web Scraping</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="42" data-path="http.html"><a href="http.html"><i class="fa fa-check"></i><b>42</b> Basics of HTTP</a><ul>
+<li class="chapter" data-level="42.1" data-path="http.html"><a href="http.html#a-quick-introduction-to-http"><i class="fa fa-check"></i><b>42.1</b> A quick introduction to HTTP</a><ul>
+<li class="chapter" data-level="42.1.1" data-path="http.html"><a href="http.html#anatomy-of-an-http-message"><i class="fa fa-check"></i><b>42.1.1</b> Anatomy of an HTTP message</a></li>
+<li class="chapter" data-level="42.1.2" data-path="http.html"><a href="http.html#http-methods"><i class="fa fa-check"></i><b>42.1.2</b> HTTP Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="42.2" data-path="http.html"><a href="http.html#r-package-rcurl"><i class="fa fa-check"></i><b>42.2</b> R Package <code>"RCurl"</code></a><ul>
+<li class="chapter" data-level="42.2.1" data-path="http.html"><a href="http.html#function-geturl"><i class="fa fa-check"></i><b>42.2.1</b> Function <code>getURL()</code></a></li>
+<li class="chapter" data-level="42.2.2" data-path="http.html"><a href="http.html#function-geturl-1"><i class="fa fa-check"></i><b>42.2.2</b> Function <code>getURL()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="43" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>43</b> JSON Data</a><ul>
+<li class="chapter" data-level="43.1" data-path="json.html"><a href="json.html#json-basics"><i class="fa fa-check"></i><b>43.1</b> JSON Basics</a><ul>
+<li class="chapter" data-level="43.1.1" data-path="json.html"><a href="json.html#understanding-json-syntax"><i class="fa fa-check"></i><b>43.1.1</b> Understanding JSON Syntax</a></li>
+<li class="chapter" data-level="43.1.2" data-path="json.html"><a href="json.html#data-table-toy-example"><i class="fa fa-check"></i><b>43.1.2</b> Data Table Toy Example</a></li>
+<li class="chapter" data-level="43.1.3" data-path="json.html"><a href="json.html#json-r-packages"><i class="fa fa-check"></i><b>43.1.3</b> JSON R packages</a></li>
+<li class="chapter" data-level="43.1.4" data-path="json.html"><a href="json.html#reading-json-data"><i class="fa fa-check"></i><b>43.1.4</b> Reading JSON Data</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computing With Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ggplot1" class="section level1">
+<h1><span class="header-section-number">10</span> Basic Charts with <code>ggplot2</code></h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">10.1</span> Introduction</h2>
+<p>In this chapter you will start learning how to create graphics in a fairly
+consistent and visually pleasing way. To do this, we are going to use the
+package <code>"ggplot2"</code>, also originally authored by Hadley Wickham, and developed
+as part of his PhD more than a decade ago.</p>
+<p>We are assuming that you already installed the package <code>"ggplot2"</code>. If that’s
+not the case then <strong>run on the console</strong> the command below
+(do NOT include this command in an <code>Rmd</code> file):</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="ggplot1.html#cb52-1"></a><span class="co"># don&#39;t include this command in Rmd files</span></span>
+<span id="cb52-2"><a href="ggplot1.html#cb52-2"></a><span class="co"># don&#39;t worry too much if you get a warning message</span></span>
+<span id="cb52-3"><a href="ggplot1.html#cb52-3"></a><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<p>As we mentioned before, recall that you only need to install a package once!
+After a package has been installed in your machine, there is no need to call
+<code>install.packages()</code> again on the same package. What you should always invoke,
+in order to use the functions in a package, is the <code>library()</code> function:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="ggplot1.html#cb53-1"></a><span class="co"># (you should include this command in your Rmd file, or other source files)</span></span>
+<span id="cb53-2"><a href="ggplot1.html#cb53-2"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb53-3"><a href="ggplot1.html#cb53-3"></a><span class="kw">library</span>(dplyr)   </span></code></pre></div>
+<div id="atlantic-hurricane-data-1" class="section level3">
+<h3><span class="header-section-number">10.1.1</span> Atlantic Hurricane Data</h3>
+<p>In the previous chapter, we began exploration of Atlantic Hurricane Data.
+The data set comes in the R package <code>"dplyr"</code> under the name <code>storms</code>:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="ggplot1.html#cb54-1"></a><span class="co"># data from package &quot;dplyr&quot;</span></span>
+<span id="cb54-2"><a href="ggplot1.html#cb54-2"></a>storms</span>
+<span id="cb54-3"><a href="ggplot1.html#cb54-3"></a><span class="co">#&gt; # A tibble: 10,010 x 13</span></span>
+<span id="cb54-4"><a href="ggplot1.html#cb54-4"></a><span class="co">#&gt;    name   year month   day  hour   lat  long status category  wind pressure</span></span>
+<span id="cb54-5"><a href="ggplot1.html#cb54-5"></a><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;ord&gt;    &lt;int&gt;    &lt;int&gt;</span></span>
+<span id="cb54-6"><a href="ggplot1.html#cb54-6"></a><span class="co">#&gt;  1 Amy    1975     6    27     0  27.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb54-7"><a href="ggplot1.html#cb54-7"></a><span class="co">#&gt;  2 Amy    1975     6    27     6  28.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb54-8"><a href="ggplot1.html#cb54-8"></a><span class="co">#&gt;  3 Amy    1975     6    27    12  29.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb54-9"><a href="ggplot1.html#cb54-9"></a><span class="co">#&gt;  4 Amy    1975     6    27    18  30.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb54-10"><a href="ggplot1.html#cb54-10"></a><span class="co">#&gt;  5 Amy    1975     6    28     0  31.5 -78.8 tropi… -1          25     1012</span></span>
+<span id="cb54-11"><a href="ggplot1.html#cb54-11"></a><span class="co">#&gt;  6 Amy    1975     6    28     6  32.4 -78.7 tropi… -1          25     1012</span></span>
+<span id="cb54-12"><a href="ggplot1.html#cb54-12"></a><span class="co">#&gt;  7 Amy    1975     6    28    12  33.3 -78   tropi… -1          25     1011</span></span>
+<span id="cb54-13"><a href="ggplot1.html#cb54-13"></a><span class="co">#&gt;  8 Amy    1975     6    28    18  34   -77   tropi… -1          30     1006</span></span>
+<span id="cb54-14"><a href="ggplot1.html#cb54-14"></a><span class="co">#&gt;  9 Amy    1975     6    29     0  34.4 -75.8 tropi… 0           35     1004</span></span>
+<span id="cb54-15"><a href="ggplot1.html#cb54-15"></a><span class="co">#&gt; 10 Amy    1975     6    29     6  34   -74.8 tropi… 0           40     1002</span></span>
+<span id="cb54-16"><a href="ggplot1.html#cb54-16"></a><span class="co">#&gt; # … with 10,000 more rows, and 2 more variables: ts_diameter &lt;dbl&gt;,</span></span>
+<span id="cb54-17"><a href="ggplot1.html#cb54-17"></a><span class="co">#&gt; #   hu_diameter &lt;dbl&gt;</span></span></code></pre></div>
+</div>
+</div>
+<div id="first-contact-with-ggplot" class="section level2">
+<h2><span class="header-section-number">10.2</span> First contact with <code>ggplot()</code></h2>
+<p>The package <code>"ggplot2"</code> is probably the most popular package in R to create
+<em>beautiful</em> static graphics. Compared to the functions in the base package
+<code>"graphics"</code>, the package <code>"ggplot2</code>" follows a somewhat different philosophy,
+and it tries to be more consistent and modular as possible.</p>
+<ul>
+<li><p>The main function in <code>"ggplot2"</code> is <code>ggplot()</code>.</p></li>
+<li><p>The main input to <code>ggplot()</code> is a data table object (<code>data.frame</code> or <code>tibble</code>).</p></li>
+<li><p>You use the internal function <code>aes()</code> to specify what columns of the data
+table will be used as visual attributes of graphical elements in your plot.</p></li>
+<li><p>You must specify what kind of <em>geometric objects</em> or <strong>geoms</strong> will be
+displayed: e.g. <code>geom_point()</code>, <code>geom_bar()</code>, <code>geom_boxpot()</code>.</p></li>
+<li><p>Pretty much anything else that you want to add to your plot is controlled
+by auxiliary functions, especially those things that have to do with the format,
+rather than the underlying data, e.g. <code>labels()</code>, <code>theme()</code>.</p></li>
+<li><p>The construction of a ggplot is done by <em>adding layers</em> with the <code>+</code> operator.</p></li>
+</ul>
+<div id="barplots" class="section level3">
+<h3><span class="header-section-number">10.2.1</span> Barplots</h3>
+<p>Our first visualization is based on the values of column <code>year</code>. You can
+certainly begin a visual exploration of other variables, but we think <code>year</code> is
+a good place to start because it’s a numeric variable, measured on a discrete
+scale, and this is a good candidate to use barcharts (the most popular type of
+graphic).</p>
+<p><code>"ggplot2"</code> comes with a large number of functions to create almost any
+type of chart. Luckily for us, it already comes with predefined
+functions to graph barcharts. The syntax may seem a bit scary for beginners,
+but you will see that it follows a logical structure. Here’s the code to make
+a barplot of values in <code>year</code>:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="ggplot1.html#cb55-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb55-2"><a href="ggplot1.html#cb55-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year))</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-80-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>How does the previous command work? First we always call the <code>ggplot()</code> function,
+typically indicating the name of the table to be used with the <code>data</code> argument.
+Then, we add more components, or <strong>layers</strong>, using the plus <code>+</code> operator. In
+this case we are adding a <code>geom_bar()</code> component which is the geometric object
+for bars. To tell <code>ggplot()</code> that <code>year</code> is the column in <code>data</code> to be used for
+the x-axis, we <strong>map</strong> <code>x = year</code> inside the <code>aes()</code> function which stands for
+<em>aesthetic</em> mapping.</p>
+<p>We should clarify that the meaning of “aesthetic” as used by <code>"ggplot2"</code> does
+not mean beutiful or pretty, instead it conserves its etimological
+meaning of perception. Simply put, <code>aes()</code> is the function that you use to
+tell <code>ggplot()</code> which variables of a <code>data</code> object will be mapped as visual
+attributes of graphical elements.</p>
+<p>Now that we’ve created our first graphic with <code>ggplot()</code>, let’s spend a moment
+looking at the graph, and decoding what is being displayed. Let’s focus on the
+very first bar, the one that corresponds to year 1975. It seems to have a height
+of a little less that 100. Actually, from last chapter, we know that
+there are 86 records (or rows) for 1975. In case you are curious, here’s a
+command that gives us this information:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="ggplot1.html#cb56-1"></a><span class="kw">nrow</span>(<span class="kw">filter</span>(storms, year <span class="op">==</span><span class="st"> </span><span class="dv">1975</span>))</span>
+<span id="cb56-2"><a href="ggplot1.html#cb56-2"></a><span class="co">#&gt; [1] 86</span></span></code></pre></div>
+<p>What about 1979?</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="ggplot1.html#cb57-1"></a><span class="kw">nrow</span>(<span class="kw">filter</span>(storms, year <span class="op">==</span><span class="st"> </span><span class="dv">1979</span>))</span>
+<span id="cb57-2"><a href="ggplot1.html#cb57-2"></a><span class="co">#&gt; [1] 301</span></span></code></pre></div>
+<p>This number matches the height of the bar for 1979. Essentially, the barchart
+is displaying counts in the y-axis that represent the number of records for
+all storms in each year. While this information is somewhat interesting, a
+more meaningful output would be the number of storms in each year (not the
+total number of records per year, but the number of storms per year). Let’s
+tackle this problem in the next subsection.</p>
+</div>
+<div id="number-of-storms-per-year" class="section level3">
+<h3><span class="header-section-number">10.2.2</span> Number of Storms per Year</h3>
+<p>In the previous chapter, we quickly explored the values in column <code>year</code>,
+discovering the 41-year period or recorded data from 1975 to 2015. We can
+take a further step and ask: how many storms are there in each year?</p>
+<p>To answer this question, we need to do some data manipulation with <code>"dplyr"</code>.
+Our general recommendation when <code>"dplyr"</code>’s functions, especially when you are
+learning about them, is to do computations step by step, deciding which columns
+you need to use, which rows to consider, which functions to call, and so on.</p>
+<p>Think about the columns that we need to select to find the number of storms per
+year. We obviously need <code>year</code>, but this column alone it not enough because for
+any given storm we have multiple records with the same year. Therefore, we also
+need column <code>name</code>.</p>
+<p>For illustration purposes, we are going to build the data manipulation pipeline
+step by step. As you get more comfortable with <code>"dplyr"</code> and other functions,
+you won’t have the need to disect every single command.
+A first step is to <code>select()</code> variables <code>year</code> and <code>name</code>:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="ggplot1.html#cb58-1"></a><span class="kw">select</span>(storms, year, name)</span>
+<span id="cb58-2"><a href="ggplot1.html#cb58-2"></a><span class="co">#&gt; # A tibble: 10,010 x 2</span></span>
+<span id="cb58-3"><a href="ggplot1.html#cb58-3"></a><span class="co">#&gt;     year name </span></span>
+<span id="cb58-4"><a href="ggplot1.html#cb58-4"></a><span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb58-5"><a href="ggplot1.html#cb58-5"></a><span class="co">#&gt;  1  1975 Amy  </span></span>
+<span id="cb58-6"><a href="ggplot1.html#cb58-6"></a><span class="co">#&gt;  2  1975 Amy  </span></span>
+<span id="cb58-7"><a href="ggplot1.html#cb58-7"></a><span class="co">#&gt;  3  1975 Amy  </span></span>
+<span id="cb58-8"><a href="ggplot1.html#cb58-8"></a><span class="co">#&gt;  4  1975 Amy  </span></span>
+<span id="cb58-9"><a href="ggplot1.html#cb58-9"></a><span class="co">#&gt;  5  1975 Amy  </span></span>
+<span id="cb58-10"><a href="ggplot1.html#cb58-10"></a><span class="co">#&gt;  6  1975 Amy  </span></span>
+<span id="cb58-11"><a href="ggplot1.html#cb58-11"></a><span class="co">#&gt;  7  1975 Amy  </span></span>
+<span id="cb58-12"><a href="ggplot1.html#cb58-12"></a><span class="co">#&gt;  8  1975 Amy  </span></span>
+<span id="cb58-13"><a href="ggplot1.html#cb58-13"></a><span class="co">#&gt;  9  1975 Amy  </span></span>
+<span id="cb58-14"><a href="ggplot1.html#cb58-14"></a><span class="co">#&gt; 10  1975 Amy  </span></span>
+<span id="cb58-15"><a href="ggplot1.html#cb58-15"></a><span class="co">#&gt; # … with 10,000 more rows</span></span></code></pre></div>
+<p>Next, we need to <code>group_by()</code> year. At first glance, the previous output and
+the output below seem identical. But notice the tiny difference: the output
+below has a second line of text with some relevant information:
+<code># Groups:   year [41]</code>, telling us that the values are grouped by year.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="ggplot1.html#cb59-1"></a><span class="kw">group_by</span>(<span class="kw">select</span>(storms, year, name), year)</span>
+<span id="cb59-2"><a href="ggplot1.html#cb59-2"></a><span class="co">#&gt; # A tibble: 10,010 x 2</span></span>
+<span id="cb59-3"><a href="ggplot1.html#cb59-3"></a><span class="co">#&gt; # Groups:   year [41]</span></span>
+<span id="cb59-4"><a href="ggplot1.html#cb59-4"></a><span class="co">#&gt;     year name </span></span>
+<span id="cb59-5"><a href="ggplot1.html#cb59-5"></a><span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb59-6"><a href="ggplot1.html#cb59-6"></a><span class="co">#&gt;  1  1975 Amy  </span></span>
+<span id="cb59-7"><a href="ggplot1.html#cb59-7"></a><span class="co">#&gt;  2  1975 Amy  </span></span>
+<span id="cb59-8"><a href="ggplot1.html#cb59-8"></a><span class="co">#&gt;  3  1975 Amy  </span></span>
+<span id="cb59-9"><a href="ggplot1.html#cb59-9"></a><span class="co">#&gt;  4  1975 Amy  </span></span>
+<span id="cb59-10"><a href="ggplot1.html#cb59-10"></a><span class="co">#&gt;  5  1975 Amy  </span></span>
+<span id="cb59-11"><a href="ggplot1.html#cb59-11"></a><span class="co">#&gt;  6  1975 Amy  </span></span>
+<span id="cb59-12"><a href="ggplot1.html#cb59-12"></a><span class="co">#&gt;  7  1975 Amy  </span></span>
+<span id="cb59-13"><a href="ggplot1.html#cb59-13"></a><span class="co">#&gt;  8  1975 Amy  </span></span>
+<span id="cb59-14"><a href="ggplot1.html#cb59-14"></a><span class="co">#&gt;  9  1975 Amy  </span></span>
+<span id="cb59-15"><a href="ggplot1.html#cb59-15"></a><span class="co">#&gt; 10  1975 Amy  </span></span>
+<span id="cb59-16"><a href="ggplot1.html#cb59-16"></a><span class="co">#&gt; # … with 10,000 more rows</span></span></code></pre></div>
+<p>Then, we identify the <code>distinct()</code> values (combination of year-name):</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="ggplot1.html#cb60-1"></a><span class="kw">distinct</span>(<span class="kw">group_by</span>(<span class="kw">select</span>(storms, year, name), year))</span>
+<span id="cb60-2"><a href="ggplot1.html#cb60-2"></a><span class="co">#&gt; # A tibble: 426 x 2</span></span>
+<span id="cb60-3"><a href="ggplot1.html#cb60-3"></a><span class="co">#&gt; # Groups:   year [41]</span></span>
+<span id="cb60-4"><a href="ggplot1.html#cb60-4"></a><span class="co">#&gt;     year name    </span></span>
+<span id="cb60-5"><a href="ggplot1.html#cb60-5"></a><span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;   </span></span>
+<span id="cb60-6"><a href="ggplot1.html#cb60-6"></a><span class="co">#&gt;  1  1975 Amy     </span></span>
+<span id="cb60-7"><a href="ggplot1.html#cb60-7"></a><span class="co">#&gt;  2  1975 Caroline</span></span>
+<span id="cb60-8"><a href="ggplot1.html#cb60-8"></a><span class="co">#&gt;  3  1975 Doris   </span></span>
+<span id="cb60-9"><a href="ggplot1.html#cb60-9"></a><span class="co">#&gt;  4  1976 Belle   </span></span>
+<span id="cb60-10"><a href="ggplot1.html#cb60-10"></a><span class="co">#&gt;  5  1976 Gloria  </span></span>
+<span id="cb60-11"><a href="ggplot1.html#cb60-11"></a><span class="co">#&gt;  6  1977 Anita   </span></span>
+<span id="cb60-12"><a href="ggplot1.html#cb60-12"></a><span class="co">#&gt;  7  1977 Clara   </span></span>
+<span id="cb60-13"><a href="ggplot1.html#cb60-13"></a><span class="co">#&gt;  8  1977 Evelyn  </span></span>
+<span id="cb60-14"><a href="ggplot1.html#cb60-14"></a><span class="co">#&gt;  9  1978 Amelia  </span></span>
+<span id="cb60-15"><a href="ggplot1.html#cb60-15"></a><span class="co">#&gt; 10  1978 Bess    </span></span>
+<span id="cb60-16"><a href="ggplot1.html#cb60-16"></a><span class="co">#&gt; # … with 416 more rows</span></span></code></pre></div>
+<p>For convenience purposes, let’s assign this table into its own object,
+which we can call <code>storms_year_name</code></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="ggplot1.html#cb61-1"></a>storms_year_name &lt;-<span class="st"> </span><span class="kw">distinct</span>(<span class="kw">group_by</span>(<span class="kw">select</span>(storms, year, name), year))</span></code></pre></div>
+<p>Finally, we need to <code>count()</code> how many storms are in each year:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="ggplot1.html#cb62-1"></a><span class="kw">count</span>(storms_year_name, year)</span>
+<span id="cb62-2"><a href="ggplot1.html#cb62-2"></a><span class="co">#&gt; # A tibble: 41 x 2</span></span>
+<span id="cb62-3"><a href="ggplot1.html#cb62-3"></a><span class="co">#&gt; # Groups:   year [41]</span></span>
+<span id="cb62-4"><a href="ggplot1.html#cb62-4"></a><span class="co">#&gt;     year     n</span></span>
+<span id="cb62-5"><a href="ggplot1.html#cb62-5"></a><span class="co">#&gt;    &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb62-6"><a href="ggplot1.html#cb62-6"></a><span class="co">#&gt;  1  1975     3</span></span>
+<span id="cb62-7"><a href="ggplot1.html#cb62-7"></a><span class="co">#&gt;  2  1976     2</span></span>
+<span id="cb62-8"><a href="ggplot1.html#cb62-8"></a><span class="co">#&gt;  3  1977     3</span></span>
+<span id="cb62-9"><a href="ggplot1.html#cb62-9"></a><span class="co">#&gt;  4  1978     4</span></span>
+<span id="cb62-10"><a href="ggplot1.html#cb62-10"></a><span class="co">#&gt;  5  1979     7</span></span>
+<span id="cb62-11"><a href="ggplot1.html#cb62-11"></a><span class="co">#&gt;  6  1980     8</span></span>
+<span id="cb62-12"><a href="ggplot1.html#cb62-12"></a><span class="co">#&gt;  7  1981     5</span></span>
+<span id="cb62-13"><a href="ggplot1.html#cb62-13"></a><span class="co">#&gt;  8  1982     5</span></span>
+<span id="cb62-14"><a href="ggplot1.html#cb62-14"></a><span class="co">#&gt;  9  1983     4</span></span>
+<span id="cb62-15"><a href="ggplot1.html#cb62-15"></a><span class="co">#&gt; 10  1984    10</span></span>
+<span id="cb62-16"><a href="ggplot1.html#cb62-16"></a><span class="co">#&gt; # … with 31 more rows</span></span></code></pre></div>
+<p>All the previous commands can be assembled together with various embedded lines
+of code:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="ggplot1.html#cb63-1"></a>storms_per_year &lt;-<span class="st"> </span><span class="kw">count</span>(</span>
+<span id="cb63-2"><a href="ggplot1.html#cb63-2"></a>  <span class="kw">distinct</span>(</span>
+<span id="cb63-3"><a href="ggplot1.html#cb63-3"></a>    <span class="kw">group_by</span>(</span>
+<span id="cb63-4"><a href="ggplot1.html#cb63-4"></a>      <span class="kw">select</span>(storms, year, name), </span>
+<span id="cb63-5"><a href="ggplot1.html#cb63-5"></a>      year)</span>
+<span id="cb63-6"><a href="ggplot1.html#cb63-6"></a>    )</span>
+<span id="cb63-7"><a href="ggplot1.html#cb63-7"></a>  )</span>
+<span id="cb63-8"><a href="ggplot1.html#cb63-8"></a></span>
+<span id="cb63-9"><a href="ggplot1.html#cb63-9"></a>storms_per_year</span>
+<span id="cb63-10"><a href="ggplot1.html#cb63-10"></a><span class="co">#&gt; # A tibble: 41 x 2</span></span>
+<span id="cb63-11"><a href="ggplot1.html#cb63-11"></a><span class="co">#&gt; # Groups:   year [41]</span></span>
+<span id="cb63-12"><a href="ggplot1.html#cb63-12"></a><span class="co">#&gt;     year     n</span></span>
+<span id="cb63-13"><a href="ggplot1.html#cb63-13"></a><span class="co">#&gt;    &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb63-14"><a href="ggplot1.html#cb63-14"></a><span class="co">#&gt;  1  1975     3</span></span>
+<span id="cb63-15"><a href="ggplot1.html#cb63-15"></a><span class="co">#&gt;  2  1976     2</span></span>
+<span id="cb63-16"><a href="ggplot1.html#cb63-16"></a><span class="co">#&gt;  3  1977     3</span></span>
+<span id="cb63-17"><a href="ggplot1.html#cb63-17"></a><span class="co">#&gt;  4  1978     4</span></span>
+<span id="cb63-18"><a href="ggplot1.html#cb63-18"></a><span class="co">#&gt;  5  1979     7</span></span>
+<span id="cb63-19"><a href="ggplot1.html#cb63-19"></a><span class="co">#&gt;  6  1980     8</span></span>
+<span id="cb63-20"><a href="ggplot1.html#cb63-20"></a><span class="co">#&gt;  7  1981     5</span></span>
+<span id="cb63-21"><a href="ggplot1.html#cb63-21"></a><span class="co">#&gt;  8  1982     5</span></span>
+<span id="cb63-22"><a href="ggplot1.html#cb63-22"></a><span class="co">#&gt;  9  1983     4</span></span>
+<span id="cb63-23"><a href="ggplot1.html#cb63-23"></a><span class="co">#&gt; 10  1984    10</span></span>
+<span id="cb63-24"><a href="ggplot1.html#cb63-24"></a><span class="co">#&gt; # … with 31 more rows</span></span></code></pre></div>
+<p>Now that we have the counts or frequencies, we can make our next barchart.
+In this case, we will use the table <code>storms_year_name</code> as the input data for
+<code>ggplot()</code>:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="ggplot1.html#cb64-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms_year_name) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb64-2"><a href="ggplot1.html#cb64-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year))</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-90-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>By looking at the chart, there are some fairly tall bars. Although it’s hard
+to see exactly which years have a considerably large number of storms,
+eyeballing things out it seems that around 1995, 2003, 2005, and 2010 there are
+20 or more storms. We can find the actual answer by using <code>arrange()</code>,
+specifying the counts to be shown in descending order—with <code>desc()</code>:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="ggplot1.html#cb65-1"></a><span class="kw">arrange</span>(storms_per_year, <span class="kw">desc</span>(n))</span>
+<span id="cb65-2"><a href="ggplot1.html#cb65-2"></a><span class="co">#&gt; # A tibble: 41 x 2</span></span>
+<span id="cb65-3"><a href="ggplot1.html#cb65-3"></a><span class="co">#&gt; # Groups:   year [41]</span></span>
+<span id="cb65-4"><a href="ggplot1.html#cb65-4"></a><span class="co">#&gt;     year     n</span></span>
+<span id="cb65-5"><a href="ggplot1.html#cb65-5"></a><span class="co">#&gt;    &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb65-6"><a href="ggplot1.html#cb65-6"></a><span class="co">#&gt;  1  1995    21</span></span>
+<span id="cb65-7"><a href="ggplot1.html#cb65-7"></a><span class="co">#&gt;  2  2005    21</span></span>
+<span id="cb65-8"><a href="ggplot1.html#cb65-8"></a><span class="co">#&gt;  3  2003    20</span></span>
+<span id="cb65-9"><a href="ggplot1.html#cb65-9"></a><span class="co">#&gt;  4  2010    20</span></span>
+<span id="cb65-10"><a href="ggplot1.html#cb65-10"></a><span class="co">#&gt;  5  2001    17</span></span>
+<span id="cb65-11"><a href="ggplot1.html#cb65-11"></a><span class="co">#&gt;  6  2012    17</span></span>
+<span id="cb65-12"><a href="ggplot1.html#cb65-12"></a><span class="co">#&gt;  7  2000    16</span></span>
+<span id="cb65-13"><a href="ggplot1.html#cb65-13"></a><span class="co">#&gt;  8  2007    16</span></span>
+<span id="cb65-14"><a href="ggplot1.html#cb65-14"></a><span class="co">#&gt;  9  2011    15</span></span>
+<span id="cb65-15"><a href="ggplot1.html#cb65-15"></a><span class="co">#&gt; 10  2008    14</span></span>
+<span id="cb65-16"><a href="ggplot1.html#cb65-16"></a><span class="co">#&gt; # … with 31 more rows</span></span></code></pre></div>
+<p>As you can tell, in the 41-year period from 1975 to 2015, there are two years,
+1995 and 2005, with a maximum number of storms equal to 21.</p>
+</div>
+<div id="storms-in-1975" class="section level3">
+<h3><span class="header-section-number">10.2.3</span> Storms in 1975</h3>
+<p>Like we did in the previous chapter, let’s play a bit with those storms from
+1975. More specifically, let’s visually explore the values of <code>wind</code> and
+<code>pressure</code>.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="ggplot1.html#cb66-1"></a>storms75 &lt;-<span class="st"> </span><span class="kw">filter</span>(storms, year <span class="op">==</span><span class="st"> </span><span class="dv">1975</span>)</span>
+<span id="cb66-2"><a href="ggplot1.html#cb66-2"></a>storms75</span>
+<span id="cb66-3"><a href="ggplot1.html#cb66-3"></a><span class="co">#&gt; # A tibble: 86 x 13</span></span>
+<span id="cb66-4"><a href="ggplot1.html#cb66-4"></a><span class="co">#&gt;    name   year month   day  hour   lat  long status category  wind pressure</span></span>
+<span id="cb66-5"><a href="ggplot1.html#cb66-5"></a><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;ord&gt;    &lt;int&gt;    &lt;int&gt;</span></span>
+<span id="cb66-6"><a href="ggplot1.html#cb66-6"></a><span class="co">#&gt;  1 Amy    1975     6    27     0  27.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb66-7"><a href="ggplot1.html#cb66-7"></a><span class="co">#&gt;  2 Amy    1975     6    27     6  28.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb66-8"><a href="ggplot1.html#cb66-8"></a><span class="co">#&gt;  3 Amy    1975     6    27    12  29.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb66-9"><a href="ggplot1.html#cb66-9"></a><span class="co">#&gt;  4 Amy    1975     6    27    18  30.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb66-10"><a href="ggplot1.html#cb66-10"></a><span class="co">#&gt;  5 Amy    1975     6    28     0  31.5 -78.8 tropi… -1          25     1012</span></span>
+<span id="cb66-11"><a href="ggplot1.html#cb66-11"></a><span class="co">#&gt;  6 Amy    1975     6    28     6  32.4 -78.7 tropi… -1          25     1012</span></span>
+<span id="cb66-12"><a href="ggplot1.html#cb66-12"></a><span class="co">#&gt;  7 Amy    1975     6    28    12  33.3 -78   tropi… -1          25     1011</span></span>
+<span id="cb66-13"><a href="ggplot1.html#cb66-13"></a><span class="co">#&gt;  8 Amy    1975     6    28    18  34   -77   tropi… -1          30     1006</span></span>
+<span id="cb66-14"><a href="ggplot1.html#cb66-14"></a><span class="co">#&gt;  9 Amy    1975     6    29     0  34.4 -75.8 tropi… 0           35     1004</span></span>
+<span id="cb66-15"><a href="ggplot1.html#cb66-15"></a><span class="co">#&gt; 10 Amy    1975     6    29     6  34   -74.8 tropi… 0           40     1002</span></span>
+<span id="cb66-16"><a href="ggplot1.html#cb66-16"></a><span class="co">#&gt; # … with 76 more rows, and 2 more variables: ts_diameter &lt;dbl&gt;,</span></span>
+<span id="cb66-17"><a href="ggplot1.html#cb66-17"></a><span class="co">#&gt; #   hu_diameter &lt;dbl&gt;</span></span></code></pre></div>
+<p>What type of visual display can we use to graph <code>wind</code> speed? The answer to
+this question is based by determining which type of variable <code>wind</code> is.
+You would agree with us in saying that <code>wind</code> is a quantitative variable. So
+one graphing option can be either a histogram or a boxplot, which are
+statistical charts to visualize the distribution of quantitative variables.</p>
+<p>So let’s use <code>geom_histogram()</code> and see what we get. We are going to show you
+a synatx of <code>ggplot()</code> slightly different from the one we used for the barcharts.
+Carefully review the following code:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="ggplot1.html#cb67-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> wind)) <span class="op">+</span></span>
+<span id="cb67-2"><a href="ggplot1.html#cb67-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span>
+<span id="cb67-3"><a href="ggplot1.html#cb67-3"></a><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-93-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>You should notice now that <code>aes()</code> is an argument of <code>ggplot()</code>, and not anymore
+an argument of the geometric-object function <code>geom_histogram()</code>. While this
+may be a bit confusing while learning about <code>"ggplot2"</code>, it is a very flexible
+and powerful behavior of <code>aes()</code>. Again, the important part of <code>aes()</code> is to
+understand that this function allows you to tell <code>ggplot()</code> which variables
+in your <code>data</code> table are used as visual attributes of the corresponding
+geometric elements forming the plot.</p>
+<p>We can change the default argument <code>binwidth</code> to get another version of the
+histogram, for example a bin-width of 5 units (i.e. knots):</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="ggplot1.html#cb68-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> wind)) <span class="op">+</span></span>
+<span id="cb68-2"><a href="ggplot1.html#cb68-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">5</span>)</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-94-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>or a bin-width of 10:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="ggplot1.html#cb69-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> wind)) <span class="op">+</span></span>
+<span id="cb69-2"><a href="ggplot1.html#cb69-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-95-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Now, let’s reflect on what’s going on in each of the histograms. Do they make
+sense? How do we interpret each figure?</p>
+<p>While <code>ggplot()</code> does what we ask it to do, the displays may not be the most
+useful, or meaningful. Why? Think what exactly it is that we are plotting.
+In 1975, there are three storms:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="ggplot1.html#cb70-1"></a><span class="kw">unique</span>(<span class="kw">pull</span>(storms75, name))</span>
+<span id="cb70-2"><a href="ggplot1.html#cb70-2"></a><span class="co">#&gt; [1] &quot;Amy&quot;      &quot;Caroline&quot; &quot;Doris&quot;</span></span></code></pre></div>
+<p>But the histograms are not differentiating between any of those three storms.
+Rather, the visualization is just giving us a general view of the <code>wind</code> values,
+from the low 20’s to the high 90’s, or to be more precise:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="ggplot1.html#cb71-1"></a><span class="kw">summary</span>(<span class="kw">pull</span>(storms75, wind))</span>
+<span id="cb71-2"><a href="ggplot1.html#cb71-2"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span id="cb71-3"><a href="ggplot1.html#cb71-3"></a><span class="co">#&gt;    20.0    25.0    52.5    50.9    65.0   100.0</span></span></code></pre></div>
+<p>However, we don’t really know if all three storms have the same minimum <code>wind</code>
+speed, or the same maximum <code>wind</code> speed. The good news is that we can tell
+<code>ggplot()</code> to take into account each different storm name. But now let’s use
+boxplots via <code>geom_boxplot()</code>, mapping <code>name</code> to the x-axis, and <code>wind</code> to the y-axis.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="ggplot1.html#cb72-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> name, <span class="dt">y =</span> wind)) <span class="op">+</span></span>
+<span id="cb72-2"><a href="ggplot1.html#cb72-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-98-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Note how different the distribution of wind speed is in each storm. We can get
+an alternative plot with density curves thanks to the <code>geom_density()</code> function.
+The syntax in this case is different. Let’s first do it without separating
+storms, and then we do it taking into account the storm names.</p>
+<p>Here’s the command that plots a density curve of wind, without distinguishing
+between storms. Observe also how argument <code>fill</code> is <em>set</em> to color <code>gray</code>:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="ggplot1.html#cb73-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> wind)) <span class="op">+</span></span>
+<span id="cb73-2"><a href="ggplot1.html#cb73-2"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&#39;gray&#39;</span>)</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-99-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>As you can tell, the density curve looks like the profile of a roller coaster,
+or like the silhouette of three mountain peaks. Is this a pattern followed
+by wind speed in all storms? Or is it just an artifact due to the fact that we
+are plotting data without taking into consideration the context of <code>storms75</code>?</p>
+<p>Let’s replot density of wind, but now distinguishing between each storm:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="ggplot1.html#cb74-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> wind, <span class="dt">color =</span> name)) <span class="op">+</span></span>
+<span id="cb74-2"><a href="ggplot1.html#cb74-2"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> name))</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-100-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Now things look more interesting: the roller coast shape of the first call to
+<code>geom_density()</code> turned out to be an artificial pattern. As you can tell from
+the above plot, each storm has its own density curve.</p>
+<p>To get a better visualization, we can take the previous command and add a bit
+of transparency to the colors, this is done with the argument <code>alpha</code> inside
+<code>geom_density()</code>. Note how arguments are specified inside <code>geom_density()</code>:
+we <strong>map</strong> <code>name</code> to the color-fill attribute of the curve using <code>aes()</code>, but
+we <strong>set</strong> <code>alpha = 0.5</code> outside <code>aes()</code>:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="ggplot1.html#cb75-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> wind, <span class="dt">color =</span> name)) <span class="op">+</span></span>
+<span id="cb75-2"><a href="ggplot1.html#cb75-2"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> name), <span class="dt">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-101-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>We are going to take advantage of this graphic to introduce another cool
+feature of <code>"ggplot2"</code> that allows us to split data based on categorical or
+discrete variables, in order to produce separated frames or <strong>facets</strong>. Here’s
+the command previous command—wihtout <code>alpha</code> transparency—adding a new
+layer given by <code>facet_wrap()</code>:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="ggplot1.html#cb76-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> wind, <span class="dt">color =</span> name)) <span class="op">+</span></span>
+<span id="cb76-2"><a href="ggplot1.html#cb76-2"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> name)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb76-3"><a href="ggplot1.html#cb76-3"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>name)</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-102-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>In this command we are faceting by <code>name</code>, and this does is to create facets,
+one for each category of <code>name</code>. In other words, we get separated density
+curves, one for each storm. The syntax inside <code>facet_wrap()</code> uses the tilde
+<code>~</code> operator which is the <em>formula</em> operator in R. Basically, the command
+<code>~ name</code> tells <code>ggplot()</code> to create facets based on the values of <code>name</code>.</p>
+</div>
+<div id="visual-inspection-of-amy-1975" class="section level3">
+<h3><span class="header-section-number">10.2.4</span> Visual Inspection of Amy 1975</h3>
+<p>As we did it in the previous chapter, let’s focus on storm <code>Amy</code> in 1975,
+subsetting <code>storms75</code> to filter out just the rows of Amy into its own table</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="ggplot1.html#cb77-1"></a>amy75 &lt;-<span class="st"> </span><span class="kw">filter</span>(storms75, name <span class="op">==</span><span class="st"> &quot;Amy&quot;</span>)</span>
+<span id="cb77-2"><a href="ggplot1.html#cb77-2"></a>amy75</span>
+<span id="cb77-3"><a href="ggplot1.html#cb77-3"></a><span class="co">#&gt; # A tibble: 30 x 13</span></span>
+<span id="cb77-4"><a href="ggplot1.html#cb77-4"></a><span class="co">#&gt;    name   year month   day  hour   lat  long status category  wind pressure</span></span>
+<span id="cb77-5"><a href="ggplot1.html#cb77-5"></a><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;ord&gt;    &lt;int&gt;    &lt;int&gt;</span></span>
+<span id="cb77-6"><a href="ggplot1.html#cb77-6"></a><span class="co">#&gt;  1 Amy    1975     6    27     0  27.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb77-7"><a href="ggplot1.html#cb77-7"></a><span class="co">#&gt;  2 Amy    1975     6    27     6  28.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb77-8"><a href="ggplot1.html#cb77-8"></a><span class="co">#&gt;  3 Amy    1975     6    27    12  29.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb77-9"><a href="ggplot1.html#cb77-9"></a><span class="co">#&gt;  4 Amy    1975     6    27    18  30.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb77-10"><a href="ggplot1.html#cb77-10"></a><span class="co">#&gt;  5 Amy    1975     6    28     0  31.5 -78.8 tropi… -1          25     1012</span></span>
+<span id="cb77-11"><a href="ggplot1.html#cb77-11"></a><span class="co">#&gt;  6 Amy    1975     6    28     6  32.4 -78.7 tropi… -1          25     1012</span></span>
+<span id="cb77-12"><a href="ggplot1.html#cb77-12"></a><span class="co">#&gt;  7 Amy    1975     6    28    12  33.3 -78   tropi… -1          25     1011</span></span>
+<span id="cb77-13"><a href="ggplot1.html#cb77-13"></a><span class="co">#&gt;  8 Amy    1975     6    28    18  34   -77   tropi… -1          30     1006</span></span>
+<span id="cb77-14"><a href="ggplot1.html#cb77-14"></a><span class="co">#&gt;  9 Amy    1975     6    29     0  34.4 -75.8 tropi… 0           35     1004</span></span>
+<span id="cb77-15"><a href="ggplot1.html#cb77-15"></a><span class="co">#&gt; 10 Amy    1975     6    29     6  34   -74.8 tropi… 0           40     1002</span></span>
+<span id="cb77-16"><a href="ggplot1.html#cb77-16"></a><span class="co">#&gt; # … with 20 more rows, and 2 more variables: ts_diameter &lt;dbl&gt;,</span></span>
+<span id="cb77-17"><a href="ggplot1.html#cb77-17"></a><span class="co">#&gt; #   hu_diameter &lt;dbl&gt;</span></span></code></pre></div>
+<p>Let’s keep exploring <code>wind</code> but now let’s do it chronologically, that is,
+graphing the wind values in the order that they were recorded (recall storms
+are tracked every six hours). We begin with a scatterplot using <code>geom_point()</code>,
+and we specify that the x-axis should use a numeric sequence from the first
+row till the last row of <code>amy75</code>, and <code>wind</code> for y-axis:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="ggplot1.html#cb78-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> amy75, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(amy75), <span class="dt">y =</span> wind)) <span class="op">+</span></span>
+<span id="cb78-2"><a href="ggplot1.html#cb78-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-104-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Becasue the x-axis denotes progression over time, we can connect the dots
+with a line. A simple way to do this is by adding another layer to our plot,
+this time with <code>geom_line()</code></p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="ggplot1.html#cb79-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> amy75, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(amy75), <span class="dt">y =</span> wind)) <span class="op">+</span></span>
+<span id="cb79-2"><a href="ggplot1.html#cb79-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb79-3"><a href="ggplot1.html#cb79-3"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-105-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>As you can tell, Amy started to being recorded with wind speed of 25 knots, and
+then after 42 hours (7 x 6) its speed kept increasing to 30, 35, 40, and so on
+until reaching its maximum speed of 60 knots that lasted 54 hours (9 x 6).</p>
+<p>At this point, we can ask about the <code>status</code> of Amy along its lifetime. One
+option is to map <code>status</code> to the <code>color</code> attribute of points:</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="ggplot1.html#cb80-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> amy75, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(amy75), <span class="dt">y =</span> wind)) <span class="op">+</span></span>
+<span id="cb80-2"><a href="ggplot1.html#cb80-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> status)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb80-3"><a href="ggplot1.html#cb80-3"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-106-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>We see that Amy started as a tropical depression, and then became a tropical
+storm, but never became a hurricane. For a storm to reach hurricane status, of category 1, it must have one-minute maximum sustained winds of at least 64 kn
+(33 m/s; 74 mph; 119 km/h).</p>
+<p>What about the pressue values fo Amy? We can produce a similar scatterplot
+with a line connecting the dots:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="ggplot1.html#cb81-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> amy75, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(amy75), <span class="dt">y =</span> pressure)) <span class="op">+</span></span>
+<span id="cb81-2"><a href="ggplot1.html#cb81-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> status)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb81-3"><a href="ggplot1.html#cb81-3"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-107-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>As an exploratory exercise, we can also play with the size of points, the
+size (width) of lines, colors, etc. Here’s one suggestion graphing <code>pressure</code>
+and taking into account the <code>wind</code> speed reflected in the size of points and
+line segments:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="ggplot1.html#cb82-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> amy75, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(amy75), <span class="dt">y =</span> pressure)) <span class="op">+</span></span>
+<span id="cb82-2"><a href="ggplot1.html#cb82-2"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">size =</span> wind), <span class="dt">lineend =</span> <span class="st">&quot;round&quot;</span>, <span class="dt">color =</span> <span class="st">&#39;gray70&#39;</span>) <span class="op">+</span></span>
+<span id="cb82-3"><a href="ggplot1.html#cb82-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> wind, <span class="dt">color =</span> status))</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-108-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>If you know a little bit about storms, you know there’s actually an association
+between <code>wind</code> and <code>pressure</code>. But let’s pretend for a second that we don’t
+know much about tropical storms, hurricanes, and things like that. By looking
+at the previous chart, this should allows us to guess that something is going
+on between the <code>pressure</code> of a storm and its <code>wind</code> speed. As Amy becomes
+stronger, with higher winds, its pressure levels drop accordingly, suggesting
+a negative correlation, which is confirmed when we compute this statistic:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="ggplot1.html#cb83-1"></a><span class="kw">summarise</span>(amy75, <span class="kw">cor</span>(wind, pressure))</span>
+<span id="cb83-2"><a href="ggplot1.html#cb83-2"></a><span class="co">#&gt; # A tibble: 1 x 1</span></span>
+<span id="cb83-3"><a href="ggplot1.html#cb83-3"></a><span class="co">#&gt;   `cor(wind, pressure)`</span></span>
+<span id="cb83-4"><a href="ggplot1.html#cb83-4"></a><span class="co">#&gt;                   &lt;dbl&gt;</span></span>
+<span id="cb83-5"><a href="ggplot1.html#cb83-5"></a><span class="co">#&gt; 1                -0.956</span></span></code></pre></div>
+</div>
+</div>
+<div id="exercises-4" class="section level2">
+<h2><span class="header-section-number">10.3</span> Exercises</h2>
+<p><strong>1)</strong> Use <code>"ggplot2"</code> functions to make a single scatterplot of <code>wind</code> and
+<code>pressure</code> for all storms. Use <code>category</code> to add color to the dots.</p>
+<p><strong>2)</strong> Use <code>"ggplot2"</code> functions to make a scatterplot of <code>wind</code> and <code>pressure</code>
+for all storms, facetting by month, and using <code>category</code> to differentiate by
+color.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="eda-dplyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="eda-maps.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["cwd.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

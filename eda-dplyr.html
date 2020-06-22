@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9 Exploratory Data Analysis | Computing With Data</title>
+  <meta name="description" content="This is a book for Concepts in Computing with Data" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9 Exploratory Data Analysis | Computing With Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for Concepts in Computing with Data" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9 Exploratory Data Analysis | Computing With Data" />
+  
+  <meta name="twitter:description" content="This is a book for Concepts in Computing with Data" />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tables1.html"/>
+<link rel="next" href="ggplot1.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>Computing With Data</b></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-word-about-computing-with-data"><i class="fa fa-check"></i>A word about Computing with Data</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i>Why R?</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I The Big Picture</b></span></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> A Tiny Data Analysis</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#mens-long-jump-world-records"><i class="fa fa-check"></i><b>1.1</b> Men’s Long Jump World Records</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#what-to-analyze"><i class="fa fa-check"></i><b>1.2</b> What to Analyze?</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#analyzing-data-the-amateur-way"><i class="fa fa-check"></i><b>1.3</b> Analyzing Data the “Amateur” Way</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#getting-the-data"><i class="fa fa-check"></i><b>1.3.1</b> Getting the Data</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#transforming-and-cleaning"><i class="fa fa-check"></i><b>1.3.2</b> Transforming and Cleaning</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#graphing-timeline"><i class="fa fa-check"></i><b>1.3.3</b> Graphing Timeline</a></li>
+<li class="chapter" data-level="1.3.4" data-path="intro.html"><a href="intro.html#wysiwyg-tools"><i class="fa fa-check"></i><b>1.3.4</b> WYSIWYG Tools</a></li>
+<li class="chapter" data-level="1.3.5" data-path="intro.html"><a href="intro.html#what-is-wrong-with-a-wysiwyg-based-approach"><i class="fa fa-check"></i><b>1.3.5</b> What is wrong with a WYSIWYG-based approach?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#analyzing-data-the-pro-way"><i class="fa fa-check"></i><b>1.4</b> Analyzing Data the “Pro” Way</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#pros-and-cons"><i class="fa fa-check"></i><b>1.4.1</b> Pros and Cons</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#exercises"><i class="fa fa-check"></i><b>1.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="dac.html"><a href="dac.html"><i class="fa fa-check"></i><b>2</b> The Data Analysis Cycle</a><ul>
+<li class="chapter" data-level="2.1" data-path="dac.html"><a href="dac.html#understanding-the-data-analysis-process"><i class="fa fa-check"></i><b>2.1</b> Understanding the Data Analysis Process</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="dac.html"><a href="dac.html#data-analysis-is-a-lot-like-cooking"><i class="fa fa-check"></i><b>2.1.1</b> Data Analysis is a lot like Cooking</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="dac.html"><a href="dac.html#comments-on-data-analysis-cycle"><i class="fa fa-check"></i><b>2.2</b> Comments on Data Analysis Cycle</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="dac.html"><a href="dac.html#data-preparation"><i class="fa fa-check"></i><b>2.2.1</b> Data Preparation</a></li>
+<li class="chapter" data-level="2.2.2" data-path="dac.html"><a href="dac.html#actual-analysis"><i class="fa fa-check"></i><b>2.2.2</b> Actual Analysis</a></li>
+<li class="chapter" data-level="2.2.3" data-path="dac.html"><a href="dac.html#report-and-communication"><i class="fa fa-check"></i><b>2.2.3</b> Report and Communication</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="filestructure.html"><a href="filestructure.html"><i class="fa fa-check"></i><b>3</b> Organize Your Project</a><ul>
+<li class="chapter" data-level="3.1" data-path="filestructure.html"><a href="filestructure.html#files-and-directories-in-a-project"><i class="fa fa-check"></i><b>3.1</b> Files and directories in a Project</a></li>
+<li class="chapter" data-level="3.2" data-path="filestructure.html"><a href="filestructure.html#a-toy-project"><i class="fa fa-check"></i><b>3.2</b> A Toy Project</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="filestructure.html"><a href="filestructure.html#file-structure-minimalist-version"><i class="fa fa-check"></i><b>3.2.1</b> File structure: minimalist version</a></li>
+<li class="chapter" data-level="3.2.2" data-path="filestructure.html"><a href="filestructure.html#file-structure-less-minimal-version"><i class="fa fa-check"></i><b>3.2.2</b> File structure: less minimal version</a></li>
+<li class="chapter" data-level="3.2.3" data-path="filestructure.html"><a href="filestructure.html#file-structure-unorganized-version"><i class="fa fa-check"></i><b>3.2.3</b> File structure: unorganized version</a></li>
+<li class="chapter" data-level="3.2.4" data-path="filestructure.html"><a href="filestructure.html#organized-file-structure"><i class="fa fa-check"></i><b>3.2.4</b> Organized file structure</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="filestructure.html"><a href="filestructure.html#relationships-among-files"><i class="fa fa-check"></i><b>3.3</b> Relationships Among Files</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>4</b> Establish a Research Question</a><ul>
+<li class="chapter" data-level="4.1" data-path="question.html"><a href="question.html#example"><i class="fa fa-check"></i><b>4.1</b> Example</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="question.html"><a href="question.html#data"><i class="fa fa-check"></i><b>4.1.1</b> Data</a></li>
+<li class="chapter" data-level="4.1.2" data-path="question.html"><a href="question.html#filestructure-1"><i class="fa fa-check"></i><b>4.1.2</b> Filestructure</a></li>
+<li class="chapter" data-level="4.1.3" data-path="question.html"><a href="question.html#code"><i class="fa fa-check"></i><b>4.1.3</b> Code</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-views.html"><a href="data-views.html"><i class="fa fa-check"></i><b>5</b> What Do We Mean by Data?</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-views.html"><a href="data-views.html#ways-to-think-about-data"><i class="fa fa-check"></i><b>5.1</b> Ways to Think About Data</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
+<li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II R Survival Skills</b></span></li>
+<li class="chapter" data-level="6" data-path="rintro.html"><a href="rintro.html"><i class="fa fa-check"></i><b>6</b> Intro to R and RStudio</a><ul>
+<li class="chapter" data-level="6.1" data-path="rintro.html"><a href="rintro.html#r-as-a-scientific-calculator"><i class="fa fa-check"></i><b>6.1</b> R as a scientific calculator</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="rintro.html"><a href="rintro.html#first-contact-with-the-r-console"><i class="fa fa-check"></i><b>6.1.1</b> First contact with the R console</a></li>
+<li class="chapter" data-level="6.1.2" data-path="rintro.html"><a href="rintro.html#your-turn"><i class="fa fa-check"></i><b>6.1.2</b> Your Turn</a></li>
+<li class="chapter" data-level="6.1.3" data-path="rintro.html"><a href="rintro.html#object-names"><i class="fa fa-check"></i><b>6.1.3</b> Object Names</a></li>
+<li class="chapter" data-level="6.1.4" data-path="rintro.html"><a href="rintro.html#functions"><i class="fa fa-check"></i><b>6.1.4</b> Functions</a></li>
+<li class="chapter" data-level="6.1.5" data-path="rintro.html"><a href="rintro.html#comments-in-r"><i class="fa fa-check"></i><b>6.1.5</b> Comments in R</a></li>
+<li class="chapter" data-level="6.1.6" data-path="rintro.html"><a href="rintro.html#case-sensitive"><i class="fa fa-check"></i><b>6.1.6</b> Case Sensitive</a></li>
+<li class="chapter" data-level="6.1.7" data-path="rintro.html"><a href="rintro.html#your-turn-1"><i class="fa fa-check"></i><b>6.1.7</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="rintro.html"><a href="rintro.html#getting-help"><i class="fa fa-check"></i><b>6.2</b> Getting Help</a></li>
+<li class="chapter" data-level="6.3" data-path="rintro.html"><a href="rintro.html#installing-packages"><i class="fa fa-check"></i><b>6.3</b> Installing Packages</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="rintro.html"><a href="rintro.html#slides"><i class="fa fa-check"></i><b>6.3.1</b> Slides</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="rintro.html"><a href="rintro.html#exercises-1"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="rmdfiles.html"><a href="rmdfiles.html"><i class="fa fa-check"></i><b>7</b> Intro to R Markdown Files</a><ul>
+<li class="chapter" data-level="7.1" data-path="rmdfiles.html"><a href="rmdfiles.html#get-to-know-rmd-files"><i class="fa fa-check"></i><b>7.1</b> Get to know <code>Rmd</code> files</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="rmdfiles.html"><a href="rmdfiles.html#what-is-an-rmd-file"><i class="fa fa-check"></i><b>7.1.1</b> What is an <code>Rmd</code> file?</a></li>
+<li class="chapter" data-level="7.1.2" data-path="rmdfiles.html"><a href="rmdfiles.html#anatomy-of-an-rmd-file"><i class="fa fa-check"></i><b>7.1.2</b> Anatomy of an <code>Rmd</code> file</a></li>
+<li class="chapter" data-level="7.1.3" data-path="rmdfiles.html"><a href="rmdfiles.html#how-does-an-rmd-file-work"><i class="fa fa-check"></i><b>7.1.3</b> How does an Rmd file work?</a></li>
+<li class="chapter" data-level="7.1.4" data-path="rmdfiles.html"><a href="rmdfiles.html#yet-another-syntax-to-learn"><i class="fa fa-check"></i><b>7.1.4</b> Yet Another Syntax to Learn</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="rmdfiles.html"><a href="rmdfiles.html#code-chunks"><i class="fa fa-check"></i><b>7.2</b> Code chunks</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="rmdfiles.html"><a href="rmdfiles.html#resources-for-markdown"><i class="fa fa-check"></i><b>7.2.1</b> Resources for Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Tables (part 1)</b></span></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
+<li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
+<li class="chapter" data-level="9.3.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-month"><i class="fa fa-check"></i><b>9.3.2</b> Basic inspection of <code>month</code></a></li>
+<li class="chapter" data-level="9.3.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-day"><i class="fa fa-check"></i><b>9.3.3</b> Basic inspection of <code>day</code></a></li>
+<li class="chapter" data-level="9.3.4" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-storms-in-1975"><i class="fa fa-check"></i><b>9.3.4</b> Basic inspection of storms in 1975</a></li>
+<li class="chapter" data-level="9.3.5" data-path="eda-dplyr.html"><a href="eda-dplyr.html#group-by-operations"><i class="fa fa-check"></i><b>9.3.5</b> Group-by operations</a></li>
+<li class="chapter" data-level="9.3.6" data-path="eda-dplyr.html"><a href="eda-dplyr.html#arrange-operations"><i class="fa fa-check"></i><b>9.3.6</b> Arrange operations</a></li>
+<li class="chapter" data-level="9.3.7" data-path="eda-dplyr.html"><a href="eda-dplyr.html#inspecting-1975-storm-amy"><i class="fa fa-check"></i><b>9.3.7</b> Inspecting 1975 storm Amy</a></li>
+<li class="chapter" data-level="9.3.8" data-path="eda-dplyr.html"><a href="eda-dplyr.html#summary"><i class="fa fa-check"></i><b>9.3.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exercises-3"><i class="fa fa-check"></i><b>9.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ggplot1.html"><a href="ggplot1.html"><i class="fa fa-check"></i><b>10</b> Basic Charts with <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="10.1" data-path="ggplot1.html"><a href="ggplot1.html#introduction-1"><i class="fa fa-check"></i><b>10.1</b> Introduction</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="ggplot1.html"><a href="ggplot1.html#atlantic-hurricane-data-1"><i class="fa fa-check"></i><b>10.1.1</b> Atlantic Hurricane Data</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="ggplot1.html"><a href="ggplot1.html#first-contact-with-ggplot"><i class="fa fa-check"></i><b>10.2</b> First contact with <code>ggplot()</code></a><ul>
+<li class="chapter" data-level="10.2.1" data-path="ggplot1.html"><a href="ggplot1.html#barplots"><i class="fa fa-check"></i><b>10.2.1</b> Barplots</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ggplot1.html"><a href="ggplot1.html#number-of-storms-per-year"><i class="fa fa-check"></i><b>10.2.2</b> Number of Storms per Year</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ggplot1.html"><a href="ggplot1.html#storms-in-1975"><i class="fa fa-check"></i><b>10.2.3</b> Storms in 1975</a></li>
+<li class="chapter" data-level="10.2.4" data-path="ggplot1.html"><a href="ggplot1.html#visual-inspection-of-amy-1975"><i class="fa fa-check"></i><b>10.2.4</b> Visual Inspection of Amy 1975</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="ggplot1.html"><a href="ggplot1.html#exercises-4"><i class="fa fa-check"></i><b>10.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
+<li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-in-1990-to-1995"><i class="fa fa-check"></i><b>11.1.3</b> Storms in 1990 to 1995</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Data Objects in R</b></span></li>
+<li class="chapter" data-level="12" data-path="objects-intro.html"><a href="objects-intro.html"><i class="fa fa-check"></i><b>12</b> Introduction</a></li>
+<li class="chapter" data-level="13" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>13</b> Vectors</a><ul>
+<li class="chapter" data-level="13.1" data-path="vectors.html"><a href="vectors.html#motivation"><i class="fa fa-check"></i><b>13.1</b> Motivation</a></li>
+<li class="chapter" data-level="13.2" data-path="vectors.html"><a href="vectors.html#what-is-an-r-vector"><i class="fa fa-check"></i><b>13.2</b> What is an R vector?</a></li>
+<li class="chapter" data-level="13.3" data-path="vectors.html"><a href="vectors.html#vectors-are-atomic-structures"><i class="fa fa-check"></i><b>13.3</b> Vectors are Atomic structures</a></li>
+<li class="chapter" data-level="13.4" data-path="vectors.html"><a href="vectors.html#coercion"><i class="fa fa-check"></i><b>13.4</b> Coercion</a></li>
+<li class="chapter" data-level="13.5" data-path="vectors.html"><a href="vectors.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>13.5</b> Manipulating Vectors: Subsetting</a><ul>
+<li class="chapter" data-level="13.5.1" data-path="vectors.html"><a href="vectors.html#subsetting-with-numeric-indices"><i class="fa fa-check"></i><b>13.5.1</b> Subsetting with Numeric Indices</a></li>
+<li class="chapter" data-level="13.5.2" data-path="vectors.html"><a href="vectors.html#subsetting-with-logical-indices"><i class="fa fa-check"></i><b>13.5.2</b> Subsetting with Logical Indices</a></li>
+<li class="chapter" data-level="13.5.3" data-path="vectors.html"><a href="vectors.html#subsetting-with-character-vectors"><i class="fa fa-check"></i><b>13.5.3</b> Subsetting with Character Vectors</a></li>
+<li class="chapter" data-level="13.5.4" data-path="vectors.html"><a href="vectors.html#subsetting-with-character-vectors-1"><i class="fa fa-check"></i><b>13.5.4</b> Subsetting with Character Vectors</a></li>
+<li class="chapter" data-level="13.5.5" data-path="vectors.html"><a href="vectors.html#adding-more-elements"><i class="fa fa-check"></i><b>13.5.5</b> Adding more elements</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="vectors.html"><a href="vectors.html#vectorization"><i class="fa fa-check"></i><b>13.6</b> Vectorization</a></li>
+<li class="chapter" data-level="13.7" data-path="vectors.html"><a href="vectors.html#recycling"><i class="fa fa-check"></i><b>13.7</b> Recycling</a><ul>
+<li class="chapter" data-level="13.7.1" data-path="vectors.html"><a href="vectors.html#sequences"><i class="fa fa-check"></i><b>13.7.1</b> Sequences</a></li>
+<li class="chapter" data-level="13.7.2" data-path="vectors.html"><a href="vectors.html#repeated-vectors"><i class="fa fa-check"></i><b>13.7.2</b> Repeated Vectors</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#summary-slides"><i class="fa fa-check"></i>Summary Slides</a></li>
+</ul></li>
+<li class="chapter" data-level="13.8" data-path="vectors.html"><a href="vectors.html#exercises-6"><i class="fa fa-check"></i><b>13.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>14</b> Factors</a><ul>
+<li class="chapter" data-level="14.1" data-path="factors.html"><a href="factors.html#example-1"><i class="fa fa-check"></i><b>14.1</b> Example</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>14.1.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="14.1.2" data-path="factors.html"><a href="factors.html#how-does-r-store-factors"><i class="fa fa-check"></i><b>14.1.2</b> How does R store factors?</a></li>
+<li class="chapter" data-level="14.1.3" data-path="factors.html"><a href="factors.html#manipulating-factors"><i class="fa fa-check"></i><b>14.1.3</b> Manipulating Factors</a></li>
+<li class="chapter" data-level="14.1.4" data-path="factors.html"><a href="factors.html#why-using-r-factors"><i class="fa fa-check"></i><b>14.1.4</b> Why using R factors?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="factors.html"><a href="factors.html#what-is-an-r-factor"><i class="fa fa-check"></i><b>14.2</b> What is an R factor?</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="factors.html"><a href="factors.html#creating-factors-1"><i class="fa fa-check"></i><b>14.2.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="14.2.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>14.2.2</b> How R treats factors?</a></li>
+<li class="chapter" data-level="14.2.3" data-path="factors.html"><a href="factors.html#what-is-the-advantage-of-r-factors"><i class="fa fa-check"></i><b>14.2.3</b> What is the advantage of R factors?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>15</b> Strings</a><ul>
+<li class="chapter" data-level="15.1" data-path="strings.html"><a href="strings.html#text-everywhere"><i class="fa fa-check"></i><b>15.1</b> Text Everywhere</a></li>
+<li class="chapter" data-level="15.2" data-path="strings.html"><a href="strings.html#character-strings-in-r"><i class="fa fa-check"></i><b>15.2</b> Character Strings in R</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="strings.html"><a href="strings.html#empty-string"><i class="fa fa-check"></i><b>15.2.1</b> Empty String</a></li>
+<li class="chapter" data-level="15.2.2" data-path="strings.html"><a href="strings.html#empty-character-vector"><i class="fa fa-check"></i><b>15.2.2</b> Empty Character Vector</a></li>
+<li class="chapter" data-level="15.2.3" data-path="strings.html"><a href="strings.html#the-workhorse-function-paste"><i class="fa fa-check"></i><b>15.2.3</b> The workhorse function <code>paste()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="strings.html"><a href="strings.html#basic-manipulations"><i class="fa fa-check"></i><b>15.3</b> Basic Manipulations</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="strings.html"><a href="strings.html#counting-characters"><i class="fa fa-check"></i><b>15.3.1</b> Counting characters</a></li>
+<li class="chapter" data-level="15.3.2" data-path="strings.html"><a href="strings.html#casefolding"><i class="fa fa-check"></i><b>15.3.2</b> Casefolding</a></li>
+<li class="chapter" data-level="15.3.3" data-path="strings.html"><a href="strings.html#translating-characters"><i class="fa fa-check"></i><b>15.3.3</b> Translating characters</a></li>
+<li class="chapter" data-level="15.3.4" data-path="strings.html"><a href="strings.html#abbreviating-strings"><i class="fa fa-check"></i><b>15.3.4</b> Abbreviating strings</a></li>
+<li class="chapter" data-level="15.3.5" data-path="strings.html"><a href="strings.html#replacing-strings"><i class="fa fa-check"></i><b>15.3.5</b> Replacing strings</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="strings.html"><a href="strings.html#exercises-7"><i class="fa fa-check"></i><b>15.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="arrays.html"><a href="arrays.html"><i class="fa fa-check"></i><b>16</b> Matrices and Arrays</a><ul>
+<li class="chapter" data-level="16.1" data-path="arrays.html"><a href="arrays.html#from-vectors-to-arrays"><i class="fa fa-check"></i><b>16.1</b> From Vectors to Arrays</a></li>
+<li class="chapter" data-level="16.2" data-path="arrays.html"><a href="arrays.html#matrices"><i class="fa fa-check"></i><b>16.2</b> Matrices</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="arrays.html"><a href="arrays.html#bracket-notation"><i class="fa fa-check"></i><b>16.2.1</b> Bracket Notation</a></li>
+<li class="chapter" data-level="16.2.2" data-path="arrays.html"><a href="arrays.html#basic-matrix-operations"><i class="fa fa-check"></i><b>16.2.2</b> Basic Matrix Operations</a></li>
+<li class="chapter" data-level="16.2.3" data-path="arrays.html"><a href="arrays.html#transpose"><i class="fa fa-check"></i><b>16.2.3</b> Transpose</a></li>
+<li class="chapter" data-level="16.2.4" data-path="arrays.html"><a href="arrays.html#matrix-addition"><i class="fa fa-check"></i><b>16.2.4</b> Matrix Addition</a></li>
+<li class="chapter" data-level="16.2.5" data-path="arrays.html"><a href="arrays.html#scalar-multiplication"><i class="fa fa-check"></i><b>16.2.5</b> Scalar Multiplication</a></li>
+<li class="chapter" data-level="16.2.6" data-path="arrays.html"><a href="arrays.html#matrix-matrix-multiplication"><i class="fa fa-check"></i><b>16.2.6</b> Matrix-Matrix Multiplication</a></li>
+<li class="chapter" data-level="16.2.7" data-path="arrays.html"><a href="arrays.html#cross-products"><i class="fa fa-check"></i><b>16.2.7</b> Cross-Products</a></li>
+<li class="chapter" data-level="16.2.8" data-path="arrays.html"><a href="arrays.html#matrix-vector-multiplication"><i class="fa fa-check"></i><b>16.2.8</b> Matrix-Vector Multiplication</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="arrays.html"><a href="arrays.html#exercises-8"><i class="fa fa-check"></i><b>16.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>17</b> Lists</a><ul>
+<li class="chapter" data-level="17.1" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>17.1</b> Creating Lists</a></li>
+<li class="chapter" data-level="17.2" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>17.2</b> Manipulating Lists</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>17.2.1</b> Single brackets</a></li>
+<li class="chapter" data-level="17.2.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>17.2.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="17.2.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>17.2.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="17.2.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>17.2.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="17.2.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>17.2.5</b> Removing elements</a></li>
+<li class="chapter" data-level="17.2.6" data-path="lists.html"><a href="lists.html#slides-1"><i class="fa fa-check"></i><b>17.2.6</b> Slides</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="lists.html"><a href="lists.html#exercises-9"><i class="fa fa-check"></i><b>17.3</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>V Data Tables (part 2)</b></span></li>
+<li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
+<li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="tables2.html"><a href="tables2.html#types-of-tables"><i class="fa fa-check"></i><b>18.2</b> Types of Tables</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="tables2.html"><a href="tables2.html#heterogeneous-table"><i class="fa fa-check"></i><b>18.2.1</b> Heterogeneous Table</a></li>
+<li class="chapter" data-level="18.2.2" data-path="tables2.html"><a href="tables2.html#binary-table"><i class="fa fa-check"></i><b>18.2.2</b> Binary table</a></li>
+<li class="chapter" data-level="18.2.3" data-path="tables2.html"><a href="tables2.html#modalities-table"><i class="fa fa-check"></i><b>18.2.3</b> Modalities table</a></li>
+<li class="chapter" data-level="18.2.4" data-path="tables2.html"><a href="tables2.html#preference-table"><i class="fa fa-check"></i><b>18.2.4</b> Preference table</a></li>
+<li class="chapter" data-level="18.2.5" data-path="tables2.html"><a href="tables2.html#frequency-table"><i class="fa fa-check"></i><b>18.2.5</b> Frequency table</a></li>
+<li class="chapter" data-level="18.2.6" data-path="tables2.html"><a href="tables2.html#distance-table"><i class="fa fa-check"></i><b>18.2.6</b> Distance table</a></li>
+<li class="chapter" data-level="18.2.7" data-path="tables2.html"><a href="tables2.html#summary-1"><i class="fa fa-check"></i><b>18.2.7</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="table-storage.html"><a href="table-storage.html"><i class="fa fa-check"></i><b>19</b> Storage of Data Tables</a><ul>
+<li class="chapter" data-level="19.1" data-path="table-storage.html"><a href="table-storage.html#plain-text-formats"><i class="fa fa-check"></i><b>19.1</b> Plain Text Formats</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="table-storage.html"><a href="table-storage.html#plain-text-format"><i class="fa fa-check"></i><b>19.1.1</b> Plain Text Format</a></li>
+<li class="chapter" data-level="19.1.2" data-path="table-storage.html"><a href="table-storage.html#fixed-width-format"><i class="fa fa-check"></i><b>19.1.2</b> Fixed-Width Format</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="table-storage.html"><a href="table-storage.html#pros-and-cons-of-tables"><i class="fa fa-check"></i><b>19.2</b> Pros and Cons of Tables</a><ul>
+<li class="chapter" data-level="19.2.1" data-path="table-storage.html"><a href="table-storage.html#summary-slides-1"><i class="fa fa-check"></i><b>19.2.1</b> Summary Slides</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="table-storage.html"><a href="table-storage.html#exercises-10"><i class="fa fa-check"></i><b>19.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>20</b> Tables in Spreadsheets</a><ul>
+<li class="chapter" data-level="20.0.1" data-path="spreadsheets.html"><a href="spreadsheets.html#summary-slides-2"><i class="fa fa-check"></i><b>20.0.1</b> Summary Slides</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>21</b> R Data Frames</a><ul>
+<li class="chapter" data-level="21.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>21.1</b> R Data Frames</a></li>
+<li class="chapter" data-level="21.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>21.2</b> Inspecting data frames</a></li>
+<li class="chapter" data-level="21.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>21.3</b> Creating data frames</a></li>
+<li class="chapter" data-level="21.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>21.4</b> Basic Operations with Data Frames</a><ul>
+<li class="chapter" data-level="21.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements"><i class="fa fa-check"></i><b>21.4.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="21.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column"><i class="fa fa-check"></i><b>21.4.2</b> Adding a column</a></li>
+<li class="chapter" data-level="21.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column"><i class="fa fa-check"></i><b>21.4.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="21.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>21.4.4</b> Renaming a column</a></li>
+<li class="chapter" data-level="21.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column"><i class="fa fa-check"></i><b>21.4.5</b> Moving a column</a></li>
+<li class="chapter" data-level="21.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>21.4.6</b> Transforming a column</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="importing.html"><a href="importing.html"><i class="fa fa-check"></i><b>22</b> Importing Tables in R</a><ul>
+<li class="chapter" data-level="22.1" data-path="importing.html"><a href="importing.html#abalone-data-set"><i class="fa fa-check"></i><b>22.1</b> Abalone Data Set</a><ul>
+<li class="chapter" data-level="22.1.1" data-path="importing.html"><a href="importing.html#getting-a-local-copy-of-the-data"><i class="fa fa-check"></i><b>22.1.1</b> Getting a Local Copy of the Data</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="importing.html"><a href="importing.html#basic-importing"><i class="fa fa-check"></i><b>22.2</b> Basic Importing</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="importing.html"><a href="importing.html#detailed-information-about-the-columns"><i class="fa fa-check"></i><b>22.2.1</b> Detailed information about the columns</a></li>
+<li class="chapter" data-level="22.2.2" data-path="importing.html"><a href="importing.html#your-turn-2"><i class="fa fa-check"></i><b>22.2.2</b> Your Turn</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="importing.html"><a href="importing.html#filtering-slicing-and-selecting"><i class="fa fa-check"></i><b>22.3</b> Filtering, Slicing, and Selecting</a><ul>
+<li class="chapter" data-level="" data-path="importing.html"><a href="importing.html#your-turn-3"><i class="fa fa-check"></i>Your Turn</a></li>
+<li class="chapter" data-level="22.3.1" data-path="importing.html"><a href="importing.html#adding-new-variables-and-sorting-rows"><i class="fa fa-check"></i><b>22.3.1</b> Adding new variables and Sorting rows</a></li>
+<li class="chapter" data-level="" data-path="importing.html"><a href="importing.html#your-turn-4"><i class="fa fa-check"></i>Your Turn</a></li>
+<li class="chapter" data-level="22.3.2" data-path="importing.html"><a href="importing.html#basic-plots"><i class="fa fa-check"></i><b>22.3.2</b> Basic Plots</a></li>
+<li class="chapter" data-level="" data-path="importing.html"><a href="importing.html#your-turn-5"><i class="fa fa-check"></i>Your Turn</a></li>
+<li class="chapter" data-level="22.3.3" data-path="importing.html"><a href="importing.html#summary-slides-3"><i class="fa fa-check"></i><b>22.3.3</b> Summary Slides</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="dplyr2.html"><a href="dplyr2.html"><i class="fa fa-check"></i><b>23</b> Pipes and More dplyr</a><ul>
+<li class="chapter" data-level="23.1" data-path="dplyr2.html"><a href="dplyr2.html#introduction-2"><i class="fa fa-check"></i><b>23.1</b> Introduction</a><ul>
+<li class="chapter" data-level="23.1.1" data-path="dplyr2.html"><a href="dplyr2.html#starwars-data-set"><i class="fa fa-check"></i><b>23.1.1</b> Starwars Data Set</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="dplyr2.html"><a href="dplyr2.html#base-r-approach"><i class="fa fa-check"></i><b>23.2</b> Base R approach</a></li>
+<li class="chapter" data-level="23.3" data-path="dplyr2.html"><a href="dplyr2.html#with-dplyr"><i class="fa fa-check"></i><b>23.3</b> With <code>"dplyr"</code></a><ul>
+<li class="chapter" data-level="23.3.1" data-path="dplyr2.html"><a href="dplyr2.html#option-1-step-by-step"><i class="fa fa-check"></i><b>23.3.1</b> Option 1) Step-by-step</a></li>
+<li class="chapter" data-level="23.3.2" data-path="dplyr2.html"><a href="dplyr2.html#option-2-nested-embedded-code"><i class="fa fa-check"></i><b>23.3.2</b> Option 2) Nested (embedded) code</a></li>
+<li class="chapter" data-level="23.3.3" data-path="dplyr2.html"><a href="dplyr2.html#option-3-piping"><i class="fa fa-check"></i><b>23.3.3</b> Option 3) Piping</a></li>
+</ul></li>
+<li class="chapter" data-level="23.4" data-path="dplyr2.html"><a href="dplyr2.html#pipes-and-plots"><i class="fa fa-check"></i><b>23.4</b> Pipes and Plots</a></li>
+<li class="chapter" data-level="23.5" data-path="dplyr2.html"><a href="dplyr2.html#more-pipes"><i class="fa fa-check"></i><b>23.5</b> More Pipes</a></li>
+<li class="chapter" data-level="23.6" data-path="dplyr2.html"><a href="dplyr2.html#exercises-11"><i class="fa fa-check"></i><b>23.6</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>VI Programming Basics</b></span></li>
+<li class="chapter" data-level="24" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>24</b> Intro to Functions</a><ul>
+<li class="chapter" data-level="24.1" data-path="functions1.html"><a href="functions1.html#motivation-1"><i class="fa fa-check"></i><b>24.1</b> Motivation</a><ul>
+<li class="chapter" data-level="24.1.1" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>24.1.1</b> Writing a simple function</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="functions1.html"><a href="functions1.html#anatomy-of-a-function"><i class="fa fa-check"></i><b>24.2</b> Anatomy of a function</a><ul>
+<li class="chapter" data-level="24.2.1" data-path="functions1.html"><a href="functions1.html#scale-transformations"><i class="fa fa-check"></i><b>24.2.1</b> Scale Transformations</a></li>
+<li class="chapter" data-level="24.2.2" data-path="functions1.html"><a href="functions1.html#the-return-command"><i class="fa fa-check"></i><b>24.2.2</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="24.2.3" data-path="functions1.html"><a href="functions1.html#more-testing"><i class="fa fa-check"></i><b>24.2.3</b> More Testing</a></li>
+<li class="chapter" data-level="24.2.4" data-path="functions1.html"><a href="functions1.html#dealing-with-missing-values"><i class="fa fa-check"></i><b>24.2.4</b> Dealing with missing values</a></li>
+<li class="chapter" data-level="24.2.5" data-path="functions1.html"><a href="functions1.html#simplifying-the-body"><i class="fa fa-check"></i><b>24.2.5</b> Simplifying the body</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>25</b> Conditionals</a><ul>
+<li class="chapter" data-level="25.1" data-path="conditionals.html"><a href="conditionals.html#r-expressions"><i class="fa fa-check"></i><b>25.1</b> R Expressions</a><ul>
+<li class="chapter" data-level="25.1.1" data-path="conditionals.html"><a href="conditionals.html#compound-expressions"><i class="fa fa-check"></i><b>25.1.1</b> Compound Expressions</a></li>
+<li class="chapter" data-level="25.1.2" data-path="conditionals.html"><a href="conditionals.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>25.1.2</b> Every expression has a value</a></li>
+<li class="chapter" data-level="25.1.3" data-path="conditionals.html"><a href="conditionals.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>25.1.3</b> Assignments within Compound Expressions</a></li>
+</ul></li>
+<li class="chapter" data-level="25.2" data-path="conditionals.html"><a href="conditionals.html#if-then-else"><i class="fa fa-check"></i><b>25.2</b> If-then-Else</a><ul>
+<li class="chapter" data-level="25.2.1" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>25.2.1</b> Simple If’s</a></li>
+<li class="chapter" data-level="25.2.2" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>25.2.2</b> Multiple If’s</a></li>
+<li class="chapter" data-level="25.2.3" data-path="conditionals.html"><a href="conditionals.html#switch"><i class="fa fa-check"></i><b>25.2.3</b> Switch</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>26</b> Loops</a><ul>
+<li class="chapter" data-level="26.1" data-path="loops.html"><a href="loops.html#motivation-example"><i class="fa fa-check"></i><b>26.1</b> Motivation Example</a><ul>
+<li class="chapter" data-level="26.1.1" data-path="loops.html"><a href="loops.html#printing-prices-manually"><i class="fa fa-check"></i><b>26.1.1</b> Printing prices “manually”</a></li>
+<li class="chapter" data-level="26.1.2" data-path="loops.html"><a href="loops.html#printing-prices-with-a-for-loop"><i class="fa fa-check"></i><b>26.1.2</b> Printing prices with a <code>for</code> loop</a></li>
+<li class="chapter" data-level="26.1.3" data-path="loops.html"><a href="loops.html#printing-coffee-prices-with-a-for-loop"><i class="fa fa-check"></i><b>26.1.3</b> Printing coffee prices with a <code>for</code> loop</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="loops.html"><a href="loops.html#for-loops"><i class="fa fa-check"></i><b>26.2</b> For loops</a></li>
+<li class="chapter" data-level="26.3" data-path="loops.html"><a href="loops.html#for-loops-1"><i class="fa fa-check"></i><b>26.3</b> For Loops</a><ul>
+<li class="chapter" data-level="26.3.1" data-path="loops.html"><a href="loops.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>26.3.1</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="26.3.2" data-path="loops.html"><a href="loops.html#nested-loops"><i class="fa fa-check"></i><b>26.3.2</b> Nested Loops</a></li>
+<li class="chapter" data-level="26.3.3" data-path="loops.html"><a href="loops.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>26.3.3</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+</ul></li>
+<li class="chapter" data-level="26.4" data-path="loops.html"><a href="loops.html#practice-examples"><i class="fa fa-check"></i><b>26.4</b> Practice Examples</a><ul>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-summation-series"><i class="fa fa-check"></i>Your Turn: Summation Series</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-arithmetic-series"><i class="fa fa-check"></i>Your Turn: Arithmetic Series</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-geometric-sequence"><i class="fa fa-check"></i>Your Turn: Geometric Sequence</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-sine-approximation"><i class="fa fa-check"></i>Your Turn: Sine Approximation</a></li>
+</ul></li>
+<li class="chapter" data-level="26.5" data-path="loops.html"><a href="loops.html#for-loop-with-a-matrix"><i class="fa fa-check"></i><b>26.5</b> For loop with a matrix</a><ul>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-6"><i class="fa fa-check"></i>Your Turn</a></li>
+</ul></li>
+<li class="chapter" data-level="26.6" data-path="loops.html"><a href="loops.html#dividing-a-number-by-2-multiple-times"><i class="fa fa-check"></i><b>26.6</b> Dividing a number by 2 multiple times</a><ul>
+<li><a href="loops.html#using-a-repeat-loop">Using a <code>repeat</code> loop</a></li>
+<li><a href="loops.html#using-a-while-loop">Using a <code>while</code> Loop</a></li>
+<li><a href="loops.html#make-a-reduce-function">Make a <code>reduce()</code> function</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-average"><i class="fa fa-check"></i>Your Turn: Average</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-standard-deviation"><i class="fa fa-check"></i>Your Turn: Standard Deviation</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-geometric-mean"><i class="fa fa-check"></i>Your Turn: Geometric Mean</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-distance-matrix-of-letters"><i class="fa fa-check"></i>Your Turn: Distance Matrix of Letters</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#your-turn-7"><i class="fa fa-check"></i>Your Turn</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="functions2.html"><a href="functions2.html"><i class="fa fa-check"></i><b>27</b> Understanding Functions</a><ul>
+<li class="chapter" data-level="27.0.1" data-path="functions2.html"><a href="functions2.html#simple-expressions"><i class="fa fa-check"></i><b>27.0.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="27.0.2" data-path="functions2.html"><a href="functions2.html#nested-functions"><i class="fa fa-check"></i><b>27.0.2</b> Nested Functions</a></li>
+<li class="chapter" data-level="27.1" data-path="functions2.html"><a href="functions2.html#function-output"><i class="fa fa-check"></i><b>27.1</b> Function Output</a><ul>
+<li class="chapter" data-level="27.1.1" data-path="functions2.html"><a href="functions2.html#the-return-command-1"><i class="fa fa-check"></i><b>27.1.1</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="27.1.2" data-path="functions2.html"><a href="functions2.html#variance-function-example"><i class="fa fa-check"></i><b>27.1.2</b> Variance Function Example</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="functions2.html"><a href="functions2.html#documenting-functions"><i class="fa fa-check"></i><b>27.2</b> Documenting Functions</a><ul>
+<li class="chapter" data-level="27.2.1" data-path="functions2.html"><a href="functions2.html#general-strategy-for-writing-functions"><i class="fa fa-check"></i><b>27.2.1</b> General Strategy for Writing Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="27.3" data-path="functions2.html"><a href="functions2.html#naming-functions"><i class="fa fa-check"></i><b>27.3</b> Naming Functions</a></li>
+<li class="chapter" data-level="27.4" data-path="functions2.html"><a href="functions2.html#recommendations"><i class="fa fa-check"></i><b>27.4</b> Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>28</b> Good Coding Practices</a><ul>
+<li class="chapter" data-level="28.1" data-path="coding.html"><a href="coding.html#syntax-highlighting"><i class="fa fa-check"></i><b>28.1</b> Syntax Highlighting</a></li>
+<li class="chapter" data-level="28.2" data-path="coding.html"><a href="coding.html#good-source-code"><i class="fa fa-check"></i><b>28.2</b> Good Source Code</a><ul>
+<li class="chapter" data-level="28.2.1" data-path="coding.html"><a href="coding.html#indentation"><i class="fa fa-check"></i><b>28.2.1</b> Indentation</a></li>
+<li class="chapter" data-level="28.2.2" data-path="coding.html"><a href="coding.html#reformat-code-in-rstudio"><i class="fa fa-check"></i><b>28.2.2</b> Reformat Code in RStudio</a></li>
+<li class="chapter" data-level="28.2.3" data-path="coding.html"><a href="coding.html#meaningful-names"><i class="fa fa-check"></i><b>28.2.3</b> Meaningful Names</a></li>
+<li class="chapter" data-level="28.2.4" data-path="coding.html"><a href="coding.html#white-spaces"><i class="fa fa-check"></i><b>28.2.4</b> White Spaces</a></li>
+<li class="chapter" data-level="28.2.5" data-path="coding.html"><a href="coding.html#white-spaces-1"><i class="fa fa-check"></i><b>28.2.5</b> White spaces</a></li>
+<li class="chapter" data-level="28.2.6" data-path="coding.html"><a href="coding.html#syntax-parentheses"><i class="fa fa-check"></i><b>28.2.6</b> Syntax: Parentheses</a></li>
+<li class="chapter" data-level="28.2.7" data-path="coding.html"><a href="coding.html#comments"><i class="fa fa-check"></i><b>28.2.7</b> Comments</a></li>
+<li class="chapter" data-level="28.2.8" data-path="coding.html"><a href="coding.html#source-code-files"><i class="fa fa-check"></i><b>28.2.8</b> Source Code Files</a></li>
+</ul></li>
+<li class="chapter" data-level="28.3" data-path="coding.html"><a href="coding.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>28.3</b> Don’t Repeat Yourself</a><ul>
+<li class="chapter" data-level="28.3.1" data-path="coding.html"><a href="coding.html#look-at-other-peoples-code"><i class="fa fa-check"></i><b>28.3.1</b> Look at other people’s code</a></li>
+<li class="chapter" data-level="28.3.2" data-path="coding.html"><a href="coding.html#exercises-12"><i class="fa fa-check"></i><b>28.3.2</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VII Programming Applications</b></span></li>
+<li class="chapter" data-level="29" data-path="shiny1.html"><a href="shiny1.html"><i class="fa fa-check"></i><b>29</b> Shiny Apps</a><ul>
+<li class="chapter" data-level="29.1" data-path="shiny1.html"><a href="shiny1.html#histogram-example"><i class="fa fa-check"></i><b>29.1</b> Histogram Example</a></li>
+<li class="chapter" data-level="29.2" data-path="shiny1.html"><a href="shiny1.html#whats-going-on"><i class="fa fa-check"></i><b>29.2</b> What’s going on?</a><ul>
+<li class="chapter" data-level="29.2.1" data-path="shiny1.html"><a href="shiny1.html#anatomy-of-r-script"><i class="fa fa-check"></i><b>29.2.1</b> Anatomy of R script</a></li>
+<li class="chapter" data-level="29.2.2" data-path="shiny1.html"><a href="shiny1.html#html-webpage-with-histogram"><i class="fa fa-check"></i><b>29.2.2</b> HTML webpage with histogram</a></li>
+<li class="chapter" data-level="29.2.3" data-path="shiny1.html"><a href="shiny1.html#resources"><i class="fa fa-check"></i><b>29.2.3</b> Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="simulations1.html"><a href="simulations1.html"><i class="fa fa-check"></i><b>30</b> Basic Simulations</a><ul>
+<li class="chapter" data-level="30.1" data-path="simulations1.html"><a href="simulations1.html#lets-flip-a-coin"><i class="fa fa-check"></i><b>30.1</b> Let’s flip a coin</a><ul>
+<li class="chapter" data-level="30.1.1" data-path="simulations1.html"><a href="simulations1.html#creating-a-coin"><i class="fa fa-check"></i><b>30.1.1</b> Creating a coin</a></li>
+</ul></li>
+<li class="chapter" data-level="30.2" data-path="simulations1.html"><a href="simulations1.html#tossing-a-coin"><i class="fa fa-check"></i><b>30.2</b> Tossing a coin</a><ul>
+<li class="chapter" data-level="30.2.1" data-path="simulations1.html"><a href="simulations1.html#function-sample.int"><i class="fa fa-check"></i><b>30.2.1</b> Function <code>sample.int()</code></a></li>
+<li class="chapter" data-level="30.2.2" data-path="simulations1.html"><a href="simulations1.html#random-samples"><i class="fa fa-check"></i><b>30.2.2</b> Random Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="30.3" data-path="simulations1.html"><a href="simulations1.html#the-random-seed"><i class="fa fa-check"></i><b>30.3</b> The Random Seed</a></li>
+<li class="chapter" data-level="30.4" data-path="simulations1.html"><a href="simulations1.html#sampling-with-different-probabilities"><i class="fa fa-check"></i><b>30.4</b> Sampling with different probabilities</a></li>
+<li class="chapter" data-level="30.5" data-path="simulations1.html"><a href="simulations1.html#simulating-tossing-a-coin"><i class="fa fa-check"></i><b>30.5</b> Simulating tossing a coin</a></li>
+<li class="chapter" data-level="30.6" data-path="simulations1.html"><a href="simulations1.html#tossing-function"><i class="fa fa-check"></i><b>30.6</b> Tossing function</a></li>
+<li class="chapter" data-level="30.7" data-path="simulations1.html"><a href="simulations1.html#counting-frequencies"><i class="fa fa-check"></i><b>30.7</b> Counting Frequencies</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="demere.html"><a href="demere.html"><i class="fa fa-check"></i><b>31</b> De Mere’s Games</a><ul>
+<li class="chapter" data-level="31.1" data-path="demere.html"><a href="demere.html#probability-example"><i class="fa fa-check"></i><b>31.1</b> Probability Example</a><ul>
+<li class="chapter" data-level="31.1.1" data-path="demere.html"><a href="demere.html#game-1"><i class="fa fa-check"></i><b>31.1.1</b> Game 1</a></li>
+<li class="chapter" data-level="31.1.2" data-path="demere.html"><a href="demere.html#game-2"><i class="fa fa-check"></i><b>31.1.2</b> Game 2</a></li>
+<li class="chapter" data-level="31.1.3" data-path="demere.html"><a href="demere.html#binomial-probability"><i class="fa fa-check"></i><b>31.1.3</b> Binomial Probability</a></li>
+<li class="chapter" data-level="31.1.4" data-path="demere.html"><a href="demere.html#simulating-one-die"><i class="fa fa-check"></i><b>31.1.4</b> Simulating one die</a></li>
+<li class="chapter" data-level="31.1.5" data-path="demere.html"><a href="demere.html#rolling-a-pair-of-dice"><i class="fa fa-check"></i><b>31.1.5</b> Rolling a pair of dice</a></li>
+<li class="chapter" data-level="31.1.6" data-path="demere.html"><a href="demere.html#de-meres-game-1"><i class="fa fa-check"></i><b>31.1.6</b> De Mere’s Game 1</a></li>
+<li class="chapter" data-level="31.1.7" data-path="demere.html"><a href="demere.html#de-meres-game-2"><i class="fa fa-check"></i><b>31.1.7</b> De Mere’s Game 2</a></li>
+</ul></li>
+<li class="chapter" data-level="31.2" data-path="demere.html"><a href="demere.html#chafa"><i class="fa fa-check"></i><b>31.2</b> Chafa</a></li>
+<li class="chapter" data-level="31.3" data-path="demere.html"><a href="demere.html#testing-whether-a-die-is-fair"><i class="fa fa-check"></i><b>31.3</b> Testing whether a die is fair</a></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="savings.html"><a href="savings.html"><i class="fa fa-check"></i><b>32</b> Savings Simulations</a><ul>
+<li class="chapter" data-level="32.1" data-path="savings.html"><a href="savings.html#do-you-regularly-save-some-money"><i class="fa fa-check"></i><b>32.1</b> Do you regularly save some money?</a></li>
+<li class="chapter" data-level="32.2" data-path="savings.html"><a href="savings.html#future-value-function"><i class="fa fa-check"></i><b>32.2</b> Future Value Function</a><ul>
+<li class="chapter" data-level="32.2.1" data-path="savings.html"><a href="savings.html#future_value"><i class="fa fa-check"></i><b>32.2.1</b> <code>future_value()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="32.3" data-path="savings.html"><a href="savings.html#future-value-of-annuity"><i class="fa fa-check"></i><b>32.3</b> Future Value of Annuity</a><ul>
+<li class="chapter" data-level="32.3.1" data-path="savings.html"><a href="savings.html#annuity"><i class="fa fa-check"></i><b>32.3.1</b> <code>annuity()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="32.4" data-path="savings.html"><a href="savings.html#future-value-of-growing-annuity"><i class="fa fa-check"></i><b>32.4</b> Future Value of Growing Annuity</a><ul>
+<li class="chapter" data-level="32.4.1" data-path="savings.html"><a href="savings.html#growing_annuity"><i class="fa fa-check"></i><b>32.4.1</b> <code>growing_annuity()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="32.5" data-path="savings.html"><a href="savings.html#investing-modalities"><i class="fa fa-check"></i><b>32.5</b> Investing Modalities</a><ul>
+<li class="chapter" data-level="32.5.1" data-path="savings.html"><a href="savings.html#for-loop-and-table"><i class="fa fa-check"></i><b>32.5.1</b> For-loop and Table</a></li>
+<li class="chapter" data-level="32.5.2" data-path="savings.html"><a href="savings.html#timeline-graph"><i class="fa fa-check"></i><b>32.5.2</b> Timeline Graph</a></li>
+</ul></li>
+<li class="chapter" data-level="32.6" data-path="savings.html"><a href="savings.html#savings-simulation"><i class="fa fa-check"></i><b>32.6</b> Savings Simulation</a><ul>
+<li class="chapter" data-level="32.6.1" data-path="savings.html"><a href="savings.html#simulation-variables"><i class="fa fa-check"></i><b>32.6.1</b> Simulation Variables</a></li>
+<li class="chapter" data-level="32.6.2" data-path="savings.html"><a href="savings.html#foor-loops"><i class="fa fa-check"></i><b>32.6.2</b> Foor Loops</a></li>
+<li class="chapter" data-level="32.6.3" data-path="savings.html"><a href="savings.html#facet-timeline-graph"><i class="fa fa-check"></i><b>32.6.3</b> Facet Timeline Graph</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VIII Command Line Tools</b></span></li>
+<li class="chapter" data-level="33" data-path="unix-intro.html"><a href="unix-intro.html"><i class="fa fa-check"></i><b>33</b> Introduction</a></li>
+<li class="chapter" data-level="34" data-path="terminal.html"><a href="terminal.html"><i class="fa fa-check"></i><b>34</b> Command Line</a><ul>
+<li class="chapter" data-level="34.1" data-path="terminal.html"><a href="terminal.html#guis--vs--clis"><i class="fa fa-check"></i><b>34.1</b> GUIs -vs- CLIs</a></li>
+<li class="chapter" data-level="34.2" data-path="terminal.html"><a href="terminal.html#command-line"><i class="fa fa-check"></i><b>34.2</b> Command Line</a><ul>
+<li class="chapter" data-level="34.2.1" data-path="terminal.html"><a href="terminal.html#some-vocabulary-and-technicalities"><i class="fa fa-check"></i><b>34.2.1</b> Some Vocabulary and Technicalities</a></li>
+<li class="chapter" data-level="34.2.2" data-path="terminal.html"><a href="terminal.html#anatomy-of-shell-commands"><i class="fa fa-check"></i><b>34.2.2</b> Anatomy of shell commands</a></li>
+<li class="chapter" data-level="34.2.3" data-path="terminal.html"><a href="terminal.html#manual-documentation"><i class="fa fa-check"></i><b>34.2.3</b> Manual Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="34.3" data-path="terminal.html"><a href="terminal.html#navigating-the-filesystem"><i class="fa fa-check"></i><b>34.3</b> Navigating the Filesystem</a></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>35</b> Working with Files</a></li>
+<li class="chapter" data-level="36" data-path="redirections.html"><a href="redirections.html"><i class="fa fa-check"></i><b>36</b> Redirecting Inputs and Outputs</a><ul>
+<li class="chapter" data-level="36.1" data-path="redirections.html"><a href="redirections.html#some-technical-background"><i class="fa fa-check"></i><b>36.1</b> Some Technical Background</a></li>
+<li class="chapter" data-level="36.2" data-path="redirections.html"><a href="redirections.html#standard-input-and-output"><i class="fa fa-check"></i><b>36.2</b> Standard Input and Output</a></li>
+<li class="chapter" data-level="36.3" data-path="redirections.html"><a href="redirections.html#using-standard-input-and-output"><i class="fa fa-check"></i><b>36.3</b> Using Standard Input and Output</a></li>
+</ul></li>
+<li class="chapter" data-level="37" data-path="filters.html"><a href="filters.html"><i class="fa fa-check"></i><b>37</b> Intro to Unix Filters</a><ul>
+<li class="chapter" data-level="37.1" data-path="filters.html"><a href="filters.html#crash-example"><i class="fa fa-check"></i><b>37.1</b> Crash Example</a><ul>
+<li class="chapter" data-level="37.1.1" data-path="filters.html"><a href="filters.html#redirecting-output-to-a-new-file-with"><i class="fa fa-check"></i><b>37.1.1</b> Redirecting output to a new file with <code>&gt;</code></a></li>
+<li class="chapter" data-level="37.1.2" data-path="filters.html"><a href="filters.html#selecting-columns-with-cut"><i class="fa fa-check"></i><b>37.1.2</b> Selecting columns with <code>cut</code></a></li>
+<li class="chapter" data-level="37.1.3" data-path="filters.html"><a href="filters.html#sorting-lines-with-sort"><i class="fa fa-check"></i><b>37.1.3</b> Sorting lines with <code>sort</code></a></li>
+<li class="chapter" data-level="37.1.4" data-path="filters.html"><a href="filters.html#listing-unique-occurrences-with-sort--u"><i class="fa fa-check"></i><b>37.1.4</b> Listing unique occurrences with <code>sort -u</code></a></li>
+<li class="chapter" data-level="37.1.5" data-path="filters.html"><a href="filters.html#counting-unique-occurrences-with-sort-and-uniq"><i class="fa fa-check"></i><b>37.1.5</b> Counting unique occurrences with <code>sort</code> and <code>uniq</code></a></li>
+<li class="chapter" data-level="37.1.6" data-path="filters.html"><a href="filters.html#all-in-one-pipeline"><i class="fa fa-check"></i><b>37.1.6</b> All in one pipeline</a></li>
+<li class="chapter" data-level="37.1.7" data-path="filters.html"><a href="filters.html#more-examples"><i class="fa fa-check"></i><b>37.1.7</b> More examples</a></li>
+</ul></li>
+<li class="chapter" data-level="37.2" data-path="filters.html"><a href="filters.html#filters-1"><i class="fa fa-check"></i><b>37.2</b> Filters</a></li>
+<li class="chapter" data-level="37.3" data-path="filters.html"><a href="filters.html#extracting-columns-with-cut"><i class="fa fa-check"></i><b>37.3</b> Extracting columns with <code>cut</code></a></li>
+<li class="chapter" data-level="37.4" data-path="filters.html"><a href="filters.html#sorting-lines-with-sort-1"><i class="fa fa-check"></i><b>37.4</b> Sorting lines with <code>sort</code></a></li>
+<li class="chapter" data-level="37.5" data-path="filters.html"><a href="filters.html#isolating-unique-lines-with-uniq"><i class="fa fa-check"></i><b>37.5</b> Isolating unique lines with <code>uniq</code></a></li>
+</ul></li>
+<li class="part"><span><b>IX Data Technologies</b></span></li>
+<li class="chapter" data-level="38" data-path="datatech-intro.html"><a href="datatech-intro.html"><i class="fa fa-check"></i><b>38</b> Introduction</a></li>
+<li class="chapter" data-level="39" data-path="regex.html"><a href="regex.html"><i class="fa fa-check"></i><b>39</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="39.1" data-path="regex.html"><a href="regex.html#what-are-regular-expressions"><i class="fa fa-check"></i><b>39.1</b> What are Regular Expressions?</a><ul>
+<li class="chapter" data-level="39.1.1" data-path="regex.html"><a href="regex.html#a-word-of-caution-about-regex"><i class="fa fa-check"></i><b>39.1.1</b> A word of caution about regex</a></li>
+<li class="chapter" data-level="39.1.2" data-path="regex.html"><a href="regex.html#regular-expressions-in-r"><i class="fa fa-check"></i><b>39.1.2</b> Regular Expressions in R</a></li>
+</ul></li>
+<li class="chapter" data-level="39.2" data-path="regex.html"><a href="regex.html#regex-basics"><i class="fa fa-check"></i><b>39.2</b> Regex Basics</a></li>
+<li class="chapter" data-level="39.3" data-path="regex.html"><a href="regex.html#literal-characters"><i class="fa fa-check"></i><b>39.3</b> Literal Characters</a></li>
+<li class="chapter" data-level="39.4" data-path="regex.html"><a href="regex.html#metacharacters"><i class="fa fa-check"></i><b>39.4</b> Metacharacters</a><ul>
+<li class="chapter" data-level="39.4.1" data-path="regex.html"><a href="regex.html#the-wild-metacharacter"><i class="fa fa-check"></i><b>39.4.1</b> The Wild Metacharacter</a></li>
+<li class="chapter" data-level="39.4.2" data-path="regex.html"><a href="regex.html#escaping-metacharacters"><i class="fa fa-check"></i><b>39.4.2</b> Escaping metacharacters</a></li>
+</ul></li>
+<li class="chapter" data-level="39.5" data-path="regex.html"><a href="regex.html#character-sets"><i class="fa fa-check"></i><b>39.5</b> Character Sets</a></li>
+<li class="chapter" data-level="39.6" data-path="regex.html"><a href="regex.html#character-ranges"><i class="fa fa-check"></i><b>39.6</b> Character ranges</a></li>
+<li class="chapter" data-level="39.7" data-path="regex.html"><a href="regex.html#negative-character-sets"><i class="fa fa-check"></i><b>39.7</b> Negative Character Sets</a></li>
+<li class="chapter" data-level="39.8" data-path="regex.html"><a href="regex.html#character-classes"><i class="fa fa-check"></i><b>39.8</b> Character Classes</a></li>
+<li class="chapter" data-level="39.9" data-path="regex.html"><a href="regex.html#posix-character-classes"><i class="fa fa-check"></i><b>39.9</b> POSIX Character Classes</a></li>
+</ul></li>
+<li class="chapter" data-level="40" data-path="xml.html"><a href="xml.html"><i class="fa fa-check"></i><b>40</b> Basics of XML</a><ul>
+<li class="chapter" data-level="40.1" data-path="xml.html"><a href="xml.html#what-is-xml"><i class="fa fa-check"></i><b>40.1</b> What is XML?</a><ul>
+<li class="chapter" data-level="40.1.1" data-path="xml.html"><a href="xml.html#comments-1"><i class="fa fa-check"></i><b>40.1.1</b> Comments</a></li>
+<li class="chapter" data-level="40.1.2" data-path="xml.html"><a href="xml.html#marks-in-xml"><i class="fa fa-check"></i><b>40.1.2</b> Marks in XML</a></li>
+<li class="chapter" data-level="40.1.3" data-path="xml.html"><a href="xml.html#minimalist-example"><i class="fa fa-check"></i><b>40.1.3</b> Minimalist Example</a></li>
+<li class="chapter" data-level="40.1.4" data-path="xml.html"><a href="xml.html#well-formedness"><i class="fa fa-check"></i><b>40.1.4</b> Well Formedness</a></li>
+<li class="chapter" data-level="40.1.5" data-path="xml.html"><a href="xml.html#additional-xml-elements"><i class="fa fa-check"></i><b>40.1.5</b> Additional XML Elements</a></li>
+<li class="chapter" data-level="40.1.6" data-path="xml.html"><a href="xml.html#another-example"><i class="fa fa-check"></i><b>40.1.6</b> Another Example</a></li>
+<li class="chapter" data-level="40.1.7" data-path="xml.html"><a href="xml.html#wrapping-up"><i class="fa fa-check"></i><b>40.1.7</b> Wrapping-Up</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="41" data-path="html.html"><a href="html.html"><i class="fa fa-check"></i><b>41</b> HTML Basics</a><ul>
+<li class="chapter" data-level="41.1" data-path="html.html"><a href="html.html#the-web"><i class="fa fa-check"></i><b>41.1</b> The Web</a><ul>
+<li class="chapter" data-level="41.1.1" data-path="html.html"><a href="html.html#how-does-the-web-work"><i class="fa fa-check"></i><b>41.1.1</b> How does the Web work?</a></li>
+</ul></li>
+<li class="chapter" data-level="41.2" data-path="html.html"><a href="html.html#a-quick-introduction-to-html"><i class="fa fa-check"></i><b>41.2</b> A quick introduction to HTML</a><ul>
+<li class="chapter" data-level="41.2.1" data-path="html.html"><a href="html.html#html-document-structure"><i class="fa fa-check"></i><b>41.2.1</b> HTML document structure</a></li>
+<li class="chapter" data-level="41.2.2" data-path="html.html"><a href="html.html#html-syntax"><i class="fa fa-check"></i><b>41.2.2</b> HTML Syntax</a></li>
+<li class="chapter" data-level="41.2.3" data-path="html.html"><a href="html.html#what-the-browser-does"><i class="fa fa-check"></i><b>41.2.3</b> What the browser does</a></li>
+<li class="chapter" data-level="41.2.4" data-path="html.html"><a href="html.html#web-scraping"><i class="fa fa-check"></i><b>41.2.4</b> Web Scraping</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="42" data-path="http.html"><a href="http.html"><i class="fa fa-check"></i><b>42</b> Basics of HTTP</a><ul>
+<li class="chapter" data-level="42.1" data-path="http.html"><a href="http.html#a-quick-introduction-to-http"><i class="fa fa-check"></i><b>42.1</b> A quick introduction to HTTP</a><ul>
+<li class="chapter" data-level="42.1.1" data-path="http.html"><a href="http.html#anatomy-of-an-http-message"><i class="fa fa-check"></i><b>42.1.1</b> Anatomy of an HTTP message</a></li>
+<li class="chapter" data-level="42.1.2" data-path="http.html"><a href="http.html#http-methods"><i class="fa fa-check"></i><b>42.1.2</b> HTTP Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="42.2" data-path="http.html"><a href="http.html#r-package-rcurl"><i class="fa fa-check"></i><b>42.2</b> R Package <code>"RCurl"</code></a><ul>
+<li class="chapter" data-level="42.2.1" data-path="http.html"><a href="http.html#function-geturl"><i class="fa fa-check"></i><b>42.2.1</b> Function <code>getURL()</code></a></li>
+<li class="chapter" data-level="42.2.2" data-path="http.html"><a href="http.html#function-geturl-1"><i class="fa fa-check"></i><b>42.2.2</b> Function <code>getURL()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="43" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>43</b> JSON Data</a><ul>
+<li class="chapter" data-level="43.1" data-path="json.html"><a href="json.html#json-basics"><i class="fa fa-check"></i><b>43.1</b> JSON Basics</a><ul>
+<li class="chapter" data-level="43.1.1" data-path="json.html"><a href="json.html#understanding-json-syntax"><i class="fa fa-check"></i><b>43.1.1</b> Understanding JSON Syntax</a></li>
+<li class="chapter" data-level="43.1.2" data-path="json.html"><a href="json.html#data-table-toy-example"><i class="fa fa-check"></i><b>43.1.2</b> Data Table Toy Example</a></li>
+<li class="chapter" data-level="43.1.3" data-path="json.html"><a href="json.html#json-r-packages"><i class="fa fa-check"></i><b>43.1.3</b> JSON R packages</a></li>
+<li class="chapter" data-level="43.1.4" data-path="json.html"><a href="json.html#reading-json-data"><i class="fa fa-check"></i><b>43.1.4</b> Reading JSON Data</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computing With Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="eda-dplyr" class="section level1">
+<h1><span class="header-section-number">9</span> Exploratory Data Analysis</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">9.1</span> Introduction</h2>
+<p>We want you to get your hands dirty in R as quick as possible, and perhaps the
+best way to do this is by jumping right away into the pool. In this chapter,
+you’ll have your first contact with tabular data (data arranged in rows and
+columns) which is the most common format in which data is handled for data
+analysis.</p>
+<p>To keep things moderately simple, we use a data set that comes in one the most
+popular R packages for manipulation of tables: <code>"dplyr"</code>. The main reason to
+start in this mode, is to avoid having to worry about data importing issues,
+which we cover later in chapter <a href="importing.html#importing">Importing Tables</a>. The other
+reason is to have data that is already clean and ready to be analyzed.
+You will also have time to learn tools and skills for cleaning data sets in
+subsequent chapters.</p>
+<div id="manipulating-tables-with-dplyr-framework" class="section level3">
+<h3><span class="header-section-number">9.1.1</span> Manipulating tables with <code>"dplyr"</code> framework</h3>
+<p>In this chapter and the next one, you will start learning a couple of approaches
+to manipulate tables and create basic statistical graphics. To manipulate tables,
+we are going to use the functionality of the package <code>"dplyr"</code>. This package
+allows you to work with tabular data <em>in a syntactic way</em>. This is a
+fairly recent package introduced a couple of years ago, but it is based on more
+than a decade of research and work lead by <a href="http://hadley.nz/">Hadley Wickham</a>.</p>
+<p>Later in the book you will also have the opportunity to learn more <em>low-level</em>
+manipulation tasks.</p>
+<p>We are assuming that you already installed the package <code>"dplyr"</code>. If that’s not
+the case then <strong>run on the console</strong> the command below
+(do NOT include this command in any <code>Rmd</code> file):</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="eda-dplyr.html#cb29-1"></a><span class="co"># don&#39;t include this command in any Rmd file</span></span>
+<span id="cb29-2"><a href="eda-dplyr.html#cb29-2"></a><span class="co"># don&#39;t worry too much if you get a warning message</span></span>
+<span id="cb29-3"><a href="eda-dplyr.html#cb29-3"></a><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<p>Remember that you only need to install a package once! After a package has been
+installed in your machine, there is no need to call <code>install.packages()</code> again
+on the same package. What you should always invoke, in order to use the
+functions in a package, is the <code>library()</code> function:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="eda-dplyr.html#cb30-1"></a><span class="co"># (you should include this command in your Rmd file)</span></span>
+<span id="cb30-2"><a href="eda-dplyr.html#cb30-2"></a><span class="kw">library</span>(dplyr)</span></code></pre></div>
+<p><strong>About loading packages:</strong> Another rule to keep in mind is to always load any
+required packages at the very top of your script files (<code>.R</code> or <code>.Rmd</code> or
+<code>.Rnw</code> files). Avoid calling the <code>library()</code> function in the middle of a script.
+Instead, load all the packages before anything else.</p>
+</div>
+</div>
+<div id="atlantic-hurricane-data" class="section level2">
+<h2><span class="header-section-number">9.2</span> Atlantic Hurricane Data</h2>
+<p>This data is one of the data sets available in the National Hurricane Center
+(NHC) Data Archive, which is part of the National Oceanic and Atmospheric
+Administration (NOAA). In particular, the data set <code>storms</code> refers to the
+Atlantic hurricane database best track data:</p>
+<p><a href="http://www.nhc.noaa.gov/data/#hurdat" target="_blank">http://www.nhc.noaa.gov/data/#hurdat</a></p>
+<p>The data includes the positions and attributes of 198 tropical storms, measured
+every six hours during the lifetime of a storm.</p>
+<p>The data set comes in the R package <code>"dplyr"</code> under the name <code>storms</code>. Assuming
+that you’ve loaded this package, simply type the name of the data object:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="eda-dplyr.html#cb31-1"></a>storms</span>
+<span id="cb31-2"><a href="eda-dplyr.html#cb31-2"></a><span class="co">#&gt; # A tibble: 10,010 x 13</span></span>
+<span id="cb31-3"><a href="eda-dplyr.html#cb31-3"></a><span class="co">#&gt;    name   year month   day  hour   lat  long status category  wind pressure</span></span>
+<span id="cb31-4"><a href="eda-dplyr.html#cb31-4"></a><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;ord&gt;    &lt;int&gt;    &lt;int&gt;</span></span>
+<span id="cb31-5"><a href="eda-dplyr.html#cb31-5"></a><span class="co">#&gt;  1 Amy    1975     6    27     0  27.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb31-6"><a href="eda-dplyr.html#cb31-6"></a><span class="co">#&gt;  2 Amy    1975     6    27     6  28.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb31-7"><a href="eda-dplyr.html#cb31-7"></a><span class="co">#&gt;  3 Amy    1975     6    27    12  29.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb31-8"><a href="eda-dplyr.html#cb31-8"></a><span class="co">#&gt;  4 Amy    1975     6    27    18  30.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb31-9"><a href="eda-dplyr.html#cb31-9"></a><span class="co">#&gt;  5 Amy    1975     6    28     0  31.5 -78.8 tropi… -1          25     1012</span></span>
+<span id="cb31-10"><a href="eda-dplyr.html#cb31-10"></a><span class="co">#&gt;  6 Amy    1975     6    28     6  32.4 -78.7 tropi… -1          25     1012</span></span>
+<span id="cb31-11"><a href="eda-dplyr.html#cb31-11"></a><span class="co">#&gt;  7 Amy    1975     6    28    12  33.3 -78   tropi… -1          25     1011</span></span>
+<span id="cb31-12"><a href="eda-dplyr.html#cb31-12"></a><span class="co">#&gt;  8 Amy    1975     6    28    18  34   -77   tropi… -1          30     1006</span></span>
+<span id="cb31-13"><a href="eda-dplyr.html#cb31-13"></a><span class="co">#&gt;  9 Amy    1975     6    29     0  34.4 -75.8 tropi… 0           35     1004</span></span>
+<span id="cb31-14"><a href="eda-dplyr.html#cb31-14"></a><span class="co">#&gt; 10 Amy    1975     6    29     6  34   -74.8 tropi… 0           40     1002</span></span>
+<span id="cb31-15"><a href="eda-dplyr.html#cb31-15"></a><span class="co">#&gt; # … with 10,000 more rows, and 2 more variables: ts_diameter &lt;dbl&gt;,</span></span>
+<span id="cb31-16"><a href="eda-dplyr.html#cb31-16"></a><span class="co">#&gt; #   hu_diameter &lt;dbl&gt;</span></span></code></pre></div>
+<p>You can find some technical description of <code>storms</code> by taking a peek at its
+manual (or help) documentation: <code>?storms</code>.</p>
+<p>As you can tell from the displayed output, <code>storms</code> is a <strong>tibble</strong> object,
+which is one of the data objects in R that handles data in tabular format. On a
+technical note, we should say that tibbles are not a native object—they come
+from the homonym package <code>"tibble"</code>—instead they are a modern version of data
+frames, which is the native object in R for handling general data tables.</p>
+<p>The way tibbles are <em>printed</em> is very interesting. The number of rows that
+are displayed is limited to 10; also, depending on the width of the printing
+space, you will only see a few columns shown to fit such width. Notice that
+underneath the name of each column there is a three letter abbreviation inside
+angle brackets, this abbreviation indicates the <em>data type</em> used by R to store
+the values. For instance, the first column <code>name</code> has type <code>&lt;chr&gt;</code> which stands
+for <em>character</em> data, the second column <code>year</code> is of type <code>&lt;dbl&gt;</code> or double,
+that is real numbers or numbers with decimal digits. The fourth column <code>day</code>
+is of type <code>&lt;int&gt;</code> or integer (numbers with no decimal digits).</p>
+<p>Here’s a full description of all the columns:</p>
+<ul>
+<li><code>name</code>: Storm name</li>
+<li><code>year</code>, <code>month</code>, and <code>day</code>: Date of report</li>
+<li><code>hour</code>: Hour of report (in UTC)</li>
+<li><code>lat</code>: Latitude</li>
+<li><code>long</code>: Longitude</li>
+<li><code>status</code>: Storm classification (Tropical Depression, Tropical Storm, or
+Hurricane)</li>
+<li><code>category</code>: Saffir-Simpson storm category (estimated from wind speed.
+-1 = Tropical Depression, 0 = Tropical Storm)</li>
+<li><code>wind</code>: storm’s maximum sustained wind speed (in knots)</li>
+<li><code>pressure</code>: Air pressure at the storm’s center (in millibars)</li>
+<li><code>ts_diameter</code>: Diameter of the area experiencing tropical storm strength
+winds (34 knots or above)</li>
+<li><code>hu_diameter</code>: Diameter of the area experiencing hurricane strength winds
+(64 knots or above)</li>
+</ul>
+<div id="some-remarks" class="section level4 unnumbered">
+<h4>Some Remarks</h4>
+<ul>
+<li>The data table is already in R; later you will learn how to import tables in R</li>
+<li>The table is already <em>clean</em>, there’s no need to fix weird values, or transform
+from one data type to another.</li>
+<li>Not only the table is clean, but it is also <strong>tidy</strong> which is the technical
+term to indicate that:
+<ul>
+<li>each variable forms a column</li>
+<li>each observation forms a row</li>
+</ul></li>
+</ul>
+<p>To better understand what tidy data implies, it is also useful to describe
+in what ways data sets are messy:</p>
+<ul>
+<li>column headers are values, not variable names</li>
+<li>multiple variables are stored in one column</li>
+<li>variables are stored in both rows and columns</li>
+</ul>
+<p>Keep in mind that we are using the <code>storms</code> example to get you up and running
+analyzing data tables, focusing on what is called Exploratory Data Analysis
+(EDA). Later in the book we will also describe typical tasks that are performed
+before EDA, wuch as importing data, preparation of data, cleaning, tidying, etc.</p>
+</div>
+</div>
+<div id="exploratory-data-analysis" class="section level2">
+<h2><span class="header-section-number">9.3</span> Exploratory Data Analysis</h2>
+<p>Recall the diagram of the Data Analysis Cycle:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-51"></span>
+<img src="images/eda/eda-dac.svg" alt="Exploratory Data Analysis in DAC" width="55%" />
+<p class="caption">
+Figure 9.1: Exploratory Data Analysis in DAC
+</p>
+</div>
+<p>Exploring data is one of those tasks that you will use in both the Data
+Preparation stage and the Core Analysis stage. EDA has a main purpose:
+<strong>get to know your data.</strong>
+EDA is very similar to when you go to the doctor and they do an
+initial exploration (measure your height, your weight, temperature, blood
+pressure; listen to your heart and lungs; look at your eyes, throat, ears;
+ask you questions about your eating habits, physical activity habits, etc).</p>
+<p>To keep things relatively simple, we won’t perform a full exploration of every
+single variable (i.e. column) in the data. However, we encourage you to play
+with the functions to go beyond what we cover in this chapter. In real life,
+you will have to do such exploration.</p>
+<p>Another important comment: in most courses, books, and workshops, EDA tends
+to receive very little attention. But don’t understimate the power of exploring
+your data. It may not be glamorous as doing similations, fitting models,
+making predictions, or other more sophisticated activities. But that does not
+mean EDA is unimportant. Quite the opposite! You should spend enough time
+understanding the data (variables, individuals, measurements), also understanding
+the context in which the data was collected, and if possible, a bit about the
+field or discipline related with the data. This is something that can’t be
+easily taught in a book; but you should spend time with your clients, or
+colleagues, experts, to know as much as possible about the data you will work
+with.</p>
+<div id="basic-inspection-of-year" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> Basic Inspection of <code>year</code></h3>
+<p>When you type <code>storms</code>, R displays the first 10 rows, which belong to storm
+Amy in 1975. In other words, we know that the data contains at least one storm
+from 1975. We also know, from the manual documentation of <code>storms</code>, that there
+are supposed to be 198 storms. But we don’t know for what years. So in a more
+or less arbitrary way, let’s begin inspecting <code>storms</code> by focusing on the
+<code>year</code> column. Our first question is: What years have the data been collected
+for?</p>
+<p>To answer this question, we need to work with column <code>years</code>. There are several
+ways in R to manipulate a column from a tabular object. Using <code>"dplyr"</code>, there
+are two basic kinds of functions to extract variables: <code>pull()</code> and <code>select()</code>.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-52"></span>
+<img src="images/eda/dplyr-extract-column.svg" alt="Extracting a column with dplyr functions &quot;pull&quot; and &quot;select&quot;" width="65%" />
+<p class="caption">
+Figure 9.2: Extracting a column with dplyr functions “pull” and “select”
+</p>
+</div>
+<p>Let’s do a sanity check of years. We can use the function <code>pull()</code> that <em>pulls</em>
+or extracts an entire column. Because there are 10010 elements in
+<code>years</code>, let’s also use <code>unique()</code> to find out the set of year values in the
+data. First we pull the year, and then we identify unique occurrences:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="eda-dplyr.html#cb32-1"></a><span class="kw">unique</span>(<span class="kw">pull</span>(storms, year))</span>
+<span id="cb32-2"><a href="eda-dplyr.html#cb32-2"></a><span class="co">#&gt;  [1] 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 1988 1989</span></span>
+<span id="cb32-3"><a href="eda-dplyr.html#cb32-3"></a><span class="co">#&gt; [16] 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004</span></span>
+<span id="cb32-4"><a href="eda-dplyr.html#cb32-4"></a><span class="co">#&gt; [31] 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015</span></span></code></pre></div>
+<p>The same can be accomplished with <code>select()</code>. The difference with <code>pull()</code> is
+in the way the output is handled by <code>select()</code>, which returns output in a table
+format:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="eda-dplyr.html#cb33-1"></a><span class="kw">unique</span>(<span class="kw">select</span>(storms, year))</span>
+<span id="cb33-2"><a href="eda-dplyr.html#cb33-2"></a><span class="co">#&gt; # A tibble: 41 x 1</span></span>
+<span id="cb33-3"><a href="eda-dplyr.html#cb33-3"></a><span class="co">#&gt;     year</span></span>
+<span id="cb33-4"><a href="eda-dplyr.html#cb33-4"></a><span class="co">#&gt;    &lt;dbl&gt;</span></span>
+<span id="cb33-5"><a href="eda-dplyr.html#cb33-5"></a><span class="co">#&gt;  1  1975</span></span>
+<span id="cb33-6"><a href="eda-dplyr.html#cb33-6"></a><span class="co">#&gt;  2  1976</span></span>
+<span id="cb33-7"><a href="eda-dplyr.html#cb33-7"></a><span class="co">#&gt;  3  1977</span></span>
+<span id="cb33-8"><a href="eda-dplyr.html#cb33-8"></a><span class="co">#&gt;  4  1978</span></span>
+<span id="cb33-9"><a href="eda-dplyr.html#cb33-9"></a><span class="co">#&gt;  5  1979</span></span>
+<span id="cb33-10"><a href="eda-dplyr.html#cb33-10"></a><span class="co">#&gt;  6  1980</span></span>
+<span id="cb33-11"><a href="eda-dplyr.html#cb33-11"></a><span class="co">#&gt;  7  1981</span></span>
+<span id="cb33-12"><a href="eda-dplyr.html#cb33-12"></a><span class="co">#&gt;  8  1982</span></span>
+<span id="cb33-13"><a href="eda-dplyr.html#cb33-13"></a><span class="co">#&gt;  9  1983</span></span>
+<span id="cb33-14"><a href="eda-dplyr.html#cb33-14"></a><span class="co">#&gt; 10  1984</span></span>
+<span id="cb33-15"><a href="eda-dplyr.html#cb33-15"></a><span class="co">#&gt; # … with 31 more rows</span></span></code></pre></div>
+<p>Based on the previous answers, we can see that <code>storms</code> has records during
+a 41-year period since 1975 to 2015.</p>
+</div>
+<div id="basic-inspection-of-month" class="section level3">
+<h3><span class="header-section-number">9.3.2</span> Basic inspection of <code>month</code></h3>
+<p>What about <code>month</code>? We can apply the same commands to see whether there are
+storms in all months:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="eda-dplyr.html#cb34-1"></a><span class="kw">unique</span>(<span class="kw">pull</span>(storms, month))</span>
+<span id="cb34-2"><a href="eda-dplyr.html#cb34-2"></a><span class="co">#&gt;  [1]  6  7  8  9 10 11 12  5  4  1</span></span></code></pre></div>
+<p>In this case, it would be better if we <code>sort()</code> them:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="eda-dplyr.html#cb35-1"></a><span class="kw">sort</span>(<span class="kw">unique</span>(<span class="kw">pull</span>(storms, month)))</span>
+<span id="cb35-2"><a href="eda-dplyr.html#cb35-2"></a><span class="co">#&gt;  [1]  1  4  5  6  7  8  9 10 11 12</span></span></code></pre></div>
+<p>Observe that not all months have recorded storms, this is the case for
+February (2) and March (3). Is this something to be concerned about? How is it
+possible that there are no recorded data for February and March? For the
+inexperience analyst, this type of questions are fundamental. As a data
+scientist, you will be working with data ests for which you are not necessarily
+an expert in that particular field of application. Since you will also be
+interacting with some type of experts, you should ask them as many quesstions
+as possible to clarify your understanding of the data and its context.</p>
+<p>The answer for not having storms in February and March is because these months
+have to do with the end of Winter and begining of Spring in the North Atlantic,
+which is a period of time where there are no storms. In fact, Spring months
+such as April and May do not tend to be typical months for storms. So a further
+thing to explore could involve also computing the number of storms in April,
+and May.</p>
+</div>
+<div id="basic-inspection-of-day" class="section level3">
+<h3><span class="header-section-number">9.3.3</span> Basic inspection of <code>day</code></h3>
+<p>The same type of exploration can also be applied to column <code>day</code>, just to make
+sure that its contents make sense:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="eda-dplyr.html#cb36-1"></a><span class="kw">sort</span>(<span class="kw">unique</span>(<span class="kw">pull</span>(storms, day)))</span>
+<span id="cb36-2"><a href="eda-dplyr.html#cb36-2"></a><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25</span></span>
+<span id="cb36-3"><a href="eda-dplyr.html#cb36-3"></a><span class="co">#&gt; [26] 26 27 28 29 30 31</span></span></code></pre></div>
+<p>Based on this output, numeric values of days look good too: we have number days
+from 1 to 31, which is the valid range for days. Obviously this is not the case,
+but had we found a number of 32 or 33 or greater, that would have raised a lot
+of suspicion.
+Now, just because the number days look good, that does not automatically mean
+they are flawless. In this case there’s nothing to worry about, but in other
+situations you might need to check that the full date (year-month-day) is valid.</p>
+</div>
+<div id="basic-inspection-of-storms-in-1975" class="section level3">
+<h3><span class="header-section-number">9.3.4</span> Basic inspection of storms in 1975</h3>
+<p>Let’s focus on those storms recorded in 1975. How do we select them?
+Computationally, this operation incolves a logical condition: <code>year == 1975</code>.
+This condition means that, from all the available year values, we get those
+that match 1975. This is done via <code>"dplyr"</code> function <code>filter()</code></p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-58"></span>
+<img src="images/eda/dplyr-filter.svg" alt="Extracting a row with dplyr function &quot;filter&quot;" width="40%" />
+<p class="caption">
+Figure 9.3: Extracting a row with dplyr function “filter”
+</p>
+</div>
+<p>First, let’s create a subset <code>storms75</code> by <em>filtering</em> those rows with <code>year</code>
+equal to 1975:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="eda-dplyr.html#cb37-1"></a>storms75 &lt;-<span class="st"> </span><span class="kw">filter</span>(storms, year <span class="op">==</span><span class="st"> </span><span class="dv">1975</span>)</span>
+<span id="cb37-2"><a href="eda-dplyr.html#cb37-2"></a>storms75</span>
+<span id="cb37-3"><a href="eda-dplyr.html#cb37-3"></a><span class="co">#&gt; # A tibble: 86 x 13</span></span>
+<span id="cb37-4"><a href="eda-dplyr.html#cb37-4"></a><span class="co">#&gt;    name   year month   day  hour   lat  long status category  wind pressure</span></span>
+<span id="cb37-5"><a href="eda-dplyr.html#cb37-5"></a><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;ord&gt;    &lt;int&gt;    &lt;int&gt;</span></span>
+<span id="cb37-6"><a href="eda-dplyr.html#cb37-6"></a><span class="co">#&gt;  1 Amy    1975     6    27     0  27.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb37-7"><a href="eda-dplyr.html#cb37-7"></a><span class="co">#&gt;  2 Amy    1975     6    27     6  28.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb37-8"><a href="eda-dplyr.html#cb37-8"></a><span class="co">#&gt;  3 Amy    1975     6    27    12  29.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb37-9"><a href="eda-dplyr.html#cb37-9"></a><span class="co">#&gt;  4 Amy    1975     6    27    18  30.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb37-10"><a href="eda-dplyr.html#cb37-10"></a><span class="co">#&gt;  5 Amy    1975     6    28     0  31.5 -78.8 tropi… -1          25     1012</span></span>
+<span id="cb37-11"><a href="eda-dplyr.html#cb37-11"></a><span class="co">#&gt;  6 Amy    1975     6    28     6  32.4 -78.7 tropi… -1          25     1012</span></span>
+<span id="cb37-12"><a href="eda-dplyr.html#cb37-12"></a><span class="co">#&gt;  7 Amy    1975     6    28    12  33.3 -78   tropi… -1          25     1011</span></span>
+<span id="cb37-13"><a href="eda-dplyr.html#cb37-13"></a><span class="co">#&gt;  8 Amy    1975     6    28    18  34   -77   tropi… -1          30     1006</span></span>
+<span id="cb37-14"><a href="eda-dplyr.html#cb37-14"></a><span class="co">#&gt;  9 Amy    1975     6    29     0  34.4 -75.8 tropi… 0           35     1004</span></span>
+<span id="cb37-15"><a href="eda-dplyr.html#cb37-15"></a><span class="co">#&gt; 10 Amy    1975     6    29     6  34   -74.8 tropi… 0           40     1002</span></span>
+<span id="cb37-16"><a href="eda-dplyr.html#cb37-16"></a><span class="co">#&gt; # … with 76 more rows, and 2 more variables: ts_diameter &lt;dbl&gt;,</span></span>
+<span id="cb37-17"><a href="eda-dplyr.html#cb37-17"></a><span class="co">#&gt; #   hu_diameter &lt;dbl&gt;</span></span></code></pre></div>
+<p>Once we have the set of storms that occurred in 1975, one possible question
+to ask is what <code>unique()</code> storms happened in that year:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="eda-dplyr.html#cb38-1"></a><span class="kw">unique</span>(<span class="kw">pull</span>(storms75, name))</span>
+<span id="cb38-2"><a href="eda-dplyr.html#cb38-2"></a><span class="co">#&gt; [1] &quot;Amy&quot;      &quot;Caroline&quot; &quot;Doris&quot;</span></span></code></pre></div>
+<p>From the returned output, there are only three storms recorded in 1975.</p>
+<p>A similar result can be obtained with <code>distinct()</code>, the difference being the
+way in which the output is returned, in this case under the format of a tibble:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="eda-dplyr.html#cb39-1"></a><span class="kw">distinct</span>(storms75, name)</span>
+<span id="cb39-2"><a href="eda-dplyr.html#cb39-2"></a><span class="co">#&gt; # A tibble: 3 x 1</span></span>
+<span id="cb39-3"><a href="eda-dplyr.html#cb39-3"></a><span class="co">#&gt;   name    </span></span>
+<span id="cb39-4"><a href="eda-dplyr.html#cb39-4"></a><span class="co">#&gt;   &lt;chr&gt;   </span></span>
+<span id="cb39-5"><a href="eda-dplyr.html#cb39-5"></a><span class="co">#&gt; 1 Amy     </span></span>
+<span id="cb39-6"><a href="eda-dplyr.html#cb39-6"></a><span class="co">#&gt; 2 Caroline</span></span>
+<span id="cb39-7"><a href="eda-dplyr.html#cb39-7"></a><span class="co">#&gt; 3 Doris</span></span></code></pre></div>
+<p>Now that we know there are three storms for 1975, it would be nice to count
+the number of rows or records for each of them. <code>"dplyr"</code> allows us to do this
+with <code>count()</code>, passing the name of the table, and then the name of the column
+for which we want to get the counts or frequencies:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="eda-dplyr.html#cb40-1"></a><span class="kw">count</span>(storms75, name)</span>
+<span id="cb40-2"><a href="eda-dplyr.html#cb40-2"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
+<span id="cb40-3"><a href="eda-dplyr.html#cb40-3"></a><span class="co">#&gt;   name         n</span></span>
+<span id="cb40-4"><a href="eda-dplyr.html#cb40-4"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;int&gt;</span></span>
+<span id="cb40-5"><a href="eda-dplyr.html#cb40-5"></a><span class="co">#&gt; 1 Amy         30</span></span>
+<span id="cb40-6"><a href="eda-dplyr.html#cb40-6"></a><span class="co">#&gt; 2 Caroline    33</span></span>
+<span id="cb40-7"><a href="eda-dplyr.html#cb40-7"></a><span class="co">#&gt; 3 Doris       23</span></span></code></pre></div>
+</div>
+<div id="group-by-operations" class="section level3">
+<h3><span class="header-section-number">9.3.5</span> Group-by operations</h3>
+<p>Another common task when exploring data has to do with computations applied
+on certain groups or categories of data. <code>"dplyr"</code> provides the function
+<code>group_by()</code> which takes a data table, and we specify the column(s) on which
+rows will be grouped by:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-63"></span>
+<img src="images/eda/dplyr-group-by.svg" alt="Group-by operations" width="80%" />
+<p class="caption">
+Figure 9.4: Group-by operations
+</p>
+</div>
+<p>For example, we may be interested in calculating the average <code>wind</code> speed and
+average <code>pressure</code> of each storm in 1975. First we need to group by <code>name</code>,
+and then we use <code>summarise()</code> to indicate that we want to get the <code>mean()</code>
+of <code>wind</code> and <code>pressure</code>, like this:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="eda-dplyr.html#cb41-1"></a><span class="kw">summarise</span>(</span>
+<span id="cb41-2"><a href="eda-dplyr.html#cb41-2"></a>  <span class="kw">group_by</span>(storms75, name),</span>
+<span id="cb41-3"><a href="eda-dplyr.html#cb41-3"></a>  <span class="dt">avg_wind =</span> <span class="kw">mean</span>(wind),</span>
+<span id="cb41-4"><a href="eda-dplyr.html#cb41-4"></a>  <span class="dt">avg_pressure =</span> <span class="kw">mean</span>(pressure)</span>
+<span id="cb41-5"><a href="eda-dplyr.html#cb41-5"></a>)</span>
+<span id="cb41-6"><a href="eda-dplyr.html#cb41-6"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
+<span id="cb41-7"><a href="eda-dplyr.html#cb41-7"></a><span class="co">#&gt;   name     avg_wind avg_pressure</span></span>
+<span id="cb41-8"><a href="eda-dplyr.html#cb41-8"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb41-9"><a href="eda-dplyr.html#cb41-9"></a><span class="co">#&gt; 1 Amy          46.5         995.</span></span>
+<span id="cb41-10"><a href="eda-dplyr.html#cb41-10"></a><span class="co">#&gt; 2 Caroline     38.9        1002.</span></span>
+<span id="cb41-11"><a href="eda-dplyr.html#cb41-11"></a><span class="co">#&gt; 3 Doris        73.7         983.</span></span></code></pre></div>
+<p>Sometimes, you’ll find convenient to assign the output into its own table:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="eda-dplyr.html#cb42-1"></a>avg_wind_pressure_<span class="dv">75</span> &lt;-<span class="st"> </span><span class="kw">summarise</span>(</span>
+<span id="cb42-2"><a href="eda-dplyr.html#cb42-2"></a>  <span class="kw">group_by</span>(storms75, name),</span>
+<span id="cb42-3"><a href="eda-dplyr.html#cb42-3"></a>  <span class="dt">avg_wind =</span> <span class="kw">mean</span>(wind),</span>
+<span id="cb42-4"><a href="eda-dplyr.html#cb42-4"></a>  <span class="dt">avg_pressure =</span> <span class="kw">mean</span>(pressure)</span>
+<span id="cb42-5"><a href="eda-dplyr.html#cb42-5"></a>)</span></code></pre></div>
+<p>Right now, the table of summary means is ordered alphabetically by <code>name</code>.
+But perhaps you may want to organize its contents by <code>avg_wind</code> or by
+<code>avg_pressure</code>. Let’s see how to do this in the next subsection.</p>
+</div>
+<div id="arrange-operations" class="section level3">
+<h3><span class="header-section-number">9.3.6</span> Arrange operations</h3>
+<p>Besides <code>group_by()</code> operations, another common type of manipulation is the
+arragement of rows based on the values of one or more columns. In <code>"dplyr"</code>,
+this can easily be achieved with the function <code>arrange()</code>. The way this function
+works is passing the name of the table, and then specifying one or more columns
+to order rows based on such values.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-66"></span>
+<img src="images/eda/dplyr-arrange.svg" alt="Arranging rows" width="85%" />
+<p class="caption">
+Figure 9.5: Arranging rows
+</p>
+</div>
+<p>Say you want to arrange the contents of the average summary table, by taking
+into account the columnd <code>avg_wind</code>:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="eda-dplyr.html#cb43-1"></a><span class="kw">arrange</span>(avg_wind_pressure_<span class="dv">75</span>, avg_wind)</span>
+<span id="cb43-2"><a href="eda-dplyr.html#cb43-2"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
+<span id="cb43-3"><a href="eda-dplyr.html#cb43-3"></a><span class="co">#&gt;   name     avg_wind avg_pressure</span></span>
+<span id="cb43-4"><a href="eda-dplyr.html#cb43-4"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb43-5"><a href="eda-dplyr.html#cb43-5"></a><span class="co">#&gt; 1 Caroline     38.9        1002.</span></span>
+<span id="cb43-6"><a href="eda-dplyr.html#cb43-6"></a><span class="co">#&gt; 2 Amy          46.5         995.</span></span>
+<span id="cb43-7"><a href="eda-dplyr.html#cb43-7"></a><span class="co">#&gt; 3 Doris        73.7         983.</span></span></code></pre></div>
+<p>Likewise, you can also arrange the averages by <code>avg_pressure</code>:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="eda-dplyr.html#cb44-1"></a><span class="kw">arrange</span>(avg_wind_pressure_<span class="dv">75</span>, avg_pressure)</span>
+<span id="cb44-2"><a href="eda-dplyr.html#cb44-2"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
+<span id="cb44-3"><a href="eda-dplyr.html#cb44-3"></a><span class="co">#&gt;   name     avg_wind avg_pressure</span></span>
+<span id="cb44-4"><a href="eda-dplyr.html#cb44-4"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb44-5"><a href="eda-dplyr.html#cb44-5"></a><span class="co">#&gt; 1 Doris        73.7         983.</span></span>
+<span id="cb44-6"><a href="eda-dplyr.html#cb44-6"></a><span class="co">#&gt; 2 Amy          46.5         995.</span></span>
+<span id="cb44-7"><a href="eda-dplyr.html#cb44-7"></a><span class="co">#&gt; 3 Caroline     38.9        1002.</span></span></code></pre></div>
+<p>The default behavior of <code>arrange()</code> is to organize rows in increasing order.
+But what if you want to organize rows in decreasing order? No problem, just
+use the auxiliary function <code>desc()</code> to indicate that rows should be arranged
+decreasingly:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="eda-dplyr.html#cb45-1"></a><span class="kw">arrange</span>(avg_wind_pressure_<span class="dv">75</span>, <span class="kw">desc</span>(avg_wind))</span>
+<span id="cb45-2"><a href="eda-dplyr.html#cb45-2"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
+<span id="cb45-3"><a href="eda-dplyr.html#cb45-3"></a><span class="co">#&gt;   name     avg_wind avg_pressure</span></span>
+<span id="cb45-4"><a href="eda-dplyr.html#cb45-4"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb45-5"><a href="eda-dplyr.html#cb45-5"></a><span class="co">#&gt; 1 Doris        73.7         983.</span></span>
+<span id="cb45-6"><a href="eda-dplyr.html#cb45-6"></a><span class="co">#&gt; 2 Amy          46.5         995.</span></span>
+<span id="cb45-7"><a href="eda-dplyr.html#cb45-7"></a><span class="co">#&gt; 3 Caroline     38.9        1002.</span></span></code></pre></div>
+</div>
+<div id="inspecting-1975-storm-amy" class="section level3">
+<h3><span class="header-section-number">9.3.7</span> Inspecting 1975 storm Amy</h3>
+<p>Let’s focus on a specific storm, for example storm <code>Amy</code> in 1975. For sake of
+simplicity, we are going to create a table <code>amy75</code> containing the values of
+this storm:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="eda-dplyr.html#cb46-1"></a>amy75 &lt;-<span class="st"> </span><span class="kw">filter</span>(storms75, name <span class="op">==</span><span class="st"> &quot;Amy&quot;</span>)</span>
+<span id="cb46-2"><a href="eda-dplyr.html#cb46-2"></a>amy75</span>
+<span id="cb46-3"><a href="eda-dplyr.html#cb46-3"></a><span class="co">#&gt; # A tibble: 30 x 13</span></span>
+<span id="cb46-4"><a href="eda-dplyr.html#cb46-4"></a><span class="co">#&gt;    name   year month   day  hour   lat  long status category  wind pressure</span></span>
+<span id="cb46-5"><a href="eda-dplyr.html#cb46-5"></a><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;ord&gt;    &lt;int&gt;    &lt;int&gt;</span></span>
+<span id="cb46-6"><a href="eda-dplyr.html#cb46-6"></a><span class="co">#&gt;  1 Amy    1975     6    27     0  27.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb46-7"><a href="eda-dplyr.html#cb46-7"></a><span class="co">#&gt;  2 Amy    1975     6    27     6  28.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb46-8"><a href="eda-dplyr.html#cb46-8"></a><span class="co">#&gt;  3 Amy    1975     6    27    12  29.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb46-9"><a href="eda-dplyr.html#cb46-9"></a><span class="co">#&gt;  4 Amy    1975     6    27    18  30.5 -79   tropi… -1          25     1013</span></span>
+<span id="cb46-10"><a href="eda-dplyr.html#cb46-10"></a><span class="co">#&gt;  5 Amy    1975     6    28     0  31.5 -78.8 tropi… -1          25     1012</span></span>
+<span id="cb46-11"><a href="eda-dplyr.html#cb46-11"></a><span class="co">#&gt;  6 Amy    1975     6    28     6  32.4 -78.7 tropi… -1          25     1012</span></span>
+<span id="cb46-12"><a href="eda-dplyr.html#cb46-12"></a><span class="co">#&gt;  7 Amy    1975     6    28    12  33.3 -78   tropi… -1          25     1011</span></span>
+<span id="cb46-13"><a href="eda-dplyr.html#cb46-13"></a><span class="co">#&gt;  8 Amy    1975     6    28    18  34   -77   tropi… -1          30     1006</span></span>
+<span id="cb46-14"><a href="eda-dplyr.html#cb46-14"></a><span class="co">#&gt;  9 Amy    1975     6    29     0  34.4 -75.8 tropi… 0           35     1004</span></span>
+<span id="cb46-15"><a href="eda-dplyr.html#cb46-15"></a><span class="co">#&gt; 10 Amy    1975     6    29     6  34   -74.8 tropi… 0           40     1002</span></span>
+<span id="cb46-16"><a href="eda-dplyr.html#cb46-16"></a><span class="co">#&gt; # … with 20 more rows, and 2 more variables: ts_diameter &lt;dbl&gt;,</span></span>
+<span id="cb46-17"><a href="eda-dplyr.html#cb46-17"></a><span class="co">#&gt; #   hu_diameter &lt;dbl&gt;</span></span></code></pre></div>
+<p>Here’s a coupe of questions that we could investigate:</p>
+<ul>
+<li>which are the <code>status</code> categories for Amy?</li>
+<li>during which months was Amy active? and for how many days?</li>
+<li>what are the basic summary statistics for <code>wind</code> and <code>pressure</code>?</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="eda-dplyr.html#cb47-1"></a><span class="co"># which are the `status` categories for Amy?</span></span>
+<span id="cb47-2"><a href="eda-dplyr.html#cb47-2"></a><span class="kw">distinct</span>(amy75, status)</span>
+<span id="cb47-3"><a href="eda-dplyr.html#cb47-3"></a><span class="co">#&gt; # A tibble: 2 x 1</span></span>
+<span id="cb47-4"><a href="eda-dplyr.html#cb47-4"></a><span class="co">#&gt;   status             </span></span>
+<span id="cb47-5"><a href="eda-dplyr.html#cb47-5"></a><span class="co">#&gt;   &lt;chr&gt;              </span></span>
+<span id="cb47-6"><a href="eda-dplyr.html#cb47-6"></a><span class="co">#&gt; 1 tropical depression</span></span>
+<span id="cb47-7"><a href="eda-dplyr.html#cb47-7"></a><span class="co">#&gt; 2 tropical storm</span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="eda-dplyr.html#cb48-1"></a><span class="co"># during which months was Amy active?</span></span>
+<span id="cb48-2"><a href="eda-dplyr.html#cb48-2"></a><span class="kw">distinct</span>(amy75, month)</span>
+<span id="cb48-3"><a href="eda-dplyr.html#cb48-3"></a><span class="co">#&gt; # A tibble: 2 x 1</span></span>
+<span id="cb48-4"><a href="eda-dplyr.html#cb48-4"></a><span class="co">#&gt;   month</span></span>
+<span id="cb48-5"><a href="eda-dplyr.html#cb48-5"></a><span class="co">#&gt;   &lt;dbl&gt;</span></span>
+<span id="cb48-6"><a href="eda-dplyr.html#cb48-6"></a><span class="co">#&gt; 1     6</span></span>
+<span id="cb48-7"><a href="eda-dplyr.html#cb48-7"></a><span class="co">#&gt; 2     7</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="eda-dplyr.html#cb49-1"></a><span class="co"># for how many days was Amy active?</span></span>
+<span id="cb49-2"><a href="eda-dplyr.html#cb49-2"></a><span class="kw">count</span>(<span class="kw">distinct</span>(amy75, day))</span>
+<span id="cb49-3"><a href="eda-dplyr.html#cb49-3"></a><span class="co">#&gt; # A tibble: 1 x 1</span></span>
+<span id="cb49-4"><a href="eda-dplyr.html#cb49-4"></a><span class="co">#&gt;       n</span></span>
+<span id="cb49-5"><a href="eda-dplyr.html#cb49-5"></a><span class="co">#&gt;   &lt;int&gt;</span></span>
+<span id="cb49-6"><a href="eda-dplyr.html#cb49-6"></a><span class="co">#&gt; 1     8</span></span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="eda-dplyr.html#cb50-1"></a><span class="co"># summary statistics for wind</span></span>
+<span id="cb50-2"><a href="eda-dplyr.html#cb50-2"></a><span class="kw">summary</span>(<span class="kw">select</span>(amy75, wind))</span>
+<span id="cb50-3"><a href="eda-dplyr.html#cb50-3"></a><span class="co">#&gt;       wind     </span></span>
+<span id="cb50-4"><a href="eda-dplyr.html#cb50-4"></a><span class="co">#&gt;  Min.   :25.0  </span></span>
+<span id="cb50-5"><a href="eda-dplyr.html#cb50-5"></a><span class="co">#&gt;  1st Qu.:31.2  </span></span>
+<span id="cb50-6"><a href="eda-dplyr.html#cb50-6"></a><span class="co">#&gt;  Median :50.0  </span></span>
+<span id="cb50-7"><a href="eda-dplyr.html#cb50-7"></a><span class="co">#&gt;  Mean   :46.5  </span></span>
+<span id="cb50-8"><a href="eda-dplyr.html#cb50-8"></a><span class="co">#&gt;  3rd Qu.:60.0  </span></span>
+<span id="cb50-9"><a href="eda-dplyr.html#cb50-9"></a><span class="co">#&gt;  Max.   :60.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="eda-dplyr.html#cb51-1"></a><span class="co"># summary statistics for pressure</span></span>
+<span id="cb51-2"><a href="eda-dplyr.html#cb51-2"></a><span class="kw">summary</span>(<span class="kw">select</span>(amy75, pressure))</span>
+<span id="cb51-3"><a href="eda-dplyr.html#cb51-3"></a><span class="co">#&gt;     pressure   </span></span>
+<span id="cb51-4"><a href="eda-dplyr.html#cb51-4"></a><span class="co">#&gt;  Min.   : 981  </span></span>
+<span id="cb51-5"><a href="eda-dplyr.html#cb51-5"></a><span class="co">#&gt;  1st Qu.: 986  </span></span>
+<span id="cb51-6"><a href="eda-dplyr.html#cb51-6"></a><span class="co">#&gt;  Median : 987  </span></span>
+<span id="cb51-7"><a href="eda-dplyr.html#cb51-7"></a><span class="co">#&gt;  Mean   : 995  </span></span>
+<span id="cb51-8"><a href="eda-dplyr.html#cb51-8"></a><span class="co">#&gt;  3rd Qu.:1006  </span></span>
+<span id="cb51-9"><a href="eda-dplyr.html#cb51-9"></a><span class="co">#&gt;  Max.   :1013</span></span></code></pre></div>
+</div>
+<div id="summary" class="section level3">
+<h3><span class="header-section-number">9.3.8</span> Summary</h3>
+<p>So far, we’ve covered several functions from <code>"dplyr"</code>, as well as some other
+functions in R:</p>
+<ul>
+<li>functions from <code>"dplyr"</code>
+<ul>
+<li><code>pull()</code> and <code>select()</code></li>
+<li><code>filter()</code></li>
+<li><code>group_by()</code></li>
+<li><code>arrange()</code> and <code>desc()</code></li>
+<li><code>count()</code>, <code>distinct()</code>, <code>summarise()</code></li>
+</ul></li>
+<li>functions in base R
+<ul>
+<li><code>unique()</code>, <code>sort()</code>, <code>mean()</code>, <code>summary()</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="exercises-3" class="section level2">
+<h2><span class="header-section-number">9.4</span> Exercises</h2>
+<p><strong>1)</strong> Use <code>"dplyr"</code> functions/commands to create a table (e.g. tibble)
+<code>storm_names_1980s</code> containing the name and year of storms recorded during the
+1908s (i.e. from 1980 to 1989).</p>
+<p><strong>2)</strong> Use <code>"dplyr"</code> functions/commands to create a table (e.g. tibble)
+<code>storms_per_year</code> containing the number of storms recorded in each year
+(i.e. counts or frequencies of storms in each year). This table shoud contain
+two columns: year values in the first column, and number of storms in the
+second column.</p>
+<p><strong>3)</strong> Use <code>"dplyr"</code> functions/commands to create a table (e.g. tibble) <code>storm_records_per_year</code> containing three columns: 1) <code>name</code> of storm, 2) <code>year</code>
+of storm, and 3) <code>count</code> for number of records (of the corresponding
+storm).</p>
+<p><strong>4)</strong> Use <code>"dplyr"</code> functions/commands to display the different (unique) types
+of storm status.</p>
+<p><strong>5)</strong> Use <code>"dplyr"</code> functions/commands to display the different types of storm
+categories.</p>
+<p><strong>6)</strong> Use <code>"dplyr"</code> functions/commands to display a table showing the <code>status</code>,
+<code>avg_pressure</code> (average pressure), and <code>avg_wind</code> (average wind speed), for
+each type of storm <code>category</code>. This table should contain four columns: 1)
+<code>category</code>, 2) <code>status</code>, 3) <code>avg_pressure</code>, and 4) <code>avg_wind</code>.</p>
+<p><strong>7)</strong> Use <code>"dplyr"</code> functions/commands to create a table (e.g. tibble)
+<code>max_wind_per_storm</code> containing three columns: 1) <code>year</code> of storm, 2) <code>name</code> of
+storm, and 3) <code>max_wind</code> maximum wind speed record (for that storm).</p>
+<p><strong>8)</strong> Use <code>"dplyr"</code> functions/commands to create a table (e.g. tibble)
+<code>max_wind_per_year</code> containing three columns: 1) <code>year</code> of storm, 2) <code>name</code> of
+storm, and 3) <code>wind</code> maximum wind speed record (for that year). Arrange rows by
+wind speed in decreasing order.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tables1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ggplot1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["cwd.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
