@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>42 Basics of HTTP | Computing With Data</title>
+  <title>41 Basics of HTTP | Computing With Data</title>
   <meta name="description" content="This is a book for Concepts in Computing with Data" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="42 Basics of HTTP | Computing With Data" />
+  <meta property="og:title" content="41 Basics of HTTP | Computing With Data" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="42 Basics of HTTP | Computing With Data" />
+  <meta name="twitter:title" content="41 Basics of HTTP | Computing With Data" />
   
   <meta name="twitter:description" content="This is a book for Concepts in Computing with Data" />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="html.html"/>
+<link rel="prev" href="xml.html"/>
 <link rel="next" href="json.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -221,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
 <li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
 <li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
 <li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
 </ul></li>
@@ -238,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exercises-3"><i class="fa fa-check"></i><b>9.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="ggplot1.html"><a href="ggplot1.html"><i class="fa fa-check"></i><b>10</b> Basic Charts with <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="10" data-path="ggplot1.html"><a href="ggplot1.html"><i class="fa fa-check"></i><b>10</b> Exploratory Data Analysis with <code>ggplot2</code></a><ul>
 <li class="chapter" data-level="10.1" data-path="ggplot1.html"><a href="ggplot1.html#introduction-1"><i class="fa fa-check"></i><b>10.1</b> Introduction</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="ggplot1.html"><a href="ggplot1.html#atlantic-hurricane-data-1"><i class="fa fa-check"></i><b>10.1.1</b> Atlantic Hurricane Data</a></li>
 </ul></li>
@@ -254,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
 <li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-in-1990-to-1995"><i class="fa fa-check"></i><b>11.1.3</b> Storms in 1990 to 1995</a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
 <li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
 </ul></li>
 </ul></li>
@@ -603,7 +603,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="39.8" data-path="regex.html"><a href="regex.html#character-classes"><i class="fa fa-check"></i><b>39.8</b> Character Classes</a></li>
 <li class="chapter" data-level="39.9" data-path="regex.html"><a href="regex.html#posix-character-classes"><i class="fa fa-check"></i><b>39.9</b> POSIX Character Classes</a></li>
 </ul></li>
-<li class="chapter" data-level="40" data-path="xml.html"><a href="xml.html"><i class="fa fa-check"></i><b>40</b> Basics of XML</a><ul>
+<li class="chapter" data-level="40" data-path="xml.html"><a href="xml.html"><i class="fa fa-check"></i><b>40</b> Basics of XML and HTML</a><ul>
 <li class="chapter" data-level="40.1" data-path="xml.html"><a href="xml.html#what-is-xml"><i class="fa fa-check"></i><b>40.1</b> What is XML?</a><ul>
 <li class="chapter" data-level="40.1.1" data-path="xml.html"><a href="xml.html#comments-1"><i class="fa fa-check"></i><b>40.1.1</b> Comments</a></li>
 <li class="chapter" data-level="40.1.2" data-path="xml.html"><a href="xml.html#marks-in-xml"><i class="fa fa-check"></i><b>40.1.2</b> Marks in XML</a></li>
@@ -613,34 +613,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="40.1.6" data-path="xml.html"><a href="xml.html#another-example"><i class="fa fa-check"></i><b>40.1.6</b> Another Example</a></li>
 <li class="chapter" data-level="40.1.7" data-path="xml.html"><a href="xml.html#wrapping-up"><i class="fa fa-check"></i><b>40.1.7</b> Wrapping-Up</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="41" data-path="html.html"><a href="html.html"><i class="fa fa-check"></i><b>41</b> HTML Basics</a><ul>
-<li class="chapter" data-level="41.1" data-path="html.html"><a href="html.html#the-web"><i class="fa fa-check"></i><b>41.1</b> The Web</a><ul>
-<li class="chapter" data-level="41.1.1" data-path="html.html"><a href="html.html#how-does-the-web-work"><i class="fa fa-check"></i><b>41.1.1</b> How does the Web work?</a></li>
-</ul></li>
-<li class="chapter" data-level="41.2" data-path="html.html"><a href="html.html#a-quick-introduction-to-html"><i class="fa fa-check"></i><b>41.2</b> A quick introduction to HTML</a><ul>
-<li class="chapter" data-level="41.2.1" data-path="html.html"><a href="html.html#html-document-structure"><i class="fa fa-check"></i><b>41.2.1</b> HTML document structure</a></li>
-<li class="chapter" data-level="41.2.2" data-path="html.html"><a href="html.html#html-syntax"><i class="fa fa-check"></i><b>41.2.2</b> HTML Syntax</a></li>
-<li class="chapter" data-level="41.2.3" data-path="html.html"><a href="html.html#what-the-browser-does"><i class="fa fa-check"></i><b>41.2.3</b> What the browser does</a></li>
-<li class="chapter" data-level="41.2.4" data-path="html.html"><a href="html.html#web-scraping"><i class="fa fa-check"></i><b>41.2.4</b> Web Scraping</a></li>
+<li class="chapter" data-level="40.2" data-path="xml.html"><a href="xml.html#a-quick-introduction-to-html"><i class="fa fa-check"></i><b>40.2</b> A quick introduction to HTML</a><ul>
+<li class="chapter" data-level="40.2.1" data-path="xml.html"><a href="xml.html#html-document-structure"><i class="fa fa-check"></i><b>40.2.1</b> HTML document structure</a></li>
+<li class="chapter" data-level="40.2.2" data-path="xml.html"><a href="xml.html#html-syntax"><i class="fa fa-check"></i><b>40.2.2</b> HTML Syntax</a></li>
+<li class="chapter" data-level="40.2.3" data-path="xml.html"><a href="xml.html#what-the-browser-does"><i class="fa fa-check"></i><b>40.2.3</b> What the browser does</a></li>
+<li class="chapter" data-level="40.2.4" data-path="xml.html"><a href="xml.html#web-scraping"><i class="fa fa-check"></i><b>40.2.4</b> Web Scraping</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="42" data-path="http.html"><a href="http.html"><i class="fa fa-check"></i><b>42</b> Basics of HTTP</a><ul>
-<li class="chapter" data-level="42.1" data-path="http.html"><a href="http.html#a-quick-introduction-to-http"><i class="fa fa-check"></i><b>42.1</b> A quick introduction to HTTP</a><ul>
-<li class="chapter" data-level="42.1.1" data-path="http.html"><a href="http.html#anatomy-of-an-http-message"><i class="fa fa-check"></i><b>42.1.1</b> Anatomy of an HTTP message</a></li>
-<li class="chapter" data-level="42.1.2" data-path="http.html"><a href="http.html#http-methods"><i class="fa fa-check"></i><b>42.1.2</b> HTTP Methods</a></li>
+<li class="chapter" data-level="41" data-path="http.html"><a href="http.html"><i class="fa fa-check"></i><b>41</b> Basics of HTTP</a><ul>
+<li class="chapter" data-level="41.1" data-path="http.html"><a href="http.html#the-web"><i class="fa fa-check"></i><b>41.1</b> The Web</a><ul>
+<li class="chapter" data-level="41.1.1" data-path="http.html"><a href="http.html#how-does-the-web-work"><i class="fa fa-check"></i><b>41.1.1</b> How does the Web work?</a></li>
 </ul></li>
-<li class="chapter" data-level="42.2" data-path="http.html"><a href="http.html#r-package-rcurl"><i class="fa fa-check"></i><b>42.2</b> R Package <code>"RCurl"</code></a><ul>
-<li class="chapter" data-level="42.2.1" data-path="http.html"><a href="http.html#function-geturl"><i class="fa fa-check"></i><b>42.2.1</b> Function <code>getURL()</code></a></li>
-<li class="chapter" data-level="42.2.2" data-path="http.html"><a href="http.html#function-geturl-1"><i class="fa fa-check"></i><b>42.2.2</b> Function <code>getURL()</code></a></li>
+<li class="chapter" data-level="41.2" data-path="http.html"><a href="http.html#a-quick-introduction-to-http"><i class="fa fa-check"></i><b>41.2</b> A quick introduction to HTTP</a><ul>
+<li class="chapter" data-level="41.2.1" data-path="http.html"><a href="http.html#anatomy-of-an-http-message"><i class="fa fa-check"></i><b>41.2.1</b> Anatomy of an HTTP message</a></li>
+<li class="chapter" data-level="41.2.2" data-path="http.html"><a href="http.html#http-methods"><i class="fa fa-check"></i><b>41.2.2</b> HTTP Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="41.3" data-path="http.html"><a href="http.html#r-package-rcurl"><i class="fa fa-check"></i><b>41.3</b> R Package <code>"RCurl"</code></a><ul>
+<li class="chapter" data-level="41.3.1" data-path="http.html"><a href="http.html#function-geturl"><i class="fa fa-check"></i><b>41.3.1</b> Function <code>getURL()</code></a></li>
+<li class="chapter" data-level="41.3.2" data-path="http.html"><a href="http.html#function-geturl-1"><i class="fa fa-check"></i><b>41.3.2</b> Function <code>getURL()</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="43" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>43</b> JSON Data</a><ul>
-<li class="chapter" data-level="43.1" data-path="json.html"><a href="json.html#json-basics"><i class="fa fa-check"></i><b>43.1</b> JSON Basics</a><ul>
-<li class="chapter" data-level="43.1.1" data-path="json.html"><a href="json.html#understanding-json-syntax"><i class="fa fa-check"></i><b>43.1.1</b> Understanding JSON Syntax</a></li>
-<li class="chapter" data-level="43.1.2" data-path="json.html"><a href="json.html#data-table-toy-example"><i class="fa fa-check"></i><b>43.1.2</b> Data Table Toy Example</a></li>
-<li class="chapter" data-level="43.1.3" data-path="json.html"><a href="json.html#json-r-packages"><i class="fa fa-check"></i><b>43.1.3</b> JSON R packages</a></li>
-<li class="chapter" data-level="43.1.4" data-path="json.html"><a href="json.html#reading-json-data"><i class="fa fa-check"></i><b>43.1.4</b> Reading JSON Data</a></li>
+<li class="chapter" data-level="42" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>42</b> JSON Data</a><ul>
+<li class="chapter" data-level="42.1" data-path="json.html"><a href="json.html#json-basics"><i class="fa fa-check"></i><b>42.1</b> JSON Basics</a><ul>
+<li class="chapter" data-level="42.1.1" data-path="json.html"><a href="json.html#understanding-json-syntax"><i class="fa fa-check"></i><b>42.1.1</b> Understanding JSON Syntax</a></li>
+<li class="chapter" data-level="42.1.2" data-path="json.html"><a href="json.html#data-table-toy-example"><i class="fa fa-check"></i><b>42.1.2</b> Data Table Toy Example</a></li>
+<li class="chapter" data-level="42.1.3" data-path="json.html"><a href="json.html#json-r-packages"><i class="fa fa-check"></i><b>42.1.3</b> JSON R packages</a></li>
+<li class="chapter" data-level="42.1.4" data-path="json.html"><a href="json.html#reading-json-data"><i class="fa fa-check"></i><b>42.1.4</b> Reading JSON Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="43" data-path="apis.html"><a href="apis.html"><i class="fa fa-check"></i><b>43</b> Web APIs</a><ul>
+<li class="chapter" data-level="43.1" data-path="apis.html"><a href="apis.html#bart-api-documentation"><i class="fa fa-check"></i><b>43.1</b> BART API Documentation</a><ul>
+<li class="chapter" data-level="43.1.1" data-path="apis.html"><a href="apis.html#station-information-api"><i class="fa fa-check"></i><b>43.1.1</b> Station Information API</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -664,16 +667,123 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="http" class="section level1">
-<h1><span class="header-section-number">42</span> Basics of HTTP</h1>
+<h1><span class="header-section-number">41</span> Basics of HTTP</h1>
 <p>In this chpater we provide a basic introduction to HTTP which is the protocol
 that servers and browsers use to communicate and exchange information on the
-Web.</p>
+Web. The goal is to give you a crash introduction to HTTP, how the
+Web works, and other preliminary concepts that will help you understand how to
+work with data using Web (HTML) Forms.</p>
 <p>According to the dictionary, a <strong>protocol</strong> “is a system of rules that explain
 the correct conduct and procedures to be followed in formal situations”</p>
 <p>“A communications protocol is a system of digital rules for data exchange
 within or between computers.”</p>
+<div id="the-web" class="section level2">
+<h2><span class="header-section-number">41.1</span> The Web</h2>
+<p>Think about when you surf the web:</p>
+<ul>
+<li>you open a web browser (e.g. Google Chrome, Safari, Firefox)</li>
+<li>you type in or click the URL of a website you wih to visit (e.g. 
+<a href="https://www.r-project.org" class="uri">https://www.r-project.org</a>)</li>
+<li>you wait some fractions of a second, and then the website shows up in your
+screen.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-596"></span>
+<img src="images/html/web-scheme1.png" alt="Surfing the web" width="70%" />
+<p class="caption">
+Figure 41.1: Surfing the web
+</p>
+</div>
+<p>What exactly is hapening “behind the scenes”?</p>
+<ul>
+<li>People access websites using software called a <strong>Web browser</strong> (e.g. Google
+Chrome, Safari, Firefox)</li>
+<li>A browser is a software that, among other things, <strong>requests</strong> information
+(e.g. request to access R project’s website)</li>
+<li>Using more proper language, the browser in your computer is the
+<strong>client that requests</strong> a variety of resources (e.g. pages, images, videos,
+audio, scripts)</li>
+<li>The client’s request is sent to <strong>Web servers</strong></li>
+<li>A <strong>server</strong> is the software-computer in charge of <strong>serving</strong> the resources
+that the clients request.</li>
+<li>The server <strong>sends responses</strong> back to the client</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-597"></span>
+<img src="images/html/web-scheme2.png" alt="Client makes a request, and the serve responds" width="70%" />
+<p class="caption">
+Figure 41.2: Client makes a request, and the serve responds
+</p>
+</div>
+<p>To be more accurate, the server is the software that allows the computer
+to communicate with other computers; however, it is common to use the tem
+“server” to refer to the computer running the software, which also contains
+other files and programs.
+Simply put, a server is basically a computer connected to the Internet. The
+Internet, in turn, is just a network of connected computers forming a system of
+standards and rules. The purpose of connecting computers together is to share
+information.</p>
+<p>The job of the server software is to wait for a request for information, then
+retrieve and send that information back to the client(s) as fast as possible.
+In other words, Web servers have a full time job, waiting for requests from
+Web browsers all over the world.</p>
+<div id="how-does-the-web-work" class="section level3">
+<h3><span class="header-section-number">41.1.1</span> How does the Web work?</h3>
+<p>Now that we have the high level intuition of clients making requests, and
+servers sending responses back to clients, let’s describe things in more
+detail.</p>
+<p>To make web pages, programmers, developers and designers create files written
+in a special type of syntax called <strong>HyperText Markup Language</strong> or HTML for
+short. These files are stored in a Web server.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-598"></span>
+<img src="images/html/web-scheme3.png" alt="HTML files are the building blocks of web pages" width="80%" />
+<p class="caption">
+Figure 41.3: HTML files are the building blocks of web pages
+</p>
+</div>
+<p>To be more precise, Web servers store more than one single HTML file. In
+practice, websites are made of several directories containing various types of
+files (image files, audio files, video files, scripts, etc).</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-599"></span>
+<img src="images/html/web-scheme5.png" alt="Web server containing several types of files, not just HTML files" width="80%" />
+<p class="caption">
+Figure 41.4: Web server containing several types of files, not just HTML files
+</p>
+</div>
+<p>Once HTML files are put on the web server, any browser (e.g. Chrome, Safari,
+Firefox, Explorer) can retrieve the web page over the internet. The browser
+on your laptop, on your tablet, on your cellphone, you name it. As long as the
+device you are using is connected to the internet, the browser will retrieve
+the web page. The HTML content in the web page tells the browser everything it
+needs to know to display the page.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-600"></span>
+<img src="images/html/web-scheme4.png" alt="Diagram of the Web" width="75%" />
+<p class="caption">
+Figure 41.5: Diagram of the Web
+</p>
+</div>
+<p>On a side note, it’s important to distinguish the Internet from the Web. The
+Web, originally called the World Wide Web, is just one option to share
+information over the Internet. What characterizes the Web is that it allows
+documents to be linked to one another using <em>hypertext</em> links or hyperlinks,
+thus forming a web of interconnected resources.</p>
+<div id="in-summary-1" class="section level4 unnumbered">
+<h4>In Summary</h4>
+<ul>
+<li><p>The Web is a massive distributed information system connecting software
+and computers to share information.</p></li>
+<li><p>The software and computers that form the Web are divided into two types:
+<em>clients</em> and <em>servers</em>.</p></li>
+<li><p>The way clients and servers dialogue between each other is by following
+formal <strong>protocols of communication</strong>.</p></li>
+<li><p>The main type of protocol that clients and servers use is the HyperText
+Transfer Protocol (HTTP).</p></li>
+<li><p>But there are other ways in which computers can exchange information such as
+email, file transfer (FTP), and many others.</p></li>
+</ul>
+</div>
+</div>
+</div>
 <div id="a-quick-introduction-to-http" class="section level2">
-<h2><span class="header-section-number">42.1</span> A quick introduction to HTTP</h2>
+<h2><span class="header-section-number">41.2</span> A quick introduction to HTTP</h2>
 <ul>
 <li>Whenever you surf the web, your browser sends HTTP request messages</li>
 <li>the HTTP requests are sent to Web servers</li>
@@ -687,36 +797,73 @@ illustrated in the diagram below:</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-601"></span>
 <img src="images/html/web-scheme6.png" alt="Client make a request, and the serve responds" width="70%" />
 <p class="caption">
-Figure 42.1: Client make a request, and the serve responds
+Figure 41.6: Client make a request, and the serve responds
 </p>
 </div>
 <p>We provide the content of this dialogue in the following block:</p>
-<pre><code>GET / HTTP/1.1
-User-Agent: curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8y zlib/1.2.5
-Host: r-project.org
-Accept: */*
-
------------------------------------------------------------------------------------
-
-HTTP/1.1 301 Moved Permanently
-Date: Thu, 01 May 2014 16:54:43 GMT
-Server: Apache/2.2.22 (Debian)
-Location: http://www.r-project.org/
-Vary: Accept-Encoding
-Content-Length: 312
-Content-Type: text/html; charset=iso-8859-1
- 
-&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
-&lt;html&gt;&lt;head&gt;
-&lt;title&gt;301 Moved Permanently&lt;/title&gt;
-&lt;/head&gt;&lt;body&gt;
-&lt;h1&gt;Moved Permanently&lt;/h1&gt;
-&lt;p&gt;The document has moved &lt;a href=&quot;http://www.r-project.org/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;address&gt;Apache/2.2.22 (Debian) Server at r-project.org Port 80&lt;/address&gt;
-&lt;/body&gt;&lt;/html&gt;</code></pre>
+<p>Using Chrome’s __DevTools_ (developer tools), we can see the associated
+information related to the HTTP “conversation” between the client and the
+server.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-602"></span>
+<img src="images/html/web-http-devtools.png" alt="Inspecting HTTP messages via DevTools" width="90%" />
+<p class="caption">
+Figure 41.7: Inspecting HTTP messages via DevTools
+</p>
+</div>
+<p>Think of an HTTP request as a set of information sent to the server. When the
+server receives the request, it (the server) processes the information and
+provide a response back to the client. When you visit a URL in your web broswer,
+say R’s project website (<code>https://www.r-project.org</code>), an HTTP request is made
+and the response is rendered by the browser as the website you see.
+Although we don’t see the “dialogue” between client and server, tt is possible
+to inspect this interaction using the development tools in a browser such as
+Chrome’s DevTools (like the screenshot above).</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-603"></span>
+<img src="images/html/web-http-headers.png" alt="DevTools menu tab for inspecting HTTP messages" width="40%" />
+<p class="caption">
+Figure 41.8: DevTools menu tab for inspecting HTTP messages
+</p>
+</div>
+<p>The above is a screencapture in which we can see that the request is composed
+of a URL (R’s project website), and a request method (<code>GET</code>) which is what the
+browser employs to access a website.</p>
+<div id="request" class="section level4 unnumbered">
+<h4>Request</h4>
+<p>There are several components of an HTTP request (see figure below), but we
+will focus on the most relevant:</p>
+<ul>
+<li><code>URL</code>: the address or endpoint for the request</li>
+<li>HTTP method or verb: a specific method invoked on the endpoint
+(<code>GET</code>, <code>POST</code>, <code>DELETE</code>, <code>PUT</code>)</li>
+<li>Headers: additional data sent to the server, such as who is making the request
+and what type of response is expected</li>
+<li>Body: data sent to the server outside of the headers, common for <code>POST</code> and
+<code>PUT</code> requests</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-604"></span>
+<img src="images/html/web-http-request-headers.png" alt="HTTP request headers" width="90%" />
+<p class="caption">
+Figure 41.9: HTTP request headers
+</p>
+</div>
+</div>
+<div id="response" class="section level4 unnumbered">
+<h4>Response</h4>
+<p>The reponse headers include the HTTP status code that informs the client how
+the request was received. There are also other details about the
+content delivered by the server. In the above example accessing
+www.r-project.com, we can see the status code success <code>200</code>, along with other
+details about the response content. Notice that the returned content is HTML.
+This HTML content is what the browser renders into a webpage.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-605"></span>
+<img src="images/html/web-http-response-headers.png" alt="HTTP response headers" width="50%" />
+<p class="caption">
+Figure 41.10: HTTP response headers
+</p>
+</div>
+</div>
 <div id="anatomy-of-an-http-message" class="section level3">
-<h3><span class="header-section-number">42.1.1</span> Anatomy of an HTTP message</h3>
+<h3><span class="header-section-number">41.2.1</span> Anatomy of an HTTP message</h3>
 <p>HTTP messages consist of 2 parts (separated by a blank line)</p>
 <ol style="list-style-type: decimal">
 <li>A message <strong>header</strong>
@@ -757,7 +904,7 @@ content of the HTML page</li>
 </ul>
 </div>
 <div id="http-methods" class="section level3">
-<h3><span class="header-section-number">42.1.2</span> HTTP Methods</h3>
+<h3><span class="header-section-number">41.2.2</span> HTTP Methods</h3>
 <p>Here’s a table with HTTP methods, and their descriptions</p>
 <table>
 <colgroup>
@@ -814,7 +961,7 @@ protocol</li>
 </div>
 </div>
 <div id="r-package-rcurl" class="section level2">
-<h2><span class="header-section-number">42.2</span> R Package <code>"RCurl"</code></h2>
+<h2><span class="header-section-number">41.3</span> R Package <code>"RCurl"</code></h2>
 <p>The R package <code>"RCurl"</code> provides the necessary tools for accessing URIs, data
 and services via HTTP.</p>
 <p>Basically, <code>"RCurl"</code> is an R-interface to the C-library <code>libcurl</code>.</p>
@@ -847,18 +994,18 @@ steroids to R for handling HTTP as well as other protocols. Simply put,
 <li>they differ in the type of document they retrieve and how</li>
 </ul>
 <div id="function-geturl" class="section level3">
-<h3><span class="header-section-number">42.2.1</span> Function <code>getURL()</code></h3>
+<h3><span class="header-section-number">41.3.1</span> Function <code>getURL()</code></h3>
 <p>As its name indicates, this function allows us to fetch the contents of a URL.</p>
 <p><code>getURL()</code> expands the somewhat limited capabilities provided by the built-in
 functions <code>download.url()</code> and url()`</p>
 <p><code>getURL()</code> downloads static or fixed content files. It collects and returns the
 body of the response into a single string. For instance, let’s fetch the content
 of the R-project’s homepage</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="http.html#cb583-1"></a><span class="co"># load RCurl (remember to install it first)</span></span>
-<span id="cb583-2"><a href="http.html#cb583-2"></a><span class="kw">library</span>(RCurl)</span>
-<span id="cb583-3"><a href="http.html#cb583-3"></a></span>
-<span id="cb583-4"><a href="http.html#cb583-4"></a><span class="co"># retrieving the content of the R homepage</span></span>
-<span id="cb583-5"><a href="http.html#cb583-5"></a>rproj &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;http://www.r-project.org/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="http.html#cb582-1"></a><span class="co"># load RCurl (remember to install it first)</span></span>
+<span id="cb582-2"><a href="http.html#cb582-2"></a><span class="kw">library</span>(RCurl)</span>
+<span id="cb582-3"><a href="http.html#cb582-3"></a></span>
+<span id="cb582-4"><a href="http.html#cb582-4"></a><span class="co"># retrieving the content of the R homepage</span></span>
+<span id="cb582-5"><a href="http.html#cb582-5"></a>rproj &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;http://www.r-project.org/&quot;</span>)</span></code></pre></div>
 <p>If you inspect the content of <code>rproj</code>, you should see this:</p>
 <pre><code>[1] &quot;&lt;!DOCTYPE HTML PUBLIC \&quot;-//W3C//DTD HTML 4.01 Transitional//EN\&quot;&gt;\n
 &lt;html&gt;\n&lt;head&gt;\n&lt;title&gt;The R Project for Statistical Computing&lt;/title&gt;\n
@@ -874,14 +1021,14 @@ frameborder=0&gt;\n&lt;noframes&gt;\n&lt;h1&gt;The R Project for Statistical Com
 &lt;/FRAMESET&gt;\n\n\n\n&quot;</code></pre>
 </div>
 <div id="function-geturl-1" class="section level3">
-<h3><span class="header-section-number">42.2.2</span> Function <code>getURL()</code></h3>
+<h3><span class="header-section-number">41.3.2</span> Function <code>getURL()</code></h3>
 <p>What can we do with the retrieved content in <code>rproj</code>?</p>
 <p>We can parse it using the functions from the <code>"XML"</code> package:</p>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="http.html#cb585-1"></a><span class="co"># load XML</span></span>
-<span id="cb585-2"><a href="http.html#cb585-2"></a><span class="kw">library</span>(XML)</span>
-<span id="cb585-3"><a href="http.html#cb585-3"></a></span>
-<span id="cb585-4"><a href="http.html#cb585-4"></a><span class="co"># parsing the content of the R homepage</span></span>
-<span id="cb585-5"><a href="http.html#cb585-5"></a>rproj_doc =<span class="st"> </span><span class="kw">htmlParse</span>(rproj)</span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="http.html#cb584-1"></a><span class="co"># load XML</span></span>
+<span id="cb584-2"><a href="http.html#cb584-2"></a><span class="kw">library</span>(XML)</span>
+<span id="cb584-3"><a href="http.html#cb584-3"></a></span>
+<span id="cb584-4"><a href="http.html#cb584-4"></a><span class="co"># parsing the content of the R homepage</span></span>
+<span id="cb584-5"><a href="http.html#cb584-5"></a>rproj_doc =<span class="st"> </span><span class="kw">htmlParse</span>(rproj)</span></code></pre></div>
 <p>The real power and <em>raison d’etre</em> of <code>"RCurl"</code> is its capacity for making
 requests associated to Web Forms.</p>
 
@@ -893,7 +1040,7 @@ requests associated to Web Forms.</p>
           </div>
         </div>
       </div>
-<a href="html.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="xml.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="json.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>40 Basics of XML | Computing With Data</title>
+  <title>40 Basics of XML and HTML | Computing With Data</title>
   <meta name="description" content="This is a book for Concepts in Computing with Data" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="40 Basics of XML | Computing With Data" />
+  <meta property="og:title" content="40 Basics of XML and HTML | Computing With Data" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="40 Basics of XML | Computing With Data" />
+  <meta name="twitter:title" content="40 Basics of XML and HTML | Computing With Data" />
   
   <meta name="twitter:description" content="This is a book for Concepts in Computing with Data" />
   
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="regex.html"/>
-<link rel="next" href="html.html"/>
+<link rel="next" href="http.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -221,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
 <li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
 <li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
 <li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
 </ul></li>
@@ -238,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exercises-3"><i class="fa fa-check"></i><b>9.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="ggplot1.html"><a href="ggplot1.html"><i class="fa fa-check"></i><b>10</b> Basic Charts with <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="10" data-path="ggplot1.html"><a href="ggplot1.html"><i class="fa fa-check"></i><b>10</b> Exploratory Data Analysis with <code>ggplot2</code></a><ul>
 <li class="chapter" data-level="10.1" data-path="ggplot1.html"><a href="ggplot1.html#introduction-1"><i class="fa fa-check"></i><b>10.1</b> Introduction</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="ggplot1.html"><a href="ggplot1.html#atlantic-hurricane-data-1"><i class="fa fa-check"></i><b>10.1.1</b> Atlantic Hurricane Data</a></li>
 </ul></li>
@@ -254,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
 <li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-in-1990-to-1995"><i class="fa fa-check"></i><b>11.1.3</b> Storms in 1990 to 1995</a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
 <li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
 </ul></li>
 </ul></li>
@@ -603,7 +603,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="39.8" data-path="regex.html"><a href="regex.html#character-classes"><i class="fa fa-check"></i><b>39.8</b> Character Classes</a></li>
 <li class="chapter" data-level="39.9" data-path="regex.html"><a href="regex.html#posix-character-classes"><i class="fa fa-check"></i><b>39.9</b> POSIX Character Classes</a></li>
 </ul></li>
-<li class="chapter" data-level="40" data-path="xml.html"><a href="xml.html"><i class="fa fa-check"></i><b>40</b> Basics of XML</a><ul>
+<li class="chapter" data-level="40" data-path="xml.html"><a href="xml.html"><i class="fa fa-check"></i><b>40</b> Basics of XML and HTML</a><ul>
 <li class="chapter" data-level="40.1" data-path="xml.html"><a href="xml.html#what-is-xml"><i class="fa fa-check"></i><b>40.1</b> What is XML?</a><ul>
 <li class="chapter" data-level="40.1.1" data-path="xml.html"><a href="xml.html#comments-1"><i class="fa fa-check"></i><b>40.1.1</b> Comments</a></li>
 <li class="chapter" data-level="40.1.2" data-path="xml.html"><a href="xml.html#marks-in-xml"><i class="fa fa-check"></i><b>40.1.2</b> Marks in XML</a></li>
@@ -613,34 +613,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="40.1.6" data-path="xml.html"><a href="xml.html#another-example"><i class="fa fa-check"></i><b>40.1.6</b> Another Example</a></li>
 <li class="chapter" data-level="40.1.7" data-path="xml.html"><a href="xml.html#wrapping-up"><i class="fa fa-check"></i><b>40.1.7</b> Wrapping-Up</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="41" data-path="html.html"><a href="html.html"><i class="fa fa-check"></i><b>41</b> HTML Basics</a><ul>
-<li class="chapter" data-level="41.1" data-path="html.html"><a href="html.html#the-web"><i class="fa fa-check"></i><b>41.1</b> The Web</a><ul>
-<li class="chapter" data-level="41.1.1" data-path="html.html"><a href="html.html#how-does-the-web-work"><i class="fa fa-check"></i><b>41.1.1</b> How does the Web work?</a></li>
-</ul></li>
-<li class="chapter" data-level="41.2" data-path="html.html"><a href="html.html#a-quick-introduction-to-html"><i class="fa fa-check"></i><b>41.2</b> A quick introduction to HTML</a><ul>
-<li class="chapter" data-level="41.2.1" data-path="html.html"><a href="html.html#html-document-structure"><i class="fa fa-check"></i><b>41.2.1</b> HTML document structure</a></li>
-<li class="chapter" data-level="41.2.2" data-path="html.html"><a href="html.html#html-syntax"><i class="fa fa-check"></i><b>41.2.2</b> HTML Syntax</a></li>
-<li class="chapter" data-level="41.2.3" data-path="html.html"><a href="html.html#what-the-browser-does"><i class="fa fa-check"></i><b>41.2.3</b> What the browser does</a></li>
-<li class="chapter" data-level="41.2.4" data-path="html.html"><a href="html.html#web-scraping"><i class="fa fa-check"></i><b>41.2.4</b> Web Scraping</a></li>
+<li class="chapter" data-level="40.2" data-path="xml.html"><a href="xml.html#a-quick-introduction-to-html"><i class="fa fa-check"></i><b>40.2</b> A quick introduction to HTML</a><ul>
+<li class="chapter" data-level="40.2.1" data-path="xml.html"><a href="xml.html#html-document-structure"><i class="fa fa-check"></i><b>40.2.1</b> HTML document structure</a></li>
+<li class="chapter" data-level="40.2.2" data-path="xml.html"><a href="xml.html#html-syntax"><i class="fa fa-check"></i><b>40.2.2</b> HTML Syntax</a></li>
+<li class="chapter" data-level="40.2.3" data-path="xml.html"><a href="xml.html#what-the-browser-does"><i class="fa fa-check"></i><b>40.2.3</b> What the browser does</a></li>
+<li class="chapter" data-level="40.2.4" data-path="xml.html"><a href="xml.html#web-scraping"><i class="fa fa-check"></i><b>40.2.4</b> Web Scraping</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="42" data-path="http.html"><a href="http.html"><i class="fa fa-check"></i><b>42</b> Basics of HTTP</a><ul>
-<li class="chapter" data-level="42.1" data-path="http.html"><a href="http.html#a-quick-introduction-to-http"><i class="fa fa-check"></i><b>42.1</b> A quick introduction to HTTP</a><ul>
-<li class="chapter" data-level="42.1.1" data-path="http.html"><a href="http.html#anatomy-of-an-http-message"><i class="fa fa-check"></i><b>42.1.1</b> Anatomy of an HTTP message</a></li>
-<li class="chapter" data-level="42.1.2" data-path="http.html"><a href="http.html#http-methods"><i class="fa fa-check"></i><b>42.1.2</b> HTTP Methods</a></li>
+<li class="chapter" data-level="41" data-path="http.html"><a href="http.html"><i class="fa fa-check"></i><b>41</b> Basics of HTTP</a><ul>
+<li class="chapter" data-level="41.1" data-path="http.html"><a href="http.html#the-web"><i class="fa fa-check"></i><b>41.1</b> The Web</a><ul>
+<li class="chapter" data-level="41.1.1" data-path="http.html"><a href="http.html#how-does-the-web-work"><i class="fa fa-check"></i><b>41.1.1</b> How does the Web work?</a></li>
 </ul></li>
-<li class="chapter" data-level="42.2" data-path="http.html"><a href="http.html#r-package-rcurl"><i class="fa fa-check"></i><b>42.2</b> R Package <code>"RCurl"</code></a><ul>
-<li class="chapter" data-level="42.2.1" data-path="http.html"><a href="http.html#function-geturl"><i class="fa fa-check"></i><b>42.2.1</b> Function <code>getURL()</code></a></li>
-<li class="chapter" data-level="42.2.2" data-path="http.html"><a href="http.html#function-geturl-1"><i class="fa fa-check"></i><b>42.2.2</b> Function <code>getURL()</code></a></li>
+<li class="chapter" data-level="41.2" data-path="http.html"><a href="http.html#a-quick-introduction-to-http"><i class="fa fa-check"></i><b>41.2</b> A quick introduction to HTTP</a><ul>
+<li class="chapter" data-level="41.2.1" data-path="http.html"><a href="http.html#anatomy-of-an-http-message"><i class="fa fa-check"></i><b>41.2.1</b> Anatomy of an HTTP message</a></li>
+<li class="chapter" data-level="41.2.2" data-path="http.html"><a href="http.html#http-methods"><i class="fa fa-check"></i><b>41.2.2</b> HTTP Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="41.3" data-path="http.html"><a href="http.html#r-package-rcurl"><i class="fa fa-check"></i><b>41.3</b> R Package <code>"RCurl"</code></a><ul>
+<li class="chapter" data-level="41.3.1" data-path="http.html"><a href="http.html#function-geturl"><i class="fa fa-check"></i><b>41.3.1</b> Function <code>getURL()</code></a></li>
+<li class="chapter" data-level="41.3.2" data-path="http.html"><a href="http.html#function-geturl-1"><i class="fa fa-check"></i><b>41.3.2</b> Function <code>getURL()</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="43" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>43</b> JSON Data</a><ul>
-<li class="chapter" data-level="43.1" data-path="json.html"><a href="json.html#json-basics"><i class="fa fa-check"></i><b>43.1</b> JSON Basics</a><ul>
-<li class="chapter" data-level="43.1.1" data-path="json.html"><a href="json.html#understanding-json-syntax"><i class="fa fa-check"></i><b>43.1.1</b> Understanding JSON Syntax</a></li>
-<li class="chapter" data-level="43.1.2" data-path="json.html"><a href="json.html#data-table-toy-example"><i class="fa fa-check"></i><b>43.1.2</b> Data Table Toy Example</a></li>
-<li class="chapter" data-level="43.1.3" data-path="json.html"><a href="json.html#json-r-packages"><i class="fa fa-check"></i><b>43.1.3</b> JSON R packages</a></li>
-<li class="chapter" data-level="43.1.4" data-path="json.html"><a href="json.html#reading-json-data"><i class="fa fa-check"></i><b>43.1.4</b> Reading JSON Data</a></li>
+<li class="chapter" data-level="42" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>42</b> JSON Data</a><ul>
+<li class="chapter" data-level="42.1" data-path="json.html"><a href="json.html#json-basics"><i class="fa fa-check"></i><b>42.1</b> JSON Basics</a><ul>
+<li class="chapter" data-level="42.1.1" data-path="json.html"><a href="json.html#understanding-json-syntax"><i class="fa fa-check"></i><b>42.1.1</b> Understanding JSON Syntax</a></li>
+<li class="chapter" data-level="42.1.2" data-path="json.html"><a href="json.html#data-table-toy-example"><i class="fa fa-check"></i><b>42.1.2</b> Data Table Toy Example</a></li>
+<li class="chapter" data-level="42.1.3" data-path="json.html"><a href="json.html#json-r-packages"><i class="fa fa-check"></i><b>42.1.3</b> JSON R packages</a></li>
+<li class="chapter" data-level="42.1.4" data-path="json.html"><a href="json.html#reading-json-data"><i class="fa fa-check"></i><b>42.1.4</b> Reading JSON Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="43" data-path="apis.html"><a href="apis.html"><i class="fa fa-check"></i><b>43</b> Web APIs</a><ul>
+<li class="chapter" data-level="43.1" data-path="apis.html"><a href="apis.html#bart-api-documentation"><i class="fa fa-check"></i><b>43.1</b> BART API Documentation</a><ul>
+<li class="chapter" data-level="43.1.1" data-path="apis.html"><a href="apis.html#station-information-api"><i class="fa fa-check"></i><b>43.1.1</b> Station Information API</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -664,9 +667,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="xml" class="section level1">
-<h1><span class="header-section-number">40</span> Basics of XML</h1>
-<p>The goal of this chapter is to give you a crash introduction to XML so you can
-get a good grasp of this format for the next chapter: HTML.</p>
+<h1><span class="header-section-number">40</span> Basics of XML and HTML</h1>
+<p>The goal of this chapter is to give you a crash introduction to XML and HTML,
+so you can get a good grasp of this format for the next chapter: Web and HTTP.</p>
 <ul>
 <li>Large amounts of data and information are stored, shared and distributed
 using HTML and XML-dialects</li>
@@ -918,6 +921,187 @@ our hypothetical XML document should look like:</p>
 <li>a standard for the semantic, hierarchical representation of data</li>
 <li>provides a general approach for representing all types of information dialects</li>
 </ul>
+</div>
+</div>
+<div id="a-quick-introduction-to-html" class="section level2">
+<h2><span class="header-section-number">40.2</span> A quick introduction to HTML</h2>
+<p>HTML is not a programming language; it is simply a markup language, which means
+it is a syntax for identifying and describing the elements of a document such
+as headings, paragraphs, lists, tables, images, hyperlinks, etc. Technically,
+HTML is an XML dialect.</p>
+<p>Say we visit R’s official website (screencapture below).</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-588"></span>
+<img src="images/html/r-webpage2.png" alt="R project's home page" width="70%" />
+<p class="caption">
+Figure 40.1: R project’s home page
+</p>
+</div>
+<p>The visually rich and interactive pages we see on the Web are based on plain
+text files referred to as <em>source</em> files. To look at the actual HTML content
+behind R’s homepage, you need to get access to the source code option in your
+browser. If you are using Chrome, go to the <strong>View</strong> tab in the menu bar, then
+choose the <strong>Developer</strong> option, and finally click on <strong>View Source</strong>.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-589"></span>
+<img src="images/html/r-webpage3.png" alt="View source code of a webpage in Chrome" width="70%" />
+<p class="caption">
+Figure 40.2: View source code of a webpage in Chrome
+</p>
+</div>
+<p>If we take a look at the source
+file behind R’s homepage, we discover the actual HTML content, depicted in
+the image below.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-590"></span>
+<img src="images/html/r-webpage-source1.png" alt="Source code behind R project's home page" width="70%" />
+<p class="caption">
+Figure 40.3: Source code behind R project’s home page
+</p>
+</div>
+<p>As you can tell, the webpage is cleverly rendered by your browser that knows
+exactly how to take care of the content in the source file. If you are not
+familiar with HTML, some (if not most) of the text will look like gibberish to
+you right now. But it all has a specific structure and meaning.</p>
+<p>What you see on the browser is the result of the resources served by the server
+where R’s website is stored. Technically speaking, there should be an index.html
+file, plus other files (stylesheet files, and image files)</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-591"></span>
+<img src="images/html/r-webpage-source2.png" alt="Other resources being linked in the home page" width="70%" />
+<p class="caption">
+Figure 40.4: Other resources being linked in the home page
+</p>
+</div>
+<ul>
+<li><code>index.html</code></li>
+<li><code>favicon-33x32.png</code></li>
+<li><code>favicon-16x16.png</code></li>
+<li><code>bootstrap.min.css</code></li>
+<li><code>R.css</code></li>
+<li><code>Rlogo.png</code></li>
+</ul>
+<div id="html-document-structure" class="section level3">
+<h3><span class="header-section-number">40.2.1</span> HTML document structure</h3>
+<p>Let’s study the structure of a basic HTML document. Below is a diagram with a
+simplified content of R’s webpage.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-592"></span>
+<img src="images/html/r-webpage-source3.png" alt="HTML document structure" width="80%" />
+<p class="caption">
+Figure 40.5: HTML document structure
+</p>
+</div>
+<p>The first line of text is the <em>document type declaration</em>, which identifies
+this document as an HTML5 document.
+Then we have the <strong>html</strong> element which is the root element of the document,
+and it contains all the other elements.</p>
+<p>Within the <strong>html</strong> element, we find two elements: the <strong>head</strong> and the
+<strong>body</strong>. The <em>head</em> element contains descriptive information such as the
+title, style sheets, scripts, and other meta information. The mandatory element
+inside the head is the <strong>title</strong>.</p>
+<p>The <strong>body</strong> element contains everything that is displayed in the browser.</p>
+</div>
+<div id="html-syntax" class="section level3">
+<h3><span class="header-section-number">40.2.2</span> HTML Syntax</h3>
+<p>What is the anatomy of html elements?</p>
+<p>Here’s an example with a <code>&lt;p&gt;</code> element which is the <strong>paragraph</strong> element.
+An HTML tag has an opening tag consisting of the tag name surrounded by angle
+brackets, that is, the <code>&lt;p&gt;</code> characters.</p>
+<p>Usually, you put tags around some <em>content</em> text. At the end of the tag there
+is the closing tag, in this case <code>&lt;/p&gt;</code>. You know it’s a closing tag because
+it comens after the content, and it has a slash <code>/</code> before the <code>p</code> name. All
+closing tags have a slash in them.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-593"></span>
+<img src="images/html/html-syntax1.svg" alt="Anatomy of html elements" width="70%" />
+<p class="caption">
+Figure 40.6: Anatomy of html elements
+</p>
+</div>
+<p>Not all tags come in the form of a pair of matching tags (an opening and a
+closing tag). There are some tags that don’t have a closing tag. Perhaps the
+most common tag of this type is the <code>&lt;img&gt;</code> tag used for images. One example
+is the <code>&lt;img&gt;</code> tag for the R logo file in the homepage of R project:</p>
+<pre><code>&lt;img src=&quot;/Rlogo.png&quot;/&gt;</code></pre>
+<p>As you can tell, the <code>&lt;img&gt;</code> tag does not have a closing tag; you can say
+that itself closes with a slash and the right angle bracket <code>/&gt;</code>.</p>
+<p>Some elements have <strong>attributes</strong> which allows you to specify additional
+information about an element. Attributes are declared inside the opening
+tag using special keywords. We assign values to aattributes with the equals
+sign, and we specify the values inside quotations.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-594"></span>
+<img src="images/html/html-syntax2.svg" alt="Attributes and values in html tags" width="70%" />
+<p class="caption">
+Figure 40.7: Attributes and values in html tags
+</p>
+</div>
+<p>In the example above, a paragraph tag contains an attribute <code>lang</code> for
+<em>language</em> with a value of <code>es</code> for <em>español</em> or spanish.</p>
+<p>Notice also that the previous <code>&lt;img&gt;</code> element also has an attribute <code>src</code>
+to indicate the source filename of the picture, in this case, <code>"/Rlogo.png"</code>.</p>
+</div>
+<div id="what-the-browser-does" class="section level3">
+<h3><span class="header-section-number">40.2.3</span> What the browser does</h3>
+<p>The browser (e.g. Chrome, Safari, Firefox) reads the HTML, interprets all the
+tags, and renders the content accordingly. Recall that tags tell browser about
+the structure and meaning of the text. The browser identifies what parts are
+headings (e.g. <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>), what parts are paragraphs (e.g. <code>&lt;p&gt;</code>),
+what parts are lists (e.g. <code>&lt;ol&gt;</code>, <code>&lt;ul&gt;</code>), what text needs to be emphasized,
+and so on.</p>
+<p>The HTML syntax tells the browser about the structure of a document: where
+the headings are, where the paragrapsh are, what text is part of a list, and
+so on. How do browsers know this? Well, they have built-in default rules
+for how to render HTML elements. In addition to the default settings, HTML
+elements can be formatted in endless ways using what is called Cascade
+Style Sheets or CSS for short, that determine font types, colors, sizes, and
+many other visual aspects of a page.</p>
+</div>
+<div id="web-scraping" class="section level3">
+<h3><span class="header-section-number">40.2.4</span> Web Scraping</h3>
+<p>Many websites are secured by an SSL/TSL certificate, which you can identify by
+looking at the URL containing <code>https</code> (Hyper Text Transfer Protocol Secure).
+SSL stands for <strong>Secure Sockets Layer</strong>. This is a technology that
+keeps an internet connection secure and safeguards sensitive data that is being
+sent between a client and a server (for example, when you use your browser
+to shop in amazon) or server to server (for example, an application with
+payroll information). The SSL technology is currently deprecated and has been
+replaced entirely by TLS which stands for <strong>Transport Layer Security</strong>. Simply
+put, TSL also ensures data privacy the same way that SSL does. Since SSL is
+actually no longer used, this is the correct term that people should start using.</p>
+<p>HTTPS is a secure extension of HTTP. When a website uses HTTPS it means that
+the website is secured by an SSL/TLS certificate. Consequently, websites that
+install and configure an SSL/TLS certificate can use the HTTPS protocol to
+establish a secure connection with the server.
+<strong>Quote</strong>: “The details of the certificate, including the issuing
+authority and the corporate name of the website owner, can be viewed by
+clicking on the lock symbol on the browser bar.”</p>
+<p>Wikipedia uses HTTPS. For instance, if we visit the entry for men’s long jump
+world record progression, the url is</p>
+<p><a href="https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression" class="uri">https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression</a></p>
+<p>If we try to use functions like <code>readHTMLTable</code> from <code>"XML"</code> package, it will
+fail</p>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="xml.html#cb577-1"></a>wiki &lt;-<span class="st"> &#39;https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression&#39;</span></span>
+<span id="cb577-2"><a href="xml.html#cb577-2"></a></span>
+<span id="cb577-3"><a href="xml.html#cb577-3"></a><span class="co"># this fails</span></span>
+<span id="cb577-4"><a href="xml.html#cb577-4"></a>tbls &lt;-<span class="st"> </span><span class="kw">readHTMLTable</span>(wiki)</span></code></pre></div>
+<p>One option to read the html tables and extract them as R data frames, is to
+first download the html file to your computer, and then use <code>readHTMLTable()</code>
+to scrape the tables:</p>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="xml.html#cb578-1"></a><span class="co"># desired url</span></span>
+<span id="cb578-2"><a href="xml.html#cb578-2"></a>wiki &lt;-<span class="st"> &#39;https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression&#39;</span></span>
+<span id="cb578-3"><a href="xml.html#cb578-3"></a></span>
+<span id="cb578-4"><a href="xml.html#cb578-4"></a><span class="co"># destination file</span></span>
+<span id="cb578-5"><a href="xml.html#cb578-5"></a>jump_html &lt;-<span class="st"> &#39;men-long-jump-records.html&#39;</span></span>
+<span id="cb578-6"><a href="xml.html#cb578-6"></a></span>
+<span id="cb578-7"><a href="xml.html#cb578-7"></a><span class="co"># download file to your working directory</span></span>
+<span id="cb578-8"><a href="xml.html#cb578-8"></a><span class="kw">download.file</span>(wiki, jump_html)</span>
+<span id="cb578-9"><a href="xml.html#cb578-9"></a></span>
+<span id="cb578-10"><a href="xml.html#cb578-10"></a>tbls &lt;-<span class="st"> </span><span class="kw">readHTMLTable</span>(jump_html)</span></code></pre></div>
+<p>We recommend using this option when:</p>
+<ul>
+<li>the data fits in your computer, in this way you also have the <em>raw data</em></li>
+<li>you need to experiment and get to know the content, in order to decide
+which elements you will extract, which functions to use, what kind of processing
+operations or transformations you need to apply, etc.</li>
+<li>also, downloding an HTML document save you from making innecessary requests
+that could get in trouble, and potentially be blocked by a server because you
+are overloading them with multiple requests.</li>
+</ul>
 
 </div>
 </div>
@@ -928,7 +1112,7 @@ our hypothetical XML document should look like:</p>
         </div>
       </div>
 <a href="regex.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="html.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="http.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
