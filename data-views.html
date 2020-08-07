@@ -51,70 +51,6 @@
 
 
 
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -668,7 +604,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="data-views" class="section level1">
 <h1><span class="header-section-number">5</span> What Do We Mean by Data?</h1>
-<p>When people talk about “Data”, what exactly do they mean?</p>
+<p>The last section of our introductory part in the book has to do with the notion
+of Data. When people talk about “Data”, what exactly do they mean?</p>
 <p>The term data has become so broad that it is one of those things that means
 everything and nothing at the same time.</p>
 <div id="ways-to-think-about-data" class="section level2">
@@ -680,7 +617,7 @@ everything and nothing at the same time.</p>
 <li>How programs and languages handle data (what types and objects they use)</li>
 </ul>
 <p>Here’s a conceptual diagram depicting this idea:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-31"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
 <img src="images/views/data-perspectives.svg" alt="Three Views of Data" width="80%" />
 <p class="caption">
 Figure 5.1: Three Views of Data
@@ -692,7 +629,7 @@ develop a good mapping between these perspectives.</p>
 <div id="how-do-analysts-think-about-data" class="section level3">
 <h3><span class="header-section-number">5.1.1</span> How do analysts think about data</h3>
 <p>This is how we think, the abstract or conceptual view of data.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-32"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
 <img src="images/views/data-views2.svg" alt="How do data scientist tend to think about data" width="55%" />
 <p class="caption">
 Figure 5.2: How do data scientist tend to think about data
@@ -735,7 +672,7 @@ computer or maybe a flashdrive. But sometimes data sets can be so big that
 they won’t fit in your computer’s memory. They will have to be stored in
 remote computers, known as file servers, and you will need a way to communicate
 with the server in order to access the required data.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-33"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="images/views/data-views3.svg" alt="Format and Storage" width="35%" />
 <p class="caption">
 Figure 5.3: Format and Storage
@@ -756,7 +693,7 @@ software handle data.</p>
 <p>At the end of the day, a program needs to provide some mechanism not only to
 import a data set, but also to organize the content of such data in a way that
 we can do computations on it.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-34"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="images/views/data-views4.svg" alt="Data Objects" width="75%" />
 <p class="caption">
 Figure 5.4: Data Objects
@@ -798,7 +735,7 @@ arrays (which involves matrices), lists, and data frames.</p>
 specific is to lose. Data takes three states: in the mind of the data scientist,
 in the files that store it, and in the way programs and languages allow you to
 interact with the data via data types and data objects.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-35"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="images/views/data-perspectives.png" alt="Three Views of Data" width="80%" />
 <p class="caption">
 Figure 5.5: Three Views of Data
@@ -867,20 +804,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

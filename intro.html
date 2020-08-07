@@ -681,7 +681,7 @@ in Wikipedia:</p>
 <p>Below is a screenshot of the table as it is displayed in Wikipedia. This table
 has 19 rows and 5 columns. Each row corresponds to a world record, the first one
 starting in 1901, and the last one from 1991.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
 <img src="images/dac/men-long-jump-table.png" alt="Data Table (source: Wikipedia)" width="90%" />
 <p class="caption">
 Figure 1.1: Data Table (source: Wikipedia)
@@ -699,7 +699,7 @@ Finally, the last column is <code>Date</code> which displays the date (day month
 and a superindex link expressed with a number one inside brackets: <code>[1]</code>.</p>
 <p>In the same Wikipedia page, we also find a simple chart depicting a timeline
 with the progression of world records over time, like in the image below:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
 <img src="images/dac/men-long-jump-chart.png" alt="Chart showing the progression of world records (source: Wikipedia)" width="70%" />
 <p class="caption">
 Figure 1.2: Chart showing the progression of world records (source: Wikipedia)
@@ -719,7 +719,7 @@ target="_blank">Why is the long jump world record so hard to break?</a>.</p>
 <p><br /></p>
 <p>To give you an idea of how impressive the current record is, here’s a diagram
 depicting the 8.95 m in terms of the average height of a male adult (1.765 m).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="images/dac/long-jump-record.png" alt="Mike Powell's record is equivalent to the average height of 5 male adults" width="85%" />
 <p class="caption">
 Figure 1.3: Mike Powell’s record is equivalent to the average height of 5 male adults
@@ -764,7 +764,7 @@ the jumped distance in meters, as well as some digits indicating the distance
 value in feet and inches,</li>
 <li>we just want the digits of the meters, which in this case seem to be the
 first digit, the decimal point, and the following two digits,</li>
-<li>grab those pieces of data (first four characetrs) for all cells in column
+<li>grab those pieces of data (first four characters) for all cells in column
 <code>Mark</code>,</li>
 <li>now move on to the last column named <code>Date</code>,</li>
 <li>from this column we want to extract the year values,</li>
@@ -781,8 +781,8 @@ in y-axis,</li>
 But the important part, at least regarding the data, is that we don’t need
 all the information in the table, we just want some of the pieces in a couple
 of specific columns, depicted in the figure below.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
-<img src="images/dac/men-long-jump-cleaning.png" alt="We just want these two pieces of data for all athletes" width="85%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="images/dac/men-long-jump-cleaning.png" alt="We just want these two pieces of data for all athletes" width="90%" />
 <p class="caption">
 Figure 1.4: We just want these two pieces of data for all athletes
 </p>
@@ -790,8 +790,8 @@ Figure 1.4: We just want these two pieces of data for all athletes
 <p>By following all the listed steps, you friend should be able to end up—at least
 conceptually—with a table having two columns (<code>years</code>, <code>meters</code>), containing
 the numeric values that will be used to graph the timeline:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
-<img src="images/dac/men-long-jump-cleaning1.svg" alt="We just want these two pieces of data for all athletes" width="55%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<img src="images/dac/men-long-jump-cleaning1.svg" alt="We just want these two pieces of data for all athletes" width="60%" />
 <p class="caption">
 Figure 1.5: We just want these two pieces of data for all athletes
 </p>
@@ -814,9 +814,10 @@ being Microsoft Office (Excel, Word, Powerpoint, etc), but you can also find
 tools from Google (Sheets, Docs, Slides, etc), from Mac (Numbers, Pages,
 Keynote, etc) and Libre Office, to mention a few.</p>
 <p>Learning about these tools is not the focus of this book, and you should not
-worry about all the details that we will show you in a minute. Our point is to
-walk you through some of the common steps employing these tools so that you get
-an idea of the advantages and disadvantages of this type of approach.</p>
+worry about all the details that we will show you in the following subsections.
+Our point is to walk you through some of the common steps employing these tools
+so that you get an idea of the advantages and disadvantages of this type of
+approach.</p>
 <div id="getting-the-data" class="section level3">
 <h3><span class="header-section-number">1.3.1</span> Getting the Data</h3>
 <p>First things first: to do data analysis, we need data. In this example the
@@ -829,7 +830,7 @@ HTML for short, the standard markup language for creating Web pages.</p>
 science courses before) would do the following to acquire this data set: select
 the table from wikipedia, copy it, and paste it into a spreadsheet (e.g. MS
 Excel or Google Sheets). We’re going to use Google Sheets for demo purposes.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
 <img src="images/dac/men-long-jump-sheet.png" alt="Data pasted in a spreadsheet" width="85%" />
 <p class="caption">
 Figure 1.6: Data pasted in a spreadsheet
@@ -838,16 +839,16 @@ Figure 1.6: Data pasted in a spreadsheet
 <p>Having pasted the data in a spreadsheet, a naive user could immediately try to
 graph a timeline by selecting the data from columns <code>Mark</code> and <code>Date</code>, and
 invoke the chart editor.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
 <img src="images/dac/men-long-jump-failed-chart.png" alt="Failed attempt to graph a timeline" width="90%" />
 <p class="caption">
 Figure 1.7: Failed attempt to graph a timeline
 </p>
 </div>
-<p>This won’t work because the data is not ready yet to be analyzed. As you tell
-from the previous figure, the chart are is blanked showing a <em>No data</em> message
-even though we selected the columns containing the year values and the meter
-values. But we still have some work to do:
+<p>This won’t work because the data is not ready yet to be analyzed. As you can
+tell from the previous figure, the chart area is blanked showing a <em>No data</em>
+message despite the fact that we selected the columns containing the year
+values and the meter values. But we still have some work to do:
 extract the right pieces of data, make sure they are in a format that the
 chart editor can understand, and then iterate on the plot.</p>
 </div>
@@ -913,6 +914,7 @@ provide a history file or log-file that records all the series of actions you
 perform to produce a plot, or to insert a figure, or to create a table.
 Basically you do not have a way to avoid the manual, repetitive tasks, for
 which there is usually no record left.</p>
+<p>Some of the disadvantages of office-like software:</p>
 <ul>
 <li>Labor intensive</li>
 <li>Time consuming</li>
@@ -935,10 +937,10 @@ role in the analytical component of your workflow.</p>
 <h2><span class="header-section-number">1.4</span> Analyzing Data the “Pro” Way</h2>
 <p>How do trained people in data analysis get the job done? We’ll show you one
 basic way to perform the analysis. But keep in mind that things can be done
-in a more sohpisticated way, using a wide array of software programs, and
-definitely in a more programatic fashion. For now, let’s keep it simple.</p>
+in a more sophisticated way, using a wide array of software programs, and
+definitely in a more programmatic fashion. For now, let’s keep it simple.</p>
 <p>One alternative to office-like software is to use statistical data analysis
-software such as R. We will show you some steps and tools that you will later
+software such as <strong>R</strong>. We will show you some steps and tools that you will later
 have the time to learn through the various chapters in this book, so don’t
 worry right now if some descriptions don’t make too much sense, or if things
 seem highly cryptic.</p>
@@ -949,26 +951,26 @@ in their corresponding chapters <a href="rintro.html#rintro">R</a> and <a href="
 that allows you to combine in one single place your narrative and code.
 Your narrative would be the text of your blog post, while the code are the
 instructions to do all the computations.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
-<img src="images/dac/men-long-jump-rmd.png" alt="Dynamic Document (Rmd file)" width="70%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<img src="images/dac/men-long-jump-rmd.png" alt="An R Markdown (Rmd) file, which is a type of dynamic document" width="80%" />
 <p class="caption">
-Figure 1.8: Dynamic Document (Rmd file)
+Figure 1.8: An R Markdown (Rmd) file, which is a type of dynamic document
 </p>
 </div>
 <p>You will have time to learn most of the nuts and bolts about R, using <code>Rmd</code>
 files, etc. But in the meantime, let’s briefly disect some of the main parts
-displayed in the screenshot above. We will focus of the lines of text contained
-inside the two gray regions.</p>
+displayed in the screenshot above. We will focus on the lines of text contained
+inside the two regions with a gray background color.</p>
 <p>The code in the top gray region includes the following three lines. The first
-command indicates global options for controling code in the document. The
+command indicates global options for controlling code in the document. The
 second and third commands load auxiliary packages with tools (functions) to do
 the job:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1"></a>knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb1-2"><a href="intro.html#cb1-2"></a><span class="kw">library</span>(stringr)</span>
 <span id="cb1-3"><a href="intro.html#cb1-3"></a><span class="kw">library</span>(rvest)</span></code></pre></div>
-<p>The second gray region is the one where all the aciton is happening. We have
+<p>The second gray region is the one where all the action is happening. We have
 divided the commands in five “sections”, with a label or comment indicating
-what wach section is for.</p>
+what each section is used for.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro.html#cb2-1"></a><span class="co"># code to read HTML content from wikipedia</span></span>
 <span id="cb2-2"><a href="intro.html#cb2-2"></a>wiki &lt;-<span class="st"> &quot;https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression&quot;</span></span>
 <span id="cb2-3"><a href="intro.html#cb2-3"></a>xml_doc &lt;-<span class="st"> </span><span class="kw">read_html</span>(wiki) </span>
@@ -1027,14 +1029,13 @@ not take you more than 10 minutes (15 minutes at the most).</p>
 <p>The idea is to perform a toy data analysis project using the typical tools
 that most people have at their disposal, and in the typical way of carrying
 out all the steps.</p>
-<p>We am assuming that you have a google account and that you are familiar with
+<p>We are assuming that you have a google account and that you are familiar with
 <a href="https://www.google.com/drive/">Google Drive</a>. If this is not the case,
 then you can use Microsoft Office Word, Excel, and Power Point. Or Apple
 Numbers, Pages, and Keynote. Or perhaps Libre Office tools.</p>
 <p>The idea is to use a suite of office software tools: a spreadsheet, a
-word processor, and a slideware. In this activity, you have to write down
-all the steps that you perform, it doesn’t matter if they seem trivial or
-insignificant.</p>
+word processor, and a slidument. In this activity, you have to write down
+<strong>all</strong> the steps—it doesn’t matter if they seem trivial or insignificant—that allow you to carry out the tasks listed below.</p>
 <ul>
 <li>Open a spreadsheet and create a table with two columns and ten rows.</li>
 <li>Fill in the table with numbers. For instance, the first column can have
@@ -1148,20 +1149,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
