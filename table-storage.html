@@ -218,13 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -337,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -670,7 +673,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">19</span> Storage of Data Tables</h1>
 <p>To illustrate some of the ideas presented in this chapter we’ll keep using the
 toy example with data from Leia Organa, Luke Skywalker, and Han Solo.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-262"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-261"></span>
 <img src="images/tables/sw2-leia-luke-han.png" alt="Three individuals" width="60%" />
 <p class="caption">
 Figure 19.1: Three individuals
@@ -678,7 +681,7 @@ Figure 19.1: Three individuals
 </div>
 <p>If we ask you to think of a table containing the information of Leia, Luke,
 and Han, you would probably picture something like this:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-263"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-262"></span>
 <img src="images/tables/storage-table-mind.png" alt="Conceptual table in the analyst's mind" width="60%" />
 <p class="caption">
 Figure 19.2: Conceptual table in the analyst’s mind
@@ -689,7 +692,7 @@ How do we store “cells” in a file? This issue has to do with the mapping
 between the notion of data as in the data scientist’s mind, and the notion
 of data as in the way it’s stored digitally (file format, structure, location,
 etc).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-264"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-263"></span>
 <img src="images/tables/data-perspectives2.svg" alt="A table in the analyst's mind, and its mapping to be stored in one or more files" width="70%" />
 <p class="caption">
 Figure 19.3: A table in the analyst’s mind, and its mapping to be stored in one or more files

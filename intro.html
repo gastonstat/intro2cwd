@@ -218,13 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -337,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -681,7 +684,7 @@ in Wikipedia:</p>
 <p>Below is a screenshot of the table as it is displayed in Wikipedia. This table
 has 19 rows and 5 columns. Each row corresponds to a world record, the first one
 starting in 1901, and the last one from 1991.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="images/dac/men-long-jump-table.png" alt="Data Table (source: Wikipedia)" width="90%" />
 <p class="caption">
 Figure 1.1: Data Table (source: Wikipedia)
@@ -699,7 +702,7 @@ Finally, the last column is <code>Date</code> which displays the date (day month
 and a superindex link expressed with a number one inside brackets: <code>[1]</code>.</p>
 <p>In the same Wikipedia page, we also find a simple chart depicting a timeline
 with the progression of world records over time, like in the image below:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="images/dac/men-long-jump-chart.png" alt="Chart showing the progression of world records (source: Wikipedia)" width="70%" />
 <p class="caption">
 Figure 1.2: Chart showing the progression of world records (source: Wikipedia)
@@ -719,7 +722,7 @@ target="_blank">Why is the long jump world record so hard to break?</a>.</p>
 <p><br /></p>
 <p>To give you an idea of how impressive the current record is, here’s a diagram
 depicting the 8.95 m in terms of the average height of a male adult (1.765 m).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="images/dac/long-jump-record.png" alt="Mike Powell's record is equivalent to the average height of 5 male adults" width="85%" />
 <p class="caption">
 Figure 1.3: Mike Powell’s record is equivalent to the average height of 5 male adults
@@ -781,7 +784,7 @@ in y-axis,</li>
 But the important part, at least regarding the data, is that we don’t need
 all the information in the table, we just want some of the pieces in a couple
 of specific columns, depicted in the figure below.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
 <img src="images/dac/men-long-jump-cleaning.png" alt="We just want these two pieces of data for all athletes" width="90%" />
 <p class="caption">
 Figure 1.4: We just want these two pieces of data for all athletes
@@ -790,7 +793,7 @@ Figure 1.4: We just want these two pieces of data for all athletes
 <p>By following all the listed steps, you friend should be able to end up—at least
 conceptually—with a table having two columns (<code>years</code>, <code>meters</code>), containing
 the numeric values that will be used to graph the timeline:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
 <img src="images/dac/men-long-jump-cleaning1.svg" alt="We just want these two pieces of data for all athletes" width="60%" />
 <p class="caption">
 Figure 1.5: We just want these two pieces of data for all athletes
@@ -830,7 +833,7 @@ HTML for short, the standard markup language for creating Web pages.</p>
 science courses before) would do the following to acquire this data set: select
 the table from wikipedia, copy it, and paste it into a spreadsheet (e.g. MS
 Excel or Google Sheets). We’re going to use Google Sheets for demo purposes.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
 <img src="images/dac/men-long-jump-sheet.png" alt="Data pasted in a spreadsheet" width="85%" />
 <p class="caption">
 Figure 1.6: Data pasted in a spreadsheet
@@ -839,7 +842,7 @@ Figure 1.6: Data pasted in a spreadsheet
 <p>Having pasted the data in a spreadsheet, a naive user could immediately try to
 graph a timeline by selecting the data from columns <code>Mark</code> and <code>Date</code>, and
 invoke the chart editor.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="images/dac/men-long-jump-failed-chart.png" alt="Failed attempt to graph a timeline" width="90%" />
 <p class="caption">
 Figure 1.7: Failed attempt to graph a timeline
@@ -951,7 +954,7 @@ in their corresponding chapters <a href="rintro.html#rintro">R</a> and <a href="
 that allows you to combine in one single place your narrative and code.
 Your narrative would be the text of your blog post, while the code are the
 instructions to do all the computations.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
 <img src="images/dac/men-long-jump-rmd.png" alt="An R Markdown (Rmd) file, which is a type of dynamic document" width="80%" />
 <p class="caption">
 Figure 1.8: An R Markdown (Rmd) file, which is a type of dynamic document
@@ -1149,6 +1152,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

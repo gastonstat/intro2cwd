@@ -51,6 +51,70 @@
 
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -154,13 +218,16 @@
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -273,7 +340,7 @@
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -615,12 +682,12 @@ the use of what we call <em>data technologies</em> (in part VII of the book).</p
 <p>Most of the material in this chapter is borrowed from Gaston Sanchez’s book
 <a href="https://www.gastonsanchez.com/matrix4sl" target="_target">A Matrix
 Algebra Companion for Statistical Learning</a> (with permission from the author).</p>
-<div id="data-individuals-and-variables-1" class="section level2">
+<div id="data-individuals-and-variables" class="section level2">
 <h2><span class="header-section-number">18.1</span> Data: Individuals and Variables</h2>
 <p>To illustrate some of the ideas presented in this chapter we’re going to use a
 toy example with data of three individuals from a galaxy far, far away:
 Leia Organa, Luke Skywalker, and Han Solo.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-247"></span>
 <img src="images/tables/sw-leia-luke-han.png" alt="Three individuals" width="60%" />
 <p class="caption">
 Figure 18.1: Three individuals
@@ -655,7 +722,7 @@ which analysts and researchers think about data.</p>
 individuals, we can present this information in various forms. One option is to
 organize the information in some sort of rectangular or tabular layout, like
 the one below:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-248"></span>
 <img src="images/tables/table-conceptual.png" alt="Conceptual table" width="45%" />
 <p class="caption">
 Figure 18.2: Conceptual table
@@ -697,7 +764,7 @@ the structure of a rectangular table. But you can find other formats that use a
 non-tabular structure, like XML.</p>
 <p>When data is stored in a format that is supposed to represent a table, it is
 common to find visual displays with some grid of rows and columns.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-249"></span>
 <img src="images/tables/table-tabular.png" alt="Data in tabular format" width="45%" />
 <p class="caption">
 Figure 18.3: Data in tabular format
@@ -720,7 +787,7 @@ skills to get data in the <em>right</em> rectangular shape.</p>
 multivariate techniques, your data will typically be required to have a certain
 specific structure, usually in the form of some sort of table or spreadsheet
 format (e.g. rows and columns).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-250"></span>
 <img src="images/tables/table-abstract.png" alt="Data Table Format" width="50%" />
 <p class="caption">
 Figure 18.4: Data Table Format
@@ -731,7 +798,7 @@ columns will have a particular meaning. The most common data table setting is
 the one of individuals-and-variables. Although somewhat arbitrary, the standard
 convention is that we use the columns to represent <strong>variables</strong>, and the rows
 to represent <strong>individuals</strong>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-251"></span>
 <img src="images/tables/table-inds-vars.png" alt="Conceptual table of individuals and variables" width="50%" />
 <p class="caption">
 Figure 18.5: Conceptual table of individuals and variables
@@ -761,7 +828,7 @@ numeric values (representing quantities).</p>
 | Luke   | male    | 172      | 77      |
 | Han    | male    | 180      | 80      |
 -->
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-252"></span>
 <img src="images/tables/table-mixed.png" alt="Mixed or heterogeneous variables" width="55%" />
 <p class="caption">
 Figure 18.6: Mixed or heterogeneous variables
@@ -782,7 +849,7 @@ presence-absence, female-male, yes-no, success-failure, case-control, etc. In
 the table below, the variables represent drinks consumed: Beer, Wine, Juice,
 Coffee, and Tea. Each variable takes two possible values, <em>yes</em> and <em>no</em>,
 indicating whether an individual consumes a specific type of drink.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-253"></span>
 <img src="images/tables/table-binary-raw.png" alt="Binary table (raw values)" width="58%" />
 <p class="caption">
 Figure 18.7: Binary table (raw values)
@@ -792,7 +859,7 @@ Figure 18.7: Binary table (raw values)
 encode them numerically to be able to perform statitical or algebraic operations
 with them. Perhaps the most natural way to encode binary values is with zeros
 and ones: “yes” = 1, and “no” = 0.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-254"></span>
 <img src="images/tables/table-binary.png" alt="Binary table (numeric values)" width="58%" />
 <p class="caption">
 Figure 18.8: Binary table (numeric values)
@@ -806,7 +873,7 @@ logical values: “yes” = TRUE, and “no” = FALSE.</p>
 <p>Another type of table consists of so-called <em>modalities</em>. These can come from
 variables or questions in a survey about how frequent you use/consume a specific
 product.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-255"></span>
 <img src="images/tables/table-modalities-raw.png" alt="Table of modalities (raw values)" width="58%" />
 <p class="caption">
 Figure 18.9: Table of modalities (raw values)
@@ -816,7 +883,7 @@ Figure 18.9: Table of modalities (raw values)
 to transform the values of the categories (i.e. the modalities) to some numeric
 coding. For instance, you can assign values 1 = “never”, 2 = “sometimes”, and
 3 = “always.”</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-256"></span>
 <img src="images/tables/table-modalities.png" alt="Table of modalities (numeric values)" width="58%" />
 <p class="caption">
 Figure 18.10: Table of modalities (numeric values)
@@ -829,7 +896,7 @@ Figure 18.10: Table of modalities (numeric values)
 the variables are measured in some kind of preference scale. For example, we
 can measure the preference level for various types of fruit juices on an ordinal
 scale ranging from 1 = “don’t like at all” to 5 = “like it very much.”</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-257"></span>
 <img src="images/tables/table-preference.png" alt="Table of frequencies" width="55%" />
 <p class="caption">
 Figure 18.11: Table of frequencies
@@ -846,7 +913,7 @@ name for this type of tables is <em>contingency table</em>.</p>
 character, per episode (in the original trilogy of Star Wars). The rows
 correspond to the categories of the variable Name, while the columns corresponds
 to the categories of the variable Episode.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-258"></span>
 <img src="images/tables/table-frequency.png" alt="Table of frequencies" width="50%" />
 <p class="caption">
 Figure 18.12: Table of frequencies
@@ -868,7 +935,7 @@ authors instead use the word distance to convey a general idea of dissimilarity.
 <p>In general, you can find <em>distance</em> tables under two opposite perspectives:
 similarities and disimilarities. The table below is an example of a similarity
 table.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-259"></span>
 <img src="images/tables/table-distance.png" alt="Table of proximities" width="45%" />
 <p class="caption">
 Figure 18.13: Table of proximities
@@ -948,6 +1015,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

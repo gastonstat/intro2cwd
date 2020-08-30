@@ -218,13 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -337,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -687,7 +690,7 @@ within or between computers.”</p>
 <li>you wait some fractions of a second, and then the website shows up in your
 screen.</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-596"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-595"></span>
 <img src="images/html/web-scheme1.png" alt="Surfing the web" width="70%" />
 <p class="caption">
 Figure 41.1: Surfing the web
@@ -707,7 +710,7 @@ audio, scripts)</li>
 that the clients request.</li>
 <li>The server <strong>sends responses</strong> back to the client</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-597"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-596"></span>
 <img src="images/html/web-scheme2.png" alt="Client makes a request, and the serve responds" width="70%" />
 <p class="caption">
 Figure 41.2: Client makes a request, and the serve responds
@@ -733,7 +736,7 @@ detail.</p>
 <p>To make web pages, programmers, developers and designers create files written
 in a special type of syntax called <strong>HyperText Markup Language</strong> or HTML for
 short. These files are stored in a Web server.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-598"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-597"></span>
 <img src="images/html/web-scheme3.png" alt="HTML files are the building blocks of web pages" width="80%" />
 <p class="caption">
 Figure 41.3: HTML files are the building blocks of web pages
@@ -742,7 +745,7 @@ Figure 41.3: HTML files are the building blocks of web pages
 <p>To be more precise, Web servers store more than one single HTML file. In
 practice, websites are made of several directories containing various types of
 files (image files, audio files, video files, scripts, etc).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-599"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-598"></span>
 <img src="images/html/web-scheme5.png" alt="Web server containing several types of files, not just HTML files" width="80%" />
 <p class="caption">
 Figure 41.4: Web server containing several types of files, not just HTML files
@@ -754,7 +757,7 @@ on your laptop, on your tablet, on your cellphone, you name it. As long as the
 device you are using is connected to the internet, the browser will retrieve
 the web page. The HTML content in the web page tells the browser everything it
 needs to know to display the page.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-600"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-599"></span>
 <img src="images/html/web-scheme4.png" alt="Diagram of the Web" width="75%" />
 <p class="caption">
 Figure 41.5: Diagram of the Web
@@ -794,7 +797,7 @@ email, file transfer (FTP), and many others.</p></li>
 <pre><code>https://www.r-project.org</code></pre>
 <p>Although we don’t see it, there’s is a client-server dialogue taking place,
 illustrated in the diagram below:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-601"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-600"></span>
 <img src="images/html/web-scheme6.png" alt="Client make a request, and the serve responds" width="70%" />
 <p class="caption">
 Figure 41.6: Client make a request, and the serve responds
@@ -804,7 +807,7 @@ Figure 41.6: Client make a request, and the serve responds
 <p>Using Chrome’s __DevTools_ (developer tools), we can see the associated
 information related to the HTTP “conversation” between the client and the
 server.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-602"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-601"></span>
 <img src="images/html/web-http-devtools.png" alt="Inspecting HTTP messages via DevTools" width="90%" />
 <p class="caption">
 Figure 41.7: Inspecting HTTP messages via DevTools
@@ -818,7 +821,7 @@ and the response is rendered by the browser as the website you see.
 Although we don’t see the “dialogue” between client and server, tt is possible
 to inspect this interaction using the development tools in a browser such as
 Chrome’s DevTools (like the screenshot above).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-603"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-602"></span>
 <img src="images/html/web-http-headers.png" alt="DevTools menu tab for inspecting HTTP messages" width="40%" />
 <p class="caption">
 Figure 41.8: DevTools menu tab for inspecting HTTP messages
@@ -840,7 +843,7 @@ and what type of response is expected</li>
 <li>Body: data sent to the server outside of the headers, common for <code>POST</code> and
 <code>PUT</code> requests</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-604"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-603"></span>
 <img src="images/html/web-http-request-headers.png" alt="HTTP request headers" width="90%" />
 <p class="caption">
 Figure 41.9: HTTP request headers
@@ -855,7 +858,7 @@ content delivered by the server. In the above example accessing
 www.r-project.com, we can see the status code success <code>200</code>, along with other
 details about the response content. Notice that the returned content is HTML.
 This HTML content is what the browser renders into a webpage.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-605"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-604"></span>
 <img src="images/html/web-http-response-headers.png" alt="HTTP response headers" width="50%" />
 <p class="caption">
 Figure 41.10: HTTP response headers

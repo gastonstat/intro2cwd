@@ -218,13 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -337,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -703,7 +706,7 @@ set of double brackets with an index indicating the position of each element,
 and below each double bracket the corresponding vector is printed.</p>
 <p>For illustration purposes, we could visualize the three input vectors and the
 list with the following conceptual diagram.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-225"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-224"></span>
 <img src="images/objects/obj-list-vectors1.svg" alt="A list containing three unnamed elements (numeric vectors of length 3)" width="60%" />
 <p class="caption">
 Figure 17.1: A list containing three unnamed elements (numeric vectors of length 3)
@@ -746,7 +749,7 @@ instead of the set of double brackets, there is a dollar sign followed by the
 name of the element, e.g. <code>$vec1</code>. Below each name, the corresponding vector is
 printed.</p>
 <p>The conceptual diagram in this case could look like this:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-228"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-227"></span>
 <img src="images/objects/obj-list-vectors2.svg" alt="A list with named elements (numeric vectors of length 3)" width="60%" />
 <p class="caption">
 Figure 17.2: A list with named elements (numeric vectors of length 3)
@@ -801,7 +804,7 @@ to worry about the exact order or position they occupy.</p>
 <p>To manipulate the elements of a list you can use bracket notation. Because a
 list is a vector, you can use single brackets (e.g. <code>lis[1]</code>) as well as
 double brackets (e.g. <code>lis[[1]]</code>).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-231"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-230"></span>
 <img src="images/objects/obj-list-brackets1.svg" alt="Bracket notation with lists" width="75%" />
 <p class="caption">
 Figure 17.3: Bracket notation with lists
@@ -826,7 +829,7 @@ the first line, and then <code>[1] 1 2 3</code> in the second line.</p>
 contains a vector, but it does not give you direct access to the vector itself.
 Put another way, <code>lis[1]</code> lets you see that the first element of the list is
 a vector, but this vector is still <em>inside</em> its “box”.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-233"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-232"></span>
 <img src="images/objects/obj-list-brackets2.svg" alt="Use single brackets to select an element" width="75%" />
 <p class="caption">
 Figure 17.4: Use single brackets to select an element
@@ -852,7 +855,7 @@ double brackets followed by single brackets</p>
 <span id="cb230-5"><a href="lists.html#cb230-5"></a><span class="co"># first index of second list&#39;s element</span></span>
 <span id="cb230-6"><a href="lists.html#cb230-6"></a>lis[[<span class="dv">2</span>]][<span class="dv">1</span>]</span>
 <span id="cb230-7"><a href="lists.html#cb230-7"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-236"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-235"></span>
 <img src="images/objects/obj-list-brackets3.svg" alt="Use double brackets to extract an element" width="75%" />
 <p class="caption">
 Figure 17.5: Use double brackets to extract an element
@@ -863,7 +866,7 @@ Figure 17.5: Use double brackets to extract an element
 <h3><span class="header-section-number">17.2.3</span> Dollar signs</h3>
 <p>R lists—and data frames—follow an optional second system of notation for
 extracting <strong>named elements</strong> using the dollar sign <strong><code>$</code></strong></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-237"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-236"></span>
 <img src="images/objects/obj-list-dollars1.svg" alt="Dollar notation with lists" width="60%" />
 <p class="caption">
 Figure 17.6: Dollar notation with lists

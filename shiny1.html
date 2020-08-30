@@ -218,13 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -337,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -685,7 +688,7 @@ interactive, elightening, and delightful.</p>
 <div id="histogram-example" class="section level2">
 <h2><span class="header-section-number">29.1</span> Histogram Example</h2>
 <p>To create the default shiny app provided in RStudio, go to the menu bar, choose the <strong>File</strong> tab, then <strong>New File</strong>, and click on <strong>Shiny Web App…</strong></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-464"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-463"></span>
 <img src="images/coding/shiny-menu-tab.png" alt="Creating a new shiny app" width="65%" />
 <p class="caption">
 Figure 29.1: Creating a new shiny app
@@ -695,7 +698,7 @@ Figure 29.1: Creating a new shiny app
 directory where it will be saved. There is also an option to decide whether
 the code of the app is to be handled in a single file called <code>app.R</code> (this is
 the default option) or in two separate files (<code>ui.R/server.R</code>).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-465"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-464"></span>
 <img src="images/coding/shiny-window.png" alt="Default options when creating a new shiny app" width="55%" />
 <p class="caption">
 Figure 29.2: Default options when creating a new shiny app
@@ -705,7 +708,7 @@ Figure 29.2: Default options when creating a new shiny app
 folder with the provided name and specified location. This folder will contain
 an R script file named <code>app.R</code> with preexisting content for the default shiny
 app (see screenshot below).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-466"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-465"></span>
 <img src="images/coding/shiny-rscript.png" alt="R script file for the default shiny app" width="65%" />
 <p class="caption">
 Figure 29.3: R script file for the default shiny app
@@ -717,7 +720,7 @@ of eruption data from the famous
 geyser in Yellowstone national park. Clicking on the <strong>Run App</strong> button located
 at the top of the tab (where the R script is), RStudio will open a window to
 render an HTML webpage for the app, like the following screenshot:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-467"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-466"></span>
 <img src="images/coding/shiny-browser.png" alt="HTML webpage rendering an interactive histogram" width="75%" />
 <p class="caption">
 Figure 29.4: HTML webpage rendering an interactive histogram
@@ -752,7 +755,7 @@ called <strong>panels</strong> (the sidebar panel, and the main panel).</p>
 <ul>
 <li>title: Old Faithful Geyser Data</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-468"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-467"></span>
 <img src="images/coding/shiny-html-panels.png" alt="User Interface elements in shiny app" width="75%" />
 <p class="caption">
 Figure 29.5: User Interface elements in shiny app
@@ -768,7 +771,7 @@ Figure 29.5: User Interface elements in shiny app
 <li>Gallery</li>
 </ul>
 <p>Gallery of Widgets</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-469"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-468"></span>
 <img src="images/coding/shiny-widgets.png" alt="Gallery of shiny widgets" width="90%" />
 <p class="caption">
 Figure 29.6: Gallery of shiny widgets

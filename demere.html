@@ -218,13 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -337,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -682,7 +685,7 @@ amateur mathematician, and avid gambler.</p>
 <h3><span class="header-section-number">31.1.1</span> Game 1</h3>
 <p>In version 1, you roll a die four times, and you win if you get at
 least one six.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-493"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-492"></span>
 <img src="images/simulation/dice4.jpg" alt="Game version 1: roll a pair of dice" width="25%" />
 <p class="caption">
 Figure 31.1: Game version 1: roll a pair of dice
@@ -771,7 +774,7 @@ of that many sixes on any 4 rolls.</p>
 <div id="simulating-one-die" class="section level3">
 <h3><span class="header-section-number">31.1.4</span> Simulating one die</h3>
 <p>Let’s start with one die</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-494"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-493"></span>
 <img src="images/simulation/die.jpg" alt="Simulating one die" width="15%" />
 <p class="caption">
 Figure 31.2: Simulating one die
@@ -912,7 +915,7 @@ Figure 31.2: Simulating one die
 <span id="cb487-9"><a href="demere.html#cb487-9"></a><span class="kw">sum</span>(<span class="kw">table</span>(sixes)[<span class="op">-</span><span class="dv">1</span>])</span>
 <span id="cb487-10"><a href="demere.html#cb487-10"></a><span class="co">#&gt; [1] 55</span></span></code></pre></div>
 <div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="demere.html#cb488-1"></a><span class="kw">barplot</span>(<span class="kw">table</span>(sixes), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">las =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-508-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="cwd_files/figure-html/unnamed-chunk-507-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p><strong>Considerations</strong></p>
 <ul>
 <li>How would you make the code more flexible?</li>
@@ -956,7 +959,7 @@ Figure 31.2: Simulating one die
 <span id="cb490-11"><a href="demere.html#cb490-11"></a><span class="co">#&gt; [1] 4887</span></span></code></pre></div>
 <p>Let’s graph the obtained results:</p>
 <div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="demere.html#cb491-1"></a><span class="kw">barplot</span>(<span class="kw">table</span>(doublesix), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">las =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-511-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="cwd_files/figure-html/unnamed-chunk-510-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>and get estimated proportions:</p>
 <div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="demere.html#cb492-1"></a>counts &lt;-<span class="st"> </span><span class="dv">0</span></span>
 <span id="cb492-2"><a href="demere.html#cb492-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>games) {</span>

@@ -218,13 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -337,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -692,7 +695,7 @@ find that a standard analysis will have the following elements:</p>
 <p>Cartoonist and roboticist <a href="http://jorgecham.com/">Jorge Cham</a> captures the
 essential stages of a typical data analysis in the following comic strip</p>
 <p><a href="https://phdcomics.com/comics/archive_print.php?comicid=462" target="_blank">https://phdcomics.com/comics/archive_print.php?comicid=462</a></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
 <img src="images/dac/data-by-the-numbers.png" alt="Data By the Numbers (by Jorge Cham)" width="75%" />
 <p class="caption">
 Figure 2.1: Data By the Numbers (by Jorge Cham)
@@ -703,8 +706,8 @@ and keep it in your desk (or fridge, or your office door) as a reminder of
 the stages every data analysis project goes through.
 The cartoon contains four frames, each one illustrating the main stages of
 what traditionally happens in research projects, heavily based on data analysis,
-within academia (e.g. PhD project). But it can be generalized to most real life
-contexts.</p>
+within academia (e.g. PhD project). But it can also be generalized to most real
+life contexts.</p>
 <p>Each frame in the cartoon is associated with a set of general tasks:</p>
 <table>
 <thead>
@@ -758,7 +761,7 @@ contexts.</p>
 <p>At a more conceptual level, and losing Cham’s comic enchanment, we have created
 our own diagram of the Data Analysis Cycle (DAC), depicting what we consider
 to be the three main stages of such cycle:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
 <img src="images/dac/data-analysis-cycle.svg" alt="Conceptual diagram of the Data Analysis Cycle" width="55%" />
 <p class="caption">
 Figure 2.2: Conceptual diagram of the Data Analysis Cycle
@@ -769,7 +772,7 @@ into a single entity because these two tasks always go together.</p>
 <p>Each circle is associated with a set of general tasks. Not all projects
 will have all these tasks. But in this way you can have a conceptual picture
 in which to fit almost any DAP:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
 <img src="images/dac/data-analysis-cycle-tasks.svg" alt="Common tasks in the data analysis cycle" width="75%" />
 <p class="caption">
 Figure 2.3: Common tasks in the data analysis cycle
@@ -822,7 +825,7 @@ couple of commands to perform a hypothesis test, plot a graph, fit a model,
 and compute summary statistics and tables. Such a smooth path rarely happens
 in real life data projects.</p>
 <p>Keep in mind that a data analysis cycle is NOT a linear process.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-16"></span>
 <img src="images/dac/data-analysis-process.png" alt="Data Analysis is not a linear process" width="65%" />
 <p class="caption">
 Figure 2.4: Data Analysis is not a linear process
@@ -848,7 +851,7 @@ quantitative research, and similar fields, has been designed for the second
 frame of the cartoon: the part of a project that involves “crunching numbers”.
 Most of the education is focused on the modeling part, on the methods and
 techniques. Very little space is dedicated to talk about how to work with data.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-16"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-17"></span>
 <img src="images/dac/what-we-always-teach.png" alt="What we always teach" width="85%" />
 <p class="caption">
 Figure 2.5: What we always teach
@@ -881,7 +884,7 @@ writing the report(s), and polishing the documentation.</p>
 <p>Writing code will take you some time. But you will definitely spend more time
 reviewing the code, looking for bugs, documenting the functions and testing
 them, and making sure everything works correctly.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-17"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
 <img src="images/dac/what-we-rarely-teach.png" alt="What we rarely teach" width="85%" />
 <p class="caption">
 Figure 2.6: What we rarely teach

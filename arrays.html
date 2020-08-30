@@ -218,13 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -337,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -683,7 +686,7 @@ two dimensions: one for rows, and another one for columns.</p>
 <p>R provides a handful of rectangular or 2-dimensional objects. One of them is
 <code>matrix</code> which is a two-dimensional atomic object. In turns out that an R matrix
 is a special type of multi-dimensional atomic object called <code>array</code>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-196"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-195"></span>
 <img src="images/objects/obj-atomics.svg" alt="Atomic data objects in R" width="45%" />
 <p class="caption">
 Figure 16.1: Atomic data objects in R
@@ -827,7 +830,7 @@ want to create a matrix by rows. This is possible thanks to the argument <code>b
 to the rows, while the 2nd dimension corresponds to the columns.
 Because <code>mat</code> has two dimensions, the bracket notation involves
 working with matrices in this form: <code>mat[ , ]</code>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-202"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-201"></span>
 <img src="images/objects/obj-matrix-brackets.svg" alt="Bracket notation in matrices" width="45%" />
 <p class="caption">
 Figure 16.2: Bracket notation in matrices
@@ -842,7 +845,7 @@ of cells in a matrix. Typically, the input index vectors consist of positive
 numeric values indicating the position of the row(s) and column(s) to focus on.
 Likewise, it is also possible to exclude certain rows-and-columns by passing
 negative numeric indices.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-203"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-202"></span>
 <img src="images/objects/obj-matrix-cells.svg" alt="Several ways to select cells" width="80%" />
 <p class="caption">
 Figure 16.3: Several ways to select cells
@@ -854,7 +857,7 @@ Figure 16.3: Several ways to select cells
 <p>With bracket notation, you can focus just on the rows of a matrix. This is done
 by specifying a vector for the row index, while leaving empty the position of
 the columns.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-204"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-203"></span>
 <img src="images/objects/obj-matrix-rows.svg" alt="Several ways to select rows" width="80%" />
 <p class="caption">
 Figure 16.4: Several ways to select rows
@@ -865,7 +868,7 @@ Figure 16.4: Several ways to select rows
 <h4>Selecting columns</h4>
 <p>You can also focus just on the columns of a matrix by specifying a vector for
 the column index, while leaving empty the position of the rows.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-205"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-204"></span>
 <img src="images/objects/obj-matrix-cols.svg" alt="Several ways to select columns" width="80%" />
 <p class="caption">
 Figure 16.5: Several ways to select columns
@@ -879,7 +882,7 @@ functions <code>rbind()</code> and <code>cbind()</code>. Row binding with <code>
 <em>stack</em> two or more matrices, as long as they have the same number of columns.
 In turn, column binding with <code>cbind()</code> allows you to <em>join</em> two or more
 matrices, as long as they have the same number of rows.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-206"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-205"></span>
 <img src="images/objects/obj-matrix-binding.svg" alt="Combining matrices either by rows or by columns" width="65%" />
 <p class="caption">
 Figure 16.6: Combining matrices either by rows or by columns

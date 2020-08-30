@@ -218,13 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -337,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -682,7 +685,7 @@ interface (GUI) or an integrated development environment (IDE).</p>
 <p>Most of us who have a laptop or a desktop computer, we interact with them using
 a Graphical User Interface, commonly referred to as GUI. These interfaces
 have made our interaction with a computer fairly easy.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-536"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-535"></span>
 <img src="images/unix/gui-mac-finder.png" alt="Graphical User Interface Finder in Mac" width="60%" />
 <p class="caption">
 Figure 34.1: Graphical User Interface Finder in Mac
@@ -705,7 +708,7 @@ a trackpad, a mouse, a touchscreen, or even voice-commands. Instead, if you
 wanted the computer to do something, you had to tell it with a command, thus
 using text, typing things on the keyboard, and often without a screen to see
 what was going on. You only had a command-line interface.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-537"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-536"></span>
 <img src="images/unix/dont-touch-that-mouse.jpg" alt="Don't touch that mouse (or trackpad)!" width="60%" />
 <p class="caption">
 Figure 34.2: Don’t touch that mouse (or trackpad)!
@@ -782,7 +785,7 @@ If you are using a Mac computer, you also have a terminal.</p>
 <li>Command Line Interface</li>
 <li>Terminal Emulator</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-538"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-537"></span>
 <img src="images/unix/unix-diagram.svg" alt="Terminal, Shell, OS" width="60%" />
 <p class="caption">
 Figure 34.3: Terminal, Shell, OS
@@ -817,7 +820,7 @@ That’s why many people use the terms “command line” and “terminal” as 
 <em>Bourne Again Shell</em>. The bash sheel is the default shell for Linux and Mac
 computers. It is also the shell flavor used in Git-bash, which is what we
 recommend to use if your computer runs Windows.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-539"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-538"></span>
 <img src="images/unix/prompt.svg" alt="The prompt, and its meaning" width="60%" />
 <p class="caption">
 Figure 34.4: The prompt, and its meaning
@@ -828,7 +831,7 @@ Figure 34.4: The prompt, and its meaning
 <div id="anatomy-of-shell-commands" class="section level3">
 <h3><span class="header-section-number">34.2.2</span> Anatomy of shell commands</h3>
 <p>All shell commands have the same structure, illustrated in the following figure</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-540"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-539"></span>
 <img src="images/unix/command-anatomy.svg" alt="Anatomy of a shell command" width="55%" />
 <p class="caption">
 Figure 34.5: Anatomy of a shell command
@@ -892,7 +895,7 @@ directory <code>/usr/bin</code></p>
 <h3><span class="header-section-number">34.2.3</span> Manual Documentation</h3>
 <p>The <code>man</code> command is the command that shows you the technical (<em>manual</em>)
 documentation of a given command:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-541"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-540"></span>
 <img src="images/unix/man-cal.png" alt="Manual docummentation of command 'cal'" width="60%" />
 <p class="caption">
 Figure 34.6: Manual docummentation of command ‘cal’

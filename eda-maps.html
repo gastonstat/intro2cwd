@@ -218,13 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -337,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -687,7 +690,7 @@ all sorts of maps, and geospatial information. Good resources to look at are:</p
 the storm records</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="eda-maps.html#cb86-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb86-2"><a href="eda-maps.html#cb86-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-113-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="cwd_files/figure-html/unnamed-chunk-112-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>This is good, but it would be better to have an actual image of a map.</p>
 </div>
 <div id="basic-map" class="section level3">
@@ -708,7 +711,7 @@ and a <code>geom_polygon()</code> layer like this:</p>
 <span id="cb87-5"><a href="eda-maps.html#cb87-5"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
 <span id="cb87-6"><a href="eda-maps.html#cb87-6"></a><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> world_map, </span>
 <span id="cb87-7"><a href="eda-maps.html#cb87-7"></a>               <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-114-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="cwd_files/figure-html/unnamed-chunk-113-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>In the above command, notice how we specify the <code>data</code> argument inside
 <code>geom_polygon()</code> instead of inside <code>ggplot()</code>. We do this because the data
 frame <code>world_map</code> is used to graph the layer of the map. We still need to add
@@ -725,14 +728,14 @@ storm locations:</p>
 <span id="cb88-6"><a href="eda-maps.html#cb88-6"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span>
 <span id="cb88-7"><a href="eda-maps.html#cb88-7"></a></span>
 <span id="cb88-8"><a href="eda-maps.html#cb88-8"></a>gg_world</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-115-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="cwd_files/figure-html/unnamed-chunk-114-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Then, we can take <code>gg_world</code> and add the <code>geom_point()</code> layer with data <code>storms75</code>
 mapping longitude and latitude coordinates, and coloring points by <code>name</code>:</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="eda-maps.html#cb89-1"></a><span class="co"># world map, adding storms in 1975</span></span>
 <span id="cb89-2"><a href="eda-maps.html#cb89-2"></a>gg_world <span class="op">+</span></span>
 <span id="cb89-3"><a href="eda-maps.html#cb89-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> storms75,</span>
 <span id="cb89-4"><a href="eda-maps.html#cb89-4"></a>             <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-116-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="cwd_files/figure-html/unnamed-chunk-115-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We can try zooming-in by modifying the x-and-y axis limits:</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="eda-maps.html#cb90-1"></a><span class="co"># zoom-in</span></span>
 <span id="cb90-2"><a href="eda-maps.html#cb90-2"></a>gg_world <span class="op">+</span></span>
@@ -740,7 +743,7 @@ mapping longitude and latitude coordinates, and coloring points by <code>name</c
 <span id="cb90-4"><a href="eda-maps.html#cb90-4"></a>             <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name)) <span class="op">+</span></span>
 <span id="cb90-5"><a href="eda-maps.html#cb90-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb90-6"><a href="eda-maps.html#cb90-6"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-117-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="cwd_files/figure-html/unnamed-chunk-116-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>And then keep exploring things by taking into account more variables. For
 instance, let’s map <code>wind</code> to the <code>size</code> argument of points.</p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="eda-maps.html#cb91-1"></a>gg_world <span class="op">+</span></span>
@@ -749,7 +752,7 @@ instance, let’s map <code>wind</code> to the <code>size</code> argument of poi
 <span id="cb91-4"><a href="eda-maps.html#cb91-4"></a>             <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
 <span id="cb91-5"><a href="eda-maps.html#cb91-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb91-6"><a href="eda-maps.html#cb91-6"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-118-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="cwd_files/figure-html/unnamed-chunk-117-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>A very similar appearance can be achieved with <code>geom_path()</code></p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="eda-maps.html#cb92-1"></a>gg_world <span class="op">+</span></span>
 <span id="cb92-2"><a href="eda-maps.html#cb92-2"></a><span class="st">  </span><span class="kw">geom_path</span>(<span class="dt">data =</span> storms75,</span>
@@ -757,7 +760,7 @@ instance, let’s map <code>wind</code> to the <code>size</code> argument of poi
 <span id="cb92-4"><a href="eda-maps.html#cb92-4"></a>             <span class="dt">lineend =</span> <span class="st">&quot;round&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span></span>
 <span id="cb92-5"><a href="eda-maps.html#cb92-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb92-6"><a href="eda-maps.html#cb92-6"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-119-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="cwd_files/figure-html/unnamed-chunk-118-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="storms-from-1975-to-1980" class="section level3">
 <h3><span class="header-section-number">11.1.3</span> Storms from 1975 to 1980</h3>
@@ -773,7 +776,7 @@ interested in:</p>
 <span id="cb94-5"><a href="eda-maps.html#cb94-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb94-6"><a href="eda-maps.html#cb94-6"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb94-7"><a href="eda-maps.html#cb94-7"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>year)</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-121-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="cwd_files/figure-html/unnamed-chunk-120-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="exercises-5" class="section level3">
 <h3><span class="header-section-number">11.1.4</span> Exercises</h3>

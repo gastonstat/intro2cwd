@@ -687,8 +687,8 @@ bivariate, multivariate analysis).</p>
 <h2><span class="header-section-number">8.1</span> Installing some packages</h2>
 <p>We want you to get your hands dirty in R as quick as possible, and perhaps the
 best way to do this is by working on a case study. To keep things moderately
-simple, we use one of the data set that comes in one the most popular R packages
-for manipulating tables: <code>"dplyr"</code>. The main reason to
+simple, we use one of the data sets that comes in <code>"dplyr"</code>, one the most
+popular R packages for manipulating tables. The main reason to
 start in this mode, is to avoid having to worry about data importing issues,
 which we cover later in chapter <a href="importing.html#importing">Importing Tables</a>. The other
 reason is to have data that is already clean and ready to be analyzed.
@@ -697,16 +697,16 @@ subsequent chapters.</p>
 <p>We are assuming that you already installed the packages <code>"dplyr"</code> and
 <code>"ggplot2"</code>. If that’s not the case then <strong>run on the console</strong> the command
 below (do NOT include this command in any <code>Rmd</code> file):</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="tables1.html#cb1-1"></a><span class="co"># don&#39;t include this command in any Rmd file</span></span>
-<span id="cb1-2"><a href="tables1.html#cb1-2"></a><span class="co"># don&#39;t worry too much if you get a warning message</span></span>
-<span id="cb1-3"><a href="tables1.html#cb1-3"></a><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="tables1.html#cb29-1"></a><span class="co"># don&#39;t include this command in any Rmd file</span></span>
+<span id="cb29-2"><a href="tables1.html#cb29-2"></a><span class="co"># don&#39;t worry too much if you get a warning message</span></span>
+<span id="cb29-3"><a href="tables1.html#cb29-3"></a><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>))</span></code></pre></div>
 <p>Remember that you only need to install a package once! After a package has been
 installed in your machine, there is no need to call <code>install.packages()</code> again
 on the same package. What you should always invoke, in order to use the
 functions in a package, is the <code>library()</code> function:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="tables1.html#cb2-1"></a><span class="co"># (you should include this command in your Rmd file)</span></span>
-<span id="cb2-2"><a href="tables1.html#cb2-2"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb2-3"><a href="tables1.html#cb2-3"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="tables1.html#cb30-1"></a><span class="co"># (you should include this command in your Rmd file)</span></span>
+<span id="cb30-2"><a href="tables1.html#cb30-2"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb30-3"><a href="tables1.html#cb30-3"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
 <p><strong>About loading packages:</strong> Another rule to keep in mind is to always load any
 required packages at the very top of your script files (<code>.R</code> or <code>.Rmd</code> or
 <code>.Rnw</code> files). Avoid calling the <code>library()</code> function in the middle of a script.
@@ -721,7 +721,7 @@ need to learn some basic notions about hurricanes.</p>
 </div>
 <div id="hurricanes-data" class="section level2">
 <h2><span class="header-section-number">8.2</span> Hurricanes Data</h2>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-45"></span>
 <img src="images/eda/sandy-hurricane.jpg" alt="NASA satellite image of hurricane Sandy, 2012 (source: wikimedia commons)" width="75%" />
 <p class="caption">
 Figure 8.1: NASA satellite image of hurricane Sandy, 2012 (source: wikimedia commons)
@@ -872,6 +872,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
