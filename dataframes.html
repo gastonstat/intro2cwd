@@ -218,13 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -337,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -679,8 +682,8 @@ manipulate a data frame, we want to expose you to both “traditional” and
 <p>The “traditional” way of manipulating data frames in R is based on bracket
 notation, e.g. <code>dat[ , ]</code>, to select specific rows, columns, or cells. Also,
 the use of the dollar <code>$</code> operator to handle columns is fundamental, and
-the use of double barckets <code>dat[[ ]]</code> comes handy from time to time.</p>
-<p>On the “modern” approach for working data frames, there is the <strong>plying</strong>
+the use of double brackets <code>dat[[ ]]</code> comes handy from time to time.</p>
+<p>On the “modern” approach for manipulating data frames, there is the <strong>plyr</strong>
 framework devised by Hadley Wickham. From his doctoral research, the first
 <em>plyr</em> tools were available in the packages <code>"plyr"</code> and <code>"reshape"</code>. Nowadays,
 we have the <code>"reshape2"</code>package, and the extremely popular package <code>"dplyr"</code>
@@ -688,7 +691,7 @@ we have the <code>"reshape2"</code>package, and the extremely popular package <c
 and we will dive deeper in chapter <a href="dplyr2.html#dplyr2">dplyr pipelines</a>.</p>
 <p>To make the most of the content covered in the next sections, we are assuming
 that you are familiar with the rest of data objects covered in the previous
-part (i.e. IV Data Objects in R).</p>
+part of the book (i.e. IV Data Objects in R).</p>
 <div id="r-data-frames" class="section level2">
 <h2><span class="header-section-number">21.1</span> R Data Frames</h2>
 <p>A data frame is a special type of R list. In most cases, a data frame is
@@ -699,7 +702,7 @@ data type. However, since a data frame is a list, you
 can technically have any kind of object as a column. In practice, though,
 having data frames with columns that are not vectors or factors is something
 that does not make much sense.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-268"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
 <img src="images/objects/obj-dataframe.svg" alt="Abstract view of a data.frame" width="75%" />
 <p class="caption">
 Figure 21.1: Abstract view of a data.frame
@@ -707,7 +710,7 @@ Figure 21.1: Abstract view of a data.frame
 </div>
 <p>From the data manipulation point of view, data frames behave like a hybrid
 object. On one hand, they are lists and can be manipulated like any other list
-using double brackets <code>dat[[ ]]</code> and dollar <code>dat$name</code>.
+using double brackets <code>dat[[ ]]</code> and dollar operator <code>dat$name</code>.
 On the other hand, because data frames are designed as tabular or 2-dimensional
 objects, they also behave like two-dimensional arrays or matrices, admitting
 bracket notation <code>dat[ , ]</code>. For these reasons, there is a wide array of
@@ -735,19 +738,19 @@ Just a few rows and columns of <code>mtcars</code> are displayed below:</p>
 any kind of object, is <code>str()</code>. When applied to data frames, <code>str()</code> returns a
 report of the dimensions of the data frame, a list with the name of all the
 variables, and their data types (e.g. <code>chr</code> character, <code>num</code> real, etc).</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="dataframes.html#cb250-1"></a><span class="kw">str</span>(mtcars, <span class="dt">vec.len =</span> <span class="dv">1</span>)</span>
-<span id="cb250-2"><a href="dataframes.html#cb250-2"></a><span class="co">#&gt; &#39;data.frame&#39;:    32 obs. of  11 variables:</span></span>
-<span id="cb250-3"><a href="dataframes.html#cb250-3"></a><span class="co">#&gt;  $ mpg : num  21 21 ...</span></span>
-<span id="cb250-4"><a href="dataframes.html#cb250-4"></a><span class="co">#&gt;  $ cyl : num  6 6 ...</span></span>
-<span id="cb250-5"><a href="dataframes.html#cb250-5"></a><span class="co">#&gt;  $ disp: num  160 160 ...</span></span>
-<span id="cb250-6"><a href="dataframes.html#cb250-6"></a><span class="co">#&gt;  $ hp  : num  110 110 ...</span></span>
-<span id="cb250-7"><a href="dataframes.html#cb250-7"></a><span class="co">#&gt;  $ drat: num  3.9 3.9 ...</span></span>
-<span id="cb250-8"><a href="dataframes.html#cb250-8"></a><span class="co">#&gt;  $ wt  : num  2.62 ...</span></span>
-<span id="cb250-9"><a href="dataframes.html#cb250-9"></a><span class="co">#&gt;  $ qsec: num  16.5 ...</span></span>
-<span id="cb250-10"><a href="dataframes.html#cb250-10"></a><span class="co">#&gt;  $ vs  : num  0 0 ...</span></span>
-<span id="cb250-11"><a href="dataframes.html#cb250-11"></a><span class="co">#&gt;  $ am  : num  1 1 ...</span></span>
-<span id="cb250-12"><a href="dataframes.html#cb250-12"></a><span class="co">#&gt;  $ gear: num  4 4 ...</span></span>
-<span id="cb250-13"><a href="dataframes.html#cb250-13"></a><span class="co">#&gt;  $ carb: num  4 4 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="dataframes.html#cb2-1"></a><span class="kw">str</span>(mtcars, <span class="dt">vec.len =</span> <span class="dv">1</span>)</span>
+<span id="cb2-2"><a href="dataframes.html#cb2-2"></a><span class="co">#&gt; &#39;data.frame&#39;:    32 obs. of  11 variables:</span></span>
+<span id="cb2-3"><a href="dataframes.html#cb2-3"></a><span class="co">#&gt;  $ mpg : num  21 21 ...</span></span>
+<span id="cb2-4"><a href="dataframes.html#cb2-4"></a><span class="co">#&gt;  $ cyl : num  6 6 ...</span></span>
+<span id="cb2-5"><a href="dataframes.html#cb2-5"></a><span class="co">#&gt;  $ disp: num  160 160 ...</span></span>
+<span id="cb2-6"><a href="dataframes.html#cb2-6"></a><span class="co">#&gt;  $ hp  : num  110 110 ...</span></span>
+<span id="cb2-7"><a href="dataframes.html#cb2-7"></a><span class="co">#&gt;  $ drat: num  3.9 3.9 ...</span></span>
+<span id="cb2-8"><a href="dataframes.html#cb2-8"></a><span class="co">#&gt;  $ wt  : num  2.62 ...</span></span>
+<span id="cb2-9"><a href="dataframes.html#cb2-9"></a><span class="co">#&gt;  $ qsec: num  16.5 ...</span></span>
+<span id="cb2-10"><a href="dataframes.html#cb2-10"></a><span class="co">#&gt;  $ vs  : num  0 0 ...</span></span>
+<span id="cb2-11"><a href="dataframes.html#cb2-11"></a><span class="co">#&gt;  $ am  : num  1 1 ...</span></span>
+<span id="cb2-12"><a href="dataframes.html#cb2-12"></a><span class="co">#&gt;  $ gear: num  4 4 ...</span></span>
+<span id="cb2-13"><a href="dataframes.html#cb2-13"></a><span class="co">#&gt;  $ carb: num  4 4 ...</span></span></code></pre></div>
 <p>The argument <code>vec.len = 1</code> is optional but we like to use it because it
 indicates that just the first elements in each column should be displayed.
 Observe the output returned by <code>str()</code>. The first line tells us that <code>mtcars</code>
@@ -775,31 +778,31 @@ potential issues and avoid disastrous consequences or bugs in subsequent stages.
 <p>On a technical side, we should mention that a data frame is a list with special
 attributes: an attribute <code>names</code> for column names, an attribute
 <code>row.names</code> for column names, and of course its attribute <code>class</code>:</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="dataframes.html#cb251-1"></a><span class="kw">attributes</span>(mtcars)</span>
-<span id="cb251-2"><a href="dataframes.html#cb251-2"></a><span class="co">#&gt; $names</span></span>
-<span id="cb251-3"><a href="dataframes.html#cb251-3"></a><span class="co">#&gt;  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;</span></span>
-<span id="cb251-4"><a href="dataframes.html#cb251-4"></a><span class="co">#&gt; [11] &quot;carb&quot;</span></span>
-<span id="cb251-5"><a href="dataframes.html#cb251-5"></a><span class="co">#&gt; </span></span>
-<span id="cb251-6"><a href="dataframes.html#cb251-6"></a><span class="co">#&gt; $row.names</span></span>
-<span id="cb251-7"><a href="dataframes.html#cb251-7"></a><span class="co">#&gt;  [1] &quot;Mazda RX4&quot;           &quot;Mazda RX4 Wag&quot;       &quot;Datsun 710&quot;         </span></span>
-<span id="cb251-8"><a href="dataframes.html#cb251-8"></a><span class="co">#&gt;  [4] &quot;Hornet 4 Drive&quot;      &quot;Hornet Sportabout&quot;   &quot;Valiant&quot;            </span></span>
-<span id="cb251-9"><a href="dataframes.html#cb251-9"></a><span class="co">#&gt;  [7] &quot;Duster 360&quot;          &quot;Merc 240D&quot;           &quot;Merc 230&quot;           </span></span>
-<span id="cb251-10"><a href="dataframes.html#cb251-10"></a><span class="co">#&gt; [10] &quot;Merc 280&quot;            &quot;Merc 280C&quot;           &quot;Merc 450SE&quot;         </span></span>
-<span id="cb251-11"><a href="dataframes.html#cb251-11"></a><span class="co">#&gt; [13] &quot;Merc 450SL&quot;          &quot;Merc 450SLC&quot;         &quot;Cadillac Fleetwood&quot; </span></span>
-<span id="cb251-12"><a href="dataframes.html#cb251-12"></a><span class="co">#&gt; [16] &quot;Lincoln Continental&quot; &quot;Chrysler Imperial&quot;   &quot;Fiat 128&quot;           </span></span>
-<span id="cb251-13"><a href="dataframes.html#cb251-13"></a><span class="co">#&gt; [19] &quot;Honda Civic&quot;         &quot;Toyota Corolla&quot;      &quot;Toyota Corona&quot;      </span></span>
-<span id="cb251-14"><a href="dataframes.html#cb251-14"></a><span class="co">#&gt; [22] &quot;Dodge Challenger&quot;    &quot;AMC Javelin&quot;         &quot;Camaro Z28&quot;         </span></span>
-<span id="cb251-15"><a href="dataframes.html#cb251-15"></a><span class="co">#&gt; [25] &quot;Pontiac Firebird&quot;    &quot;Fiat X1-9&quot;           &quot;Porsche 914-2&quot;      </span></span>
-<span id="cb251-16"><a href="dataframes.html#cb251-16"></a><span class="co">#&gt; [28] &quot;Lotus Europa&quot;        &quot;Ford Pantera L&quot;      &quot;Ferrari Dino&quot;       </span></span>
-<span id="cb251-17"><a href="dataframes.html#cb251-17"></a><span class="co">#&gt; [31] &quot;Maserati Bora&quot;       &quot;Volvo 142E&quot;         </span></span>
-<span id="cb251-18"><a href="dataframes.html#cb251-18"></a><span class="co">#&gt; </span></span>
-<span id="cb251-19"><a href="dataframes.html#cb251-19"></a><span class="co">#&gt; $class</span></span>
-<span id="cb251-20"><a href="dataframes.html#cb251-20"></a><span class="co">#&gt; [1] &quot;data.frame&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="dataframes.html#cb3-1"></a><span class="kw">attributes</span>(mtcars)</span>
+<span id="cb3-2"><a href="dataframes.html#cb3-2"></a><span class="co">#&gt; $names</span></span>
+<span id="cb3-3"><a href="dataframes.html#cb3-3"></a><span class="co">#&gt;  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;</span></span>
+<span id="cb3-4"><a href="dataframes.html#cb3-4"></a><span class="co">#&gt; [11] &quot;carb&quot;</span></span>
+<span id="cb3-5"><a href="dataframes.html#cb3-5"></a><span class="co">#&gt; </span></span>
+<span id="cb3-6"><a href="dataframes.html#cb3-6"></a><span class="co">#&gt; $row.names</span></span>
+<span id="cb3-7"><a href="dataframes.html#cb3-7"></a><span class="co">#&gt;  [1] &quot;Mazda RX4&quot;           &quot;Mazda RX4 Wag&quot;       &quot;Datsun 710&quot;         </span></span>
+<span id="cb3-8"><a href="dataframes.html#cb3-8"></a><span class="co">#&gt;  [4] &quot;Hornet 4 Drive&quot;      &quot;Hornet Sportabout&quot;   &quot;Valiant&quot;            </span></span>
+<span id="cb3-9"><a href="dataframes.html#cb3-9"></a><span class="co">#&gt;  [7] &quot;Duster 360&quot;          &quot;Merc 240D&quot;           &quot;Merc 230&quot;           </span></span>
+<span id="cb3-10"><a href="dataframes.html#cb3-10"></a><span class="co">#&gt; [10] &quot;Merc 280&quot;            &quot;Merc 280C&quot;           &quot;Merc 450SE&quot;         </span></span>
+<span id="cb3-11"><a href="dataframes.html#cb3-11"></a><span class="co">#&gt; [13] &quot;Merc 450SL&quot;          &quot;Merc 450SLC&quot;         &quot;Cadillac Fleetwood&quot; </span></span>
+<span id="cb3-12"><a href="dataframes.html#cb3-12"></a><span class="co">#&gt; [16] &quot;Lincoln Continental&quot; &quot;Chrysler Imperial&quot;   &quot;Fiat 128&quot;           </span></span>
+<span id="cb3-13"><a href="dataframes.html#cb3-13"></a><span class="co">#&gt; [19] &quot;Honda Civic&quot;         &quot;Toyota Corolla&quot;      &quot;Toyota Corona&quot;      </span></span>
+<span id="cb3-14"><a href="dataframes.html#cb3-14"></a><span class="co">#&gt; [22] &quot;Dodge Challenger&quot;    &quot;AMC Javelin&quot;         &quot;Camaro Z28&quot;         </span></span>
+<span id="cb3-15"><a href="dataframes.html#cb3-15"></a><span class="co">#&gt; [25] &quot;Pontiac Firebird&quot;    &quot;Fiat X1-9&quot;           &quot;Porsche 914-2&quot;      </span></span>
+<span id="cb3-16"><a href="dataframes.html#cb3-16"></a><span class="co">#&gt; [28] &quot;Lotus Europa&quot;        &quot;Ford Pantera L&quot;      &quot;Ferrari Dino&quot;       </span></span>
+<span id="cb3-17"><a href="dataframes.html#cb3-17"></a><span class="co">#&gt; [31] &quot;Maserati Bora&quot;       &quot;Volvo 142E&quot;         </span></span>
+<span id="cb3-18"><a href="dataframes.html#cb3-18"></a><span class="co">#&gt; </span></span>
+<span id="cb3-19"><a href="dataframes.html#cb3-19"></a><span class="co">#&gt; $class</span></span>
+<span id="cb3-20"><a href="dataframes.html#cb3-20"></a><span class="co">#&gt; [1] &quot;data.frame&quot;</span></span></code></pre></div>
 </div>
 <div id="creating-data-frames" class="section level2">
 <h2><span class="header-section-number">21.3</span> Creating data frames</h2>
 <p>Most of the (raw) data tables you will be working with will already be in
-some data file. However, from time to time you will face the need of creating
+some data file. However, from time to time you will face the need to create
 some sort of data table in R. In these situations, you will likely have to
 create such table with a data frame. So let’s look at various ways to
 “manually”" create a data frame.</p>
@@ -807,66 +810,66 @@ create such table with a data frame. So let’s look at various ways to
 You pass a series of vectors (or factors), of the same length, separated by commas.
 Each vector (or factor) will become a column in the generated data frame.
 Preferably, give names to each column like in the example below:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="dataframes.html#cb252-1"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb252-2"><a href="dataframes.html#cb252-2"></a>  <span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
-<span id="cb252-3"><a href="dataframes.html#cb252-3"></a>  <span class="dt">gender =</span> <span class="kw">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
-<span id="cb252-4"><a href="dataframes.html#cb252-4"></a>  <span class="dt">height =</span> <span class="kw">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
-<span id="cb252-5"><a href="dataframes.html#cb252-5"></a>  <span class="dt">weight =</span> <span class="kw">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>)</span>
-<span id="cb252-6"><a href="dataframes.html#cb252-6"></a>) </span>
-<span id="cb252-7"><a href="dataframes.html#cb252-7"></a></span>
-<span id="cb252-8"><a href="dataframes.html#cb252-8"></a>dat</span>
-<span id="cb252-9"><a href="dataframes.html#cb252-9"></a><span class="co">#&gt;     name gender height weight</span></span>
-<span id="cb252-10"><a href="dataframes.html#cb252-10"></a><span class="co">#&gt; 1 Anakin   male   1.88     84</span></span>
-<span id="cb252-11"><a href="dataframes.html#cb252-11"></a><span class="co">#&gt; 2  Padme female   1.65     45</span></span>
-<span id="cb252-12"><a href="dataframes.html#cb252-12"></a><span class="co">#&gt; 3   Luke   male   1.72     77</span></span>
-<span id="cb252-13"><a href="dataframes.html#cb252-13"></a><span class="co">#&gt; 4   Leia female   1.50     49</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="dataframes.html#cb4-1"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb4-2"><a href="dataframes.html#cb4-2"></a>  <span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
+<span id="cb4-3"><a href="dataframes.html#cb4-3"></a>  <span class="dt">gender =</span> <span class="kw">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
+<span id="cb4-4"><a href="dataframes.html#cb4-4"></a>  <span class="dt">height =</span> <span class="kw">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
+<span id="cb4-5"><a href="dataframes.html#cb4-5"></a>  <span class="dt">weight =</span> <span class="kw">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>)</span>
+<span id="cb4-6"><a href="dataframes.html#cb4-6"></a>) </span>
+<span id="cb4-7"><a href="dataframes.html#cb4-7"></a></span>
+<span id="cb4-8"><a href="dataframes.html#cb4-8"></a>dat</span>
+<span id="cb4-9"><a href="dataframes.html#cb4-9"></a><span class="co">#&gt;     name gender height weight</span></span>
+<span id="cb4-10"><a href="dataframes.html#cb4-10"></a><span class="co">#&gt; 1 Anakin   male   1.88     84</span></span>
+<span id="cb4-11"><a href="dataframes.html#cb4-11"></a><span class="co">#&gt; 2  Padme female   1.65     45</span></span>
+<span id="cb4-12"><a href="dataframes.html#cb4-12"></a><span class="co">#&gt; 3   Luke   male   1.72     77</span></span>
+<span id="cb4-13"><a href="dataframes.html#cb4-13"></a><span class="co">#&gt; 4   Leia female   1.50     49</span></span></code></pre></div>
 <p><strong>Option 2</strong>: Another way to create data frames is with a <code>list</code> containing
 vectors or factors (of the same length), which you then convert into a data
 frame with <code>data.frame()</code>:</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="dataframes.html#cb253-1"></a><span class="co"># another way to create a basic data frame</span></span>
-<span id="cb253-2"><a href="dataframes.html#cb253-2"></a>lst &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
-<span id="cb253-3"><a href="dataframes.html#cb253-3"></a>  <span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
-<span id="cb253-4"><a href="dataframes.html#cb253-4"></a>  <span class="dt">gender =</span> <span class="kw">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
-<span id="cb253-5"><a href="dataframes.html#cb253-5"></a>  <span class="dt">height =</span> <span class="kw">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
-<span id="cb253-6"><a href="dataframes.html#cb253-6"></a>  <span class="dt">weight =</span> <span class="kw">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>)</span>
-<span id="cb253-7"><a href="dataframes.html#cb253-7"></a>)</span>
-<span id="cb253-8"><a href="dataframes.html#cb253-8"></a></span>
-<span id="cb253-9"><a href="dataframes.html#cb253-9"></a>tbl &lt;-<span class="st"> </span><span class="kw">data.frame</span>(lst)</span>
-<span id="cb253-10"><a href="dataframes.html#cb253-10"></a></span>
-<span id="cb253-11"><a href="dataframes.html#cb253-11"></a>tbl</span>
-<span id="cb253-12"><a href="dataframes.html#cb253-12"></a><span class="co">#&gt;     name gender height weight</span></span>
-<span id="cb253-13"><a href="dataframes.html#cb253-13"></a><span class="co">#&gt; 1 Anakin   male   1.88     84</span></span>
-<span id="cb253-14"><a href="dataframes.html#cb253-14"></a><span class="co">#&gt; 2  Padme female   1.65     45</span></span>
-<span id="cb253-15"><a href="dataframes.html#cb253-15"></a><span class="co">#&gt; 3   Luke   male   1.72     77</span></span>
-<span id="cb253-16"><a href="dataframes.html#cb253-16"></a><span class="co">#&gt; 4   Leia female   1.50     49</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="dataframes.html#cb5-1"></a><span class="co"># another way to create a basic data frame</span></span>
+<span id="cb5-2"><a href="dataframes.html#cb5-2"></a>lst &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb5-3"><a href="dataframes.html#cb5-3"></a>  <span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
+<span id="cb5-4"><a href="dataframes.html#cb5-4"></a>  <span class="dt">gender =</span> <span class="kw">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
+<span id="cb5-5"><a href="dataframes.html#cb5-5"></a>  <span class="dt">height =</span> <span class="kw">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
+<span id="cb5-6"><a href="dataframes.html#cb5-6"></a>  <span class="dt">weight =</span> <span class="kw">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>)</span>
+<span id="cb5-7"><a href="dataframes.html#cb5-7"></a>)</span>
+<span id="cb5-8"><a href="dataframes.html#cb5-8"></a></span>
+<span id="cb5-9"><a href="dataframes.html#cb5-9"></a>tbl &lt;-<span class="st"> </span><span class="kw">data.frame</span>(lst)</span>
+<span id="cb5-10"><a href="dataframes.html#cb5-10"></a></span>
+<span id="cb5-11"><a href="dataframes.html#cb5-11"></a>tbl</span>
+<span id="cb5-12"><a href="dataframes.html#cb5-12"></a><span class="co">#&gt;     name gender height weight</span></span>
+<span id="cb5-13"><a href="dataframes.html#cb5-13"></a><span class="co">#&gt; 1 Anakin   male   1.88     84</span></span>
+<span id="cb5-14"><a href="dataframes.html#cb5-14"></a><span class="co">#&gt; 2  Padme female   1.65     45</span></span>
+<span id="cb5-15"><a href="dataframes.html#cb5-15"></a><span class="co">#&gt; 3   Luke   male   1.72     77</span></span>
+<span id="cb5-16"><a href="dataframes.html#cb5-16"></a><span class="co">#&gt; 4   Leia female   1.50     49</span></span></code></pre></div>
 <p>Remember that a <code>data.frame</code> is nothing more than a <code>list</code>. So as long as the
 elements in the list (vectors or factors) are of the same length, we can simply
 convert the list into a data frame.</p>
 <p>By default, <code>data.frame()</code> converts character vectors into factors. You can
-check that by exmining the structure of the data frame with <code>str()</code>:</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="dataframes.html#cb254-1"></a><span class="kw">str</span>(tbl)</span>
-<span id="cb254-2"><a href="dataframes.html#cb254-2"></a><span class="co">#&gt; &#39;data.frame&#39;:    4 obs. of  4 variables:</span></span>
-<span id="cb254-3"><a href="dataframes.html#cb254-3"></a><span class="co">#&gt;  $ name  : Factor w/ 4 levels &quot;Anakin&quot;,&quot;Leia&quot;,..: 1 4 3 2</span></span>
-<span id="cb254-4"><a href="dataframes.html#cb254-4"></a><span class="co">#&gt;  $ gender: Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 2 1</span></span>
-<span id="cb254-5"><a href="dataframes.html#cb254-5"></a><span class="co">#&gt;  $ height: num  1.88 1.65 1.72 1.5</span></span>
-<span id="cb254-6"><a href="dataframes.html#cb254-6"></a><span class="co">#&gt;  $ weight: num  84 45 77 49</span></span></code></pre></div>
+check that by examining the structure of the data frame with <code>str()</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="dataframes.html#cb6-1"></a><span class="kw">str</span>(tbl)</span>
+<span id="cb6-2"><a href="dataframes.html#cb6-2"></a><span class="co">#&gt; &#39;data.frame&#39;:    4 obs. of  4 variables:</span></span>
+<span id="cb6-3"><a href="dataframes.html#cb6-3"></a><span class="co">#&gt;  $ name  : Factor w/ 4 levels &quot;Anakin&quot;,&quot;Leia&quot;,..: 1 4 3 2</span></span>
+<span id="cb6-4"><a href="dataframes.html#cb6-4"></a><span class="co">#&gt;  $ gender: Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 2 1</span></span>
+<span id="cb6-5"><a href="dataframes.html#cb6-5"></a><span class="co">#&gt;  $ height: num  1.88 1.65 1.72 1.5</span></span>
+<span id="cb6-6"><a href="dataframes.html#cb6-6"></a><span class="co">#&gt;  $ weight: num  84 45 77 49</span></span></code></pre></div>
 <p>To prevent <code>data.frame()</code> from converting strings into factors, you must use
 the argument <code>stringsAsFactors = FALSE</code></p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="dataframes.html#cb255-1"></a><span class="co"># strings as strings (not as factors)</span></span>
-<span id="cb255-2"><a href="dataframes.html#cb255-2"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb255-3"><a href="dataframes.html#cb255-3"></a>  <span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
-<span id="cb255-4"><a href="dataframes.html#cb255-4"></a>  <span class="dt">gender =</span> <span class="kw">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
-<span id="cb255-5"><a href="dataframes.html#cb255-5"></a>  <span class="dt">height =</span> <span class="kw">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
-<span id="cb255-6"><a href="dataframes.html#cb255-6"></a>  <span class="dt">weight =</span> <span class="kw">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>),</span>
-<span id="cb255-7"><a href="dataframes.html#cb255-7"></a>  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span></span>
-<span id="cb255-8"><a href="dataframes.html#cb255-8"></a>)</span>
-<span id="cb255-9"><a href="dataframes.html#cb255-9"></a></span>
-<span id="cb255-10"><a href="dataframes.html#cb255-10"></a><span class="kw">str</span>(dat)</span>
-<span id="cb255-11"><a href="dataframes.html#cb255-11"></a><span class="co">#&gt; &#39;data.frame&#39;:    4 obs. of  4 variables:</span></span>
-<span id="cb255-12"><a href="dataframes.html#cb255-12"></a><span class="co">#&gt;  $ name  : chr  &quot;Anakin&quot; &quot;Padme&quot; &quot;Luke&quot; &quot;Leia&quot;</span></span>
-<span id="cb255-13"><a href="dataframes.html#cb255-13"></a><span class="co">#&gt;  $ gender: chr  &quot;male&quot; &quot;female&quot; &quot;male&quot; &quot;female&quot;</span></span>
-<span id="cb255-14"><a href="dataframes.html#cb255-14"></a><span class="co">#&gt;  $ height: num  1.88 1.65 1.72 1.5</span></span>
-<span id="cb255-15"><a href="dataframes.html#cb255-15"></a><span class="co">#&gt;  $ weight: num  84 45 77 49</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="dataframes.html#cb7-1"></a><span class="co"># strings as strings (not as factors)</span></span>
+<span id="cb7-2"><a href="dataframes.html#cb7-2"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb7-3"><a href="dataframes.html#cb7-3"></a>  <span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
+<span id="cb7-4"><a href="dataframes.html#cb7-4"></a>  <span class="dt">gender =</span> <span class="kw">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
+<span id="cb7-5"><a href="dataframes.html#cb7-5"></a>  <span class="dt">height =</span> <span class="kw">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
+<span id="cb7-6"><a href="dataframes.html#cb7-6"></a>  <span class="dt">weight =</span> <span class="kw">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>),</span>
+<span id="cb7-7"><a href="dataframes.html#cb7-7"></a>  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span></span>
+<span id="cb7-8"><a href="dataframes.html#cb7-8"></a>)</span>
+<span id="cb7-9"><a href="dataframes.html#cb7-9"></a></span>
+<span id="cb7-10"><a href="dataframes.html#cb7-10"></a><span class="kw">str</span>(dat)</span>
+<span id="cb7-11"><a href="dataframes.html#cb7-11"></a><span class="co">#&gt; &#39;data.frame&#39;:    4 obs. of  4 variables:</span></span>
+<span id="cb7-12"><a href="dataframes.html#cb7-12"></a><span class="co">#&gt;  $ name  : chr  &quot;Anakin&quot; &quot;Padme&quot; &quot;Luke&quot; &quot;Leia&quot;</span></span>
+<span id="cb7-13"><a href="dataframes.html#cb7-13"></a><span class="co">#&gt;  $ gender: chr  &quot;male&quot; &quot;female&quot; &quot;male&quot; &quot;female&quot;</span></span>
+<span id="cb7-14"><a href="dataframes.html#cb7-14"></a><span class="co">#&gt;  $ height: num  1.88 1.65 1.72 1.5</span></span>
+<span id="cb7-15"><a href="dataframes.html#cb7-15"></a><span class="co">#&gt;  $ weight: num  84 45 77 49</span></span></code></pre></div>
 </div>
 <div id="basic-operations-with-data-frames" class="section level2">
 <h2><span class="header-section-number">21.4</span> Basic Operations with Data Frames</h2>
@@ -891,26 +894,26 @@ at the end of the chapter.</p>
 <li>Transforming a column</li>
 </ul>
 <p>Let’s say you have a data frame <code>dat</code> with the following content:</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="dataframes.html#cb256-1"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb256-2"><a href="dataframes.html#cb256-2"></a>  <span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&#39;Leia&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Han&#39;</span>),</span>
-<span id="cb256-3"><a href="dataframes.html#cb256-3"></a>  <span class="dt">gender =</span> <span class="kw">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;male&#39;</span>),</span>
-<span id="cb256-4"><a href="dataframes.html#cb256-4"></a>  <span class="dt">height =</span> <span class="kw">c</span>(<span class="fl">1.50</span>, <span class="fl">1.72</span>, <span class="fl">1.80</span>),</span>
-<span id="cb256-5"><a href="dataframes.html#cb256-5"></a>  <span class="dt">jedi =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>),</span>
-<span id="cb256-6"><a href="dataframes.html#cb256-6"></a>  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span></span>
-<span id="cb256-7"><a href="dataframes.html#cb256-7"></a>)</span>
-<span id="cb256-8"><a href="dataframes.html#cb256-8"></a></span>
-<span id="cb256-9"><a href="dataframes.html#cb256-9"></a>dat</span>
-<span id="cb256-10"><a href="dataframes.html#cb256-10"></a>  name gender height  jedi</span>
-<span id="cb256-11"><a href="dataframes.html#cb256-11"></a><span class="dv">1</span> Leia female   <span class="fl">1.50</span> <span class="ot">FALSE</span></span>
-<span id="cb256-12"><a href="dataframes.html#cb256-12"></a><span class="dv">2</span> Luke   male   <span class="fl">1.72</span>  <span class="ot">TRUE</span></span>
-<span id="cb256-13"><a href="dataframes.html#cb256-13"></a><span class="dv">3</span>  Han   male   <span class="fl">1.80</span> <span class="ot">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="dataframes.html#cb8-1"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb8-2"><a href="dataframes.html#cb8-2"></a>  <span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&#39;Leia&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Han&#39;</span>),</span>
+<span id="cb8-3"><a href="dataframes.html#cb8-3"></a>  <span class="dt">gender =</span> <span class="kw">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;male&#39;</span>),</span>
+<span id="cb8-4"><a href="dataframes.html#cb8-4"></a>  <span class="dt">height =</span> <span class="kw">c</span>(<span class="fl">1.50</span>, <span class="fl">1.72</span>, <span class="fl">1.80</span>),</span>
+<span id="cb8-5"><a href="dataframes.html#cb8-5"></a>  <span class="dt">jedi =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>),</span>
+<span id="cb8-6"><a href="dataframes.html#cb8-6"></a>  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span></span>
+<span id="cb8-7"><a href="dataframes.html#cb8-7"></a>)</span>
+<span id="cb8-8"><a href="dataframes.html#cb8-8"></a></span>
+<span id="cb8-9"><a href="dataframes.html#cb8-9"></a>dat</span>
+<span id="cb8-10"><a href="dataframes.html#cb8-10"></a>  name gender height  jedi</span>
+<span id="cb8-11"><a href="dataframes.html#cb8-11"></a><span class="dv">1</span> Leia female   <span class="fl">1.50</span> <span class="ot">FALSE</span></span>
+<span id="cb8-12"><a href="dataframes.html#cb8-12"></a><span class="dv">2</span> Luke   male   <span class="fl">1.72</span>  <span class="ot">TRUE</span></span>
+<span id="cb8-13"><a href="dataframes.html#cb8-13"></a><span class="dv">3</span>  Han   male   <span class="fl">1.80</span> <span class="ot">FALSE</span></span></code></pre></div>
 <div id="selecting-elements" class="section level3">
 <h3><span class="header-section-number">21.4.1</span> Selecting elements</h3>
 <p>The data frame <code>dat</code> is a 2-dimensional object: the 1st dimension corresponds
 to the rows, while the 2nd dimension corresponds to the columns.
 Because <code>dat</code> has two dimensions, the bracket notation involves
 working with data frames in this form: <code>dat[ , ]</code>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-275"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
 <img src="images/objects/obj-dataframe-brackets.svg" alt="Bracket notation in data frames" width="50%" />
 <p class="caption">
 Figure 21.2: Bracket notation in data frames
@@ -920,28 +923,28 @@ Figure 21.2: Bracket notation in data frames
 brackets for the 1st index, and the 2nd index: <code>dat[index1, index2]</code>.</p>
 <div id="selecting-cells-1" class="section level4 unnumbered">
 <h4>Selecting cells</h4>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-276"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="images/objects/obj-dataframe-cells1.svg" alt="Several ways to select cells" width="80%" />
 <p class="caption">
 Figure 21.3: Several ways to select cells
 </p>
 </div>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="dataframes.html#cb257-1"></a><span class="co"># select value in row 1 and column 1</span></span>
-<span id="cb257-2"><a href="dataframes.html#cb257-2"></a>dat[<span class="dv">1</span>,<span class="dv">1</span>]</span>
-<span id="cb257-3"><a href="dataframes.html#cb257-3"></a><span class="co">#&gt; [1] &quot;Leia&quot;</span></span>
-<span id="cb257-4"><a href="dataframes.html#cb257-4"></a></span>
-<span id="cb257-5"><a href="dataframes.html#cb257-5"></a><span class="co"># select value in row 2 and column 3</span></span>
-<span id="cb257-6"><a href="dataframes.html#cb257-6"></a>dat[<span class="dv">2</span>,<span class="dv">3</span>]</span>
-<span id="cb257-7"><a href="dataframes.html#cb257-7"></a><span class="co">#&gt; [1] 1.72</span></span>
-<span id="cb257-8"><a href="dataframes.html#cb257-8"></a></span>
-<span id="cb257-9"><a href="dataframes.html#cb257-9"></a><span class="co"># select values in these cells</span></span>
-<span id="cb257-10"><a href="dataframes.html#cb257-10"></a>dat[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]</span>
-<span id="cb257-11"><a href="dataframes.html#cb257-11"></a><span class="co">#&gt;   height  jedi</span></span>
-<span id="cb257-12"><a href="dataframes.html#cb257-12"></a><span class="co">#&gt; 1   1.50 FALSE</span></span>
-<span id="cb257-13"><a href="dataframes.html#cb257-13"></a><span class="co">#&gt; 2   1.72  TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="dataframes.html#cb9-1"></a><span class="co"># select value in row 1 and column 1</span></span>
+<span id="cb9-2"><a href="dataframes.html#cb9-2"></a>dat[<span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb9-3"><a href="dataframes.html#cb9-3"></a><span class="co">#&gt; [1] &quot;Leia&quot;</span></span>
+<span id="cb9-4"><a href="dataframes.html#cb9-4"></a></span>
+<span id="cb9-5"><a href="dataframes.html#cb9-5"></a><span class="co"># select value in row 2 and column 3</span></span>
+<span id="cb9-6"><a href="dataframes.html#cb9-6"></a>dat[<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb9-7"><a href="dataframes.html#cb9-7"></a><span class="co">#&gt; [1] 1.72</span></span>
+<span id="cb9-8"><a href="dataframes.html#cb9-8"></a></span>
+<span id="cb9-9"><a href="dataframes.html#cb9-9"></a><span class="co"># select values in these cells</span></span>
+<span id="cb9-10"><a href="dataframes.html#cb9-10"></a>dat[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]</span>
+<span id="cb9-11"><a href="dataframes.html#cb9-11"></a><span class="co">#&gt;   height  jedi</span></span>
+<span id="cb9-12"><a href="dataframes.html#cb9-12"></a><span class="co">#&gt; 1   1.50 FALSE</span></span>
+<span id="cb9-13"><a href="dataframes.html#cb9-13"></a><span class="co">#&gt; 2   1.72  TRUE</span></span></code></pre></div>
 <p>It is also possible to exclude certain rows-and-columns by passing negative
 numeric indices:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-278"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
 <img src="images/objects/obj-dataframe-cells2.svg" alt="Several ways to exclude cells" width="80%" />
 <p class="caption">
 Figure 21.4: Several ways to exclude cells
@@ -950,7 +953,7 @@ Figure 21.4: Several ways to exclude cells
 </div>
 <div id="selecting-rows-1" class="section level4 unnumbered">
 <h4>Selecting rows</h4>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-279"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
 <img src="images/objects/obj-dataframe-rows1.svg" alt="Several ways to select rows" width="80%" />
 <p class="caption">
 Figure 21.5: Several ways to select rows
@@ -958,16 +961,16 @@ Figure 21.5: Several ways to select rows
 </div>
 <p>If no value is specified for <code>index1</code> then all rows are included. Likewise,
 if no value is specified for <code>index2</code> then all columns are included.</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="dataframes.html#cb258-1"></a><span class="co"># selecting first row</span></span>
-<span id="cb258-2"><a href="dataframes.html#cb258-2"></a>dat[<span class="dv">1</span>, ]</span>
-<span id="cb258-3"><a href="dataframes.html#cb258-3"></a><span class="co">#&gt;   name gender height  jedi</span></span>
-<span id="cb258-4"><a href="dataframes.html#cb258-4"></a><span class="co">#&gt; 1 Leia female    1.5 FALSE</span></span>
-<span id="cb258-5"><a href="dataframes.html#cb258-5"></a></span>
-<span id="cb258-6"><a href="dataframes.html#cb258-6"></a><span class="co"># selecting third row</span></span>
-<span id="cb258-7"><a href="dataframes.html#cb258-7"></a>dat[<span class="dv">3</span>, ]</span>
-<span id="cb258-8"><a href="dataframes.html#cb258-8"></a><span class="co">#&gt;   name gender height  jedi</span></span>
-<span id="cb258-9"><a href="dataframes.html#cb258-9"></a><span class="co">#&gt; 3  Han   male    1.8 FALSE</span></span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-281"></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="dataframes.html#cb10-1"></a><span class="co"># selecting first row</span></span>
+<span id="cb10-2"><a href="dataframes.html#cb10-2"></a>dat[<span class="dv">1</span>, ]</span>
+<span id="cb10-3"><a href="dataframes.html#cb10-3"></a><span class="co">#&gt;   name gender height  jedi</span></span>
+<span id="cb10-4"><a href="dataframes.html#cb10-4"></a><span class="co">#&gt; 1 Leia female    1.5 FALSE</span></span>
+<span id="cb10-5"><a href="dataframes.html#cb10-5"></a></span>
+<span id="cb10-6"><a href="dataframes.html#cb10-6"></a><span class="co"># selecting third row</span></span>
+<span id="cb10-7"><a href="dataframes.html#cb10-7"></a>dat[<span class="dv">3</span>, ]</span>
+<span id="cb10-8"><a href="dataframes.html#cb10-8"></a><span class="co">#&gt;   name gender height  jedi</span></span>
+<span id="cb10-9"><a href="dataframes.html#cb10-9"></a><span class="co">#&gt; 3  Han   male    1.8 FALSE</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
 <img src="images/objects/obj-dataframe-rows2.svg" alt="Several ways to exclude rows" width="80%" />
 <p class="caption">
 Figure 21.6: Several ways to exclude rows
@@ -976,23 +979,23 @@ Figure 21.6: Several ways to exclude rows
 </div>
 <div id="selecting-columns-1" class="section level4 unnumbered">
 <h4>Selecting columns</h4>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-282"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-16"></span>
 <img src="images/objects/obj-dataframe-cols1.svg" alt="Several ways to select columns" width="80%" />
 <p class="caption">
 Figure 21.7: Several ways to select columns
 </p>
 </div>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="dataframes.html#cb259-1"></a><span class="co"># selecting second column</span></span>
-<span id="cb259-2"><a href="dataframes.html#cb259-2"></a>dat[ ,<span class="dv">2</span>]</span>
-<span id="cb259-3"><a href="dataframes.html#cb259-3"></a><span class="co">#&gt; [1] &quot;female&quot; &quot;male&quot;   &quot;male&quot;</span></span>
-<span id="cb259-4"><a href="dataframes.html#cb259-4"></a></span>
-<span id="cb259-5"><a href="dataframes.html#cb259-5"></a><span class="co"># selecting columns 2 to 4</span></span>
-<span id="cb259-6"><a href="dataframes.html#cb259-6"></a>dat[ ,<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>]</span>
-<span id="cb259-7"><a href="dataframes.html#cb259-7"></a><span class="co">#&gt;   gender height  jedi</span></span>
-<span id="cb259-8"><a href="dataframes.html#cb259-8"></a><span class="co">#&gt; 1 female   1.50 FALSE</span></span>
-<span id="cb259-9"><a href="dataframes.html#cb259-9"></a><span class="co">#&gt; 2   male   1.72  TRUE</span></span>
-<span id="cb259-10"><a href="dataframes.html#cb259-10"></a><span class="co">#&gt; 3   male   1.80 FALSE</span></span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-284"></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="dataframes.html#cb11-1"></a><span class="co"># selecting second column</span></span>
+<span id="cb11-2"><a href="dataframes.html#cb11-2"></a>dat[ ,<span class="dv">2</span>]</span>
+<span id="cb11-3"><a href="dataframes.html#cb11-3"></a><span class="co">#&gt; [1] &quot;female&quot; &quot;male&quot;   &quot;male&quot;</span></span>
+<span id="cb11-4"><a href="dataframes.html#cb11-4"></a></span>
+<span id="cb11-5"><a href="dataframes.html#cb11-5"></a><span class="co"># selecting columns 2 to 4</span></span>
+<span id="cb11-6"><a href="dataframes.html#cb11-6"></a>dat[ ,<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>]</span>
+<span id="cb11-7"><a href="dataframes.html#cb11-7"></a><span class="co">#&gt;   gender height  jedi</span></span>
+<span id="cb11-8"><a href="dataframes.html#cb11-8"></a><span class="co">#&gt; 1 female   1.50 FALSE</span></span>
+<span id="cb11-9"><a href="dataframes.html#cb11-9"></a><span class="co">#&gt; 2   male   1.72  TRUE</span></span>
+<span id="cb11-10"><a href="dataframes.html#cb11-10"></a><span class="co">#&gt; 3   male   1.80 FALSE</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
 <img src="images/objects/obj-dataframe-cols2.svg" alt="Several ways to exclude columns" width="80%" />
 <p class="caption">
 Figure 21.8: Several ways to exclude columns
@@ -1001,7 +1004,7 @@ Figure 21.8: Several ways to exclude columns
 </div>
 <div id="more-options-to-access-columns" class="section level4 unnumbered">
 <h4>More Options to Access Columns</h4>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-285"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
 <img src="images/objects/obj-dataframe-names.svg" alt="Other options to select columns of a data frame" width="50%" />
 <p class="caption">
 Figure 21.9: Other options to select columns of a data frame
@@ -1009,39 +1012,39 @@ Figure 21.9: Other options to select columns of a data frame
 </div>
 <p>The dollar sign also works for selecting a column of a data frame
 using its name</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="dataframes.html#cb260-1"></a>mtcars<span class="op">$</span>mpg</span>
-<span id="cb260-2"><a href="dataframes.html#cb260-2"></a><span class="co">#&gt;  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4</span></span>
-<span id="cb260-3"><a href="dataframes.html#cb260-3"></a><span class="co">#&gt; [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7</span></span>
-<span id="cb260-4"><a href="dataframes.html#cb260-4"></a><span class="co">#&gt; [31] 15.0 21.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="dataframes.html#cb12-1"></a>mtcars<span class="op">$</span>mpg</span>
+<span id="cb12-2"><a href="dataframes.html#cb12-2"></a><span class="co">#&gt;  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4</span></span>
+<span id="cb12-3"><a href="dataframes.html#cb12-3"></a><span class="co">#&gt; [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7</span></span>
+<span id="cb12-4"><a href="dataframes.html#cb12-4"></a><span class="co">#&gt; [31] 15.0 21.4</span></span></code></pre></div>
 <p>You don’t need to use quote marks, but you can if you want. The following
 calls are equivalent.</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="dataframes.html#cb261-1"></a>mtcars<span class="op">$</span><span class="st">&#39;mpg&#39;</span></span>
-<span id="cb261-2"><a href="dataframes.html#cb261-2"></a>mtcars<span class="op">$</span><span class="st">&quot;mpg&quot;</span></span>
-<span id="cb261-3"><a href="dataframes.html#cb261-3"></a>mtcars<span class="op">$</span><span class="st">`</span><span class="dt">mpg</span><span class="st">`</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="dataframes.html#cb13-1"></a>mtcars<span class="op">$</span><span class="st">&#39;mpg&#39;</span></span>
+<span id="cb13-2"><a href="dataframes.html#cb13-2"></a>mtcars<span class="op">$</span><span class="st">&quot;mpg&quot;</span></span>
+<span id="cb13-3"><a href="dataframes.html#cb13-3"></a>mtcars<span class="op">$</span><span class="st">`</span><span class="dt">mpg</span><span class="st">`</span></span></code></pre></div>
 </div>
 </div>
 <div id="adding-a-column" class="section level3">
 <h3><span class="header-section-number">21.4.2</span> Adding a column</h3>
 <p>Perhaps the simplest way to add a column is with the dollar operator <code>$</code>.
 You just need to give a name for the new column, and assign a vector (or factor):</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="dataframes.html#cb262-1"></a><span class="co"># adding a column</span></span>
-<span id="cb262-2"><a href="dataframes.html#cb262-2"></a>dat<span class="op">$</span>new_column &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;i&#39;</span>)</span>
-<span id="cb262-3"><a href="dataframes.html#cb262-3"></a>dat</span>
-<span id="cb262-4"><a href="dataframes.html#cb262-4"></a><span class="co">#&gt;   name gender height  jedi new_column</span></span>
-<span id="cb262-5"><a href="dataframes.html#cb262-5"></a><span class="co">#&gt; 1 Leia female   1.50 FALSE          a</span></span>
-<span id="cb262-6"><a href="dataframes.html#cb262-6"></a><span class="co">#&gt; 2 Luke   male   1.72  TRUE          e</span></span>
-<span id="cb262-7"><a href="dataframes.html#cb262-7"></a><span class="co">#&gt; 3  Han   male   1.80 FALSE          i</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="dataframes.html#cb14-1"></a><span class="co"># adding a column</span></span>
+<span id="cb14-2"><a href="dataframes.html#cb14-2"></a>dat<span class="op">$</span>new_column &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;i&#39;</span>)</span>
+<span id="cb14-3"><a href="dataframes.html#cb14-3"></a>dat</span>
+<span id="cb14-4"><a href="dataframes.html#cb14-4"></a><span class="co">#&gt;   name gender height  jedi new_column</span></span>
+<span id="cb14-5"><a href="dataframes.html#cb14-5"></a><span class="co">#&gt; 1 Leia female   1.50 FALSE          a</span></span>
+<span id="cb14-6"><a href="dataframes.html#cb14-6"></a><span class="co">#&gt; 2 Luke   male   1.72  TRUE          e</span></span>
+<span id="cb14-7"><a href="dataframes.html#cb14-7"></a><span class="co">#&gt; 3  Han   male   1.80 FALSE          i</span></span></code></pre></div>
 <p>Another way to add a column is with the <em>column binding</em> function <code>cbind()</code>:</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="dataframes.html#cb263-1"></a><span class="co"># vector of weights</span></span>
-<span id="cb263-2"><a href="dataframes.html#cb263-2"></a>weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">49</span>, <span class="dv">77</span>, <span class="dv">85</span>)</span>
-<span id="cb263-3"><a href="dataframes.html#cb263-3"></a></span>
-<span id="cb263-4"><a href="dataframes.html#cb263-4"></a><span class="co"># adding weights to dat</span></span>
-<span id="cb263-5"><a href="dataframes.html#cb263-5"></a>dat &lt;-<span class="st"> </span><span class="kw">cbind</span>(dat, weight)</span>
-<span id="cb263-6"><a href="dataframes.html#cb263-6"></a>dat</span>
-<span id="cb263-7"><a href="dataframes.html#cb263-7"></a><span class="co">#&gt;   name gender height  jedi new_column weight</span></span>
-<span id="cb263-8"><a href="dataframes.html#cb263-8"></a><span class="co">#&gt; 1 Leia female   1.50 FALSE          a     49</span></span>
-<span id="cb263-9"><a href="dataframes.html#cb263-9"></a><span class="co">#&gt; 2 Luke   male   1.72  TRUE          e     77</span></span>
-<span id="cb263-10"><a href="dataframes.html#cb263-10"></a><span class="co">#&gt; 3  Han   male   1.80 FALSE          i     85</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="dataframes.html#cb15-1"></a><span class="co"># vector of weights</span></span>
+<span id="cb15-2"><a href="dataframes.html#cb15-2"></a>weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">49</span>, <span class="dv">77</span>, <span class="dv">85</span>)</span>
+<span id="cb15-3"><a href="dataframes.html#cb15-3"></a></span>
+<span id="cb15-4"><a href="dataframes.html#cb15-4"></a><span class="co"># adding weights to dat</span></span>
+<span id="cb15-5"><a href="dataframes.html#cb15-5"></a>dat &lt;-<span class="st"> </span><span class="kw">cbind</span>(dat, weight)</span>
+<span id="cb15-6"><a href="dataframes.html#cb15-6"></a>dat</span>
+<span id="cb15-7"><a href="dataframes.html#cb15-7"></a><span class="co">#&gt;   name gender height  jedi new_column weight</span></span>
+<span id="cb15-8"><a href="dataframes.html#cb15-8"></a><span class="co">#&gt; 1 Leia female   1.50 FALSE          a     49</span></span>
+<span id="cb15-9"><a href="dataframes.html#cb15-9"></a><span class="co">#&gt; 2 Luke   male   1.72  TRUE          e     77</span></span>
+<span id="cb15-10"><a href="dataframes.html#cb15-10"></a><span class="co">#&gt; 3  Han   male   1.80 FALSE          i     85</span></span></code></pre></div>
 </div>
 <div id="deleting-a-column" class="section level3">
 <h3><span class="header-section-number">21.4.3</span> Deleting a column</h3>
@@ -1049,42 +1052,42 @@ You just need to give a name for the new column, and assign a vector (or factor)
 This is possible with the <code>$</code> dollar operator. For instance, say you want to
 remove the column <code>new_column</code>. Use the <code>$</code> operator to select this column,
 and assign it the value <code>NULL</code> (think of this as <em>NULLifying</em> a column):</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="dataframes.html#cb264-1"></a><span class="co"># deleting a column</span></span>
-<span id="cb264-2"><a href="dataframes.html#cb264-2"></a>dat<span class="op">$</span>new_column &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
-<span id="cb264-3"><a href="dataframes.html#cb264-3"></a>dat</span>
-<span id="cb264-4"><a href="dataframes.html#cb264-4"></a><span class="co">#&gt;   name gender height  jedi weight</span></span>
-<span id="cb264-5"><a href="dataframes.html#cb264-5"></a><span class="co">#&gt; 1 Leia female   1.50 FALSE     49</span></span>
-<span id="cb264-6"><a href="dataframes.html#cb264-6"></a><span class="co">#&gt; 2 Luke   male   1.72  TRUE     77</span></span>
-<span id="cb264-7"><a href="dataframes.html#cb264-7"></a><span class="co">#&gt; 3  Han   male   1.80 FALSE     85</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="dataframes.html#cb16-1"></a><span class="co"># deleting a column</span></span>
+<span id="cb16-2"><a href="dataframes.html#cb16-2"></a>dat<span class="op">$</span>new_column &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb16-3"><a href="dataframes.html#cb16-3"></a>dat</span>
+<span id="cb16-4"><a href="dataframes.html#cb16-4"></a><span class="co">#&gt;   name gender height  jedi weight</span></span>
+<span id="cb16-5"><a href="dataframes.html#cb16-5"></a><span class="co">#&gt; 1 Leia female   1.50 FALSE     49</span></span>
+<span id="cb16-6"><a href="dataframes.html#cb16-6"></a><span class="co">#&gt; 2 Luke   male   1.72  TRUE     77</span></span>
+<span id="cb16-7"><a href="dataframes.html#cb16-7"></a><span class="co">#&gt; 3  Han   male   1.80 FALSE     85</span></span></code></pre></div>
 </div>
 <div id="renaming-a-column" class="section level3">
 <h3><span class="header-section-number">21.4.4</span> Renaming a column</h3>
 <p>What if you want to rename a column? There are various options to do this.
 One way is by changing the column <code>names</code> attribute:</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="dataframes.html#cb265-1"></a><span class="co"># attributes</span></span>
-<span id="cb265-2"><a href="dataframes.html#cb265-2"></a><span class="kw">attributes</span>(dat)</span>
-<span id="cb265-3"><a href="dataframes.html#cb265-3"></a><span class="co">#&gt; $names</span></span>
-<span id="cb265-4"><a href="dataframes.html#cb265-4"></a><span class="co">#&gt; [1] &quot;name&quot;   &quot;gender&quot; &quot;height&quot; &quot;jedi&quot;   &quot;weight&quot;</span></span>
-<span id="cb265-5"><a href="dataframes.html#cb265-5"></a><span class="co">#&gt; </span></span>
-<span id="cb265-6"><a href="dataframes.html#cb265-6"></a><span class="co">#&gt; $row.names</span></span>
-<span id="cb265-7"><a href="dataframes.html#cb265-7"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb265-8"><a href="dataframes.html#cb265-8"></a><span class="co">#&gt; </span></span>
-<span id="cb265-9"><a href="dataframes.html#cb265-9"></a><span class="co">#&gt; $class</span></span>
-<span id="cb265-10"><a href="dataframes.html#cb265-10"></a><span class="co">#&gt; [1] &quot;data.frame&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="dataframes.html#cb17-1"></a><span class="co"># attributes</span></span>
+<span id="cb17-2"><a href="dataframes.html#cb17-2"></a><span class="kw">attributes</span>(dat)</span>
+<span id="cb17-3"><a href="dataframes.html#cb17-3"></a><span class="co">#&gt; $names</span></span>
+<span id="cb17-4"><a href="dataframes.html#cb17-4"></a><span class="co">#&gt; [1] &quot;name&quot;   &quot;gender&quot; &quot;height&quot; &quot;jedi&quot;   &quot;weight&quot;</span></span>
+<span id="cb17-5"><a href="dataframes.html#cb17-5"></a><span class="co">#&gt; </span></span>
+<span id="cb17-6"><a href="dataframes.html#cb17-6"></a><span class="co">#&gt; $row.names</span></span>
+<span id="cb17-7"><a href="dataframes.html#cb17-7"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb17-8"><a href="dataframes.html#cb17-8"></a><span class="co">#&gt; </span></span>
+<span id="cb17-9"><a href="dataframes.html#cb17-9"></a><span class="co">#&gt; $class</span></span>
+<span id="cb17-10"><a href="dataframes.html#cb17-10"></a><span class="co">#&gt; [1] &quot;data.frame&quot;</span></span></code></pre></div>
 <p>which is more commonly accessed with the <code>names()</code> function:</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="dataframes.html#cb266-1"></a><span class="co"># column names</span></span>
-<span id="cb266-2"><a href="dataframes.html#cb266-2"></a><span class="kw">names</span>(dat)</span>
-<span id="cb266-3"><a href="dataframes.html#cb266-3"></a><span class="co">#&gt; [1] &quot;name&quot;   &quot;gender&quot; &quot;height&quot; &quot;jedi&quot;   &quot;weight&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="dataframes.html#cb18-1"></a><span class="co"># column names</span></span>
+<span id="cb18-2"><a href="dataframes.html#cb18-2"></a><span class="kw">names</span>(dat)</span>
+<span id="cb18-3"><a href="dataframes.html#cb18-3"></a><span class="co">#&gt; [1] &quot;name&quot;   &quot;gender&quot; &quot;height&quot; &quot;jedi&quot;   &quot;weight&quot;</span></span></code></pre></div>
 <p>Notice that <code>dat</code> has a list of attributes. The element <code>names</code> is the vector
 of column names.</p>
 <p>You can directly modify the vector of <code>names</code>; for example let’s change
 <code>gender</code> to <code>sex</code>:</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="dataframes.html#cb267-1"></a><span class="co"># changing rookie to rooky</span></span>
-<span id="cb267-2"><a href="dataframes.html#cb267-2"></a><span class="kw">attributes</span>(dat)<span class="op">$</span>names[<span class="dv">2</span>] &lt;-<span class="st"> &quot;sex&quot;</span></span>
-<span id="cb267-3"><a href="dataframes.html#cb267-3"></a></span>
-<span id="cb267-4"><a href="dataframes.html#cb267-4"></a><span class="co"># display column names</span></span>
-<span id="cb267-5"><a href="dataframes.html#cb267-5"></a><span class="kw">names</span>(dat)</span>
-<span id="cb267-6"><a href="dataframes.html#cb267-6"></a><span class="co">#&gt; [1] &quot;name&quot;   &quot;sex&quot;    &quot;height&quot; &quot;jedi&quot;   &quot;weight&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="dataframes.html#cb19-1"></a><span class="co"># changing rookie to rooky</span></span>
+<span id="cb19-2"><a href="dataframes.html#cb19-2"></a><span class="kw">attributes</span>(dat)<span class="op">$</span>names[<span class="dv">2</span>] &lt;-<span class="st"> &quot;sex&quot;</span></span>
+<span id="cb19-3"><a href="dataframes.html#cb19-3"></a></span>
+<span id="cb19-4"><a href="dataframes.html#cb19-4"></a><span class="co"># display column names</span></span>
+<span id="cb19-5"><a href="dataframes.html#cb19-5"></a><span class="kw">names</span>(dat)</span>
+<span id="cb19-6"><a href="dataframes.html#cb19-6"></a><span class="co">#&gt; [1] &quot;name&quot;   &quot;sex&quot;    &quot;height&quot; &quot;jedi&quot;   &quot;weight&quot;</span></span></code></pre></div>
 <p>By the way: this approach of changing the name of a variable is very low level,
 and probably unfamiliar to most useRs.</p>
 </div>
@@ -1094,13 +1097,13 @@ and probably unfamiliar to most useRs.</p>
 position. What if you want to move <code>salary</code> to the last position (last column)?
 One option is to create a vector of column names in the desired order, and then
 use this vector (for the index of columns) to reassign the data frame like this:</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="dataframes.html#cb268-1"></a>reordered_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;jedi&quot;</span>, <span class="st">&quot;height&quot;</span>, <span class="st">&quot;weight&quot;</span>, <span class="st">&quot;sex&quot;</span>)</span>
-<span id="cb268-2"><a href="dataframes.html#cb268-2"></a>dat &lt;-<span class="st"> </span>dat[ ,reordered_names]</span>
-<span id="cb268-3"><a href="dataframes.html#cb268-3"></a>dat</span>
-<span id="cb268-4"><a href="dataframes.html#cb268-4"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
-<span id="cb268-5"><a href="dataframes.html#cb268-5"></a><span class="co">#&gt; 1 Leia FALSE   1.50     49 female</span></span>
-<span id="cb268-6"><a href="dataframes.html#cb268-6"></a><span class="co">#&gt; 2 Luke  TRUE   1.72     77   male</span></span>
-<span id="cb268-7"><a href="dataframes.html#cb268-7"></a><span class="co">#&gt; 3  Han FALSE   1.80     85   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="dataframes.html#cb20-1"></a>reordered_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;jedi&quot;</span>, <span class="st">&quot;height&quot;</span>, <span class="st">&quot;weight&quot;</span>, <span class="st">&quot;sex&quot;</span>)</span>
+<span id="cb20-2"><a href="dataframes.html#cb20-2"></a>dat &lt;-<span class="st"> </span>dat[ ,reordered_names]</span>
+<span id="cb20-3"><a href="dataframes.html#cb20-3"></a>dat</span>
+<span id="cb20-4"><a href="dataframes.html#cb20-4"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
+<span id="cb20-5"><a href="dataframes.html#cb20-5"></a><span class="co">#&gt; 1 Leia FALSE   1.50     49 female</span></span>
+<span id="cb20-6"><a href="dataframes.html#cb20-6"></a><span class="co">#&gt; 2 Luke  TRUE   1.72     77   male</span></span>
+<span id="cb20-7"><a href="dataframes.html#cb20-7"></a><span class="co">#&gt; 3  Han FALSE   1.80     85   male</span></span></code></pre></div>
 </div>
 <div id="transforming-a-column" class="section level3">
 <h3><span class="header-section-number">21.4.6</span> Transforming a column</h3>
@@ -1108,48 +1111,48 @@ use this vector (for the index of columns) to reassign the data frame like this:
 values in a column. This can be easily accomplished with the <code>$</code> operator.
 For instance, let’s say that we want to transform <code>height</code> from meters to
 centimeters:</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="dataframes.html#cb269-1"></a><span class="co"># converting height to centimeters</span></span>
-<span id="cb269-2"><a href="dataframes.html#cb269-2"></a>dat<span class="op">$</span>height &lt;-<span class="st"> </span>dat<span class="op">$</span>height <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb269-3"><a href="dataframes.html#cb269-3"></a>dat</span>
-<span id="cb269-4"><a href="dataframes.html#cb269-4"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
-<span id="cb269-5"><a href="dataframes.html#cb269-5"></a><span class="co">#&gt; 1 Leia FALSE    150     49 female</span></span>
-<span id="cb269-6"><a href="dataframes.html#cb269-6"></a><span class="co">#&gt; 2 Luke  TRUE    172     77   male</span></span>
-<span id="cb269-7"><a href="dataframes.html#cb269-7"></a><span class="co">#&gt; 3  Han FALSE    180     85   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="dataframes.html#cb21-1"></a><span class="co"># converting height to centimeters</span></span>
+<span id="cb21-2"><a href="dataframes.html#cb21-2"></a>dat<span class="op">$</span>height &lt;-<span class="st"> </span>dat<span class="op">$</span>height <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
+<span id="cb21-3"><a href="dataframes.html#cb21-3"></a>dat</span>
+<span id="cb21-4"><a href="dataframes.html#cb21-4"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
+<span id="cb21-5"><a href="dataframes.html#cb21-5"></a><span class="co">#&gt; 1 Leia FALSE    150     49 female</span></span>
+<span id="cb21-6"><a href="dataframes.html#cb21-6"></a><span class="co">#&gt; 2 Luke  TRUE    172     77   male</span></span>
+<span id="cb21-7"><a href="dataframes.html#cb21-7"></a><span class="co">#&gt; 3  Han FALSE    180     85   male</span></span></code></pre></div>
 <p>Likewise, instead of using the <code>$</code> operator, you can refer to the column using
 bracket notation. Here’s how to transform weight from kilograms to pounds
 (1 kg = 2.20462 pounds):</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="dataframes.html#cb270-1"></a><span class="co"># weight into pounds</span></span>
-<span id="cb270-2"><a href="dataframes.html#cb270-2"></a>dat[ ,<span class="st">&quot;weight&quot;</span>] &lt;-<span class="st"> </span>dat[ ,<span class="st">&quot;weight&quot;</span>] <span class="op">*</span><span class="st"> </span><span class="fl">2.20462</span></span>
-<span id="cb270-3"><a href="dataframes.html#cb270-3"></a>dat</span>
-<span id="cb270-4"><a href="dataframes.html#cb270-4"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
-<span id="cb270-5"><a href="dataframes.html#cb270-5"></a><span class="co">#&gt; 1 Leia FALSE    150    108 female</span></span>
-<span id="cb270-6"><a href="dataframes.html#cb270-6"></a><span class="co">#&gt; 2 Luke  TRUE    172    170   male</span></span>
-<span id="cb270-7"><a href="dataframes.html#cb270-7"></a><span class="co">#&gt; 3  Han FALSE    180    187   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="dataframes.html#cb22-1"></a><span class="co"># weight into pounds</span></span>
+<span id="cb22-2"><a href="dataframes.html#cb22-2"></a>dat[ ,<span class="st">&quot;weight&quot;</span>] &lt;-<span class="st"> </span>dat[ ,<span class="st">&quot;weight&quot;</span>] <span class="op">*</span><span class="st"> </span><span class="fl">2.20462</span></span>
+<span id="cb22-3"><a href="dataframes.html#cb22-3"></a>dat</span>
+<span id="cb22-4"><a href="dataframes.html#cb22-4"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
+<span id="cb22-5"><a href="dataframes.html#cb22-5"></a><span class="co">#&gt; 1 Leia FALSE    150    108 female</span></span>
+<span id="cb22-6"><a href="dataframes.html#cb22-6"></a><span class="co">#&gt; 2 Luke  TRUE    172    170   male</span></span>
+<span id="cb22-7"><a href="dataframes.html#cb22-7"></a><span class="co">#&gt; 3  Han FALSE    180    187   male</span></span></code></pre></div>
 <p>There is also the <code>transform()</code> function which transform values <em>interactively</em>,
 that is, temporarily:</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="dataframes.html#cb271-1"></a><span class="co"># transform weight to kgs</span></span>
-<span id="cb271-2"><a href="dataframes.html#cb271-2"></a><span class="kw">transform</span>(dat, <span class="dt">weight =</span> weight <span class="op">/</span><span class="st"> </span><span class="fl">0.453592</span>)</span>
-<span id="cb271-3"><a href="dataframes.html#cb271-3"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
-<span id="cb271-4"><a href="dataframes.html#cb271-4"></a><span class="co">#&gt; 1 Leia FALSE    150    238 female</span></span>
-<span id="cb271-5"><a href="dataframes.html#cb271-5"></a><span class="co">#&gt; 2 Luke  TRUE    172    374   male</span></span>
-<span id="cb271-6"><a href="dataframes.html#cb271-6"></a><span class="co">#&gt; 3  Han FALSE    180    413   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="dataframes.html#cb23-1"></a><span class="co"># transform weight to kgs</span></span>
+<span id="cb23-2"><a href="dataframes.html#cb23-2"></a><span class="kw">transform</span>(dat, <span class="dt">weight =</span> weight <span class="op">/</span><span class="st"> </span><span class="fl">0.453592</span>)</span>
+<span id="cb23-3"><a href="dataframes.html#cb23-3"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
+<span id="cb23-4"><a href="dataframes.html#cb23-4"></a><span class="co">#&gt; 1 Leia FALSE    150    238 female</span></span>
+<span id="cb23-5"><a href="dataframes.html#cb23-5"></a><span class="co">#&gt; 2 Luke  TRUE    172    374   male</span></span>
+<span id="cb23-6"><a href="dataframes.html#cb23-6"></a><span class="co">#&gt; 3  Han FALSE    180    413   male</span></span></code></pre></div>
 <p><code>transform()</code> does its job of modifying the values of <code>weight</code> but only
 temporarily; if you inspect <code>dat</code> you’ll see what this means:</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="dataframes.html#cb272-1"></a><span class="co"># did weight really change?</span></span>
-<span id="cb272-2"><a href="dataframes.html#cb272-2"></a>dat</span>
-<span id="cb272-3"><a href="dataframes.html#cb272-3"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
-<span id="cb272-4"><a href="dataframes.html#cb272-4"></a><span class="co">#&gt; 1 Leia FALSE    150    108 female</span></span>
-<span id="cb272-5"><a href="dataframes.html#cb272-5"></a><span class="co">#&gt; 2 Luke  TRUE    172    170   male</span></span>
-<span id="cb272-6"><a href="dataframes.html#cb272-6"></a><span class="co">#&gt; 3  Han FALSE    180    187   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="dataframes.html#cb24-1"></a><span class="co"># did weight really change?</span></span>
+<span id="cb24-2"><a href="dataframes.html#cb24-2"></a>dat</span>
+<span id="cb24-3"><a href="dataframes.html#cb24-3"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
+<span id="cb24-4"><a href="dataframes.html#cb24-4"></a><span class="co">#&gt; 1 Leia FALSE    150    108 female</span></span>
+<span id="cb24-5"><a href="dataframes.html#cb24-5"></a><span class="co">#&gt; 2 Luke  TRUE    172    170   male</span></span>
+<span id="cb24-6"><a href="dataframes.html#cb24-6"></a><span class="co">#&gt; 3  Han FALSE    180    187   male</span></span></code></pre></div>
 <p>To make the changes permanent with <code>transform()</code>, you need to reassign them
 to the data frame:</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="dataframes.html#cb273-1"></a><span class="co"># transform weight to inches (permanently)</span></span>
-<span id="cb273-2"><a href="dataframes.html#cb273-2"></a>dat &lt;-<span class="st"> </span><span class="kw">transform</span>(dat, <span class="dt">weight =</span> weight <span class="op">/</span><span class="st"> </span><span class="fl">0.453592</span>)</span>
-<span id="cb273-3"><a href="dataframes.html#cb273-3"></a>dat</span>
-<span id="cb273-4"><a href="dataframes.html#cb273-4"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
-<span id="cb273-5"><a href="dataframes.html#cb273-5"></a><span class="co">#&gt; 1 Leia FALSE    150    238 female</span></span>
-<span id="cb273-6"><a href="dataframes.html#cb273-6"></a><span class="co">#&gt; 2 Luke  TRUE    172    374   male</span></span>
-<span id="cb273-7"><a href="dataframes.html#cb273-7"></a><span class="co">#&gt; 3  Han FALSE    180    413   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="dataframes.html#cb25-1"></a><span class="co"># transform weight to inches (permanently)</span></span>
+<span id="cb25-2"><a href="dataframes.html#cb25-2"></a>dat &lt;-<span class="st"> </span><span class="kw">transform</span>(dat, <span class="dt">weight =</span> weight <span class="op">/</span><span class="st"> </span><span class="fl">0.453592</span>)</span>
+<span id="cb25-3"><a href="dataframes.html#cb25-3"></a>dat</span>
+<span id="cb25-4"><a href="dataframes.html#cb25-4"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
+<span id="cb25-5"><a href="dataframes.html#cb25-5"></a><span class="co">#&gt; 1 Leia FALSE    150    238 female</span></span>
+<span id="cb25-6"><a href="dataframes.html#cb25-6"></a><span class="co">#&gt; 2 Luke  TRUE    172    374   male</span></span>
+<span id="cb25-7"><a href="dataframes.html#cb25-7"></a><span class="co">#&gt; 3  Han FALSE    180    413   male</span></span></code></pre></div>
 
 </div>
 </div>
@@ -1210,20 +1213,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

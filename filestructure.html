@@ -154,13 +154,16 @@
 <li class="chapter" data-level="7.3" data-path="rmdfiles.html"><a href="rmdfiles.html#exercises-2"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>III Data Tables (part 1)</b></span></li>
-<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction</a><ul>
-<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>8.1</b> Data: Individuals and Variables</a></li>
+<li class="chapter" data-level="8" data-path="tables1.html"><a href="tables1.html"><i class="fa fa-check"></i><b>8</b> Introduction: Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="tables1.html"><a href="tables1.html#installing-some-packages"><i class="fa fa-check"></i><b>8.1</b> Installing some packages</a></li>
+<li class="chapter" data-level="8.2" data-path="tables1.html"><a href="tables1.html#hurricanes-data"><i class="fa fa-check"></i><b>8.2</b> Hurricanes Data</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tables1.html"><a href="tables1.html#hurricanes-and-climate-change"><i class="fa fa-check"></i><b>8.2.1</b> Hurricanes and Climate Change</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tables1.html"><a href="tables1.html#a-little-bit-about-hurricanes"><i class="fa fa-check"></i><b>8.3</b> A little bit about Hurricanes</a></li>
+<li class="chapter" data-level="8.4" data-path="tables1.html"><a href="tables1.html#hurricane-tracks-data"><i class="fa fa-check"></i><b>8.4</b> Hurricane Tracks Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="eda-dplyr.html"><a href="eda-dplyr.html"><i class="fa fa-check"></i><b>9</b> Exploratory Data Analysis with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#manipulating-tables-with-dplyr-framework"><i class="fa fa-check"></i><b>9.1.1</b> Manipulating tables with <code>"dplyr"</code> framework</a></li>
-</ul></li>
+<li class="chapter" data-level="9.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="eda-dplyr.html"><a href="eda-dplyr.html#atlantic-hurricane-data"><i class="fa fa-check"></i><b>9.2</b> Atlantic Hurricane Data</a></li>
 <li class="chapter" data-level="9.3" data-path="eda-dplyr.html"><a href="eda-dplyr.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>9.3</b> Exploratory Data Analysis</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="eda-dplyr.html"><a href="eda-dplyr.html#basic-inspection-of-year"><i class="fa fa-check"></i><b>9.3.1</b> Basic Inspection of <code>year</code></a></li>
@@ -273,7 +276,7 @@
 </ul></li>
 <li class="part"><span><b>V Data Tables (part 2)</b></span></li>
 <li class="chapter" data-level="18" data-path="tables2.html"><a href="tables2.html"><i class="fa fa-check"></i><b>18</b> Introduction</a><ul>
-<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables-1"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
+<li class="chapter" data-level="18.1" data-path="tables2.html"><a href="tables2.html#data-individuals-and-variables"><i class="fa fa-check"></i><b>18.1</b> Data: Individuals and Variables</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="tables2.html"><a href="tables2.html#representing-data"><i class="fa fa-check"></i><b>18.1.1</b> Representing Data</a></li>
 <li class="chapter" data-level="18.1.2" data-path="tables2.html"><a href="tables2.html#tabular-data"><i class="fa fa-check"></i><b>18.1.2</b> Tabular Data</a></li>
 </ul></li>
@@ -713,7 +716,8 @@ to indicate that they are inside <code>project/</code>.</p>
 having the HTML file of wikipedia’s entry downloaded to your <code>project/</code>
 directory and saved under the name <code>data.html</code>, together with the dyncamic
 source file <code>report.Rmd</code>, and the generated HTML output <code>report.html</code>. In this
-case we are implicitly assuming that the report.Rmd<code>file contains code to  import the data from</code>data.heml`.</p>
+case we are implicitly assuming that the <code>report.Rmd</code> file contains code to
+import the data from <code>data.html</code>.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="images/dac/files-amateur-structure3.png" alt="Simple structure for the analysis of men's long jump world records" width="60%" />
 <p class="caption">
@@ -805,14 +809,14 @@ their relationship, what is their purpose, etc. Notice
 that we say “in theory”. Unfortunately, not every one is able to make sense
 of their own projects. Time and again, when we ask students to
 explain us the structure of their projects, they realize that their projects
-have become an untamed beast urgently asking for a major reestructuring.</p>
-<p>Another common thing is what we call the short-term memory effect. The idea is
-that while you are working on the project, your working memory is fresh. You
+have become an untamed beast urgently asking for a major reestructuring process.</p>
+<p>Another common thing is what we call the “short-term memory effect”. The idea
+is that while you are working on the project, your working memory is fresh. You
 are familiar with all the functions (or most of them), you have become familiar
 with the data set, you know how scripts are organized. The more time you spend
 on a project, the better a mental map of the project you will have in your
 memory. However, after you stop working on the project, updating it, upgrading
-it, your long-term memory will start to degrade. After a couple of weeks, or
+it, your wroking memory will start to degrade. After a couple of weeks, or
 months, that crystal-clear picture will become blurry. How many variables
 and/or observations are in your clean data set? What are the values of
 certain parameters? Why did you decide to use such and such method?</p>
@@ -827,17 +831,17 @@ all the details.</p>
 <p>This is why things like comments and documentation are so important.
 Remember, most of the time your closest and intimate collaborator will be
 your future self. A README file, the comments, the documentation are like
-post-its that will help you remember what you did, and sometimes most
-important, <strong>why</strong> you did it. And of course, that information will also
+post-its that will help you remember what you did, and sometimes more
+importantly, <strong>why</strong> you did it. And of course, that information will also
 be very helpful to collaborators other than yourself.</p>
 <p>Keep in mind that reproducibility involves a time component. Things get
 done at one point in time. Then, it is possible that new inputs need to be
 taken into account. Or it may be the case that you or other users want to
-simply repeat one or more parts of a project to check correctness, or
+simply repeat one or more parts of a project to check correctness, or to
 obtain intermediate results for additional purposes. The point is that
 things will need to be rerun at a future time. Having a good organization,
 as well as good placed landmarks along the way, will benefit you or others
-to navigate a project. These practices are crucial for succesful
+to navigate a project. These practices are crucial for successful
 data analysis endevours.</p>
 </div>
 </div>
