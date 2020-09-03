@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -688,13 +689,13 @@ information at the command line, and all have produced output on the screen.
 The next step involves learning how to combine existing commands in new ways.
 To have a working example, we’ll start with some toy directory <code>toydir</code>
 containing a handful of files:</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb501-1"><a href="redirections.html#cb501-1"></a><span class="fu">mkdir</span> toydir</span>
-<span id="cb501-2"><a href="redirections.html#cb501-2"></a><span class="bu">cd</span> toydir</span>
-<span id="cb501-3"><a href="redirections.html#cb501-3"></a><span class="fu">touch</span> file1.txt</span>
-<span id="cb501-4"><a href="redirections.html#cb501-4"></a><span class="fu">touch</span> README.md</span>
-<span id="cb501-5"><a href="redirections.html#cb501-5"></a><span class="ex">curl</span> -O http://web.pdx.edu/~gerbing/data/cars.csv</span>
-<span id="cb501-6"><a href="redirections.html#cb501-6"></a><span class="ex">curl</span> -O http://web.pdx.edu/~gerbing/data/employee.csv</span>
-<span id="cb501-7"><a href="redirections.html#cb501-7"></a><span class="ex">curl</span> -O http://web.pdx.edu/~gerbing/data/ppseps.csv</span></code></pre></div>
+<div class="sourceCode" id="cb509"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb509-1"><a href="redirections.html#cb509-1"></a><span class="fu">mkdir</span> toydir</span>
+<span id="cb509-2"><a href="redirections.html#cb509-2"></a><span class="bu">cd</span> toydir</span>
+<span id="cb509-3"><a href="redirections.html#cb509-3"></a><span class="fu">touch</span> file1.txt</span>
+<span id="cb509-4"><a href="redirections.html#cb509-4"></a><span class="fu">touch</span> README.md</span>
+<span id="cb509-5"><a href="redirections.html#cb509-5"></a><span class="ex">curl</span> -O http://web.pdx.edu/~gerbing/data/cars.csv</span>
+<span id="cb509-6"><a href="redirections.html#cb509-6"></a><span class="ex">curl</span> -O http://web.pdx.edu/~gerbing/data/employee.csv</span>
+<span id="cb509-7"><a href="redirections.html#cb509-7"></a><span class="ex">curl</span> -O http://web.pdx.edu/~gerbing/data/ppseps.csv</span></code></pre></div>
 <p>You should have a filestructure like this:</p>
 <pre><code>toydir/
    README.md
@@ -704,22 +705,22 @@ containing a handful of files:</p>
    ppseps.csv</code></pre>
 <p>As you can tell, we have three CSV files. Say you want to find out which CSV
 file is the shortest? We can run the command <code>wc *.csv</code> to answer this question:</p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb503-1"><a href="redirections.html#cb503-1"></a><span class="fu">wc</span> *.csv</span>
-<span id="cb503-2"><a href="redirections.html#cb503-2"></a>     <span class="ex">393</span>    1027   20964 cars.csv</span>
-<span id="cb503-3"><a href="redirections.html#cb503-3"></a>      <span class="ex">37</span>      75    1832 employee.csv</span>
-<span id="cb503-4"><a href="redirections.html#cb503-4"></a>      <span class="ex">11</span>      28     252 ppseps.csv</span>
-<span id="cb503-5"><a href="redirections.html#cb503-5"></a>     <span class="ex">441</span>    1130   23048 total</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb511-1"><a href="redirections.html#cb511-1"></a><span class="fu">wc</span> *.csv</span>
+<span id="cb511-2"><a href="redirections.html#cb511-2"></a>     <span class="ex">393</span>    1027   20964 cars.csv</span>
+<span id="cb511-3"><a href="redirections.html#cb511-3"></a>      <span class="ex">37</span>      75    1832 employee.csv</span>
+<span id="cb511-4"><a href="redirections.html#cb511-4"></a>      <span class="ex">11</span>      28     252 ppseps.csv</span>
+<span id="cb511-5"><a href="redirections.html#cb511-5"></a>     <span class="ex">441</span>    1130   23048 total</span></code></pre></div>
 <p>In this example we only have three CSV files, but what if there were 1000? Our
 first step toward a solution is to run the command <code>wc</code> to get the number of
 lines in each CSV file:</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb504-1"><a href="redirections.html#cb504-1"></a><span class="fu">wc</span> -l *.csv</span>
-<span id="cb504-2"><a href="redirections.html#cb504-2"></a>     <span class="ex">393</span> cars.csv</span>
-<span id="cb504-3"><a href="redirections.html#cb504-3"></a>      <span class="ex">37</span> employee.csv</span>
-<span id="cb504-4"><a href="redirections.html#cb504-4"></a>      <span class="ex">11</span> ppseps.csv</span>
-<span id="cb504-5"><a href="redirections.html#cb504-5"></a>     <span class="ex">441</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb512-1"><a href="redirections.html#cb512-1"></a><span class="fu">wc</span> -l *.csv</span>
+<span id="cb512-2"><a href="redirections.html#cb512-2"></a>     <span class="ex">393</span> cars.csv</span>
+<span id="cb512-3"><a href="redirections.html#cb512-3"></a>      <span class="ex">37</span> employee.csv</span>
+<span id="cb512-4"><a href="redirections.html#cb512-4"></a>      <span class="ex">11</span> ppseps.csv</span>
+<span id="cb512-5"><a href="redirections.html#cb512-5"></a>     <span class="ex">441</span> total</span></code></pre></div>
 <p>What if you want to display the output above in increasing order? The answer
 is given with the following command:</p>
-<div class="sourceCode" id="cb505"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb505-1"><a href="redirections.html#cb505-1"></a><span class="fu">wc</span> -l *.csv <span class="kw">|</span> <span class="fu">sort</span></span></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb513-1"><a href="redirections.html#cb513-1"></a><span class="fu">wc</span> -l *.csv <span class="kw">|</span> <span class="fu">sort</span></span></code></pre></div>
 <p>and the displayed output should be:</p>
 <pre><code>      11 ppseps.csv
       37 employee.csv
@@ -736,7 +737,7 @@ the commands that you type in and either executes them directly or passes them
 on to other programs.</p>
 <p>For example, consider the command <code>cat ppseps.csv</code> which displays the contents
 of <code>ppseps.csv</code> on the screen:</p>
-<div class="sourceCode" id="cb507"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb507-1"><a href="redirections.html#cb507-1"></a><span class="fu">cat</span> ppseps.csv</span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb515-1"><a href="redirections.html#cb515-1"></a><span class="fu">cat</span> ppseps.csv</span></code></pre></div>
 <pre><code>Company,EPS,PPS
 Imo Indust Inc,-3.26,6.500
 Toro Co ,-1.98,13.000
@@ -756,10 +757,10 @@ characters on the terminal (i.e. monitor).</p>
 <code>cd</code> command is built-in. That is, the shell interprets that command and changes
 your current directory. If you want to know where this command is stored in
 your computer, use <code>which</code> like this:</p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb509-1"><a href="redirections.html#cb509-1"></a><span class="fu">which</span> cd</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb517-1"><a href="redirections.html#cb517-1"></a><span class="fu">which</span> cd</span></code></pre></div>
 <p>The <code>ls</code> command, on the other hand, is an <em>external</em> program typically stored
 in the file <code>/bin/ls</code>.</p>
-<div class="sourceCode" id="cb510"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb510-1"><a href="redirections.html#cb510-1"></a><span class="fu">which</span> ls</span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb518-1"><a href="redirections.html#cb518-1"></a><span class="fu">which</span> ls</span></code></pre></div>
 <p>When you type the name of a command, the shell first checks to see if it is a
 built-in command and, if so, executes it.</p>
 </div>
@@ -782,20 +783,20 @@ press the <em>Enter</em> key, then type three sentences, and finally press the k
 <li><code>see you later!</code></li>
 </ul>
 <p>You should be able to see some lines of text like the following ones:</p>
-<div class="sourceCode" id="cb511"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb511-1"><a href="redirections.html#cb511-1"></a><span class="fu">cat</span></span>
-<span id="cb511-2"><a href="redirections.html#cb511-2"></a><span class="ex">hi</span> there!</span>
-<span id="cb511-3"><a href="redirections.html#cb511-3"></a><span class="ex">hi</span> there!</span>
-<span id="cb511-4"><a href="redirections.html#cb511-4"></a><span class="ex">never</span> mind</span>
-<span id="cb511-5"><a href="redirections.html#cb511-5"></a><span class="ex">never</span> mind</span>
-<span id="cb511-6"><a href="redirections.html#cb511-6"></a><span class="ex">see</span> you later!</span>
-<span id="cb511-7"><a href="redirections.html#cb511-7"></a><span class="ex">see</span> you later!</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb519-1"><a href="redirections.html#cb519-1"></a><span class="fu">cat</span></span>
+<span id="cb519-2"><a href="redirections.html#cb519-2"></a><span class="ex">hi</span> there!</span>
+<span id="cb519-3"><a href="redirections.html#cb519-3"></a><span class="ex">hi</span> there!</span>
+<span id="cb519-4"><a href="redirections.html#cb519-4"></a><span class="ex">never</span> mind</span>
+<span id="cb519-5"><a href="redirections.html#cb519-5"></a><span class="ex">never</span> mind</span>
+<span id="cb519-6"><a href="redirections.html#cb519-6"></a><span class="ex">see</span> you later!</span>
+<span id="cb519-7"><a href="redirections.html#cb519-7"></a><span class="ex">see</span> you later!</span></code></pre></div>
 <p>The command <code>sort</code> is another example that can take input from the keyboard.
 In the terminal, type in four words, and the press <em>Ctrl</em>+<em>d</em>, for instance:</p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb512-1"><a href="redirections.html#cb512-1"></a><span class="fu">sort</span></span>
-<span id="cb512-2"><a href="redirections.html#cb512-2"></a><span class="ex">Voldemort</span></span>
-<span id="cb512-3"><a href="redirections.html#cb512-3"></a><span class="ex">Dumbledore</span></span>
-<span id="cb512-4"><a href="redirections.html#cb512-4"></a><span class="ex">Potter</span></span>
-<span id="cb512-5"><a href="redirections.html#cb512-5"></a><span class="ex">Granger</span></span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb520-1"><a href="redirections.html#cb520-1"></a><span class="fu">sort</span></span>
+<span id="cb520-2"><a href="redirections.html#cb520-2"></a><span class="ex">Voldemort</span></span>
+<span id="cb520-3"><a href="redirections.html#cb520-3"></a><span class="ex">Dumbledore</span></span>
+<span id="cb520-4"><a href="redirections.html#cb520-4"></a><span class="ex">Potter</span></span>
+<span id="cb520-5"><a href="redirections.html#cb520-5"></a><span class="ex">Granger</span></span></code></pre></div>
 <p>You should see the following sorted output in your monitor:</p>
 <pre><code>Dumbledore
 Granger
@@ -830,8 +831,8 @@ output away from your terminal to a file. For example, if you want to run the
 command <code>cat file1.csv file2.csv</code>, but you want to place the output in
 <code>file3.csv</code> rather than sending it to your terminal, you have to use the
 following command:</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb514-1"><a href="redirections.html#cb514-1"></a><span class="co"># redirecting output to file3.csv</span></span>
-<span id="cb514-2"><a href="redirections.html#cb514-2"></a><span class="fu">cat</span> file1.csv file2.csv <span class="op">&gt;</span> file3.csv</span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb522-1"><a href="redirections.html#cb522-1"></a><span class="co"># redirecting output to file3.csv</span></span>
+<span id="cb522-2"><a href="redirections.html#cb522-2"></a><span class="fu">cat</span> file1.csv file2.csv <span class="op">&gt;</span> file3.csv</span></code></pre></div>
 <p>This is called <strong>redirecting</strong> standard output to <code>file3.csv</code>. If you execute
 this command and look at the contents of <code>file3.csv</code>, you will find the contents
 of <code>file1.csv</code>, followed by the contents of <code>file2.csv</code>.</p>

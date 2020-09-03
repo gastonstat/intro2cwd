@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -679,14 +680,14 @@ and pipelines.</p>
 <h2><span class="header-section-number">37.1</span> Crash Example</h2>
 <p>Let’s get our feet wet with a working example. The first thing you’ll need to
 do is create a directory for this tutorial:</p>
-<div class="sourceCode" id="cb515"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb515-1"><a href="filters.html#cb515-1"></a><span class="fu">mkdir</span> pipes</span>
-<span id="cb515-2"><a href="filters.html#cb515-2"></a><span class="bu">cd</span> pipes</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb523-1"><a href="filters.html#cb523-1"></a><span class="fu">mkdir</span> pipes</span>
+<span id="cb523-2"><a href="filters.html#cb523-2"></a><span class="bu">cd</span> pipes</span></code></pre></div>
 <p>Download the file <code>nba2017-players.csv</code> from the course github repository, and
 then invoke <code>ls</code> to check that the data file was successfully downloaded.
 :</p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb516-1"><a href="filters.html#cb516-1"></a><span class="ex">curl</span> -O https://raw.githubusercontent.com/ucb-stat133/stat133-spring-2018/master/data/nba2017-players.csv</span>
-<span id="cb516-2"><a href="filters.html#cb516-2"></a></span>
-<span id="cb516-3"><a href="filters.html#cb516-3"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb524-1"><a href="filters.html#cb524-1"></a><span class="ex">curl</span> -O https://raw.githubusercontent.com/ucb-stat133/stat133-spring-2018/master/data/nba2017-players.csv</span>
+<span id="cb524-2"><a href="filters.html#cb524-2"></a></span>
+<span id="cb524-3"><a href="filters.html#cb524-3"></a><span class="fu">ls</span></span></code></pre></div>
 <p>Now that you have a data file, you can apply the basic commands that we’ve
 covered in the previous chapter for inspecting the file’s contents. Here’s a
 table with some of those commands, as well as functions in R that have a similar
@@ -734,78 +735,78 @@ sort information, determine frequencies, find unique values, etc.</p>
 <h3><span class="header-section-number">37.1.1</span> Redirecting output to a new file with <code>&gt;</code></h3>
 <p>For demo purposes, let’s subset the data file <code>nba2017-players.csv</code> by taking
 the first 11 rows:</p>
-<div class="sourceCode" id="cb517"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb517-1"><a href="filters.html#cb517-1"></a><span class="fu">head</span> -n 11 nba2017-players.csv</span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb525-1"><a href="filters.html#cb525-1"></a><span class="fu">head</span> -n 11 nba2017-players.csv</span></code></pre></div>
 <p>Instead of displaying output on the screen, we can use the output redirection
 operator <code>&gt;</code> to a new file:</p>
-<div class="sourceCode" id="cb518"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb518-1"><a href="filters.html#cb518-1"></a><span class="co"># redirection to new file</span></span>
-<span id="cb518-2"><a href="filters.html#cb518-2"></a><span class="fu">head</span> -n 11 nba2017-players.csv <span class="op">&gt;</span> data10.csv</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb526-1"><a href="filters.html#cb526-1"></a><span class="co"># redirection to new file</span></span>
+<span id="cb526-2"><a href="filters.html#cb526-2"></a><span class="fu">head</span> -n 11 nba2017-players.csv <span class="op">&gt;</span> data10.csv</span></code></pre></div>
 <p>You can use <code>cat</code> to check that <code>data10.csv</code> contains the column names, and the firts 10 lines of data:</p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb519-1"><a href="filters.html#cb519-1"></a><span class="co"># display contents on screen</span></span>
-<span id="cb519-2"><a href="filters.html#cb519-2"></a><span class="fu">cat</span> data10.csv</span></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb527-1"><a href="filters.html#cb527-1"></a><span class="co"># display contents on screen</span></span>
+<span id="cb527-2"><a href="filters.html#cb527-2"></a><span class="fu">cat</span> data10.csv</span></code></pre></div>
 </div>
 <div id="selecting-columns-with-cut" class="section level3">
 <h3><span class="header-section-number">37.1.2</span> Selecting columns with <code>cut</code></h3>
 <p>How do we select a specific column, say <code>position</code>, from <code>data10.csv</code>? We can use the <code>cut</code> command for this purpose, using the flag <code>-d ","</code> to specify the field-delimiter, and the flag <code>-f 3</code> to indicate that we want to extract the third column:</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb520-1"><a href="filters.html#cb520-1"></a><span class="co"># select third column</span></span>
-<span id="cb520-2"><a href="filters.html#cb520-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 data10.csv</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb528-1"><a href="filters.html#cb528-1"></a><span class="co"># select third column</span></span>
+<span id="cb528-2"><a href="filters.html#cb528-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 data10.csv</span></code></pre></div>
 <p>In the same way we created <code>data10.csv</code>, we can redirect the output of <code>cut</code> to a new file <code>positions10.txt</code></p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb521-1"><a href="filters.html#cb521-1"></a><span class="co"># positions (first attempt)</span></span>
-<span id="cb521-2"><a href="filters.html#cb521-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 data10.csv <span class="op">&gt;</span> positions10.txt</span>
-<span id="cb521-3"><a href="filters.html#cb521-3"></a></span>
-<span id="cb521-4"><a href="filters.html#cb521-4"></a><span class="fu">cat</span> positions10.txt</span></code></pre></div>
+<div class="sourceCode" id="cb529"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb529-1"><a href="filters.html#cb529-1"></a><span class="co"># positions (first attempt)</span></span>
+<span id="cb529-2"><a href="filters.html#cb529-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 data10.csv <span class="op">&gt;</span> positions10.txt</span>
+<span id="cb529-3"><a href="filters.html#cb529-3"></a></span>
+<span id="cb529-4"><a href="filters.html#cb529-4"></a><span class="fu">cat</span> positions10.txt</span></code></pre></div>
 </div>
 <div id="sorting-lines-with-sort" class="section level3">
 <h3><span class="header-section-number">37.1.3</span> Sorting lines with <code>sort</code></h3>
 <p>Another useful command is <code>sort</code>, which as you may guess, allows us to sort the lines of a stream of data:</p>
-<div class="sourceCode" id="cb522"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb522-1"><a href="filters.html#cb522-1"></a><span class="fu">sort</span> positions10.txt</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb530-1"><a href="filters.html#cb530-1"></a><span class="fu">sort</span> positions10.txt</span></code></pre></div>
 <p>Notice that the name of the column <code>position</code> is also part of the output. But what if we just want to play with the positions values, excluding the column name?</p>
 <p>We can use <code>tail +2</code> to exclude the first value (i.e. the column name) . To do this with the column of positions, we must use the pipe operator <code>|</code> that enables us to take the output of a command and send it as the input of another command:</p>
-<div class="sourceCode" id="cb523"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb523-1"><a href="filters.html#cb523-1"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 data10.csv <span class="kw">|</span> <span class="fu">tail</span> +2</span></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb531-1"><a href="filters.html#cb531-1"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 data10.csv <span class="kw">|</span> <span class="fu">tail</span> +2</span></code></pre></div>
 <p>Now let’s mix <code>|</code> and <code>&gt;</code> to rebuild <code>positions10.txt</code> without the column name:</p>
-<div class="sourceCode" id="cb524"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb524-1"><a href="filters.html#cb524-1"></a><span class="co"># positions (second attempt)</span></span>
-<span id="cb524-2"><a href="filters.html#cb524-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 data10.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="op">&gt;</span> positions10.txt</span>
-<span id="cb524-3"><a href="filters.html#cb524-3"></a></span>
-<span id="cb524-4"><a href="filters.html#cb524-4"></a><span class="fu">cat</span> positions10.txt</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb532-1"><a href="filters.html#cb532-1"></a><span class="co"># positions (second attempt)</span></span>
+<span id="cb532-2"><a href="filters.html#cb532-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 data10.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="op">&gt;</span> positions10.txt</span>
+<span id="cb532-3"><a href="filters.html#cb532-3"></a></span>
+<span id="cb532-4"><a href="filters.html#cb532-4"></a><span class="fu">cat</span> positions10.txt</span></code></pre></div>
 <p>Let’s go back to the sorting operation:</p>
-<div class="sourceCode" id="cb525"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb525-1"><a href="filters.html#cb525-1"></a><span class="fu">sort</span> positions10.txt</span></code></pre></div>
+<div class="sourceCode" id="cb533"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb533-1"><a href="filters.html#cb533-1"></a><span class="fu">sort</span> positions10.txt</span></code></pre></div>
 </div>
 <div id="listing-unique-occurrences-with-sort--u" class="section level3">
 <h3><span class="header-section-number">37.1.4</span> Listing unique occurrences with <code>sort -u</code></h3>
 <p>What if we want to list only the unique values (i.e. the unique categories)?
 <code>sort</code> has the flag <code>-u</code> to display only the unique occurrences:</p>
-<div class="sourceCode" id="cb526"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb526-1"><a href="filters.html#cb526-1"></a><span class="fu">sort</span> -u positions10.txt</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb534-1"><a href="filters.html#cb534-1"></a><span class="fu">sort</span> -u positions10.txt</span></code></pre></div>
 </div>
 <div id="counting-unique-occurrences-with-sort-and-uniq" class="section level3">
 <h3><span class="header-section-number">37.1.5</span> Counting unique occurrences with <code>sort</code> and <code>uniq</code></h3>
 <p>And what if we want the counts of those unique values (i.e. the frequencies)? To find the answer we pipe the output of <code>sort</code> as the input of the command <code>uniq</code> with the flag <code>-c</code>. Here’s the entire pipe:</p>
-<div class="sourceCode" id="cb527"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb527-1"><a href="filters.html#cb527-1"></a><span class="fu">sort</span> positions10.txt <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
+<div class="sourceCode" id="cb535"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb535-1"><a href="filters.html#cb535-1"></a><span class="fu">sort</span> positions10.txt <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
 <p>Now, let’s apply it on the entire data file, step by step:</p>
-<div class="sourceCode" id="cb528"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb528-1"><a href="filters.html#cb528-1"></a><span class="co"># select column of positions (excluding column name)</span></span>
-<span id="cb528-2"><a href="filters.html#cb528-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="op">&gt;</span> positions.txt</span>
-<span id="cb528-3"><a href="filters.html#cb528-3"></a></span>
-<span id="cb528-4"><a href="filters.html#cb528-4"></a><span class="co"># get position frequencies</span></span>
-<span id="cb528-5"><a href="filters.html#cb528-5"></a><span class="fu">sort</span> positions.txt <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb536-1"><a href="filters.html#cb536-1"></a><span class="co"># select column of positions (excluding column name)</span></span>
+<span id="cb536-2"><a href="filters.html#cb536-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="op">&gt;</span> positions.txt</span>
+<span id="cb536-3"><a href="filters.html#cb536-3"></a></span>
+<span id="cb536-4"><a href="filters.html#cb536-4"></a><span class="co"># get position frequencies</span></span>
+<span id="cb536-5"><a href="filters.html#cb536-5"></a><span class="fu">sort</span> positions.txt <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
 </div>
 <div id="all-in-one-pipeline" class="section level3">
 <h3><span class="header-section-number">37.1.6</span> All in one pipeline</h3>
 <p>Finally, let’s pipe all the commands in a single line, without creating the intermediate file <code>positions10.txt</code>:</p>
-<div class="sourceCode" id="cb529"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb529-1"><a href="filters.html#cb529-1"></a><span class="co"># count unique position values, in a single pipe</span></span>
-<span id="cb529-2"><a href="filters.html#cb529-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
+<div class="sourceCode" id="cb537"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb537-1"><a href="filters.html#cb537-1"></a><span class="co"># count unique position values, in a single pipe</span></span>
+<span id="cb537-2"><a href="filters.html#cb537-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 3 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
 </div>
 <div id="more-examples" class="section level3">
 <h3><span class="header-section-number">37.1.7</span> More examples</h3>
 <p>What if you want to do the same but now for the teams? In other words, count the number of players in each team?</p>
-<div class="sourceCode" id="cb530"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb530-1"><a href="filters.html#cb530-1"></a><span class="co"># count unique team values, i.e. number of players</span></span>
-<span id="cb530-2"><a href="filters.html#cb530-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 2 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb538-1"><a href="filters.html#cb538-1"></a><span class="co"># count unique team values, i.e. number of players</span></span>
+<span id="cb538-2"><a href="filters.html#cb538-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 2 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
 <p>Find the minimum age (6th column)</p>
-<div class="sourceCode" id="cb531"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb531-1"><a href="filters.html#cb531-1"></a><span class="co"># minimum age</span></span>
-<span id="cb531-2"><a href="filters.html#cb531-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 6 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">head</span> -n 1</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb539-1"><a href="filters.html#cb539-1"></a><span class="co"># minimum age</span></span>
+<span id="cb539-2"><a href="filters.html#cb539-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 6 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">head</span> -n 1</span></code></pre></div>
 <p>Find the maximum age (6th column)</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb532-1"><a href="filters.html#cb532-1"></a><span class="co"># maximum age</span></span>
-<span id="cb532-2"><a href="filters.html#cb532-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 6 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> -r <span class="kw">|</span> <span class="fu">head</span> -n 1</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb540-1"><a href="filters.html#cb540-1"></a><span class="co"># maximum age</span></span>
+<span id="cb540-2"><a href="filters.html#cb540-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 6 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> -r <span class="kw">|</span> <span class="fu">head</span> -n 1</span></code></pre></div>
 <p>Frequencies of ages:</p>
-<div class="sourceCode" id="cb533"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb533-1"><a href="filters.html#cb533-1"></a><span class="co"># age frequencies</span></span>
-<span id="cb533-2"><a href="filters.html#cb533-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 6 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb541-1"><a href="filters.html#cb541-1"></a><span class="co"># age frequencies</span></span>
+<span id="cb541-2"><a href="filters.html#cb541-2"></a><span class="fu">cut</span> -d <span class="st">&quot;,&quot;</span> -f 6 nba2017-players.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
 </div>
 </div>
 <div id="filters-1" class="section level2">
@@ -849,14 +850,14 @@ operator <code>&gt;</code> to a new file:</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb534"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb534-1"><a href="filters.html#cb534-1"></a><span class="co"># return columns 1 and 3 (tsv file)</span></span>
-<span id="cb534-2"><a href="filters.html#cb534-2"></a><span class="fu">cut</span> -f 1,3 data.tsv</span></code></pre></div>
-<div class="sourceCode" id="cb535"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb535-1"><a href="filters.html#cb535-1"></a><span class="co"># return columns 2 and 5 (tsv file)</span></span>
-<span id="cb535-2"><a href="filters.html#cb535-2"></a><span class="fu">cut</span> -f 2-5 data.tsv</span></code></pre></div>
-<div class="sourceCode" id="cb536"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb536-1"><a href="filters.html#cb536-1"></a><span class="co"># return columns 1 and 3 (csv file)</span></span>
-<span id="cb536-2"><a href="filters.html#cb536-2"></a><span class="fu">cut</span> -f 1,3 -d <span class="st">&quot;,&quot;</span> data.csv</span></code></pre></div>
-<div class="sourceCode" id="cb537"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb537-1"><a href="filters.html#cb537-1"></a><span class="co"># return characters 1 through 6 (fixed-width format file)</span></span>
-<span id="cb537-2"><a href="filters.html#cb537-2"></a><span class="fu">cut</span> -c 1-6 data.dat</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb542-1"><a href="filters.html#cb542-1"></a><span class="co"># return columns 1 and 3 (tsv file)</span></span>
+<span id="cb542-2"><a href="filters.html#cb542-2"></a><span class="fu">cut</span> -f 1,3 data.tsv</span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb543-1"><a href="filters.html#cb543-1"></a><span class="co"># return columns 2 and 5 (tsv file)</span></span>
+<span id="cb543-2"><a href="filters.html#cb543-2"></a><span class="fu">cut</span> -f 2-5 data.tsv</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb544-1"><a href="filters.html#cb544-1"></a><span class="co"># return columns 1 and 3 (csv file)</span></span>
+<span id="cb544-2"><a href="filters.html#cb544-2"></a><span class="fu">cut</span> -f 1,3 -d <span class="st">&quot;,&quot;</span> data.csv</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb545-1"><a href="filters.html#cb545-1"></a><span class="co"># return characters 1 through 6 (fixed-width format file)</span></span>
+<span id="cb545-2"><a href="filters.html#cb545-2"></a><span class="fu">cut</span> -c 1-6 data.dat</span></code></pre></div>
 </div>
 <div id="sorting-lines-with-sort-1" class="section level2">
 <h2><span class="header-section-number">37.4</span> Sorting lines with <code>sort</code></h2>

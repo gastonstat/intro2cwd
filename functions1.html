@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -683,113 +684,113 @@ how you can create and use your own functions.</p>
 <div id="motivation-1" class="section level2">
 <h2><span class="header-section-number">24.1</span> Motivation</h2>
 <p>Consider the data set <code>starwars</code> that comes in the package <code>"dplyr"</code></p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="functions1.html#cb313-1"></a>starwars</span>
-<span id="cb313-2"><a href="functions1.html#cb313-2"></a><span class="co">#&gt; # A tibble: 87 x 13</span></span>
-<span id="cb313-3"><a href="functions1.html#cb313-3"></a><span class="co">#&gt;    name  height  mass hair_color skin_color eye_color birth_year gender</span></span>
-<span id="cb313-4"><a href="functions1.html#cb313-4"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; </span></span>
-<span id="cb313-5"><a href="functions1.html#cb313-5"></a><span class="co">#&gt;  1 Luke…    172    77 blond      fair       blue            19   male  </span></span>
-<span id="cb313-6"><a href="functions1.html#cb313-6"></a><span class="co">#&gt;  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;  </span></span>
-<span id="cb313-7"><a href="functions1.html#cb313-7"></a><span class="co">#&gt;  3 R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   &lt;NA&gt;  </span></span>
-<span id="cb313-8"><a href="functions1.html#cb313-8"></a><span class="co">#&gt;  4 Dart…    202   136 none       white      yellow          41.9 male  </span></span>
-<span id="cb313-9"><a href="functions1.html#cb313-9"></a><span class="co">#&gt;  5 Leia…    150    49 brown      light      brown           19   female</span></span>
-<span id="cb313-10"><a href="functions1.html#cb313-10"></a><span class="co">#&gt;  6 Owen…    178   120 brown, gr… light      blue            52   male  </span></span>
-<span id="cb313-11"><a href="functions1.html#cb313-11"></a><span class="co">#&gt;  7 Beru…    165    75 brown      light      blue            47   female</span></span>
-<span id="cb313-12"><a href="functions1.html#cb313-12"></a><span class="co">#&gt;  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   &lt;NA&gt;  </span></span>
-<span id="cb313-13"><a href="functions1.html#cb313-13"></a><span class="co">#&gt;  9 Bigg…    183    84 black      light      brown           24   male  </span></span>
-<span id="cb313-14"><a href="functions1.html#cb313-14"></a><span class="co">#&gt; 10 Obi-…    182    77 auburn, w… fair       blue-gray       57   male  </span></span>
-<span id="cb313-15"><a href="functions1.html#cb313-15"></a><span class="co">#&gt; # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,</span></span>
-<span id="cb313-16"><a href="functions1.html#cb313-16"></a><span class="co">#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="functions1.html#cb321-1"></a>starwars</span>
+<span id="cb321-2"><a href="functions1.html#cb321-2"></a><span class="co">#&gt; # A tibble: 87 x 13</span></span>
+<span id="cb321-3"><a href="functions1.html#cb321-3"></a><span class="co">#&gt;    name  height  mass hair_color skin_color eye_color birth_year gender</span></span>
+<span id="cb321-4"><a href="functions1.html#cb321-4"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; </span></span>
+<span id="cb321-5"><a href="functions1.html#cb321-5"></a><span class="co">#&gt;  1 Luke…    172    77 blond      fair       blue            19   male  </span></span>
+<span id="cb321-6"><a href="functions1.html#cb321-6"></a><span class="co">#&gt;  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;  </span></span>
+<span id="cb321-7"><a href="functions1.html#cb321-7"></a><span class="co">#&gt;  3 R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   &lt;NA&gt;  </span></span>
+<span id="cb321-8"><a href="functions1.html#cb321-8"></a><span class="co">#&gt;  4 Dart…    202   136 none       white      yellow          41.9 male  </span></span>
+<span id="cb321-9"><a href="functions1.html#cb321-9"></a><span class="co">#&gt;  5 Leia…    150    49 brown      light      brown           19   female</span></span>
+<span id="cb321-10"><a href="functions1.html#cb321-10"></a><span class="co">#&gt;  6 Owen…    178   120 brown, gr… light      blue            52   male  </span></span>
+<span id="cb321-11"><a href="functions1.html#cb321-11"></a><span class="co">#&gt;  7 Beru…    165    75 brown      light      blue            47   female</span></span>
+<span id="cb321-12"><a href="functions1.html#cb321-12"></a><span class="co">#&gt;  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   &lt;NA&gt;  </span></span>
+<span id="cb321-13"><a href="functions1.html#cb321-13"></a><span class="co">#&gt;  9 Bigg…    183    84 black      light      brown           24   male  </span></span>
+<span id="cb321-14"><a href="functions1.html#cb321-14"></a><span class="co">#&gt; 10 Obi-…    182    77 auburn, w… fair       blue-gray       57   male  </span></span>
+<span id="cb321-15"><a href="functions1.html#cb321-15"></a><span class="co">#&gt; # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,</span></span>
+<span id="cb321-16"><a href="functions1.html#cb321-16"></a><span class="co">#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</span></span></code></pre></div>
 <p>Let’s focus on the variable <code>height</code>, more specifically on the first 10 values:</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="functions1.html#cb314-1"></a>ht10 &lt;-<span class="st"> </span>starwars<span class="op">$</span>height[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</span>
-<span id="cb314-2"><a href="functions1.html#cb314-2"></a>ht10</span>
-<span id="cb314-3"><a href="functions1.html#cb314-3"></a><span class="co">#&gt;  [1] 172 167  96 202 150 178 165  97 183 182</span></span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="functions1.html#cb322-1"></a>ht10 &lt;-<span class="st"> </span>starwars<span class="op">$</span>height[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</span>
+<span id="cb322-2"><a href="functions1.html#cb322-2"></a>ht10</span>
+<span id="cb322-3"><a href="functions1.html#cb322-3"></a><span class="co">#&gt;  [1] 172 167  96 202 150 178 165  97 183 182</span></span></code></pre></div>
 <p>The values of <code>height</code> (and <code>ht10</code>) are expressed in centimeters, but what if we
 wanted to obtain values in inches? The conversion formula is 1 cm = 0.3937 in.</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="functions1.html#cb315-1"></a><span class="co"># height in inches</span></span>
-<span id="cb315-2"><a href="functions1.html#cb315-2"></a>ht10 <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
-<span id="cb315-3"><a href="functions1.html#cb315-3"></a><span class="co">#&gt;  [1] 67.7 65.7 37.8 79.5 59.1 70.1 65.0 38.2 72.0 71.7</span></span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="functions1.html#cb323-1"></a><span class="co"># height in inches</span></span>
+<span id="cb323-2"><a href="functions1.html#cb323-2"></a>ht10 <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
+<span id="cb323-3"><a href="functions1.html#cb323-3"></a><span class="co">#&gt;  [1] 67.7 65.7 37.8 79.5 59.1 70.1 65.0 38.2 72.0 71.7</span></span></code></pre></div>
 <p>This works. But what if you had more data sets, all of them containing <code>height</code>
 values in cms, and you needed to convert those cms into inches? Wouldn’t be nice
 to have a dedicated function <code>cm2in()</code>? I know this is a toy example but I would
 find convenient to have <code>cm2in()</code> because I can never remember the coversion
 value: 1 cm = 0.3937 in.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="functions1.html#cb316-1"></a><span class="kw">cm2in</span>(ht10)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="functions1.html#cb324-1"></a><span class="kw">cm2in</span>(ht10)</span></code></pre></div>
 <p>R does not have a built-in function <code>cm2in()</code> but we can create one. Let’s see
 how to do it “logically” step by step.</p>
 <div id="writing-a-simple-function" class="section level3">
 <h3><span class="header-section-number">24.1.1</span> Writing a simple function</h3>
 <p>So, how do you create a function? The first step is to write code and make
 sure that it works. We recommend that you take a small and concrete example:</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="functions1.html#cb317-1"></a><span class="co"># 1) concrete example</span></span>
-<span id="cb317-2"><a href="functions1.html#cb317-2"></a>ht10 <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
-<span id="cb317-3"><a href="functions1.html#cb317-3"></a><span class="co">#&gt;  [1] 67.7 65.7 37.8 79.5 59.1 70.1 65.0 38.2 72.0 71.7</span></span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="functions1.html#cb325-1"></a><span class="co"># 1) concrete example</span></span>
+<span id="cb325-2"><a href="functions1.html#cb325-2"></a>ht10 <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
+<span id="cb325-3"><a href="functions1.html#cb325-3"></a><span class="co">#&gt;  [1] 67.7 65.7 37.8 79.5 59.1 70.1 65.0 38.2 72.0 71.7</span></span></code></pre></div>
 <p>The next step is to make the code more general. Instead of working with the
 object <code>ht10</code> that refers to just the first 10 hieght values, we can give it
 a more algebraic name as <code>x</code>:</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="functions1.html#cb318-1"></a><span class="co"># 2) make it more general</span></span>
-<span id="cb318-2"><a href="functions1.html#cb318-2"></a>x &lt;-<span class="st"> </span>ht10</span>
-<span id="cb318-3"><a href="functions1.html#cb318-3"></a>y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="functions1.html#cb326-1"></a><span class="co"># 2) make it more general</span></span>
+<span id="cb326-2"><a href="functions1.html#cb326-2"></a>x &lt;-<span class="st"> </span>ht10</span>
+<span id="cb326-3"><a href="functions1.html#cb326-3"></a>y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span></code></pre></div>
 <p>This also allows us to identify what is the input or inputs (<code>x</code> in this case),
 what are the required computations, and what is the output (<code>y</code> in this case).</p>
 <p>Then, you <strong>encapsulate</strong> the code that will make the <em>body</em> of the function
 within curly braces to form a compound R expression.
 This is definitely more of an abstract step, but here’s the code:</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="functions1.html#cb319-1"></a><span class="co"># 3) encapsulate code with &quot;an R expression&quot;</span></span>
-<span id="cb319-2"><a href="functions1.html#cb319-2"></a><span class="co"># i.e. wrapping code around curly braces</span></span>
-<span id="cb319-3"><a href="functions1.html#cb319-3"></a>{</span>
-<span id="cb319-4"><a href="functions1.html#cb319-4"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
-<span id="cb319-5"><a href="functions1.html#cb319-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="functions1.html#cb327-1"></a><span class="co"># 3) encapsulate code with &quot;an R expression&quot;</span></span>
+<span id="cb327-2"><a href="functions1.html#cb327-2"></a><span class="co"># i.e. wrapping code around curly braces</span></span>
+<span id="cb327-3"><a href="functions1.html#cb327-3"></a>{</span>
+<span id="cb327-4"><a href="functions1.html#cb327-4"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
+<span id="cb327-5"><a href="functions1.html#cb327-5"></a>}</span></code></pre></div>
 <p>Finally, declare the function with <code>function()</code> and assign it a name. This
 involves choosing a name for the function, name(s) for the argument(s), and determine the output with a <code>return()</code> statement:</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="functions1.html#cb320-1"></a><span class="co"># 4) create function</span></span>
-<span id="cb320-2"><a href="functions1.html#cb320-2"></a>cm2in &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb320-3"><a href="functions1.html#cb320-3"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
-<span id="cb320-4"><a href="functions1.html#cb320-4"></a>  <span class="kw">return</span>(y)</span>
-<span id="cb320-5"><a href="functions1.html#cb320-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="functions1.html#cb328-1"></a><span class="co"># 4) create function</span></span>
+<span id="cb328-2"><a href="functions1.html#cb328-2"></a>cm2in &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb328-3"><a href="functions1.html#cb328-3"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
+<span id="cb328-4"><a href="functions1.html#cb328-4"></a>  <span class="kw">return</span>(y)</span>
+<span id="cb328-5"><a href="functions1.html#cb328-5"></a>}</span></code></pre></div>
 <p>Here are all the steps previously described, plus some more steps after you
 create <code>cm2in()</code></p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="functions1.html#cb321-1"></a><span class="co"># 1) concrete example</span></span>
-<span id="cb321-2"><a href="functions1.html#cb321-2"></a>ht10 <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
-<span id="cb321-3"><a href="functions1.html#cb321-3"></a></span>
-<span id="cb321-4"><a href="functions1.html#cb321-4"></a><span class="co"># 2) make it more general</span></span>
-<span id="cb321-5"><a href="functions1.html#cb321-5"></a>x &lt;-<span class="st"> </span>ht10</span>
-<span id="cb321-6"><a href="functions1.html#cb321-6"></a>y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
-<span id="cb321-7"><a href="functions1.html#cb321-7"></a></span>
-<span id="cb321-8"><a href="functions1.html#cb321-8"></a><span class="co"># 3) encapsulate code with &quot;an R expression&quot;</span></span>
-<span id="cb321-9"><a href="functions1.html#cb321-9"></a><span class="co"># i.e. wrapping code around curly braces</span></span>
-<span id="cb321-10"><a href="functions1.html#cb321-10"></a>{</span>
-<span id="cb321-11"><a href="functions1.html#cb321-11"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
-<span id="cb321-12"><a href="functions1.html#cb321-12"></a>}</span>
-<span id="cb321-13"><a href="functions1.html#cb321-13"></a></span>
-<span id="cb321-14"><a href="functions1.html#cb321-14"></a><span class="co"># 4) create function</span></span>
-<span id="cb321-15"><a href="functions1.html#cb321-15"></a>cm2in &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb321-16"><a href="functions1.html#cb321-16"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
-<span id="cb321-17"><a href="functions1.html#cb321-17"></a>  <span class="kw">return</span>(y)</span>
-<span id="cb321-18"><a href="functions1.html#cb321-18"></a>}</span>
-<span id="cb321-19"><a href="functions1.html#cb321-19"></a></span>
-<span id="cb321-20"><a href="functions1.html#cb321-20"></a><span class="co"># 5) test it</span></span>
-<span id="cb321-21"><a href="functions1.html#cb321-21"></a><span class="kw">cm2in</span>(ht10)</span>
-<span id="cb321-22"><a href="functions1.html#cb321-22"></a></span>
-<span id="cb321-23"><a href="functions1.html#cb321-23"></a><span class="co"># 6) keep testing</span></span>
-<span id="cb321-24"><a href="functions1.html#cb321-24"></a><span class="kw">cm2in</span>(starwars<span class="op">$</span>height)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="functions1.html#cb329-1"></a><span class="co"># 1) concrete example</span></span>
+<span id="cb329-2"><a href="functions1.html#cb329-2"></a>ht10 <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
+<span id="cb329-3"><a href="functions1.html#cb329-3"></a></span>
+<span id="cb329-4"><a href="functions1.html#cb329-4"></a><span class="co"># 2) make it more general</span></span>
+<span id="cb329-5"><a href="functions1.html#cb329-5"></a>x &lt;-<span class="st"> </span>ht10</span>
+<span id="cb329-6"><a href="functions1.html#cb329-6"></a>y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
+<span id="cb329-7"><a href="functions1.html#cb329-7"></a></span>
+<span id="cb329-8"><a href="functions1.html#cb329-8"></a><span class="co"># 3) encapsulate code with &quot;an R expression&quot;</span></span>
+<span id="cb329-9"><a href="functions1.html#cb329-9"></a><span class="co"># i.e. wrapping code around curly braces</span></span>
+<span id="cb329-10"><a href="functions1.html#cb329-10"></a>{</span>
+<span id="cb329-11"><a href="functions1.html#cb329-11"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
+<span id="cb329-12"><a href="functions1.html#cb329-12"></a>}</span>
+<span id="cb329-13"><a href="functions1.html#cb329-13"></a></span>
+<span id="cb329-14"><a href="functions1.html#cb329-14"></a><span class="co"># 4) create function</span></span>
+<span id="cb329-15"><a href="functions1.html#cb329-15"></a>cm2in &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb329-16"><a href="functions1.html#cb329-16"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
+<span id="cb329-17"><a href="functions1.html#cb329-17"></a>  <span class="kw">return</span>(y)</span>
+<span id="cb329-18"><a href="functions1.html#cb329-18"></a>}</span>
+<span id="cb329-19"><a href="functions1.html#cb329-19"></a></span>
+<span id="cb329-20"><a href="functions1.html#cb329-20"></a><span class="co"># 5) test it</span></span>
+<span id="cb329-21"><a href="functions1.html#cb329-21"></a><span class="kw">cm2in</span>(ht10)</span>
+<span id="cb329-22"><a href="functions1.html#cb329-22"></a></span>
+<span id="cb329-23"><a href="functions1.html#cb329-23"></a><span class="co"># 6) keep testing</span></span>
+<span id="cb329-24"><a href="functions1.html#cb329-24"></a><span class="kw">cm2in</span>(starwars<span class="op">$</span>height)</span></code></pre></div>
 <p>If you want to get the conversion of 100 cm to inches, you just simply
 execute it again by changing its argument:</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="functions1.html#cb322-1"></a><span class="kw">cm2in</span>(<span class="dv">100</span>)</span>
-<span id="cb322-2"><a href="functions1.html#cb322-2"></a><span class="co">#&gt; [1] 39.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="functions1.html#cb330-1"></a><span class="kw">cm2in</span>(<span class="dv">100</span>)</span>
+<span id="cb330-2"><a href="functions1.html#cb330-2"></a><span class="co">#&gt; [1] 39.4</span></span></code></pre></div>
 <p>Notice that the function is vectorized, this is because we are using arithmetic
 operators (i.e. multiplication, subtraction, division).</p>
 <p>Sometimes it is recommended to add a default value to one (or more) of the
 arguments. In this case, we can give a default value of <code>x = 1</code>. When the
 user executes the function without any input, <code>cm2in()</code> returns
 the value of 1 cm to inches:</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="functions1.html#cb323-1"></a>cm2in &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">x =</span> <span class="dv">1</span>) {</span>
-<span id="cb323-2"><a href="functions1.html#cb323-2"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
-<span id="cb323-3"><a href="functions1.html#cb323-3"></a>  <span class="kw">return</span>(y)</span>
-<span id="cb323-4"><a href="functions1.html#cb323-4"></a>}</span>
-<span id="cb323-5"><a href="functions1.html#cb323-5"></a></span>
-<span id="cb323-6"><a href="functions1.html#cb323-6"></a><span class="co"># default execution</span></span>
-<span id="cb323-7"><a href="functions1.html#cb323-7"></a><span class="kw">cm2in</span>()</span>
-<span id="cb323-8"><a href="functions1.html#cb323-8"></a><span class="co">#&gt; [1] 0.394</span></span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="functions1.html#cb331-1"></a>cm2in &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">x =</span> <span class="dv">1</span>) {</span>
+<span id="cb331-2"><a href="functions1.html#cb331-2"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="fl">0.3937</span></span>
+<span id="cb331-3"><a href="functions1.html#cb331-3"></a>  <span class="kw">return</span>(y)</span>
+<span id="cb331-4"><a href="functions1.html#cb331-4"></a>}</span>
+<span id="cb331-5"><a href="functions1.html#cb331-5"></a></span>
+<span id="cb331-6"><a href="functions1.html#cb331-6"></a><span class="co"># default execution</span></span>
+<span id="cb331-7"><a href="functions1.html#cb331-7"></a><span class="kw">cm2in</span>()</span>
+<span id="cb331-8"><a href="functions1.html#cb331-8"></a><span class="co">#&gt; [1] 0.394</span></span></code></pre></div>
 <div id="in-summary" class="section level4 unnumbered">
 <h4>In Summary</h4>
 <ul>
@@ -812,10 +813,10 @@ You need to specify a name for the function, and then assign <code>function()</c
 to the chosen name. You also need to define optional arguments (i.e. inputs).
 And of course, you must write the code (i.e. the body) so the function does
 something when you use it:</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="functions1.html#cb324-1"></a><span class="co"># anatomy of a function</span></span>
-<span id="cb324-2"><a href="functions1.html#cb324-2"></a>some_name &lt;-<span class="st"> </span><span class="cf">function</span>(arguments) {</span>
-<span id="cb324-3"><a href="functions1.html#cb324-3"></a>  <span class="co"># body of the function</span></span>
-<span id="cb324-4"><a href="functions1.html#cb324-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="functions1.html#cb332-1"></a><span class="co"># anatomy of a function</span></span>
+<span id="cb332-2"><a href="functions1.html#cb332-2"></a>some_name &lt;-<span class="st"> </span><span class="cf">function</span>(arguments) {</span>
+<span id="cb332-3"><a href="functions1.html#cb332-3"></a>  <span class="co"># body of the function</span></span>
+<span id="cb332-4"><a href="functions1.html#cb332-4"></a>}</span></code></pre></div>
 <ul>
 <li>Usually, you give a <strong>name</strong> to a function (although there are also <em>anonymous</em> functions).</li>
 <li>A function takes one or more inputs (or none), known as <strong>arguments</strong>.</li>
@@ -824,12 +825,12 @@ something when you use it:</p>
 <li>A function returns a single value (i.e. a single object).</li>
 </ul>
 <p>A bit less abstract function could have the following structure:</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="functions1.html#cb325-1"></a>some_name &lt;-<span class="st"> </span><span class="cf">function</span>(arg1, arg2, arg3) {</span>
-<span id="cb325-2"><a href="functions1.html#cb325-2"></a>  expression_<span class="dv">1</span></span>
-<span id="cb325-3"><a href="functions1.html#cb325-3"></a>  expression_<span class="dv">2</span></span>
-<span id="cb325-4"><a href="functions1.html#cb325-4"></a>  ...</span>
-<span id="cb325-5"><a href="functions1.html#cb325-5"></a>  expression_n</span>
-<span id="cb325-6"><a href="functions1.html#cb325-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="functions1.html#cb333-1"></a>some_name &lt;-<span class="st"> </span><span class="cf">function</span>(arg1, arg2, arg3) {</span>
+<span id="cb333-2"><a href="functions1.html#cb333-2"></a>  expression_<span class="dv">1</span></span>
+<span id="cb333-3"><a href="functions1.html#cb333-3"></a>  expression_<span class="dv">2</span></span>
+<span id="cb333-4"><a href="functions1.html#cb333-4"></a>  ...</span>
+<span id="cb333-5"><a href="functions1.html#cb333-5"></a>  expression_n</span>
+<span id="cb333-6"><a href="functions1.html#cb333-6"></a>}</span></code></pre></div>
 <ul>
 <li>the name of this hypothetical function is <code>some_name</code></li>
 <li>it uses several arguments: <code>arg1</code>, <code>arg2</code>, and <code>arg3</code></li>
@@ -853,40 +854,40 @@ scores. Here are the primary steps to compute such score:</p>
 <li>calculate deviations from the mean <span class="math inline">\(x - \mu\)</span></li>
 <li>divide deviations-from-mean by standard deviation <span class="math inline">\((x - \mu) / \sigma\)</span></li>
 </ul>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="functions1.html#cb326-1"></a>x &lt;-<span class="st"> </span>ht10                   </span>
-<span id="cb326-2"><a href="functions1.html#cb326-2"></a>x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x)      <span class="co"># compute the mean</span></span>
-<span id="cb326-3"><a href="functions1.html#cb326-3"></a>x_sd &lt;-<span class="st"> </span><span class="kw">sd</span>(x)          <span class="co"># compute std dev</span></span>
-<span id="cb326-4"><a href="functions1.html#cb326-4"></a>x_devs &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span>x_mean   <span class="co"># deviations from the mean</span></span>
-<span id="cb326-5"><a href="functions1.html#cb326-5"></a>z &lt;-<span class="st"> </span>x_devs <span class="op">/</span><span class="st"> </span>x_sd     <span class="co"># normalize by std dev</span></span>
-<span id="cb326-6"><a href="functions1.html#cb326-6"></a>z</span>
-<span id="cb326-7"><a href="functions1.html#cb326-7"></a><span class="co">#&gt;  [1]  0.358  0.218 -1.770  1.199 -0.258  0.526  0.162 -1.742  0.666  0.638</span></span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="functions1.html#cb334-1"></a>x &lt;-<span class="st"> </span>ht10                   </span>
+<span id="cb334-2"><a href="functions1.html#cb334-2"></a>x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x)      <span class="co"># compute the mean</span></span>
+<span id="cb334-3"><a href="functions1.html#cb334-3"></a>x_sd &lt;-<span class="st"> </span><span class="kw">sd</span>(x)          <span class="co"># compute std dev</span></span>
+<span id="cb334-4"><a href="functions1.html#cb334-4"></a>x_devs &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span>x_mean   <span class="co"># deviations from the mean</span></span>
+<span id="cb334-5"><a href="functions1.html#cb334-5"></a>z &lt;-<span class="st"> </span>x_devs <span class="op">/</span><span class="st"> </span>x_sd     <span class="co"># normalize by std dev</span></span>
+<span id="cb334-6"><a href="functions1.html#cb334-6"></a>z</span>
+<span id="cb334-7"><a href="functions1.html#cb334-7"></a><span class="co">#&gt;  [1]  0.358  0.218 -1.770  1.199 -0.258  0.526  0.162 -1.742  0.666  0.638</span></span></code></pre></div>
 <p>Having the code of the function’s body, we can encapsulate it with a function
 assignment:</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="functions1.html#cb327-1"></a><span class="co"># first round</span></span>
-<span id="cb327-2"><a href="functions1.html#cb327-2"></a>standardize &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb327-3"><a href="functions1.html#cb327-3"></a>  x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x)</span>
-<span id="cb327-4"><a href="functions1.html#cb327-4"></a>  x_sd &lt;-<span class="st"> </span><span class="kw">sd</span>(x)</span>
-<span id="cb327-5"><a href="functions1.html#cb327-5"></a>  x_devs &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span>x_mean</span>
-<span id="cb327-6"><a href="functions1.html#cb327-6"></a>  z &lt;-<span class="st"> </span>x_devs <span class="op">/</span><span class="st"> </span>x_sd</span>
-<span id="cb327-7"><a href="functions1.html#cb327-7"></a>  <span class="kw">return</span>(z)</span>
-<span id="cb327-8"><a href="functions1.html#cb327-8"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="functions1.html#cb335-1"></a><span class="co"># first round</span></span>
+<span id="cb335-2"><a href="functions1.html#cb335-2"></a>standardize &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb335-3"><a href="functions1.html#cb335-3"></a>  x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x)</span>
+<span id="cb335-4"><a href="functions1.html#cb335-4"></a>  x_sd &lt;-<span class="st"> </span><span class="kw">sd</span>(x)</span>
+<span id="cb335-5"><a href="functions1.html#cb335-5"></a>  x_devs &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span>x_mean</span>
+<span id="cb335-6"><a href="functions1.html#cb335-6"></a>  z &lt;-<span class="st"> </span>x_devs <span class="op">/</span><span class="st"> </span>x_sd</span>
+<span id="cb335-7"><a href="functions1.html#cb335-7"></a>  <span class="kw">return</span>(z)</span>
+<span id="cb335-8"><a href="functions1.html#cb335-8"></a>}</span></code></pre></div>
 <p>And now we can test it:</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="functions1.html#cb328-1"></a><span class="kw">standardize</span>(ht10)</span>
-<span id="cb328-2"><a href="functions1.html#cb328-2"></a><span class="co">#&gt;  [1]  0.358  0.218 -1.770  1.199 -0.258  0.526  0.162 -1.742  0.666  0.638</span></span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="functions1.html#cb336-1"></a><span class="kw">standardize</span>(ht10)</span>
+<span id="cb336-2"><a href="functions1.html#cb336-2"></a><span class="co">#&gt;  [1]  0.358  0.218 -1.770  1.199 -0.258  0.526  0.162 -1.742  0.666  0.638</span></span></code></pre></div>
 </div>
 <div id="the-return-command" class="section level3">
 <h3><span class="header-section-number">24.2.2</span> The <code>return()</code> command</h3>
 <p>As you can tell, the last line in the body of <code>standardize()</code> uses the <code>return()</code>
 function. More often than not, the <code>return()</code> command is included to explicitly
 indicate the output of a function:</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="functions1.html#cb329-1"></a><span class="co"># simple example</span></span>
-<span id="cb329-2"><a href="functions1.html#cb329-2"></a>add &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
-<span id="cb329-3"><a href="functions1.html#cb329-3"></a>  z &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y</span>
-<span id="cb329-4"><a href="functions1.html#cb329-4"></a>  <span class="kw">return</span>(z)</span>
-<span id="cb329-5"><a href="functions1.html#cb329-5"></a>}</span>
-<span id="cb329-6"><a href="functions1.html#cb329-6"></a></span>
-<span id="cb329-7"><a href="functions1.html#cb329-7"></a><span class="kw">add</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb329-8"><a href="functions1.html#cb329-8"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="functions1.html#cb337-1"></a><span class="co"># simple example</span></span>
+<span id="cb337-2"><a href="functions1.html#cb337-2"></a>add &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
+<span id="cb337-3"><a href="functions1.html#cb337-3"></a>  z &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y</span>
+<span id="cb337-4"><a href="functions1.html#cb337-4"></a>  <span class="kw">return</span>(z)</span>
+<span id="cb337-5"><a href="functions1.html#cb337-5"></a>}</span>
+<span id="cb337-6"><a href="functions1.html#cb337-6"></a></span>
+<span id="cb337-7"><a href="functions1.html#cb337-7"></a><span class="kw">add</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb337-8"><a href="functions1.html#cb337-8"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
 <p>I’ve seen that many users with previous programming experience in other languages
 prefer to use <code>print()</code>. The main reason is that other programming languages
 tend to use some sort of <code>print</code> statement to indicate the output of a function.
@@ -900,11 +901,11 @@ printing. So to play safe, stick with <code>return()</code>.</p>
 <div id="more-testing" class="section level3">
 <h3><span class="header-section-number">24.2.3</span> More Testing</h3>
 <p>What about applying <code>standardize()</code> on the entire column <code>height</code>:</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="functions1.html#cb330-1"></a><span class="kw">standardize</span>(starwars<span class="op">$</span>height)</span>
-<span id="cb330-2"><a href="functions1.html#cb330-2"></a><span class="co">#&gt;  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
-<span id="cb330-3"><a href="functions1.html#cb330-3"></a><span class="co">#&gt; [26] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
-<span id="cb330-4"><a href="functions1.html#cb330-4"></a><span class="co">#&gt; [51] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
-<span id="cb330-5"><a href="functions1.html#cb330-5"></a><span class="co">#&gt; [76] NA NA NA NA NA NA NA NA NA NA NA NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="functions1.html#cb338-1"></a><span class="kw">standardize</span>(starwars<span class="op">$</span>height)</span>
+<span id="cb338-2"><a href="functions1.html#cb338-2"></a><span class="co">#&gt;  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
+<span id="cb338-3"><a href="functions1.html#cb338-3"></a><span class="co">#&gt; [26] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
+<span id="cb338-4"><a href="functions1.html#cb338-4"></a><span class="co">#&gt; [51] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
+<span id="cb338-5"><a href="functions1.html#cb338-5"></a><span class="co">#&gt; [76] NA NA NA NA NA NA NA NA NA NA NA NA</span></span></code></pre></div>
 <p>Ooops! Because <code>starwars$height</code> contains missing values, our <code>standardize()</code>
 function does not know how to deal with them.</p>
 </div>
@@ -914,89 +915,89 @@ function does not know how to deal with them.</p>
 <code>median()</code> have the so-called <code>na.rm</code> argument to specify whether missing values
 should be removed before carrying certain computations. If a function has this
 argument, you just take advantage of it by using <code>na.rm = TRUE</code>:</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="functions1.html#cb331-1"></a><span class="co"># second round</span></span>
-<span id="cb331-2"><a href="functions1.html#cb331-2"></a>standardize &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb331-3"><a href="functions1.html#cb331-3"></a>  x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb331-4"><a href="functions1.html#cb331-4"></a>  x_sd &lt;-<span class="st"> </span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb331-5"><a href="functions1.html#cb331-5"></a>  x_devs &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span>x_mean</span>
-<span id="cb331-6"><a href="functions1.html#cb331-6"></a>  z &lt;-<span class="st"> </span>x_devs <span class="op">/</span><span class="st"> </span>x_sd</span>
-<span id="cb331-7"><a href="functions1.html#cb331-7"></a>  <span class="kw">return</span>(z)</span>
-<span id="cb331-8"><a href="functions1.html#cb331-8"></a>}</span>
-<span id="cb331-9"><a href="functions1.html#cb331-9"></a></span>
-<span id="cb331-10"><a href="functions1.html#cb331-10"></a><span class="kw">standardize</span>(ht10)</span>
-<span id="cb331-11"><a href="functions1.html#cb331-11"></a><span class="co">#&gt;  [1]  0.358  0.218 -1.770  1.199 -0.258  0.526  0.162 -1.742  0.666  0.638</span></span>
-<span id="cb331-12"><a href="functions1.html#cb331-12"></a></span>
-<span id="cb331-13"><a href="functions1.html#cb331-13"></a><span class="kw">standardize</span>(starwars<span class="op">$</span>height)</span>
-<span id="cb331-14"><a href="functions1.html#cb331-14"></a><span class="co">#&gt;  [1] -0.0678 -0.2116 -2.2536  0.7950 -0.7005  0.1047 -0.2691 -2.2248  0.2485</span></span>
-<span id="cb331-15"><a href="functions1.html#cb331-15"></a><span class="co">#&gt; [10]  0.2198  0.3923  0.1623  1.5427  0.1623 -0.0391  0.0185 -0.1253  0.1623</span></span>
-<span id="cb331-16"><a href="functions1.html#cb331-16"></a><span class="co">#&gt; [19] -3.1164 -0.1253  0.2485  0.7375  0.4499  0.0760  0.0185  0.1623 -0.7005</span></span>
-<span id="cb331-17"><a href="functions1.html#cb331-17"></a><span class="co">#&gt; [28]      NA -2.4837 -0.4129  0.5361  0.4786 -0.1253  0.6224  1.4277  0.9100</span></span>
-<span id="cb331-18"><a href="functions1.html#cb331-18"></a><span class="co">#&gt; [37]  0.2485 -1.0744 -1.7934  0.2485 -0.3267  0.0185  0.1623  0.1047 -2.3111</span></span>
-<span id="cb331-19"><a href="functions1.html#cb331-19"></a><span class="co">#&gt; [46] -1.5058 -0.3267  0.3923  0.6799  0.6224 -0.0966  0.2773  0.3923  2.5781</span></span>
-<span id="cb331-20"><a href="functions1.html#cb331-20"></a><span class="co">#&gt; [55]  0.3923  0.6224  0.3061 -0.4992  0.2485  0.2485 -0.1253 -0.2404 -0.2691</span></span>
-<span id="cb331-21"><a href="functions1.html#cb331-21"></a><span class="co">#&gt; [64]  0.5361  0.4786  0.2485 -0.1829  0.6799  1.5715  1.1113 -0.2116 -2.7425</span></span>
-<span id="cb331-22"><a href="functions1.html#cb331-22"></a><span class="co">#&gt; [73] -2.2536  0.5361  0.4786  0.1047  1.1976  1.7153  0.3923  0.1047  0.9100</span></span>
-<span id="cb331-23"><a href="functions1.html#cb331-23"></a><span class="co">#&gt; [82]      NA      NA      NA      NA      NA -0.2691</span></span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="functions1.html#cb339-1"></a><span class="co"># second round</span></span>
+<span id="cb339-2"><a href="functions1.html#cb339-2"></a>standardize &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb339-3"><a href="functions1.html#cb339-3"></a>  x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb339-4"><a href="functions1.html#cb339-4"></a>  x_sd &lt;-<span class="st"> </span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb339-5"><a href="functions1.html#cb339-5"></a>  x_devs &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span>x_mean</span>
+<span id="cb339-6"><a href="functions1.html#cb339-6"></a>  z &lt;-<span class="st"> </span>x_devs <span class="op">/</span><span class="st"> </span>x_sd</span>
+<span id="cb339-7"><a href="functions1.html#cb339-7"></a>  <span class="kw">return</span>(z)</span>
+<span id="cb339-8"><a href="functions1.html#cb339-8"></a>}</span>
+<span id="cb339-9"><a href="functions1.html#cb339-9"></a></span>
+<span id="cb339-10"><a href="functions1.html#cb339-10"></a><span class="kw">standardize</span>(ht10)</span>
+<span id="cb339-11"><a href="functions1.html#cb339-11"></a><span class="co">#&gt;  [1]  0.358  0.218 -1.770  1.199 -0.258  0.526  0.162 -1.742  0.666  0.638</span></span>
+<span id="cb339-12"><a href="functions1.html#cb339-12"></a></span>
+<span id="cb339-13"><a href="functions1.html#cb339-13"></a><span class="kw">standardize</span>(starwars<span class="op">$</span>height)</span>
+<span id="cb339-14"><a href="functions1.html#cb339-14"></a><span class="co">#&gt;  [1] -0.0678 -0.2116 -2.2536  0.7950 -0.7005  0.1047 -0.2691 -2.2248  0.2485</span></span>
+<span id="cb339-15"><a href="functions1.html#cb339-15"></a><span class="co">#&gt; [10]  0.2198  0.3923  0.1623  1.5427  0.1623 -0.0391  0.0185 -0.1253  0.1623</span></span>
+<span id="cb339-16"><a href="functions1.html#cb339-16"></a><span class="co">#&gt; [19] -3.1164 -0.1253  0.2485  0.7375  0.4499  0.0760  0.0185  0.1623 -0.7005</span></span>
+<span id="cb339-17"><a href="functions1.html#cb339-17"></a><span class="co">#&gt; [28]      NA -2.4837 -0.4129  0.5361  0.4786 -0.1253  0.6224  1.4277  0.9100</span></span>
+<span id="cb339-18"><a href="functions1.html#cb339-18"></a><span class="co">#&gt; [37]  0.2485 -1.0744 -1.7934  0.2485 -0.3267  0.0185  0.1623  0.1047 -2.3111</span></span>
+<span id="cb339-19"><a href="functions1.html#cb339-19"></a><span class="co">#&gt; [46] -1.5058 -0.3267  0.3923  0.6799  0.6224 -0.0966  0.2773  0.3923  2.5781</span></span>
+<span id="cb339-20"><a href="functions1.html#cb339-20"></a><span class="co">#&gt; [55]  0.3923  0.6224  0.3061 -0.4992  0.2485  0.2485 -0.1253 -0.2404 -0.2691</span></span>
+<span id="cb339-21"><a href="functions1.html#cb339-21"></a><span class="co">#&gt; [64]  0.5361  0.4786  0.2485 -0.1829  0.6799  1.5715  1.1113 -0.2116 -2.7425</span></span>
+<span id="cb339-22"><a href="functions1.html#cb339-22"></a><span class="co">#&gt; [73] -2.2536  0.5361  0.4786  0.1047  1.1976  1.7153  0.3923  0.1047  0.9100</span></span>
+<span id="cb339-23"><a href="functions1.html#cb339-23"></a><span class="co">#&gt; [82]      NA      NA      NA      NA      NA -0.2691</span></span></code></pre></div>
 <p>Now <code>standardize()</code> is able to return a more useful output by removing missing
 values. However, we should let the user decide if <code>NA</code>’s must be removed. We
 can include an argument <code>na.rm</code> in <code>standardize()</code> to indicate whether missing
 values are to be removed:</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="functions1.html#cb332-1"></a><span class="co"># third round</span></span>
-<span id="cb332-2"><a href="functions1.html#cb332-2"></a>standardize &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na.rm =</span> <span class="ot">FALSE</span>) {</span>
-<span id="cb332-3"><a href="functions1.html#cb332-3"></a>  x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> na.rm)</span>
-<span id="cb332-4"><a href="functions1.html#cb332-4"></a>  x_sd &lt;-<span class="st"> </span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> na.rm)</span>
-<span id="cb332-5"><a href="functions1.html#cb332-5"></a>  x_devs &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span>x_mean</span>
-<span id="cb332-6"><a href="functions1.html#cb332-6"></a>  z &lt;-<span class="st"> </span>x_devs <span class="op">/</span><span class="st"> </span>x_sd</span>
-<span id="cb332-7"><a href="functions1.html#cb332-7"></a>  <span class="kw">return</span>(z)</span>
-<span id="cb332-8"><a href="functions1.html#cb332-8"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="functions1.html#cb340-1"></a><span class="co"># third round</span></span>
+<span id="cb340-2"><a href="functions1.html#cb340-2"></a>standardize &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na.rm =</span> <span class="ot">FALSE</span>) {</span>
+<span id="cb340-3"><a href="functions1.html#cb340-3"></a>  x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> na.rm)</span>
+<span id="cb340-4"><a href="functions1.html#cb340-4"></a>  x_sd &lt;-<span class="st"> </span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> na.rm)</span>
+<span id="cb340-5"><a href="functions1.html#cb340-5"></a>  x_devs &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span>x_mean</span>
+<span id="cb340-6"><a href="functions1.html#cb340-6"></a>  z &lt;-<span class="st"> </span>x_devs <span class="op">/</span><span class="st"> </span>x_sd</span>
+<span id="cb340-7"><a href="functions1.html#cb340-7"></a>  <span class="kw">return</span>(z)</span>
+<span id="cb340-8"><a href="functions1.html#cb340-8"></a>}</span></code></pre></div>
 <p>Notice that <code>standardize()</code> uses an argument <code>na.rm</code> that it’s set to <code>FALSE</code>
 by default. Likewise, we use such argument <code>na.rm</code> to pass it to the
 homonym arguments of <code>mean()</code> and <code>sd()</code>.</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="functions1.html#cb333-1"></a><span class="co"># default call</span></span>
-<span id="cb333-2"><a href="functions1.html#cb333-2"></a><span class="kw">standardize</span>(starwars<span class="op">$</span>height)</span>
-<span id="cb333-3"><a href="functions1.html#cb333-3"></a><span class="co">#&gt;  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
-<span id="cb333-4"><a href="functions1.html#cb333-4"></a><span class="co">#&gt; [26] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
-<span id="cb333-5"><a href="functions1.html#cb333-5"></a><span class="co">#&gt; [51] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
-<span id="cb333-6"><a href="functions1.html#cb333-6"></a><span class="co">#&gt; [76] NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
-<span id="cb333-7"><a href="functions1.html#cb333-7"></a></span>
-<span id="cb333-8"><a href="functions1.html#cb333-8"></a><span class="co"># removing NAs</span></span>
-<span id="cb333-9"><a href="functions1.html#cb333-9"></a><span class="kw">standardize</span>(starwars<span class="op">$</span>height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb333-10"><a href="functions1.html#cb333-10"></a><span class="co">#&gt;  [1] -0.0678 -0.2116 -2.2536  0.7950 -0.7005  0.1047 -0.2691 -2.2248  0.2485</span></span>
-<span id="cb333-11"><a href="functions1.html#cb333-11"></a><span class="co">#&gt; [10]  0.2198  0.3923  0.1623  1.5427  0.1623 -0.0391  0.0185 -0.1253  0.1623</span></span>
-<span id="cb333-12"><a href="functions1.html#cb333-12"></a><span class="co">#&gt; [19] -3.1164 -0.1253  0.2485  0.7375  0.4499  0.0760  0.0185  0.1623 -0.7005</span></span>
-<span id="cb333-13"><a href="functions1.html#cb333-13"></a><span class="co">#&gt; [28]      NA -2.4837 -0.4129  0.5361  0.4786 -0.1253  0.6224  1.4277  0.9100</span></span>
-<span id="cb333-14"><a href="functions1.html#cb333-14"></a><span class="co">#&gt; [37]  0.2485 -1.0744 -1.7934  0.2485 -0.3267  0.0185  0.1623  0.1047 -2.3111</span></span>
-<span id="cb333-15"><a href="functions1.html#cb333-15"></a><span class="co">#&gt; [46] -1.5058 -0.3267  0.3923  0.6799  0.6224 -0.0966  0.2773  0.3923  2.5781</span></span>
-<span id="cb333-16"><a href="functions1.html#cb333-16"></a><span class="co">#&gt; [55]  0.3923  0.6224  0.3061 -0.4992  0.2485  0.2485 -0.1253 -0.2404 -0.2691</span></span>
-<span id="cb333-17"><a href="functions1.html#cb333-17"></a><span class="co">#&gt; [64]  0.5361  0.4786  0.2485 -0.1829  0.6799  1.5715  1.1113 -0.2116 -2.7425</span></span>
-<span id="cb333-18"><a href="functions1.html#cb333-18"></a><span class="co">#&gt; [73] -2.2536  0.5361  0.4786  0.1047  1.1976  1.7153  0.3923  0.1047  0.9100</span></span>
-<span id="cb333-19"><a href="functions1.html#cb333-19"></a><span class="co">#&gt; [82]      NA      NA      NA      NA      NA -0.2691</span></span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="functions1.html#cb341-1"></a><span class="co"># default call</span></span>
+<span id="cb341-2"><a href="functions1.html#cb341-2"></a><span class="kw">standardize</span>(starwars<span class="op">$</span>height)</span>
+<span id="cb341-3"><a href="functions1.html#cb341-3"></a><span class="co">#&gt;  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
+<span id="cb341-4"><a href="functions1.html#cb341-4"></a><span class="co">#&gt; [26] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
+<span id="cb341-5"><a href="functions1.html#cb341-5"></a><span class="co">#&gt; [51] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
+<span id="cb341-6"><a href="functions1.html#cb341-6"></a><span class="co">#&gt; [76] NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
+<span id="cb341-7"><a href="functions1.html#cb341-7"></a></span>
+<span id="cb341-8"><a href="functions1.html#cb341-8"></a><span class="co"># removing NAs</span></span>
+<span id="cb341-9"><a href="functions1.html#cb341-9"></a><span class="kw">standardize</span>(starwars<span class="op">$</span>height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb341-10"><a href="functions1.html#cb341-10"></a><span class="co">#&gt;  [1] -0.0678 -0.2116 -2.2536  0.7950 -0.7005  0.1047 -0.2691 -2.2248  0.2485</span></span>
+<span id="cb341-11"><a href="functions1.html#cb341-11"></a><span class="co">#&gt; [10]  0.2198  0.3923  0.1623  1.5427  0.1623 -0.0391  0.0185 -0.1253  0.1623</span></span>
+<span id="cb341-12"><a href="functions1.html#cb341-12"></a><span class="co">#&gt; [19] -3.1164 -0.1253  0.2485  0.7375  0.4499  0.0760  0.0185  0.1623 -0.7005</span></span>
+<span id="cb341-13"><a href="functions1.html#cb341-13"></a><span class="co">#&gt; [28]      NA -2.4837 -0.4129  0.5361  0.4786 -0.1253  0.6224  1.4277  0.9100</span></span>
+<span id="cb341-14"><a href="functions1.html#cb341-14"></a><span class="co">#&gt; [37]  0.2485 -1.0744 -1.7934  0.2485 -0.3267  0.0185  0.1623  0.1047 -2.3111</span></span>
+<span id="cb341-15"><a href="functions1.html#cb341-15"></a><span class="co">#&gt; [46] -1.5058 -0.3267  0.3923  0.6799  0.6224 -0.0966  0.2773  0.3923  2.5781</span></span>
+<span id="cb341-16"><a href="functions1.html#cb341-16"></a><span class="co">#&gt; [55]  0.3923  0.6224  0.3061 -0.4992  0.2485  0.2485 -0.1253 -0.2404 -0.2691</span></span>
+<span id="cb341-17"><a href="functions1.html#cb341-17"></a><span class="co">#&gt; [64]  0.5361  0.4786  0.2485 -0.1829  0.6799  1.5715  1.1113 -0.2116 -2.7425</span></span>
+<span id="cb341-18"><a href="functions1.html#cb341-18"></a><span class="co">#&gt; [73] -2.2536  0.5361  0.4786  0.1047  1.1976  1.7153  0.3923  0.1047  0.9100</span></span>
+<span id="cb341-19"><a href="functions1.html#cb341-19"></a><span class="co">#&gt; [82]      NA      NA      NA      NA      NA -0.2691</span></span></code></pre></div>
 </div>
 <div id="simplifying-the-body" class="section level3">
 <h3><span class="header-section-number">24.2.5</span> Simplifying the body</h3>
 <p>So far we have a working function <code>standardize()</code> that does the job and takes
 care of potential missing values. We can take a further step and review the
 code of the body. Let’s go back to the initial code:</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="functions1.html#cb334-1"></a>x &lt;-<span class="st"> </span>ht10</span>
-<span id="cb334-2"><a href="functions1.html#cb334-2"></a>x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x)</span>
-<span id="cb334-3"><a href="functions1.html#cb334-3"></a>x_sd &lt;-<span class="st"> </span><span class="kw">sd</span>(x)</span>
-<span id="cb334-4"><a href="functions1.html#cb334-4"></a>x_devs &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span>x_mean</span>
-<span id="cb334-5"><a href="functions1.html#cb334-5"></a>z &lt;-<span class="st"> </span>x_devs <span class="op">/</span><span class="st"> </span>x_sd</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="functions1.html#cb342-1"></a>x &lt;-<span class="st"> </span>ht10</span>
+<span id="cb342-2"><a href="functions1.html#cb342-2"></a>x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x)</span>
+<span id="cb342-3"><a href="functions1.html#cb342-3"></a>x_sd &lt;-<span class="st"> </span><span class="kw">sd</span>(x)</span>
+<span id="cb342-4"><a href="functions1.html#cb342-4"></a>x_devs &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span>x_mean</span>
+<span id="cb342-5"><a href="functions1.html#cb342-5"></a>z &lt;-<span class="st"> </span>x_devs <span class="op">/</span><span class="st"> </span>x_sd</span></code></pre></div>
 <p>The code above works, but it is somewhat “verbose”. We can take advantage of R’s
 functional behavior to shorten the computation of the standard scores in one line:</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="functions1.html#cb335-1"></a>x &lt;-<span class="st"> </span>ht10</span>
-<span id="cb335-2"><a href="functions1.html#cb335-2"></a>z &lt;-<span class="st"> </span>(x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(x)</span>
-<span id="cb335-3"><a href="functions1.html#cb335-3"></a>z</span>
-<span id="cb335-4"><a href="functions1.html#cb335-4"></a><span class="co">#&gt;  [1]  0.358  0.218 -1.770  1.199 -0.258  0.526  0.162 -1.742  0.666  0.638</span></span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="functions1.html#cb343-1"></a>x &lt;-<span class="st"> </span>ht10</span>
+<span id="cb343-2"><a href="functions1.html#cb343-2"></a>z &lt;-<span class="st"> </span>(x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(x)</span>
+<span id="cb343-3"><a href="functions1.html#cb343-3"></a>z</span>
+<span id="cb343-4"><a href="functions1.html#cb343-4"></a><span class="co">#&gt;  [1]  0.358  0.218 -1.770  1.199 -0.258  0.526  0.162 -1.742  0.666  0.638</span></span></code></pre></div>
 <p>Having simplified the code, we can simplify our <code>standardize()</code> function:</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="functions1.html#cb336-1"></a><span class="co"># fifth round</span></span>
-<span id="cb336-2"><a href="functions1.html#cb336-2"></a>standardize &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na.rm =</span> <span class="ot">FALSE</span>) {</span>
-<span id="cb336-3"><a href="functions1.html#cb336-3"></a>  z &lt;-<span class="st"> </span>(x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> na.rm)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> na.rm)</span>
-<span id="cb336-4"><a href="functions1.html#cb336-4"></a>  <span class="kw">return</span>(z)</span>
-<span id="cb336-5"><a href="functions1.html#cb336-5"></a>}</span>
-<span id="cb336-6"><a href="functions1.html#cb336-6"></a></span>
-<span id="cb336-7"><a href="functions1.html#cb336-7"></a><span class="kw">standardize</span>(<span class="kw">tail</span>(starwars<span class="op">$</span>height, <span class="dt">n =</span> <span class="dv">10</span>), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb336-8"><a href="functions1.html#cb336-8"></a><span class="co">#&gt;  [1]  1.484 -0.231 -0.604  0.440     NA     NA     NA     NA     NA -1.089</span></span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="functions1.html#cb344-1"></a><span class="co"># fifth round</span></span>
+<span id="cb344-2"><a href="functions1.html#cb344-2"></a>standardize &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na.rm =</span> <span class="ot">FALSE</span>) {</span>
+<span id="cb344-3"><a href="functions1.html#cb344-3"></a>  z &lt;-<span class="st"> </span>(x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> na.rm)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> na.rm)</span>
+<span id="cb344-4"><a href="functions1.html#cb344-4"></a>  <span class="kw">return</span>(z)</span>
+<span id="cb344-5"><a href="functions1.html#cb344-5"></a>}</span>
+<span id="cb344-6"><a href="functions1.html#cb344-6"></a></span>
+<span id="cb344-7"><a href="functions1.html#cb344-7"></a><span class="kw">standardize</span>(<span class="kw">tail</span>(starwars<span class="op">$</span>height, <span class="dt">n =</span> <span class="dv">10</span>), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb344-8"><a href="functions1.html#cb344-8"></a><span class="co">#&gt;  [1]  1.484 -0.231 -0.604  0.440     NA     NA     NA     NA     NA -1.089</span></span></code></pre></div>
 
 </div>
 </div>

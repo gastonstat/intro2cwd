@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -768,7 +769,7 @@ in what ways data sets are messy:</p>
 <p>Keep in mind that we are using the <code>storms</code> example to get you up and running
 analyzing data tables, focusing on what is called Exploratory Data Analysis
 (EDA). Later in the book we will also describe typical tasks that are performed
-before EDA, wuch as importing data, preparation of data, cleaning, tidying, etc.</p>
+before EDA, such as importing data, preparation of data, cleaning, tidying, etc.</p>
 </div>
 </div>
 <div id="exploratory-data-analysis" class="section level2">
@@ -793,24 +794,24 @@ with the functions to go beyond what we cover in this chapter. In real life,
 you will have to do such exploration.</p>
 <p>Another important comment: in most courses, books, and workshops, EDA tends
 to receive very little attention. But don’t understimate the power of exploring
-your data. It may not be glamorous as doing similations, fitting models,
+your data. It may not be as glamorous as doing similations, fitting models,
 making predictions, or other more sophisticated activities. But that does not
 mean EDA is unimportant. Quite the opposite! You should spend enough time
 understanding the data (variables, individuals, measurements), also understanding
 the context in which the data was collected, and if possible, a bit about the
 field or discipline related with the data. This is something that can’t be
-easily taught in a book; but you should spend time with your clients, or
+easily taught in a book; but you should spend time with your clients,<br />
 colleagues, experts, to know as much as possible about the data you will work
 with.</p>
 <div id="basic-inspection-of-year" class="section level3">
 <h3><span class="header-section-number">9.3.1</span> Basic Inspection of <code>year</code></h3>
 <p>When you type <code>storms</code>, R displays the first 10 rows, which belong to storm
-Amy in 1975. In other words, we know that the data contains at least one storm
+Amy in 1975. From this, we can infer that the data contains at least one storm
 from 1975. We also know, from the manual documentation of <code>storms</code>, that there
 are supposed to be 198 storms. But we don’t know for what years. So in a more
 or less arbitrary way, let’s begin inspecting <code>storms</code> by focusing on the
-<code>year</code> column. Our first question is: What years have the data been collected
-for?</p>
+<code>year</code> column. Our first question is: For what years have the data been
+collected?</p>
 <p>To answer this question, we need to work with column <code>years</code>. There are several
 ways in R to manipulate a column from a tabular object. Using <code>"dplyr"</code>, there
 are two basic kinds of functions to extract variables: <code>pull()</code> and <code>select()</code>.</p>
@@ -828,9 +829,10 @@ data. First we pull the year, and then we identify unique occurrences:</p>
 <span id="cb33-2"><a href="eda-dplyr.html#cb33-2"></a><span class="co">#&gt;  [1] 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 1988 1989</span></span>
 <span id="cb33-3"><a href="eda-dplyr.html#cb33-3"></a><span class="co">#&gt; [16] 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004</span></span>
 <span id="cb33-4"><a href="eda-dplyr.html#cb33-4"></a><span class="co">#&gt; [31] 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015</span></span></code></pre></div>
-<p>The same can be accomplished with <code>select()</code>. The difference with <code>pull()</code> is
-in the way the output is handled by <code>select()</code>, which returns output in a table
-format:</p>
+<p>The same can be accomplished with <code>select()</code>. The difference between <code>pull()</code>
+and <code>select()</code>, is in the way the output is handled. Function <code>select()</code><br />
+returns output in a table format, whereas <code>pull()</code> returns the output as an
+R vector:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="eda-dplyr.html#cb34-1"></a><span class="kw">unique</span>(<span class="kw">select</span>(storms, year))</span>
 <span id="cb34-2"><a href="eda-dplyr.html#cb34-2"></a><span class="co">#&gt; # A tibble: 41 x 1</span></span>
 <span id="cb34-3"><a href="eda-dplyr.html#cb34-3"></a><span class="co">#&gt;     year</span></span>
@@ -847,7 +849,7 @@ format:</p>
 <span id="cb34-14"><a href="eda-dplyr.html#cb34-14"></a><span class="co">#&gt; 10  1984</span></span>
 <span id="cb34-15"><a href="eda-dplyr.html#cb34-15"></a><span class="co">#&gt; # … with 31 more rows</span></span></code></pre></div>
 <p>Based on the previous answers, we can see that <code>storms</code> has records during
-a 41-year period since 1975 to 2015.</p>
+a 41-year period from 1975 to 2015.</p>
 </div>
 <div id="basic-inspection-of-month" class="section level3">
 <h3><span class="header-section-number">9.3.2</span> Basic inspection of <code>month</code></h3>
@@ -864,14 +866,14 @@ possible that there are no recorded data for February and March? For the
 inexperience analyst, this type of questions are fundamental. As a data
 scientist, you will be working with data ests for which you are not necessarily
 an expert in that particular field of application. Since you will also be
-interacting with some type of experts, you should ask them as many quesstions
+interacting with some type of experts, you should ask them as many questions
 as possible to clarify your understanding of the data and its context.</p>
 <p>The answer for not having storms in February and March is because these months
 have to do with the end of Winter and begining of Spring in the North Atlantic,
-which is a period of time where there are no storms. In fact, Spring months
-such as April and May do not tend to be typical months for storms. So a further
-thing to explore could involve also computing the number of storms in April,
-and May.</p>
+which is a period of time where there are no tropical storms. In fact, Spring
+months such as April and May do not tend to be typical months for hurricanes.
+So a further thing to explore could involve also computing the number of storms
+in April, and May.</p>
 </div>
 <div id="basic-inspection-of-day" class="section level3">
 <h3><span class="header-section-number">9.3.3</span> Basic inspection of <code>day</code></h3>
@@ -950,7 +952,9 @@ for which we want to get the counts or frequencies:</p>
 <p>Another common task when exploring data has to do with computations applied
 on certain groups or categories of data. <code>"dplyr"</code> provides the function
 <code>group_by()</code> which takes a data table, and we specify the column(s) on which
-rows will be grouped by:</p>
+rows will be grouped by. Most of the time, you will use <code>group_by()</code> with
+the function <code>summarise()</code>, which as its name indicates, allows you to compute
+a certain summary on the specified columns.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-62"></span>
 <img src="images/eda/dplyr-group-by.svg" alt="Group-by operations" width="80%" />
 <p class="caption">
@@ -996,7 +1000,7 @@ Figure 9.5: Arranging rows
 </p>
 </div>
 <p>Say you want to arrange the contents of the average summary table, by taking
-into account the columnd <code>avg_wind</code>:</p>
+into account the column <code>avg_wind</code>:</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="eda-dplyr.html#cb44-1"></a><span class="kw">arrange</span>(avg_wind_pressure_<span class="dv">75</span>, avg_wind)</span>
 <span id="cb44-2"><a href="eda-dplyr.html#cb44-2"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
 <span id="cb44-3"><a href="eda-dplyr.html#cb44-3"></a><span class="co">#&gt;   name     avg_wind avg_pressure</span></span>

@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -688,31 +689,31 @@ R <strong>expressions</strong>.</p>
 <p>R programs are made up of expressions. These can be either <em>simple</em> expressions
 or <em>compound</em> expressions. Compound expressions consist of simple expressions
 separated by semicolons or newlines, and grouped within braces.</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="conditionals.html#cb337-1"></a><span class="co"># structure of a compound expression</span></span>
-<span id="cb337-2"><a href="conditionals.html#cb337-2"></a><span class="co"># with simple expressions separated by semicolons</span></span>
-<span id="cb337-3"><a href="conditionals.html#cb337-3"></a>{expression_<span class="dv">1</span>; expression_<span class="dv">2</span>; ...; expression_n}</span>
-<span id="cb337-4"><a href="conditionals.html#cb337-4"></a></span>
-<span id="cb337-5"><a href="conditionals.html#cb337-5"></a><span class="co"># structure of a compound expression</span></span>
-<span id="cb337-6"><a href="conditionals.html#cb337-6"></a><span class="co"># with simple expressions separated by newlines</span></span>
-<span id="cb337-7"><a href="conditionals.html#cb337-7"></a>{</span>
-<span id="cb337-8"><a href="conditionals.html#cb337-8"></a>  expression_<span class="dv">1</span></span>
-<span id="cb337-9"><a href="conditionals.html#cb337-9"></a>  expression_<span class="dv">2</span></span>
-<span id="cb337-10"><a href="conditionals.html#cb337-10"></a>  expression_n</span>
-<span id="cb337-11"><a href="conditionals.html#cb337-11"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="conditionals.html#cb345-1"></a><span class="co"># structure of a compound expression</span></span>
+<span id="cb345-2"><a href="conditionals.html#cb345-2"></a><span class="co"># with simple expressions separated by semicolons</span></span>
+<span id="cb345-3"><a href="conditionals.html#cb345-3"></a>{expression_<span class="dv">1</span>; expression_<span class="dv">2</span>; ...; expression_n}</span>
+<span id="cb345-4"><a href="conditionals.html#cb345-4"></a></span>
+<span id="cb345-5"><a href="conditionals.html#cb345-5"></a><span class="co"># structure of a compound expression</span></span>
+<span id="cb345-6"><a href="conditionals.html#cb345-6"></a><span class="co"># with simple expressions separated by newlines</span></span>
+<span id="cb345-7"><a href="conditionals.html#cb345-7"></a>{</span>
+<span id="cb345-8"><a href="conditionals.html#cb345-8"></a>  expression_<span class="dv">1</span></span>
+<span id="cb345-9"><a href="conditionals.html#cb345-9"></a>  expression_<span class="dv">2</span></span>
+<span id="cb345-10"><a href="conditionals.html#cb345-10"></a>  expression_n</span>
+<span id="cb345-11"><a href="conditionals.html#cb345-11"></a>}</span></code></pre></div>
 <p>Here’s a less abstract example:</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="conditionals.html#cb338-1"></a><span class="co"># simple expressions separated by semicolons</span></span>
-<span id="cb338-2"><a href="conditionals.html#cb338-2"></a>{<span class="st">&quot;first&quot;</span>; <span class="dv">1</span>; <span class="dv">2</span>; <span class="dv">3</span>; <span class="st">&quot;last&quot;</span>}</span>
-<span id="cb338-3"><a href="conditionals.html#cb338-3"></a><span class="co">#&gt; [1] &quot;last&quot;</span></span>
-<span id="cb338-4"><a href="conditionals.html#cb338-4"></a></span>
-<span id="cb338-5"><a href="conditionals.html#cb338-5"></a><span class="co"># simple expressions separated by newlines</span></span>
-<span id="cb338-6"><a href="conditionals.html#cb338-6"></a>{</span>
-<span id="cb338-7"><a href="conditionals.html#cb338-7"></a>  <span class="st">&quot;first&quot;</span></span>
-<span id="cb338-8"><a href="conditionals.html#cb338-8"></a>  <span class="dv">1</span></span>
-<span id="cb338-9"><a href="conditionals.html#cb338-9"></a>  <span class="dv">2</span></span>
-<span id="cb338-10"><a href="conditionals.html#cb338-10"></a>  <span class="dv">3</span></span>
-<span id="cb338-11"><a href="conditionals.html#cb338-11"></a>  <span class="st">&quot;last&quot;</span></span>
-<span id="cb338-12"><a href="conditionals.html#cb338-12"></a>}</span>
-<span id="cb338-13"><a href="conditionals.html#cb338-13"></a><span class="co">#&gt; [1] &quot;last&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="conditionals.html#cb346-1"></a><span class="co"># simple expressions separated by semicolons</span></span>
+<span id="cb346-2"><a href="conditionals.html#cb346-2"></a>{<span class="st">&quot;first&quot;</span>; <span class="dv">1</span>; <span class="dv">2</span>; <span class="dv">3</span>; <span class="st">&quot;last&quot;</span>}</span>
+<span id="cb346-3"><a href="conditionals.html#cb346-3"></a><span class="co">#&gt; [1] &quot;last&quot;</span></span>
+<span id="cb346-4"><a href="conditionals.html#cb346-4"></a></span>
+<span id="cb346-5"><a href="conditionals.html#cb346-5"></a><span class="co"># simple expressions separated by newlines</span></span>
+<span id="cb346-6"><a href="conditionals.html#cb346-6"></a>{</span>
+<span id="cb346-7"><a href="conditionals.html#cb346-7"></a>  <span class="st">&quot;first&quot;</span></span>
+<span id="cb346-8"><a href="conditionals.html#cb346-8"></a>  <span class="dv">1</span></span>
+<span id="cb346-9"><a href="conditionals.html#cb346-9"></a>  <span class="dv">2</span></span>
+<span id="cb346-10"><a href="conditionals.html#cb346-10"></a>  <span class="dv">3</span></span>
+<span id="cb346-11"><a href="conditionals.html#cb346-11"></a>  <span class="st">&quot;last&quot;</span></span>
+<span id="cb346-12"><a href="conditionals.html#cb346-12"></a>}</span>
+<span id="cb346-13"><a href="conditionals.html#cb346-13"></a><span class="co">#&gt; [1] &quot;last&quot;</span></span></code></pre></div>
 <p>Writing compound expressions like those in the previous example is not
 something common among R users. Although the expressions are perfectly valid,
 these examples are very dummy (just for illustration purposes).</p>
@@ -725,12 +726,12 @@ with other programming structures (e.g. functions, conditionals, loops).</p>
 <h3><span class="header-section-number">25.1.2</span> Every expression has a value</h3>
 <p>A fundamental notion about expressions is that
 <strong>every expression in R has a value</strong>. If you have a simple expression like:</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="conditionals.html#cb339-1"></a>a &lt;-<span class="st"> </span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="conditionals.html#cb347-1"></a>a &lt;-<span class="st"> </span><span class="dv">5</span></span></code></pre></div>
 <p>then <code>a</code> has the value 5. In contrast, the value of a compound
 expression is the value of the last evaluated expression.</p>
 <p>Here’s one example of a compund expression. Note that the entire expression is
 assigned to <code>x</code>:</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="conditionals.html#cb340-1"></a>x &lt;-<span class="st"> </span>{<span class="dv">5</span>; <span class="dv">10</span>}</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="conditionals.html#cb348-1"></a>x &lt;-<span class="st"> </span>{<span class="dv">5</span>; <span class="dv">10</span>}</span></code></pre></div>
 <ul>
 <li>What is the value of <code>x</code>?
 <ul>
@@ -743,13 +744,13 @@ assigned to <code>x</code>:</p>
 expression inside the braces.</p>
 <p>Here’s the same compound expression as above, but now with simple expressions
 in newlines:</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="conditionals.html#cb341-1"></a>x &lt;-<span class="st"> </span>{</span>
-<span id="cb341-2"><a href="conditionals.html#cb341-2"></a>  <span class="dv">5</span></span>
-<span id="cb341-3"><a href="conditionals.html#cb341-3"></a>  <span class="dv">10</span></span>
-<span id="cb341-4"><a href="conditionals.html#cb341-4"></a>}</span>
-<span id="cb341-5"><a href="conditionals.html#cb341-5"></a></span>
-<span id="cb341-6"><a href="conditionals.html#cb341-6"></a>x</span>
-<span id="cb341-7"><a href="conditionals.html#cb341-7"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="conditionals.html#cb349-1"></a>x &lt;-<span class="st"> </span>{</span>
+<span id="cb349-2"><a href="conditionals.html#cb349-2"></a>  <span class="dv">5</span></span>
+<span id="cb349-3"><a href="conditionals.html#cb349-3"></a>  <span class="dv">10</span></span>
+<span id="cb349-4"><a href="conditionals.html#cb349-4"></a>}</span>
+<span id="cb349-5"><a href="conditionals.html#cb349-5"></a></span>
+<span id="cb349-6"><a href="conditionals.html#cb349-6"></a>x</span>
+<span id="cb349-7"><a href="conditionals.html#cb349-7"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
 <p>To make sure you don’t forget it, repeat this mantra:</p>
 <blockquote>
 <ul>
@@ -763,28 +764,28 @@ in newlines:</p>
 <h3><span class="header-section-number">25.1.3</span> Assignments within Compound Expressions</h3>
 <p>It is possible to have assignments within compound expressions, and the
 values of the variables which this produces can be used in later expressions.</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="conditionals.html#cb342-1"></a><span class="co"># simple expressions (made up of assignments) separated by newlines</span></span>
-<span id="cb342-2"><a href="conditionals.html#cb342-2"></a>{</span>
-<span id="cb342-3"><a href="conditionals.html#cb342-3"></a>  one &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb342-4"><a href="conditionals.html#cb342-4"></a>  pie &lt;-<span class="st"> </span>pi</span>
-<span id="cb342-5"><a href="conditionals.html#cb342-5"></a>  zee &lt;-<span class="st"> &quot;z&quot;</span></span>
-<span id="cb342-6"><a href="conditionals.html#cb342-6"></a>}</span>
-<span id="cb342-7"><a href="conditionals.html#cb342-7"></a></span>
-<span id="cb342-8"><a href="conditionals.html#cb342-8"></a>one</span>
-<span id="cb342-9"><a href="conditionals.html#cb342-9"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb342-10"><a href="conditionals.html#cb342-10"></a>pie</span>
-<span id="cb342-11"><a href="conditionals.html#cb342-11"></a><span class="co">#&gt; [1] 3.14</span></span>
-<span id="cb342-12"><a href="conditionals.html#cb342-12"></a>zee</span>
-<span id="cb342-13"><a href="conditionals.html#cb342-13"></a><span class="co">#&gt; [1] &quot;z&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="conditionals.html#cb350-1"></a><span class="co"># simple expressions (made up of assignments) separated by newlines</span></span>
+<span id="cb350-2"><a href="conditionals.html#cb350-2"></a>{</span>
+<span id="cb350-3"><a href="conditionals.html#cb350-3"></a>  one &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb350-4"><a href="conditionals.html#cb350-4"></a>  pie &lt;-<span class="st"> </span>pi</span>
+<span id="cb350-5"><a href="conditionals.html#cb350-5"></a>  zee &lt;-<span class="st"> &quot;z&quot;</span></span>
+<span id="cb350-6"><a href="conditionals.html#cb350-6"></a>}</span>
+<span id="cb350-7"><a href="conditionals.html#cb350-7"></a></span>
+<span id="cb350-8"><a href="conditionals.html#cb350-8"></a>one</span>
+<span id="cb350-9"><a href="conditionals.html#cb350-9"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb350-10"><a href="conditionals.html#cb350-10"></a>pie</span>
+<span id="cb350-11"><a href="conditionals.html#cb350-11"></a><span class="co">#&gt; [1] 3.14</span></span>
+<span id="cb350-12"><a href="conditionals.html#cb350-12"></a>zee</span>
+<span id="cb350-13"><a href="conditionals.html#cb350-13"></a><span class="co">#&gt; [1] &quot;z&quot;</span></span></code></pre></div>
 <p>Here’s another example:</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="conditionals.html#cb343-1"></a>z &lt;-<span class="st"> </span>{ x =<span class="st"> </span><span class="dv">10</span> ; y =<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span>; x <span class="op">+</span><span class="st"> </span>y }</span>
-<span id="cb343-2"><a href="conditionals.html#cb343-2"></a></span>
-<span id="cb343-3"><a href="conditionals.html#cb343-3"></a>x</span>
-<span id="cb343-4"><a href="conditionals.html#cb343-4"></a><span class="co">#&gt; [1] 10</span></span>
-<span id="cb343-5"><a href="conditionals.html#cb343-5"></a>y</span>
-<span id="cb343-6"><a href="conditionals.html#cb343-6"></a><span class="co">#&gt; [1] 100</span></span>
-<span id="cb343-7"><a href="conditionals.html#cb343-7"></a>z</span>
-<span id="cb343-8"><a href="conditionals.html#cb343-8"></a><span class="co">#&gt; [1] 110</span></span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="conditionals.html#cb351-1"></a>z &lt;-<span class="st"> </span>{ x =<span class="st"> </span><span class="dv">10</span> ; y =<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span>; x <span class="op">+</span><span class="st"> </span>y }</span>
+<span id="cb351-2"><a href="conditionals.html#cb351-2"></a></span>
+<span id="cb351-3"><a href="conditionals.html#cb351-3"></a>x</span>
+<span id="cb351-4"><a href="conditionals.html#cb351-4"></a><span class="co">#&gt; [1] 10</span></span>
+<span id="cb351-5"><a href="conditionals.html#cb351-5"></a>y</span>
+<span id="cb351-6"><a href="conditionals.html#cb351-6"></a><span class="co">#&gt; [1] 100</span></span>
+<span id="cb351-7"><a href="conditionals.html#cb351-7"></a>z</span>
+<span id="cb351-8"><a href="conditionals.html#cb351-8"></a><span class="co">#&gt; [1] 110</span></span></code></pre></div>
 <p>Now that we’ve introduced the concept of R expressions, let’s introduce
 conditional structures</p>
 </div>
@@ -796,185 +797,185 @@ conditional structures</p>
 between two (possibly compound) expressions depending on the value of a (logical) condition.</p>
 <p>In R (as in many other languages) the if-then-else statement has the following
 structure:</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="conditionals.html#cb344-1"></a><span class="cf">if</span> (condition) {</span>
-<span id="cb344-2"><a href="conditionals.html#cb344-2"></a>  <span class="co"># do something</span></span>
-<span id="cb344-3"><a href="conditionals.html#cb344-3"></a>} <span class="cf">else</span> {</span>
-<span id="cb344-4"><a href="conditionals.html#cb344-4"></a>  <span class="co"># do something else</span></span>
-<span id="cb344-5"><a href="conditionals.html#cb344-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="conditionals.html#cb352-1"></a><span class="cf">if</span> (condition) {</span>
+<span id="cb352-2"><a href="conditionals.html#cb352-2"></a>  <span class="co"># do something</span></span>
+<span id="cb352-3"><a href="conditionals.html#cb352-3"></a>} <span class="cf">else</span> {</span>
+<span id="cb352-4"><a href="conditionals.html#cb352-4"></a>  <span class="co"># do something else</span></span>
+<span id="cb352-5"><a href="conditionals.html#cb352-5"></a>}</span></code></pre></div>
 <p>As you can tell, the <code>if</code> clause works like a function: <code>if(condition)</code>.
 Likewise, braces are used to group one or more expressions. If the condition
 to be evaluated is true, then just the expressions inside the first pair of
 braces are executed. If the condition is false, then the expressions inside
 the second pair of braces are executed:</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="conditionals.html#cb345-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb345-2"><a href="conditionals.html#cb345-2"></a></span>
-<span id="cb345-3"><a href="conditionals.html#cb345-3"></a><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
-<span id="cb345-4"><a href="conditionals.html#cb345-4"></a>  <span class="kw">print</span>(<span class="st">&quot;positive&quot;</span>)</span>
-<span id="cb345-5"><a href="conditionals.html#cb345-5"></a>} <span class="cf">else</span> {</span>
-<span id="cb345-6"><a href="conditionals.html#cb345-6"></a>  <span class="kw">print</span>(<span class="st">&quot;not positive&quot;</span>)</span>
-<span id="cb345-7"><a href="conditionals.html#cb345-7"></a>}</span>
-<span id="cb345-8"><a href="conditionals.html#cb345-8"></a><span class="co">#&gt; [1] &quot;positive&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="conditionals.html#cb353-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb353-2"><a href="conditionals.html#cb353-2"></a></span>
+<span id="cb353-3"><a href="conditionals.html#cb353-3"></a><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb353-4"><a href="conditionals.html#cb353-4"></a>  <span class="kw">print</span>(<span class="st">&quot;positive&quot;</span>)</span>
+<span id="cb353-5"><a href="conditionals.html#cb353-5"></a>} <span class="cf">else</span> {</span>
+<span id="cb353-6"><a href="conditionals.html#cb353-6"></a>  <span class="kw">print</span>(<span class="st">&quot;not positive&quot;</span>)</span>
+<span id="cb353-7"><a href="conditionals.html#cb353-7"></a>}</span>
+<span id="cb353-8"><a href="conditionals.html#cb353-8"></a><span class="co">#&gt; [1] &quot;positive&quot;</span></span></code></pre></div>
 <p>For readability reasons, most users prefer to write <code>if (condition)</code> instead of
 <code>if(condition)</code>. The <em>condition</em> is an expression that when evaluated returns
 a <strong>logical</strong> value of length one. In other words, whatever you pass as the
 input of the <code>if</code> clause, it has to be something that becomes <code>TRUE</code> or <code>FALSE</code></p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="conditionals.html#cb346-1"></a><span class="cf">if</span> (<span class="ot">TRUE</span>) {</span>
-<span id="cb346-2"><a href="conditionals.html#cb346-2"></a>  <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</span>
-<span id="cb346-3"><a href="conditionals.html#cb346-3"></a>} <span class="cf">else</span> {</span>
-<span id="cb346-4"><a href="conditionals.html#cb346-4"></a>  <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span>
-<span id="cb346-5"><a href="conditionals.html#cb346-5"></a>}</span>
-<span id="cb346-6"><a href="conditionals.html#cb346-6"></a><span class="co">#&gt; [1] &quot;TRUE&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="conditionals.html#cb347-1"></a><span class="cf">if</span> (<span class="ot">FALSE</span>) {</span>
-<span id="cb347-2"><a href="conditionals.html#cb347-2"></a>  <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</span>
-<span id="cb347-3"><a href="conditionals.html#cb347-3"></a>} <span class="cf">else</span> {</span>
-<span id="cb347-4"><a href="conditionals.html#cb347-4"></a>  <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span>
-<span id="cb347-5"><a href="conditionals.html#cb347-5"></a>}</span>
-<span id="cb347-6"><a href="conditionals.html#cb347-6"></a><span class="co">#&gt; [1] &quot;FALSE&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="conditionals.html#cb354-1"></a><span class="cf">if</span> (<span class="ot">TRUE</span>) {</span>
+<span id="cb354-2"><a href="conditionals.html#cb354-2"></a>  <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</span>
+<span id="cb354-3"><a href="conditionals.html#cb354-3"></a>} <span class="cf">else</span> {</span>
+<span id="cb354-4"><a href="conditionals.html#cb354-4"></a>  <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span>
+<span id="cb354-5"><a href="conditionals.html#cb354-5"></a>}</span>
+<span id="cb354-6"><a href="conditionals.html#cb354-6"></a><span class="co">#&gt; [1] &quot;TRUE&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="conditionals.html#cb355-1"></a><span class="cf">if</span> (<span class="ot">FALSE</span>) {</span>
+<span id="cb355-2"><a href="conditionals.html#cb355-2"></a>  <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</span>
+<span id="cb355-3"><a href="conditionals.html#cb355-3"></a>} <span class="cf">else</span> {</span>
+<span id="cb355-4"><a href="conditionals.html#cb355-4"></a>  <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span>
+<span id="cb355-5"><a href="conditionals.html#cb355-5"></a>}</span>
+<span id="cb355-6"><a href="conditionals.html#cb355-6"></a><span class="co">#&gt; [1] &quot;FALSE&quot;</span></span></code></pre></div>
 <div id="minimalist-if-then-else" class="section level4">
 <h4><span class="header-section-number">25.2.0.1</span> Minimalist If-then-else</h4>
 <p><code>if</code> statements can be written in different forms, depending on the types of
 expressions that are evaluated. If the expressions of both the <em>True</em> part and
 the <em>False</em> part are simple expressions, the if-then-else can be simplified as:</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="conditionals.html#cb348-1"></a><span class="cf">if</span> (condition) expression_<span class="dv">1</span> <span class="cf">else</span> expression_<span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="conditionals.html#cb356-1"></a><span class="cf">if</span> (condition) expression_<span class="dv">1</span> <span class="cf">else</span> expression_<span class="dv">2</span></span></code></pre></div>
 <p>With simple expressions there’s actually no need to use braces:</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="conditionals.html#cb349-1"></a>x &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb349-2"><a href="conditionals.html#cb349-2"></a><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) y &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x) <span class="cf">else</span> y &lt;-<span class="st"> </span><span class="op">-</span><span class="kw">sqrt</span>(<span class="op">-</span>x)</span>
-<span id="cb349-3"><a href="conditionals.html#cb349-3"></a></span>
-<span id="cb349-4"><a href="conditionals.html#cb349-4"></a>y</span>
-<span id="cb349-5"><a href="conditionals.html#cb349-5"></a><span class="co">#&gt; [1] 3.16</span></span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="conditionals.html#cb357-1"></a>x &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb357-2"><a href="conditionals.html#cb357-2"></a><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) y &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x) <span class="cf">else</span> y &lt;-<span class="st"> </span><span class="op">-</span><span class="kw">sqrt</span>(<span class="op">-</span>x)</span>
+<span id="cb357-3"><a href="conditionals.html#cb357-3"></a></span>
+<span id="cb357-4"><a href="conditionals.html#cb357-4"></a>y</span>
+<span id="cb357-5"><a href="conditionals.html#cb357-5"></a><span class="co">#&gt; [1] 3.16</span></span></code></pre></div>
 <p>The previous statement can be written more succinctly in R as:</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="conditionals.html#cb350-1"></a>x &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb350-2"><a href="conditionals.html#cb350-2"></a>y &lt;-<span class="st"> </span><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="kw">sqrt</span>(x) <span class="cf">else</span> <span class="op">-</span><span class="kw">sqrt</span>(<span class="op">-</span>x)</span>
-<span id="cb350-3"><a href="conditionals.html#cb350-3"></a></span>
-<span id="cb350-4"><a href="conditionals.html#cb350-4"></a>y</span>
-<span id="cb350-5"><a href="conditionals.html#cb350-5"></a><span class="co">#&gt; [1] 3.16</span></span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="conditionals.html#cb358-1"></a>x &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb358-2"><a href="conditionals.html#cb358-2"></a>y &lt;-<span class="st"> </span><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="kw">sqrt</span>(x) <span class="cf">else</span> <span class="op">-</span><span class="kw">sqrt</span>(<span class="op">-</span>x)</span>
+<span id="cb358-3"><a href="conditionals.html#cb358-3"></a></span>
+<span id="cb358-4"><a href="conditionals.html#cb358-4"></a>y</span>
+<span id="cb358-5"><a href="conditionals.html#cb358-5"></a><span class="co">#&gt; [1] 3.16</span></span></code></pre></div>
 <p>Again, even though the previous commands are perfectly OK, it is preferred to
 use braces when working with conditional structures. This is a good practice
 that improves readibility:</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="conditionals.html#cb351-1"></a><span class="co"># embrace braces: use them as much as possible!</span></span>
-<span id="cb351-2"><a href="conditionals.html#cb351-2"></a>x &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb351-3"><a href="conditionals.html#cb351-3"></a><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
-<span id="cb351-4"><a href="conditionals.html#cb351-4"></a>  y &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x) </span>
-<span id="cb351-5"><a href="conditionals.html#cb351-5"></a>} <span class="cf">else</span> {</span>
-<span id="cb351-6"><a href="conditionals.html#cb351-6"></a>  y &lt;-<span class="st"> </span><span class="op">-</span><span class="kw">sqrt</span>(<span class="op">-</span>x)</span>
-<span id="cb351-7"><a href="conditionals.html#cb351-7"></a>}</span>
-<span id="cb351-8"><a href="conditionals.html#cb351-8"></a></span>
-<span id="cb351-9"><a href="conditionals.html#cb351-9"></a>y</span>
-<span id="cb351-10"><a href="conditionals.html#cb351-10"></a><span class="co">#&gt; [1] 3.16</span></span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="conditionals.html#cb359-1"></a><span class="co"># embrace braces: use them as much as possible!</span></span>
+<span id="cb359-2"><a href="conditionals.html#cb359-2"></a>x &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb359-3"><a href="conditionals.html#cb359-3"></a><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb359-4"><a href="conditionals.html#cb359-4"></a>  y &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x) </span>
+<span id="cb359-5"><a href="conditionals.html#cb359-5"></a>} <span class="cf">else</span> {</span>
+<span id="cb359-6"><a href="conditionals.html#cb359-6"></a>  y &lt;-<span class="st"> </span><span class="op">-</span><span class="kw">sqrt</span>(<span class="op">-</span>x)</span>
+<span id="cb359-7"><a href="conditionals.html#cb359-7"></a>}</span>
+<span id="cb359-8"><a href="conditionals.html#cb359-8"></a></span>
+<span id="cb359-9"><a href="conditionals.html#cb359-9"></a>y</span>
+<span id="cb359-10"><a href="conditionals.html#cb359-10"></a><span class="co">#&gt; [1] 3.16</span></span></code></pre></div>
 </div>
 <div id="simple-ifs" class="section level3">
 <h3><span class="header-section-number">25.2.1</span> Simple If’s</h3>
 <p>There is a simplified form of if-then-else statement which is available when
 there is no expression in the False part to evaluate. This statement has the general form:</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="conditionals.html#cb352-1"></a><span class="cf">if</span> (condition) expression</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="conditionals.html#cb360-1"></a><span class="cf">if</span> (condition) expression</span></code></pre></div>
 <p>and is equivalent to:</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="conditionals.html#cb353-1"></a><span class="cf">if</span> (condition) expression <span class="cf">else</span> <span class="ot">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="conditionals.html#cb361-1"></a><span class="cf">if</span> (condition) expression <span class="cf">else</span> <span class="ot">NULL</span></span></code></pre></div>
 <p>Here’s an example:</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="conditionals.html#cb354-1"></a>x &lt;-<span class="st"> </span><span class="dv">4</span></span>
-<span id="cb354-2"><a href="conditionals.html#cb354-2"></a>y &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb354-3"><a href="conditionals.html#cb354-3"></a><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span>y) <span class="kw">print</span>(<span class="st">&quot;x is greater than y&quot;</span>)</span>
-<span id="cb354-4"><a href="conditionals.html#cb354-4"></a><span class="co">#&gt; [1] &quot;x is greater than y&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="conditionals.html#cb362-1"></a>x &lt;-<span class="st"> </span><span class="dv">4</span></span>
+<span id="cb362-2"><a href="conditionals.html#cb362-2"></a>y &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb362-3"><a href="conditionals.html#cb362-3"></a><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span>y) <span class="kw">print</span>(<span class="st">&quot;x is greater than y&quot;</span>)</span>
+<span id="cb362-4"><a href="conditionals.html#cb362-4"></a><span class="co">#&gt; [1] &quot;x is greater than y&quot;</span></span></code></pre></div>
 </div>
 <div id="multiple-ifs" class="section level3">
 <h3><span class="header-section-number">25.2.2</span> Multiple If’s</h3>
 <p>A common situation involves working with multiple conditions at the same time.
 You can chain multiple if-else statements like so:</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="conditionals.html#cb355-1"></a>y &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co"># Change this value!</span></span>
-<span id="cb355-2"><a href="conditionals.html#cb355-2"></a></span>
-<span id="cb355-3"><a href="conditionals.html#cb355-3"></a><span class="cf">if</span> (y <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
-<span id="cb355-4"><a href="conditionals.html#cb355-4"></a>  <span class="kw">print</span>(<span class="st">&quot;positive&quot;</span>)</span>
-<span id="cb355-5"><a href="conditionals.html#cb355-5"></a>} <span class="cf">else</span> <span class="cf">if</span> (y <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
-<span id="cb355-6"><a href="conditionals.html#cb355-6"></a>  <span class="kw">print</span>(<span class="st">&quot;negative&quot;</span>)</span>
-<span id="cb355-7"><a href="conditionals.html#cb355-7"></a>} <span class="cf">else</span> {</span>
-<span id="cb355-8"><a href="conditionals.html#cb355-8"></a>  <span class="kw">print</span>(<span class="st">&quot;zero?&quot;</span>)</span>
-<span id="cb355-9"><a href="conditionals.html#cb355-9"></a>}</span>
-<span id="cb355-10"><a href="conditionals.html#cb355-10"></a><span class="co">#&gt; [1] &quot;positive&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="conditionals.html#cb363-1"></a>y &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co"># Change this value!</span></span>
+<span id="cb363-2"><a href="conditionals.html#cb363-2"></a></span>
+<span id="cb363-3"><a href="conditionals.html#cb363-3"></a><span class="cf">if</span> (y <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb363-4"><a href="conditionals.html#cb363-4"></a>  <span class="kw">print</span>(<span class="st">&quot;positive&quot;</span>)</span>
+<span id="cb363-5"><a href="conditionals.html#cb363-5"></a>} <span class="cf">else</span> <span class="cf">if</span> (y <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb363-6"><a href="conditionals.html#cb363-6"></a>  <span class="kw">print</span>(<span class="st">&quot;negative&quot;</span>)</span>
+<span id="cb363-7"><a href="conditionals.html#cb363-7"></a>} <span class="cf">else</span> {</span>
+<span id="cb363-8"><a href="conditionals.html#cb363-8"></a>  <span class="kw">print</span>(<span class="st">&quot;zero?&quot;</span>)</span>
+<span id="cb363-9"><a href="conditionals.html#cb363-9"></a>}</span>
+<span id="cb363-10"><a href="conditionals.html#cb363-10"></a><span class="co">#&gt; [1] &quot;positive&quot;</span></span></code></pre></div>
 </div>
 <div id="switch" class="section level3">
 <h3><span class="header-section-number">25.2.3</span> Switch</h3>
 <p>Working with multiple chained if’s becomes cumbersome. Consider the following
 example that uses several if’s to convert a day of the week into a number:</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="conditionals.html#cb356-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
-<span id="cb356-2"><a href="conditionals.html#cb356-2"></a>day &lt;-<span class="st"> &quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
-<span id="cb356-3"><a href="conditionals.html#cb356-3"></a><span class="cf">if</span> (day <span class="op">==</span><span class="st"> &#39;Sunday&#39;</span>) {</span>
-<span id="cb356-4"><a href="conditionals.html#cb356-4"></a>  num_day &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb356-5"><a href="conditionals.html#cb356-5"></a>} <span class="cf">else</span> {</span>
-<span id="cb356-6"><a href="conditionals.html#cb356-6"></a>  <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Monday&quot;</span>) {</span>
-<span id="cb356-7"><a href="conditionals.html#cb356-7"></a>    num_day &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb356-8"><a href="conditionals.html#cb356-8"></a>  } <span class="cf">else</span> {</span>
-<span id="cb356-9"><a href="conditionals.html#cb356-9"></a>    <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Tuesday&quot;</span>) {</span>
-<span id="cb356-10"><a href="conditionals.html#cb356-10"></a>      num_day &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb356-11"><a href="conditionals.html#cb356-11"></a>    } <span class="cf">else</span> {</span>
-<span id="cb356-12"><a href="conditionals.html#cb356-12"></a>      <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Wednesday&quot;</span>) {</span>
-<span id="cb356-13"><a href="conditionals.html#cb356-13"></a>        num_day &lt;-<span class="st"> </span><span class="dv">4</span></span>
-<span id="cb356-14"><a href="conditionals.html#cb356-14"></a>      } <span class="cf">else</span> {</span>
-<span id="cb356-15"><a href="conditionals.html#cb356-15"></a>        <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Thursday&quot;</span>) {</span>
-<span id="cb356-16"><a href="conditionals.html#cb356-16"></a>          num_day &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb356-17"><a href="conditionals.html#cb356-17"></a>        } <span class="cf">else</span> {</span>
-<span id="cb356-18"><a href="conditionals.html#cb356-18"></a>          <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Friday&quot;</span>) {</span>
-<span id="cb356-19"><a href="conditionals.html#cb356-19"></a>            num_day &lt;-<span class="st"> </span><span class="dv">6</span></span>
-<span id="cb356-20"><a href="conditionals.html#cb356-20"></a>          } <span class="cf">else</span> {</span>
-<span id="cb356-21"><a href="conditionals.html#cb356-21"></a>            <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Saturday&quot;</span>) {</span>
-<span id="cb356-22"><a href="conditionals.html#cb356-22"></a>              num_day &lt;-<span class="st"> </span><span class="dv">7</span></span>
-<span id="cb356-23"><a href="conditionals.html#cb356-23"></a>            }</span>
-<span id="cb356-24"><a href="conditionals.html#cb356-24"></a>          }</span>
-<span id="cb356-25"><a href="conditionals.html#cb356-25"></a>        }</span>
-<span id="cb356-26"><a href="conditionals.html#cb356-26"></a>      }</span>
-<span id="cb356-27"><a href="conditionals.html#cb356-27"></a>    }</span>
-<span id="cb356-28"><a href="conditionals.html#cb356-28"></a>  }</span>
-<span id="cb356-29"><a href="conditionals.html#cb356-29"></a>}</span>
-<span id="cb356-30"><a href="conditionals.html#cb356-30"></a>num_day</span>
-<span id="cb356-31"><a href="conditionals.html#cb356-31"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="conditionals.html#cb364-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
+<span id="cb364-2"><a href="conditionals.html#cb364-2"></a>day &lt;-<span class="st"> &quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
+<span id="cb364-3"><a href="conditionals.html#cb364-3"></a><span class="cf">if</span> (day <span class="op">==</span><span class="st"> &#39;Sunday&#39;</span>) {</span>
+<span id="cb364-4"><a href="conditionals.html#cb364-4"></a>  num_day &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb364-5"><a href="conditionals.html#cb364-5"></a>} <span class="cf">else</span> {</span>
+<span id="cb364-6"><a href="conditionals.html#cb364-6"></a>  <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Monday&quot;</span>) {</span>
+<span id="cb364-7"><a href="conditionals.html#cb364-7"></a>    num_day &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb364-8"><a href="conditionals.html#cb364-8"></a>  } <span class="cf">else</span> {</span>
+<span id="cb364-9"><a href="conditionals.html#cb364-9"></a>    <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Tuesday&quot;</span>) {</span>
+<span id="cb364-10"><a href="conditionals.html#cb364-10"></a>      num_day &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb364-11"><a href="conditionals.html#cb364-11"></a>    } <span class="cf">else</span> {</span>
+<span id="cb364-12"><a href="conditionals.html#cb364-12"></a>      <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Wednesday&quot;</span>) {</span>
+<span id="cb364-13"><a href="conditionals.html#cb364-13"></a>        num_day &lt;-<span class="st"> </span><span class="dv">4</span></span>
+<span id="cb364-14"><a href="conditionals.html#cb364-14"></a>      } <span class="cf">else</span> {</span>
+<span id="cb364-15"><a href="conditionals.html#cb364-15"></a>        <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Thursday&quot;</span>) {</span>
+<span id="cb364-16"><a href="conditionals.html#cb364-16"></a>          num_day &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb364-17"><a href="conditionals.html#cb364-17"></a>        } <span class="cf">else</span> {</span>
+<span id="cb364-18"><a href="conditionals.html#cb364-18"></a>          <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Friday&quot;</span>) {</span>
+<span id="cb364-19"><a href="conditionals.html#cb364-19"></a>            num_day &lt;-<span class="st"> </span><span class="dv">6</span></span>
+<span id="cb364-20"><a href="conditionals.html#cb364-20"></a>          } <span class="cf">else</span> {</span>
+<span id="cb364-21"><a href="conditionals.html#cb364-21"></a>            <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Saturday&quot;</span>) {</span>
+<span id="cb364-22"><a href="conditionals.html#cb364-22"></a>              num_day &lt;-<span class="st"> </span><span class="dv">7</span></span>
+<span id="cb364-23"><a href="conditionals.html#cb364-23"></a>            }</span>
+<span id="cb364-24"><a href="conditionals.html#cb364-24"></a>          }</span>
+<span id="cb364-25"><a href="conditionals.html#cb364-25"></a>        }</span>
+<span id="cb364-26"><a href="conditionals.html#cb364-26"></a>      }</span>
+<span id="cb364-27"><a href="conditionals.html#cb364-27"></a>    }</span>
+<span id="cb364-28"><a href="conditionals.html#cb364-28"></a>  }</span>
+<span id="cb364-29"><a href="conditionals.html#cb364-29"></a>}</span>
+<span id="cb364-30"><a href="conditionals.html#cb364-30"></a>num_day</span>
+<span id="cb364-31"><a href="conditionals.html#cb364-31"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
 <p>Working with several nested if’s like in the example above can be a nightmare.</p>
 <p>In R, you can get rid of many of the braces like this:</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="conditionals.html#cb357-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
-<span id="cb357-2"><a href="conditionals.html#cb357-2"></a>day &lt;-<span class="st"> &quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
-<span id="cb357-3"><a href="conditionals.html#cb357-3"></a><span class="cf">if</span> (day <span class="op">==</span><span class="st"> &#39;Sunday&#39;</span>) {</span>
-<span id="cb357-4"><a href="conditionals.html#cb357-4"></a>  num_day &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb357-5"><a href="conditionals.html#cb357-5"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Monday&quot;</span>) {</span>
-<span id="cb357-6"><a href="conditionals.html#cb357-6"></a>  num_day &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb357-7"><a href="conditionals.html#cb357-7"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Tuesday&quot;</span>) {</span>
-<span id="cb357-8"><a href="conditionals.html#cb357-8"></a>  num_day &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb357-9"><a href="conditionals.html#cb357-9"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Wednesday&quot;</span>) {</span>
-<span id="cb357-10"><a href="conditionals.html#cb357-10"></a>  num_day &lt;-<span class="st"> </span><span class="dv">4</span></span>
-<span id="cb357-11"><a href="conditionals.html#cb357-11"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Thursday&quot;</span>) {</span>
-<span id="cb357-12"><a href="conditionals.html#cb357-12"></a>  num_day &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb357-13"><a href="conditionals.html#cb357-13"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Friday&quot;</span>) {</span>
-<span id="cb357-14"><a href="conditionals.html#cb357-14"></a>  num_day &lt;-<span class="st"> </span><span class="dv">6</span></span>
-<span id="cb357-15"><a href="conditionals.html#cb357-15"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Saturday&quot;</span>) {</span>
-<span id="cb357-16"><a href="conditionals.html#cb357-16"></a>  num_day &lt;-<span class="st"> </span><span class="dv">7</span></span>
-<span id="cb357-17"><a href="conditionals.html#cb357-17"></a>}</span>
-<span id="cb357-18"><a href="conditionals.html#cb357-18"></a>num_day</span>
-<span id="cb357-19"><a href="conditionals.html#cb357-19"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="conditionals.html#cb365-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
+<span id="cb365-2"><a href="conditionals.html#cb365-2"></a>day &lt;-<span class="st"> &quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
+<span id="cb365-3"><a href="conditionals.html#cb365-3"></a><span class="cf">if</span> (day <span class="op">==</span><span class="st"> &#39;Sunday&#39;</span>) {</span>
+<span id="cb365-4"><a href="conditionals.html#cb365-4"></a>  num_day &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb365-5"><a href="conditionals.html#cb365-5"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Monday&quot;</span>) {</span>
+<span id="cb365-6"><a href="conditionals.html#cb365-6"></a>  num_day &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb365-7"><a href="conditionals.html#cb365-7"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Tuesday&quot;</span>) {</span>
+<span id="cb365-8"><a href="conditionals.html#cb365-8"></a>  num_day &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb365-9"><a href="conditionals.html#cb365-9"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Wednesday&quot;</span>) {</span>
+<span id="cb365-10"><a href="conditionals.html#cb365-10"></a>  num_day &lt;-<span class="st"> </span><span class="dv">4</span></span>
+<span id="cb365-11"><a href="conditionals.html#cb365-11"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Thursday&quot;</span>) {</span>
+<span id="cb365-12"><a href="conditionals.html#cb365-12"></a>  num_day &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb365-13"><a href="conditionals.html#cb365-13"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Friday&quot;</span>) {</span>
+<span id="cb365-14"><a href="conditionals.html#cb365-14"></a>  num_day &lt;-<span class="st"> </span><span class="dv">6</span></span>
+<span id="cb365-15"><a href="conditionals.html#cb365-15"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="op">==</span><span class="st"> &quot;Saturday&quot;</span>) {</span>
+<span id="cb365-16"><a href="conditionals.html#cb365-16"></a>  num_day &lt;-<span class="st"> </span><span class="dv">7</span></span>
+<span id="cb365-17"><a href="conditionals.html#cb365-17"></a>}</span>
+<span id="cb365-18"><a href="conditionals.html#cb365-18"></a>num_day</span>
+<span id="cb365-19"><a href="conditionals.html#cb365-19"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
 <p>But still we have too many if’s, and there’s a lot of repetition in the code.
 If you find yourself using many if-else statements with identical structure for
 slightly different cases, you may want to consider a <strong>switch</strong> statement
 instead:</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="conditionals.html#cb358-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
-<span id="cb358-2"><a href="conditionals.html#cb358-2"></a>day &lt;-<span class="st"> &quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
-<span id="cb358-3"><a href="conditionals.html#cb358-3"></a><span class="cf">switch</span>(day, <span class="co"># The expression to be evaluated.</span></span>
-<span id="cb358-4"><a href="conditionals.html#cb358-4"></a>  <span class="dt">Sunday =</span> <span class="dv">1</span>,</span>
-<span id="cb358-5"><a href="conditionals.html#cb358-5"></a>  <span class="dt">Monday =</span> <span class="dv">2</span>,</span>
-<span id="cb358-6"><a href="conditionals.html#cb358-6"></a>  <span class="dt">Tuesday =</span> <span class="dv">3</span>,</span>
-<span id="cb358-7"><a href="conditionals.html#cb358-7"></a>  <span class="dt">Wednesday =</span> <span class="dv">4</span>,</span>
-<span id="cb358-8"><a href="conditionals.html#cb358-8"></a>  <span class="dt">Thursday =</span> <span class="dv">5</span>,</span>
-<span id="cb358-9"><a href="conditionals.html#cb358-9"></a>  <span class="dt">Friday =</span> <span class="dv">6</span>,</span>
-<span id="cb358-10"><a href="conditionals.html#cb358-10"></a>  <span class="dt">Saturday =</span> <span class="dv">7</span>,</span>
-<span id="cb358-11"><a href="conditionals.html#cb358-11"></a>  <span class="ot">NA</span>) <span class="co"># an (optional) default value if there are no matches</span></span>
-<span id="cb358-12"><a href="conditionals.html#cb358-12"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="conditionals.html#cb366-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
+<span id="cb366-2"><a href="conditionals.html#cb366-2"></a>day &lt;-<span class="st"> &quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
+<span id="cb366-3"><a href="conditionals.html#cb366-3"></a><span class="cf">switch</span>(day, <span class="co"># The expression to be evaluated.</span></span>
+<span id="cb366-4"><a href="conditionals.html#cb366-4"></a>  <span class="dt">Sunday =</span> <span class="dv">1</span>,</span>
+<span id="cb366-5"><a href="conditionals.html#cb366-5"></a>  <span class="dt">Monday =</span> <span class="dv">2</span>,</span>
+<span id="cb366-6"><a href="conditionals.html#cb366-6"></a>  <span class="dt">Tuesday =</span> <span class="dv">3</span>,</span>
+<span id="cb366-7"><a href="conditionals.html#cb366-7"></a>  <span class="dt">Wednesday =</span> <span class="dv">4</span>,</span>
+<span id="cb366-8"><a href="conditionals.html#cb366-8"></a>  <span class="dt">Thursday =</span> <span class="dv">5</span>,</span>
+<span id="cb366-9"><a href="conditionals.html#cb366-9"></a>  <span class="dt">Friday =</span> <span class="dv">6</span>,</span>
+<span id="cb366-10"><a href="conditionals.html#cb366-10"></a>  <span class="dt">Saturday =</span> <span class="dv">7</span>,</span>
+<span id="cb366-11"><a href="conditionals.html#cb366-11"></a>  <span class="ot">NA</span>) <span class="co"># an (optional) default value if there are no matches</span></span>
+<span id="cb366-12"><a href="conditionals.html#cb366-12"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
 <p>Switch statements can also accept integer arguments, which will act as indices
 to choose a corresponding element:</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="conditionals.html#cb359-1"></a><span class="co"># Convert a number into a day of the week.</span></span>
-<span id="cb359-2"><a href="conditionals.html#cb359-2"></a>day_num &lt;-<span class="st"> </span><span class="dv">3</span> <span class="co"># Change this value!</span></span>
-<span id="cb359-3"><a href="conditionals.html#cb359-3"></a><span class="cf">switch</span>(day_num,</span>
-<span id="cb359-4"><a href="conditionals.html#cb359-4"></a>  <span class="st">&quot;Sunday&quot;</span>,</span>
-<span id="cb359-5"><a href="conditionals.html#cb359-5"></a>  <span class="st">&quot;Monday&quot;</span>,</span>
-<span id="cb359-6"><a href="conditionals.html#cb359-6"></a>  <span class="st">&quot;Tuesday&quot;</span>,</span>
-<span id="cb359-7"><a href="conditionals.html#cb359-7"></a>  <span class="st">&quot;Wednesday&quot;</span>,</span>
-<span id="cb359-8"><a href="conditionals.html#cb359-8"></a>  <span class="st">&quot;Thursday&quot;</span>,</span>
-<span id="cb359-9"><a href="conditionals.html#cb359-9"></a>  <span class="st">&quot;Friday&quot;</span>,</span>
-<span id="cb359-10"><a href="conditionals.html#cb359-10"></a>  <span class="st">&quot;Saturday&quot;</span>)</span>
-<span id="cb359-11"><a href="conditionals.html#cb359-11"></a><span class="co">#&gt; [1] &quot;Tuesday&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="conditionals.html#cb367-1"></a><span class="co"># Convert a number into a day of the week.</span></span>
+<span id="cb367-2"><a href="conditionals.html#cb367-2"></a>day_num &lt;-<span class="st"> </span><span class="dv">3</span> <span class="co"># Change this value!</span></span>
+<span id="cb367-3"><a href="conditionals.html#cb367-3"></a><span class="cf">switch</span>(day_num,</span>
+<span id="cb367-4"><a href="conditionals.html#cb367-4"></a>  <span class="st">&quot;Sunday&quot;</span>,</span>
+<span id="cb367-5"><a href="conditionals.html#cb367-5"></a>  <span class="st">&quot;Monday&quot;</span>,</span>
+<span id="cb367-6"><a href="conditionals.html#cb367-6"></a>  <span class="st">&quot;Tuesday&quot;</span>,</span>
+<span id="cb367-7"><a href="conditionals.html#cb367-7"></a>  <span class="st">&quot;Wednesday&quot;</span>,</span>
+<span id="cb367-8"><a href="conditionals.html#cb367-8"></a>  <span class="st">&quot;Thursday&quot;</span>,</span>
+<span id="cb367-9"><a href="conditionals.html#cb367-9"></a>  <span class="st">&quot;Friday&quot;</span>,</span>
+<span id="cb367-10"><a href="conditionals.html#cb367-10"></a>  <span class="st">&quot;Saturday&quot;</span>)</span>
+<span id="cb367-11"><a href="conditionals.html#cb367-11"></a><span class="co">#&gt; [1] &quot;Tuesday&quot;</span></span></code></pre></div>
 
 </div>
 </div>

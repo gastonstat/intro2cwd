@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -693,39 +694,39 @@ the following questions:</p>
 <h3><span class="header-section-number">22.1.1</span> Getting a Local Copy of the Data</h3>
 <p>One basic way to read this file in R is by passing the url location of the
 file directly to any of the <code>read.table()</code> functions:</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="importing.html#cb274-1"></a>url &lt;-<span class="st"> &quot;http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data&quot;</span></span>
-<span id="cb274-2"><a href="importing.html#cb274-2"></a>abalone &lt;-<span class="st"> </span><span class="kw">read.table</span>(url, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="importing.html#cb282-1"></a>url &lt;-<span class="st"> &quot;http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data&quot;</span></span>
+<span id="cb282-2"><a href="importing.html#cb282-2"></a>abalone &lt;-<span class="st"> </span><span class="kw">read.table</span>(url, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
 <p>My suggestion when reading datasets from the Web, is to always try to get a local
 copy of the data file in your machine (as long as you have enough free space
 to save it in your computer). To do this, you can use the function <code>download.file()</code>
 and specify the url address, and the name of the file that will be created in
 your computer. For instance, to save the abalone data file in <strong>your working
 directory</strong>, type the following commands directly on the R console:</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="importing.html#cb275-1"></a><span class="co"># do NOT include this code in your Rmd file</span></span>
-<span id="cb275-2"><a href="importing.html#cb275-2"></a><span class="co"># download it to your working directory</span></span>
-<span id="cb275-3"><a href="importing.html#cb275-3"></a>origin &lt;-<span class="st"> &#39;http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data&#39;</span></span>
-<span id="cb275-4"><a href="importing.html#cb275-4"></a>destination &lt;-<span class="st"> &#39;abalone.data&#39;</span></span>
-<span id="cb275-5"><a href="importing.html#cb275-5"></a><span class="kw">download.file</span>(origin, destination)</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="importing.html#cb283-1"></a><span class="co"># do NOT include this code in your Rmd file</span></span>
+<span id="cb283-2"><a href="importing.html#cb283-2"></a><span class="co"># download it to your working directory</span></span>
+<span id="cb283-3"><a href="importing.html#cb283-3"></a>origin &lt;-<span class="st"> &#39;http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data&#39;</span></span>
+<span id="cb283-4"><a href="importing.html#cb283-4"></a>destination &lt;-<span class="st"> &#39;abalone.data&#39;</span></span>
+<span id="cb283-5"><a href="importing.html#cb283-5"></a><span class="kw">download.file</span>(origin, destination)</span></code></pre></div>
 </div>
 </div>
 <div id="basic-importing" class="section level2">
 <h2><span class="header-section-number">22.2</span> Basic Importing</h2>
 <p>Now that you have a local copy of the dataset, you can read it in R with
 <code>read.table()</code> like so:</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="importing.html#cb276-1"></a><span class="co"># reading data from your working directory</span></span>
-<span id="cb276-2"><a href="importing.html#cb276-2"></a>abalone &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;abalone.data&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="importing.html#cb284-1"></a><span class="co"># reading data from your working directory</span></span>
+<span id="cb284-2"><a href="importing.html#cb284-2"></a>abalone &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;abalone.data&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
 <p>Keep in mind that the above command will work as long as the data file is in your working directory. After reading in a data table, you may want to start looking at its contents,
 usually taking a peek at a few rows. This can be done with <code>head()</code> and/or
 with <code>tail()</code>:</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="importing.html#cb277-1"></a><span class="co"># take a peek of first rows</span></span>
-<span id="cb277-2"><a href="importing.html#cb277-2"></a><span class="kw">head</span>(abalone)</span>
-<span id="cb277-3"><a href="importing.html#cb277-3"></a><span class="co"># take a peek of last rows</span></span>
-<span id="cb277-4"><a href="importing.html#cb277-4"></a><span class="kw">tail</span>(abalone)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="importing.html#cb285-1"></a><span class="co"># take a peek of first rows</span></span>
+<span id="cb285-2"><a href="importing.html#cb285-2"></a><span class="kw">head</span>(abalone)</span>
+<span id="cb285-3"><a href="importing.html#cb285-3"></a><span class="co"># take a peek of last rows</span></span>
+<span id="cb285-4"><a href="importing.html#cb285-4"></a><span class="kw">tail</span>(abalone)</span></code></pre></div>
 <p>Likewsie, you may also want to examine how R has decided to take care of the
 storage details (what data type is used for each column). Use the function
 <code>str()</code> to check the structure of the data frame:</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="importing.html#cb278-1"></a><span class="co"># check data frame&#39;s structure</span></span>
-<span id="cb278-2"><a href="importing.html#cb278-2"></a><span class="kw">str</span>(abalone, <span class="dt">vec.len =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="importing.html#cb286-1"></a><span class="co"># check data frame&#39;s structure</span></span>
+<span id="cb286-2"><a href="importing.html#cb286-2"></a><span class="kw">str</span>(abalone, <span class="dt">vec.len =</span> <span class="dv">1</span>)</span></code></pre></div>
 <div id="detailed-information-about-the-columns" class="section level3">
 <h3><span class="header-section-number">22.2.1</span> Detailed information about the columns</h3>
 <p>So far we have been able to read the data file in R. But we are missing a few
@@ -849,17 +850,17 @@ SD     0.120  0.099 0.042   0.490    0.222    0.110    0.139    3.224</code></pr
 <p>Perhaps the most basic operations have to do with selecting rows and columns. Analysts tend to refer to these operations in various ways: filtering, slicing, and selecting. Here’s a description of such operations.</p>
 <p><strong>Slicing</strong> has to do with selecting rows by indicating their index position.
 Using bracket notation, you pass a numeric vector for the rows:</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="importing.html#cb280-1"></a><span class="co"># first three rows</span></span>
-<span id="cb280-2"><a href="importing.html#cb280-2"></a>three_rows &lt;-<span class="st"> </span>abalone[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, ]</span>
-<span id="cb280-3"><a href="importing.html#cb280-3"></a>three_rows</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="importing.html#cb288-1"></a><span class="co"># first three rows</span></span>
+<span id="cb288-2"><a href="importing.html#cb288-2"></a>three_rows &lt;-<span class="st"> </span>abalone[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, ]</span>
+<span id="cb288-3"><a href="importing.html#cb288-3"></a>three_rows</span></code></pre></div>
 <p><strong>Filtering</strong> involves selecting rows by specifying a certain (logical) condition. The selected rows will be those for which the condition is TRUE.</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="importing.html#cb281-1"></a><span class="co"># subset rows given a condition</span></span>
-<span id="cb281-2"><a href="importing.html#cb281-2"></a><span class="co"># (length greater than 0.6)</span></span>
-<span id="cb281-3"><a href="importing.html#cb281-3"></a>gt &lt;-<span class="st"> </span>abalone[abalone<span class="op">$</span>length <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.6</span>]</span>
-<span id="cb281-4"><a href="importing.html#cb281-4"></a>gt</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="importing.html#cb289-1"></a><span class="co"># subset rows given a condition</span></span>
+<span id="cb289-2"><a href="importing.html#cb289-2"></a><span class="co"># (length greater than 0.6)</span></span>
+<span id="cb289-3"><a href="importing.html#cb289-3"></a>gt &lt;-<span class="st"> </span>abalone[abalone<span class="op">$</span>length <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.6</span>]</span>
+<span id="cb289-4"><a href="importing.html#cb289-4"></a>gt</span></code></pre></div>
 <p><strong>Selecting</strong> has to do with selecting columns by name (or position). Using bracket notation, you pass a character vector with the names of the columns for the column-index:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="importing.html#cb282-1"></a>length_diam &lt;-<span class="st"> </span>abalone[ ,<span class="kw">c</span>(<span class="st">&#39;Length&#39;</span>, <span class="st">&#39;Diameter&#39;</span>)]</span>
-<span id="cb282-2"><a href="importing.html#cb282-2"></a><span class="kw">head</span>(length_diam)</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="importing.html#cb290-1"></a>length_diam &lt;-<span class="st"> </span>abalone[ ,<span class="kw">c</span>(<span class="st">&#39;Length&#39;</span>, <span class="st">&#39;Diameter&#39;</span>)]</span>
+<span id="cb290-2"><a href="importing.html#cb290-2"></a><span class="kw">head</span>(length_diam)</span></code></pre></div>
 <div id="your-turn-3" class="section level3 unnumbered">
 <h3>Your Turn</h3>
 <ul>
@@ -876,12 +877,12 @@ Using bracket notation, you pass a numeric vector for the rows:</p>
 <div id="adding-new-variables-and-sorting-rows" class="section level3">
 <h3><span class="header-section-number">22.3.1</span> Adding new variables and Sorting rows</h3>
 <p>Another basic data-table manipulation task involves adding new variables. Let’s create a small data frame <code>abies</code> by filtering only infant abalones, and gathering columns Length, Height, and Diameter:</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="importing.html#cb283-1"></a><span class="co"># creating a small data frame</span></span>
-<span id="cb283-2"><a href="importing.html#cb283-2"></a>abies &lt;-<span class="st"> </span>abalone[abalone<span class="op">$</span>Sex <span class="op">==</span><span class="st"> &#39;I&#39;</span>, <span class="kw">c</span>(<span class="st">&#39;Length&#39;</span>, <span class="st">&#39;Height&#39;</span>, <span class="st">&#39;Diameter&#39;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="importing.html#cb291-1"></a><span class="co"># creating a small data frame</span></span>
+<span id="cb291-2"><a href="importing.html#cb291-2"></a>abies &lt;-<span class="st"> </span>abalone[abalone<span class="op">$</span>Sex <span class="op">==</span><span class="st"> &#39;I&#39;</span>, <span class="kw">c</span>(<span class="st">&#39;Length&#39;</span>, <span class="st">&#39;Height&#39;</span>, <span class="st">&#39;Diameter&#39;</span>)]</span></code></pre></div>
 <p>Say you want to add a column <code>Ht_Len</code> to <code>abies</code> with the ratio <code>height / length</code>. Here’s how to do it:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="importing.html#cb284-1"></a>abies<span class="op">$</span>Ht_Len &lt;-<span class="st"> </span>abies<span class="op">$</span>Height <span class="op">/</span><span class="st"> </span>abies<span class="op">$</span>Length</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="importing.html#cb292-1"></a>abies<span class="op">$</span>Ht_Len &lt;-<span class="st"> </span>abies<span class="op">$</span>Height <span class="op">/</span><span class="st"> </span>abies<span class="op">$</span>Length</span></code></pre></div>
 <p>Another common type of task consists of reordering rows. For example, say you want to get a data frame <code>abies2</code> by ordering the rows in <code>abies</code> by <code>Length</code> in decreasing order:</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="importing.html#cb285-1"></a>abies2 &lt;-<span class="st"> </span>abies[<span class="kw">order</span>(abies<span class="op">$</span>Length, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>), ]</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="importing.html#cb293-1"></a>abies2 &lt;-<span class="st"> </span>abies[<span class="kw">order</span>(abies<span class="op">$</span>Length, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>), ]</span></code></pre></div>
 </div>
 <div id="your-turn-4" class="section level3 unnumbered">
 <h3>Your Turn</h3>
@@ -904,12 +905,12 @@ single variable, focused on looking at their distributions:</p>
 <li>Qualitative variables: barchart, piechart</li>
 </ul>
 <p>When examining a factor (or any categorical variable) you can always create a frequency table first—via <code>table()</code>—and then plot a barchart with <code>barplot()</code></p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="importing.html#cb286-1"></a>table_sex &lt;-<span class="st"> </span><span class="kw">table</span>(abalone<span class="op">$</span>Sex)</span>
-<span id="cb286-2"><a href="importing.html#cb286-2"></a><span class="kw">barplot</span>(table_sex)</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="importing.html#cb294-1"></a>table_sex &lt;-<span class="st"> </span><span class="kw">table</span>(abalone<span class="op">$</span>Sex)</span>
+<span id="cb294-2"><a href="importing.html#cb294-2"></a><span class="kw">barplot</span>(table_sex)</span></code></pre></div>
 <p>Alternativey, you can also create a piechart with <code>pie()</code>.</p>
 <p>For a quantitative variable, the typical graphics to examine the distribution are histograms (<code>hist()</code>) and boxplots (<code>boxplot()</code>)</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="importing.html#cb287-1"></a><span class="kw">hist</span>(abalone<span class="op">$</span>Diameter)</span>
-<span id="cb287-2"><a href="importing.html#cb287-2"></a><span class="kw">boxplot</span>(abalone<span class="op">$</span>Diameter, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="importing.html#cb295-1"></a><span class="kw">hist</span>(abalone<span class="op">$</span>Diameter)</span>
+<span id="cb295-2"><a href="importing.html#cb295-2"></a><span class="kw">boxplot</span>(abalone<span class="op">$</span>Diameter, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="your-turn-5" class="section level3 unnumbered">
 <h3>Your Turn</h3>

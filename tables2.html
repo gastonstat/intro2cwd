@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -687,7 +688,7 @@ Algebra Companion for Statistical Learning</a> (with permission from the author)
 <p>To illustrate some of the ideas presented in this chapter we’re going to use a
 toy example with data of three individuals from a galaxy far, far away:
 Leia Organa, Luke Skywalker, and Han Solo.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-247"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-243"></span>
 <img src="images/tables/sw-leia-luke-han.png" alt="Three individuals" width="60%" />
 <p class="caption">
 Figure 18.1: Three individuals
@@ -722,7 +723,7 @@ which analysts and researchers think about data.</p>
 individuals, we can present this information in various forms. One option is to
 organize the information in some sort of rectangular or tabular layout, like
 the one below:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-248"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-244"></span>
 <img src="images/tables/table-conceptual.png" alt="Conceptual table" width="45%" />
 <p class="caption">
 Figure 18.2: Conceptual table
@@ -764,7 +765,7 @@ the structure of a rectangular table. But you can find other formats that use a
 non-tabular structure, like XML.</p>
 <p>When data is stored in a format that is supposed to represent a table, it is
 common to find visual displays with some grid of rows and columns.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-249"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-245"></span>
 <img src="images/tables/table-tabular.png" alt="Data in tabular format" width="45%" />
 <p class="caption">
 Figure 18.3: Data in tabular format
@@ -787,7 +788,7 @@ skills to get data in the <em>right</em> rectangular shape.</p>
 multivariate techniques, your data will typically be required to have a certain
 specific structure, usually in the form of some sort of table or spreadsheet
 format (e.g. rows and columns).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-250"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-246"></span>
 <img src="images/tables/table-abstract.png" alt="Data Table Format" width="50%" />
 <p class="caption">
 Figure 18.4: Data Table Format
@@ -798,7 +799,7 @@ columns will have a particular meaning. The most common data table setting is
 the one of individuals-and-variables. Although somewhat arbitrary, the standard
 convention is that we use the columns to represent <strong>variables</strong>, and the rows
 to represent <strong>individuals</strong>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-251"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-247"></span>
 <img src="images/tables/table-inds-vars.png" alt="Conceptual table of individuals and variables" width="50%" />
 <p class="caption">
 Figure 18.5: Conceptual table of individuals and variables
@@ -828,7 +829,7 @@ numeric values (representing quantities).</p>
 | Luke   | male    | 172      | 77      |
 | Han    | male    | 180      | 80      |
 -->
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-252"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-248"></span>
 <img src="images/tables/table-mixed.png" alt="Mixed or heterogeneous variables" width="55%" />
 <p class="caption">
 Figure 18.6: Mixed or heterogeneous variables
@@ -849,7 +850,7 @@ presence-absence, female-male, yes-no, success-failure, case-control, etc. In
 the table below, the variables represent drinks consumed: Beer, Wine, Juice,
 Coffee, and Tea. Each variable takes two possible values, <em>yes</em> and <em>no</em>,
 indicating whether an individual consumes a specific type of drink.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-253"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-249"></span>
 <img src="images/tables/table-binary-raw.png" alt="Binary table (raw values)" width="58%" />
 <p class="caption">
 Figure 18.7: Binary table (raw values)
@@ -859,7 +860,7 @@ Figure 18.7: Binary table (raw values)
 encode them numerically to be able to perform statitical or algebraic operations
 with them. Perhaps the most natural way to encode binary values is with zeros
 and ones: “yes” = 1, and “no” = 0.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-254"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-250"></span>
 <img src="images/tables/table-binary.png" alt="Binary table (numeric values)" width="58%" />
 <p class="caption">
 Figure 18.8: Binary table (numeric values)
@@ -873,7 +874,7 @@ logical values: “yes” = TRUE, and “no” = FALSE.</p>
 <p>Another type of table consists of so-called <em>modalities</em>. These can come from
 variables or questions in a survey about how frequent you use/consume a specific
 product.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-255"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-251"></span>
 <img src="images/tables/table-modalities-raw.png" alt="Table of modalities (raw values)" width="58%" />
 <p class="caption">
 Figure 18.9: Table of modalities (raw values)
@@ -883,7 +884,7 @@ Figure 18.9: Table of modalities (raw values)
 to transform the values of the categories (i.e. the modalities) to some numeric
 coding. For instance, you can assign values 1 = “never”, 2 = “sometimes”, and
 3 = “always.”</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-256"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-252"></span>
 <img src="images/tables/table-modalities.png" alt="Table of modalities (numeric values)" width="58%" />
 <p class="caption">
 Figure 18.10: Table of modalities (numeric values)
@@ -896,7 +897,7 @@ Figure 18.10: Table of modalities (numeric values)
 the variables are measured in some kind of preference scale. For example, we
 can measure the preference level for various types of fruit juices on an ordinal
 scale ranging from 1 = “don’t like at all” to 5 = “like it very much.”</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-257"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-253"></span>
 <img src="images/tables/table-preference.png" alt="Table of frequencies" width="55%" />
 <p class="caption">
 Figure 18.11: Table of frequencies
@@ -913,7 +914,7 @@ name for this type of tables is <em>contingency table</em>.</p>
 character, per episode (in the original trilogy of Star Wars). The rows
 correspond to the categories of the variable Name, while the columns corresponds
 to the categories of the variable Episode.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-258"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-254"></span>
 <img src="images/tables/table-frequency.png" alt="Table of frequencies" width="50%" />
 <p class="caption">
 Figure 18.12: Table of frequencies
@@ -935,7 +936,7 @@ authors instead use the word distance to convey a general idea of dissimilarity.
 <p>In general, you can find <em>distance</em> tables under two opposite perspectives:
 similarities and disimilarities. The table below is an example of a similarity
 table.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-259"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-255"></span>
 <img src="images/tables/table-distance.png" alt="Table of proximities" width="45%" />
 <p class="caption">
 Figure 18.13: Table of proximities

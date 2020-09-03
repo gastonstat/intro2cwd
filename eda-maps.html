@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 Basic Geospatial EDA | Computing With Data</title>
+  <title>11 Basic Geospatial EDA | Introduction to Computing With Data</title>
   <meta name="description" content="This is a book for Concepts in Computing with Data" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 Basic Geospatial EDA | Computing With Data" />
+  <meta property="og:title" content="11 Basic Geospatial EDA | Introduction to Computing With Data" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 Basic Geospatial EDA | Computing With Data" />
+  <meta name="twitter:title" content="11 Basic Geospatial EDA | Introduction to Computing With Data" />
   
   <meta name="twitter:description" content="This is a book for Concepts in Computing with Data" />
   
@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -661,7 +662,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computing With Data</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Computing With Data</a>
           </h1>
         </div>
 
@@ -671,115 +672,204 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="eda-maps" class="section level1">
 <h1><span class="header-section-number">11</span> Basic Geospatial EDA</h1>
+<p>In the previous chapters, you were introduced to the basics of <code>"dplyr"</code> and
+<code>"ggplot2"</code>, performing various operations on the data <code>storms</code>. Because this
+data set contains geographical information such as longitude and latitude, we
+take a further step in this chapter in order to learn about plotting basic
+geographical maps.</p>
 <p>You will need the following packages:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="eda-maps.html#cb84-1"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb84-2"><a href="eda-maps.html#cb84-2"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb84-3"><a href="eda-maps.html#cb84-3"></a><span class="kw">library</span>(maps)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="eda-maps.html#cb1-1"></a><span class="kw">library</span>(dplyr)    <span class="co"># for syntactic manipulation of tables</span></span>
+<span id="cb1-2"><a href="eda-maps.html#cb1-2"></a><span class="kw">library</span>(ggplot2)  <span class="co"># for making graphs based on tabular data</span></span>
+<span id="cb1-3"><a href="eda-maps.html#cb1-3"></a><span class="kw">library</span>(maps)     <span class="co"># for drawing basic geographical maps</span></span>
+<span id="cb1-4"><a href="eda-maps.html#cb1-4"></a><span class="kw">library</span>(rnaturalearth)   <span class="co"># world map data from Natural Earth</span></span></code></pre></div>
 <p>and the following objects:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="eda-maps.html#cb85-1"></a>storms75 &lt;-<span class="st"> </span><span class="kw">filter</span>(storms, year <span class="op">==</span><span class="st"> </span><span class="dv">1975</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="eda-maps.html#cb2-1"></a>storms75 &lt;-<span class="st"> </span><span class="kw">filter</span>(storms, year <span class="op">==</span><span class="st"> </span><span class="dv">1975</span>)</span></code></pre></div>
 <div id="graphing-maps" class="section level2">
 <h2><span class="header-section-number">11.1</span> Graphing Maps</h2>
-<p>In this chapter, we give a basic exposure to plotting maps with <code>"ggplot2"</code>
-and <code>"maps"</code>. Keep in mind that there is a wide array of packages for graphing
-all sorts of maps, and geospatial information. Good resources to look at are:</p>
-<p><a href="https://geocompr.robinlovelace.net/" target="_blank">Geocomputation with R</a> (by Robin Lovelace, Jakub Nowosad, and Jannes Muenchow)</p>
-<p><a href="https://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html" target="_target">Making Maps with R</a> (by Eric C. Anderson)</p>
+<p>In this chapter, we give a basic exposure to plotting maps with <code>"ggplot2"</code>,
+jointly with <code>"maps"</code>. Keep in mind that there is a wide array of packages for
+graphing all sorts of maps, and geospatial information. Good resources to look
+at are:</p>
+<ul>
+<li><p><a href="https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html" targe="_blank">Drawing beautiful maps programmatically with R, sf and ggplot2</a> (by Mel Moreno and Mathieu Basille)</p></li>
+<li><p><a href="https://geocompr.robinlovelace.net/" target="_blank">Geocomputation with R</a> (by Robin Lovelace, Jakub Nowosad, and Jannes Muenchow)</p></li>
+<li><p><a href="https://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html" target="_target">Making Maps with R</a> (by Eric C. Anderson)</p></li>
+</ul>
 <div id="plotting-location-of-storm-records" class="section level3">
 <h3><span class="header-section-number">11.1.1</span> Plotting location of storm records</h3>
-<p>Having latitude and longitude, we can make a scatterplot to see the location of
-the storm records</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="eda-maps.html#cb86-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb86-2"><a href="eda-maps.html#cb86-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-112-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>This is good, but it would be better to have an actual image of a map.</p>
+<p>For illustration purposes, we continue using the data frame <code>storms75</code>. Having
+latitude and longitude, we can make a scatterplot to see the location of
+the storm records. Recall that the <code>ggplot</code> function to do this is
+<code>geom_point()</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="eda-maps.html#cb3-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb3-2"><a href="eda-maps.html#cb3-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="cwd_files/figure-html/basicmap1-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Each dot represents the location of a single storm record, with longitude in the
+x-axis, and latitude in y-axis. As you can tell from the previous plot, there
+are three sets of dotted-patterns, which as you may expect, correspond to the
+three storms that occurred in 1975. To distinguish each storm, we can color the
+dots by taking into account the different storm names. This involves <em>mapping</em>
+the column <code>name</code> to the <code>color</code> attribute:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="eda-maps.html#cb4-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb4-2"><a href="eda-maps.html#cb4-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="cwd_files/figure-html/basicmap2-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Keep in mind that the previous command can also be written as:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="eda-maps.html#cb5-1"></a><span class="co"># alternative ways to write equivalent commands</span></span>
+<span id="cb5-2"><a href="eda-maps.html#cb5-2"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> storms75) <span class="op">+</span><span class="st">  </span></span>
+<span id="cb5-3"><a href="eda-maps.html#cb5-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name))</span>
+<span id="cb5-4"><a href="eda-maps.html#cb5-4"></a></span>
+<span id="cb5-5"><a href="eda-maps.html#cb5-5"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st">  </span></span>
+<span id="cb5-6"><a href="eda-maps.html#cb5-6"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name))</span></code></pre></div>
+<p>The above scatterplot is a good starting point to visualize the location of the
+storm records, but it would be nice to have an actual image of a map. Let’s
+see how to do this in the following subsections.</p>
 </div>
-<div id="basic-map" class="section level3">
-<h3><span class="header-section-number">11.1.2</span> Basic map</h3>
-<p>One of the oldest ways to plot maps in R is with the package <code>"maps"</code>. Nowadays,
-there are better packages for geospatial data ana making maps, but let’s not
-worry about them at this moment.</p>
-<p>One rudimentary way to plot a map by first getting data of the world. <code>"ggplot2"</code>
-provides the function <code>map_data()</code> to create the required data table with
-geospatial information of a world map. All you have to do is specify the name
-of the map provided by the <code>"maps"</code> package. In this example, let’s use
-the <code>"world"</code> map. Once we have this data, we can use it with <code>ggplot()</code>
-and a <code>geom_polygon()</code> layer like this:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="eda-maps.html#cb87-1"></a><span class="co"># world map data</span></span>
-<span id="cb87-2"><a href="eda-maps.html#cb87-2"></a>world_map &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">&quot;world&quot;</span>)</span>
-<span id="cb87-3"><a href="eda-maps.html#cb87-3"></a></span>
-<span id="cb87-4"><a href="eda-maps.html#cb87-4"></a><span class="co"># a default world map</span></span>
-<span id="cb87-5"><a href="eda-maps.html#cb87-5"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb87-6"><a href="eda-maps.html#cb87-6"></a><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> world_map, </span>
-<span id="cb87-7"><a href="eda-maps.html#cb87-7"></a>               <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-113-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>In the above command, notice how we specify the <code>data</code> argument inside
-<code>geom_polygon()</code> instead of inside <code>ggplot()</code>. We do this because the data
-frame <code>world_map</code> is used to graph the layer of the map. We still need to add
-another layer—via <code>geom_point()</code>—for the coordinates indicating the
-position of each storm’s record.</p>
-<p>For convenience reasons, let’s modify the map, and create a <code>"ggplot"</code> object
-called <code>gg_world</code>. We’ll use this object as our “canvas” for plotting the
-storm locations:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="eda-maps.html#cb88-1"></a><span class="co"># map &quot;canvas&quot; stored as gg_world</span></span>
-<span id="cb88-2"><a href="eda-maps.html#cb88-2"></a>gg_world &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb88-3"><a href="eda-maps.html#cb88-3"></a><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> world_map, </span>
-<span id="cb88-4"><a href="eda-maps.html#cb88-4"></a>               <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group), </span>
-<span id="cb88-5"><a href="eda-maps.html#cb88-5"></a>               <span class="dt">fill =</span> <span class="st">&quot;gray95&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;gray70&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>) <span class="op">+</span></span>
-<span id="cb88-6"><a href="eda-maps.html#cb88-6"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span>
-<span id="cb88-7"><a href="eda-maps.html#cb88-7"></a></span>
-<span id="cb88-8"><a href="eda-maps.html#cb88-8"></a>gg_world</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-114-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>Then, we can take <code>gg_world</code> and add the <code>geom_point()</code> layer with data <code>storms75</code>
-mapping longitude and latitude coordinates, and coloring points by <code>name</code>:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="eda-maps.html#cb89-1"></a><span class="co"># world map, adding storms in 1975</span></span>
-<span id="cb89-2"><a href="eda-maps.html#cb89-2"></a>gg_world <span class="op">+</span></span>
-<span id="cb89-3"><a href="eda-maps.html#cb89-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> storms75,</span>
-<span id="cb89-4"><a href="eda-maps.html#cb89-4"></a>             <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-115-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>We can try zooming-in by modifying the x-and-y axis limits:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="eda-maps.html#cb90-1"></a><span class="co"># zoom-in</span></span>
-<span id="cb90-2"><a href="eda-maps.html#cb90-2"></a>gg_world <span class="op">+</span></span>
-<span id="cb90-3"><a href="eda-maps.html#cb90-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> storms75,</span>
-<span id="cb90-4"><a href="eda-maps.html#cb90-4"></a>             <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name)) <span class="op">+</span></span>
-<span id="cb90-5"><a href="eda-maps.html#cb90-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb90-6"><a href="eda-maps.html#cb90-6"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-116-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>And then keep exploring things by taking into account more variables. For
-instance, let’s map <code>wind</code> to the <code>size</code> argument of points.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="eda-maps.html#cb91-1"></a>gg_world <span class="op">+</span></span>
-<span id="cb91-2"><a href="eda-maps.html#cb91-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> storms75,</span>
-<span id="cb91-3"><a href="eda-maps.html#cb91-3"></a>             <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name, <span class="dt">size =</span> wind),</span>
-<span id="cb91-4"><a href="eda-maps.html#cb91-4"></a>             <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
-<span id="cb91-5"><a href="eda-maps.html#cb91-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb91-6"><a href="eda-maps.html#cb91-6"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-117-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>A very similar appearance can be achieved with <code>geom_path()</code></p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="eda-maps.html#cb92-1"></a>gg_world <span class="op">+</span></span>
-<span id="cb92-2"><a href="eda-maps.html#cb92-2"></a><span class="st">  </span><span class="kw">geom_path</span>(<span class="dt">data =</span> storms75,</span>
-<span id="cb92-3"><a href="eda-maps.html#cb92-3"></a>             <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name, <span class="dt">size =</span> wind),</span>
-<span id="cb92-4"><a href="eda-maps.html#cb92-4"></a>             <span class="dt">lineend =</span> <span class="st">&quot;round&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span></span>
-<span id="cb92-5"><a href="eda-maps.html#cb92-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb92-6"><a href="eda-maps.html#cb92-6"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-118-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div id="basic-maps-with-ggplot2" class="section level3">
+<h3><span class="header-section-number">11.1.2</span> Basic maps with <code>ggplot2</code></h3>
+<p>One of the simplest and oldest ways to plot maps in R is with the package
+<code>"maps"</code>. Nowadays, there are more sophisticated packages for geospatial data
+and making maps, but let’s not worry about them at this moment.
+The <code>"maps"</code> package provides the <code>map()</code> function that lets you plot basic
+geographical maps. One of such maps is a world map, which can easily be plotted
+with this command:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="eda-maps.html#cb6-1"></a><span class="kw">map</span>(<span class="st">&quot;world&quot;</span>)</span></code></pre></div>
+<p><img src="cwd_files/figure-html/world0-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>In order to use any of the map data objects from <code>"maps"</code> with <code>"ggplot2"</code>, you
+first need to convert the map-object into a data frame. This is done with the
+<code>"ggplot2"</code> function <code>map_data()</code>. This function takes in the name of a map,
+and it retrieves the map data—from <code>"maps"</code>—into a <code>data.frame</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="eda-maps.html#cb7-1"></a><span class="co"># get world map data frame</span></span>
+<span id="cb7-2"><a href="eda-maps.html#cb7-2"></a>world_map &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">&quot;world&quot;</span>)</span>
+<span id="cb7-3"><a href="eda-maps.html#cb7-3"></a></span>
+<span id="cb7-4"><a href="eda-maps.html#cb7-4"></a><span class="kw">head</span>(world_map)</span>
+<span id="cb7-5"><a href="eda-maps.html#cb7-5"></a><span class="co">#&gt;    long  lat group order region subregion</span></span>
+<span id="cb7-6"><a href="eda-maps.html#cb7-6"></a><span class="co">#&gt; 1 -69.9 12.5     1     1  Aruba      &lt;NA&gt;</span></span>
+<span id="cb7-7"><a href="eda-maps.html#cb7-7"></a><span class="co">#&gt; 2 -69.9 12.4     1     2  Aruba      &lt;NA&gt;</span></span>
+<span id="cb7-8"><a href="eda-maps.html#cb7-8"></a><span class="co">#&gt; 3 -69.9 12.4     1     3  Aruba      &lt;NA&gt;</span></span>
+<span id="cb7-9"><a href="eda-maps.html#cb7-9"></a><span class="co">#&gt; 4 -70.0 12.5     1     4  Aruba      &lt;NA&gt;</span></span>
+<span id="cb7-10"><a href="eda-maps.html#cb7-10"></a><span class="co">#&gt; 5 -70.1 12.5     1     5  Aruba      &lt;NA&gt;</span></span>
+<span id="cb7-11"><a href="eda-maps.html#cb7-11"></a><span class="co">#&gt; 6 -70.1 12.6     1     6  Aruba      &lt;NA&gt;</span></span></code></pre></div>
+<p>Notice that <code>world_map</code> contains longitude and latitude columns, as well as
+<code>group</code> which is a grouping variable for each of the map polygons.
+Once you have the <code>world_map</code> data frame, you can plot it with the geometric
+polygon function <code>geom_polygon()</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="eda-maps.html#cb8-1"></a><span class="co"># basic world map with ggplot()</span></span>
+<span id="cb8-2"><a href="eda-maps.html#cb8-2"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb8-3"><a href="eda-maps.html#cb8-3"></a><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> world_map, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span></span>
+<span id="cb8-4"><a href="eda-maps.html#cb8-4"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<p><img src="cwd_files/figure-html/world1-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>In the above command, notice how we specify the data argument inside
+<code>geom_polygon()</code> instead of inside <code>ggplot()</code>. We do this because the data frame
+<code>world_map</code> is used to graph the polygons layer of the map. Also, because we are
+plotting a map, we simplify the background theme to black-and-white—<code>theme_bw()</code>.</p>
+<p>To handle the code more easily, we create a <code>"ggplot"</code> object called <code>gg_world</code>.
+We’ll use this object as our “canvas” for plotting the storm locations.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="eda-maps.html#cb9-1"></a><span class="co"># map &quot;canvas&quot; stored as gg_world</span></span>
+<span id="cb9-2"><a href="eda-maps.html#cb9-2"></a>gg_world &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb9-3"><a href="eda-maps.html#cb9-3"></a><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> world_map, </span>
+<span id="cb9-4"><a href="eda-maps.html#cb9-4"></a>               <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group), </span>
+<span id="cb9-5"><a href="eda-maps.html#cb9-5"></a>               <span class="dt">fill =</span> <span class="st">&quot;gray95&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;gray70&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>) <span class="op">+</span></span>
+<span id="cb9-6"><a href="eda-maps.html#cb9-6"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span>
+<span id="cb9-7"><a href="eda-maps.html#cb9-7"></a></span>
+<span id="cb9-8"><a href="eda-maps.html#cb9-8"></a>gg_world</span></code></pre></div>
+<p><img src="cwd_files/figure-html/world2-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Now that we know how to plot a map with <code>ggplot()</code>, we can add the points of
+the storm records. This is done with <code>geom_point()</code>, and specifying <code>storms75</code>
+as the <code>data</code> argument inside this function. In other words, we are using two
+separate data frames. One is <code>world_map</code>, used to draw the polygons of the map;
+the other one is <code>stomrs75</code> to graph the dots of each storm. Notice also that
+there are no inputs provided to the function <code>ggplot()</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="eda-maps.html#cb10-1"></a><span class="co"># world map, adding storms in 1975</span></span>
+<span id="cb10-2"><a href="eda-maps.html#cb10-2"></a>gg_world <span class="op">+</span><span class="st"> </span></span>
+<span id="cb10-3"><a href="eda-maps.html#cb10-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> storms75, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name))</span></code></pre></div>
+<p><img src="cwd_files/figure-html/storms75map1-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Because the analyzed hurricanes occurred in the North Atlantic basin, we can
+focus on that region by modifying the x-and-y axis limits:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="eda-maps.html#cb11-1"></a><span class="co"># zoom-in (North Atlantic)</span></span>
+<span id="cb11-2"><a href="eda-maps.html#cb11-2"></a>gg_world <span class="op">+</span></span>
+<span id="cb11-3"><a href="eda-maps.html#cb11-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> storms75,</span>
+<span id="cb11-4"><a href="eda-maps.html#cb11-4"></a>             <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name)) <span class="op">+</span></span>
+<span id="cb11-5"><a href="eda-maps.html#cb11-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb11-6"><a href="eda-maps.html#cb11-6"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>))</span></code></pre></div>
+<p><img src="cwd_files/figure-html/storms75map2-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>It’s worth mentioning that this zooming-in has a secondary effect of distorting
+some of the polygons. For example, Alaska seems to get cut in half. Also the
+polygon of Colombia is incomplete. Ignoring these distortions for now, we can
+continue exploring things by taking into account more variables. For instance,
+let’s map the wind speed to the <code>size</code> argument of points.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="eda-maps.html#cb12-1"></a><span class="co"># using wind values to change the size of dots</span></span>
+<span id="cb12-2"><a href="eda-maps.html#cb12-2"></a>gg_world <span class="op">+</span></span>
+<span id="cb12-3"><a href="eda-maps.html#cb12-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> storms75,</span>
+<span id="cb12-4"><a href="eda-maps.html#cb12-4"></a>             <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name, <span class="dt">size =</span> wind),</span>
+<span id="cb12-5"><a href="eda-maps.html#cb12-5"></a>             <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
+<span id="cb12-6"><a href="eda-maps.html#cb12-6"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb12-7"><a href="eda-maps.html#cb12-7"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>))</span></code></pre></div>
+<p><img src="cwd_files/figure-html/storms75map3-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>A very similar appearance can be achieved by replacing <code>geom_point()</code> with
+<code>geom_path()</code>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="eda-maps.html#cb13-1"></a>gg_world <span class="op">+</span></span>
+<span id="cb13-2"><a href="eda-maps.html#cb13-2"></a><span class="st">  </span><span class="kw">geom_path</span>(<span class="dt">data =</span> storms75,</span>
+<span id="cb13-3"><a href="eda-maps.html#cb13-3"></a>             <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name, <span class="dt">size =</span> wind),</span>
+<span id="cb13-4"><a href="eda-maps.html#cb13-4"></a>             <span class="dt">lineend =</span> <span class="st">&quot;round&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span></span>
+<span id="cb13-5"><a href="eda-maps.html#cb13-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb13-6"><a href="eda-maps.html#cb13-6"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>))</span></code></pre></div>
+<p><img src="cwd_files/figure-html/storms75map4-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="more-mapping-approaches" class="section level3">
+<h3><span class="header-section-number">11.1.3</span> More mapping approaches</h3>
+<p>Another interesting map graphing approach is by using map-objects from the
+package <code>"rnaturalearth"</code>.</p>
+<p>We use the <code>ne_countries()</code> function—from <code>"rnaturalearth"</code>—to get world
+country polygons. In the following command, we specify a <code>medium</code> scale
+resolution, and a returned object of class <code>"sf"</code> (simple features).</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="eda-maps.html#cb14-1"></a><span class="co"># another world data frame</span></span>
+<span id="cb14-2"><a href="eda-maps.html#cb14-2"></a>world_df &lt;-<span class="st"> </span><span class="kw">ne_countries</span>(<span class="dt">scale =</span> <span class="st">&quot;medium&quot;</span>, <span class="dt">returnclass =</span> <span class="st">&quot;sf&quot;</span>)</span>
+<span id="cb14-3"><a href="eda-maps.html#cb14-3"></a><span class="kw">class</span>(world_df)</span>
+<span id="cb14-4"><a href="eda-maps.html#cb14-4"></a><span class="co">#&gt; [1] &quot;sf&quot;         &quot;data.frame&quot;</span></span></code></pre></div>
+<p>Now we can pass <code>world_df</code> to <code>ggplot()</code>, and use <code>geom_sf()</code> which is the
+function that allows us to visualize <em>simple features</em> objects <code>"sf"</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="eda-maps.html#cb15-1"></a><span class="co"># another world map (from &quot;rnaturalearth&quot;)</span></span>
+<span id="cb15-2"><a href="eda-maps.html#cb15-2"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> world_df) <span class="op">+</span></span>
+<span id="cb15-3"><a href="eda-maps.html#cb15-3"></a><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb15-4"><a href="eda-maps.html#cb15-4"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<p><img src="cwd_files/figure-html/world3-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>One advantage of using this other mapping approach is that we can zoom-in
+without having distorted polygons. To focus on a specfic region, we set the
+x-axis and y-axis limits with the <code>coord_sf()</code> function. Again, for coding
+convenience, let’s create another <code>"ggplot"</code> object</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="eda-maps.html#cb16-1"></a><span class="co"># ggplot object to be used as a canvas</span></span>
+<span id="cb16-2"><a href="eda-maps.html#cb16-2"></a>gg_world2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> world_df) <span class="op">+</span></span>
+<span id="cb16-3"><a href="eda-maps.html#cb16-3"></a><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb16-4"><a href="eda-maps.html#cb16-4"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>), <span class="dt">expand =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
+<span id="cb16-5"><a href="eda-maps.html#cb16-5"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span>
+<span id="cb16-6"><a href="eda-maps.html#cb16-6"></a></span>
+<span id="cb16-7"><a href="eda-maps.html#cb16-7"></a>gg_world2</span></code></pre></div>
+<p><img src="cwd_files/figure-html/world4-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Now let’s add the storms:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="eda-maps.html#cb17-1"></a>gg_world2 <span class="op">+</span><span class="st"> </span></span>
+<span id="cb17-2"><a href="eda-maps.html#cb17-2"></a><span class="st">  </span><span class="kw">geom_path</span>(<span class="dt">data =</span> storms75,</span>
+<span id="cb17-3"><a href="eda-maps.html#cb17-3"></a>            <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">color =</span> name),</span>
+<span id="cb17-4"><a href="eda-maps.html#cb17-4"></a>            <span class="dt">lineend =</span> <span class="st">&quot;round&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="cwd_files/figure-html/storms75map5-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="storms-from-1975-to-1980" class="section level3">
-<h3><span class="header-section-number">11.1.3</span> Storms from 1975 to 1980</h3>
+<h3><span class="header-section-number">11.1.4</span> Storms from 1975 to 1980</h3>
 <p>As a simple experiment, let’s graph storms between 1975 and 1980 (six years).
 First we create a dedicated data table <code>storms_75_80</code> to select the rows we are
 interested in:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="eda-maps.html#cb93-1"></a>storms_<span class="dv">75</span>_<span class="dv">80</span> &lt;-<span class="st"> </span><span class="kw">filter</span>(storms, year <span class="op">%in%</span><span class="st"> </span><span class="dv">1975</span><span class="op">:</span><span class="dv">1980</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="eda-maps.html#cb18-1"></a>storms_<span class="dv">75</span>_<span class="dv">80</span> &lt;-<span class="st"> </span><span class="kw">filter</span>(storms, year <span class="op">%in%</span><span class="st"> </span><span class="dv">1975</span><span class="op">:</span><span class="dv">1980</span>)</span></code></pre></div>
 <p>And then we can use <code>facet_wrap(~ year)</code> to graph storms by year:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="eda-maps.html#cb94-1"></a>gg_world <span class="op">+</span></span>
-<span id="cb94-2"><a href="eda-maps.html#cb94-2"></a><span class="st">  </span><span class="kw">geom_path</span>(<span class="dt">data =</span> storms_<span class="dv">75</span>_<span class="dv">80</span>,</span>
-<span id="cb94-3"><a href="eda-maps.html#cb94-3"></a>             <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> name),</span>
-<span id="cb94-4"><a href="eda-maps.html#cb94-4"></a>             <span class="dt">lineend =</span> <span class="st">&quot;round&quot;</span>) <span class="op">+</span></span>
-<span id="cb94-5"><a href="eda-maps.html#cb94-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb94-6"><a href="eda-maps.html#cb94-6"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb94-7"><a href="eda-maps.html#cb94-7"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>year)</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-120-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="eda-maps.html#cb19-1"></a>gg_world <span class="op">+</span></span>
+<span id="cb19-2"><a href="eda-maps.html#cb19-2"></a><span class="st">  </span><span class="kw">geom_path</span>(<span class="dt">data =</span> storms_<span class="dv">75</span>_<span class="dv">80</span>,</span>
+<span id="cb19-3"><a href="eda-maps.html#cb19-3"></a>             <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> name),</span>
+<span id="cb19-4"><a href="eda-maps.html#cb19-4"></a>             <span class="dt">lineend =</span> <span class="st">&quot;round&quot;</span>) <span class="op">+</span></span>
+<span id="cb19-5"><a href="eda-maps.html#cb19-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">150</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb19-6"><a href="eda-maps.html#cb19-6"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">90</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb19-7"><a href="eda-maps.html#cb19-7"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>year)</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-8-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="exercises-5" class="section level3">
-<h3><span class="header-section-number">11.1.4</span> Exercises</h3>
+<h3><span class="header-section-number">11.1.5</span> Exercises</h3>
 <p><strong>1)</strong> Filter storms in the 1980’s decade (1980 - 1989) and make a plot, with
 facets by <code>month.</code>year`</p>
 <ul>
@@ -857,20 +947,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

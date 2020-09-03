@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -933,7 +934,7 @@ it is a syntax for identifying and describing the elements of a document such
 as headings, paragraphs, lists, tables, images, hyperlinks, etc. Technically,
 HTML is an XML dialect.</p>
 <p>Say we visit R’s official website (screencapture below).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-587"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-583"></span>
 <img src="images/html/r-webpage2.png" alt="R project's home page" width="70%" />
 <p class="caption">
 Figure 40.1: R project’s home page
@@ -944,7 +945,7 @@ text files referred to as <em>source</em> files. To look at the actual HTML cont
 behind R’s homepage, you need to get access to the source code option in your
 browser. If you are using Chrome, go to the <strong>View</strong> tab in the menu bar, then
 choose the <strong>Developer</strong> option, and finally click on <strong>View Source</strong>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-588"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-584"></span>
 <img src="images/html/r-webpage3.png" alt="View source code of a webpage in Chrome" width="70%" />
 <p class="caption">
 Figure 40.2: View source code of a webpage in Chrome
@@ -953,7 +954,7 @@ Figure 40.2: View source code of a webpage in Chrome
 <p>If we take a look at the source
 file behind R’s homepage, we discover the actual HTML content, depicted in
 the image below.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-589"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-585"></span>
 <img src="images/html/r-webpage-source1.png" alt="Source code behind R project's home page" width="70%" />
 <p class="caption">
 Figure 40.3: Source code behind R project’s home page
@@ -966,7 +967,7 @@ you right now. But it all has a specific structure and meaning.</p>
 <p>What you see on the browser is the result of the resources served by the server
 where R’s website is stored. Technically speaking, there should be an index.html
 file, plus other files (stylesheet files, and image files)</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-590"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-586"></span>
 <img src="images/html/r-webpage-source2.png" alt="Other resources being linked in the home page" width="70%" />
 <p class="caption">
 Figure 40.4: Other resources being linked in the home page
@@ -984,7 +985,7 @@ Figure 40.4: Other resources being linked in the home page
 <h3><span class="header-section-number">40.2.1</span> HTML document structure</h3>
 <p>Let’s study the structure of a basic HTML document. Below is a diagram with a
 simplified content of R’s webpage.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-591"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-587"></span>
 <img src="images/html/r-webpage-source3.png" alt="HTML document structure" width="80%" />
 <p class="caption">
 Figure 40.5: HTML document structure
@@ -1010,7 +1011,7 @@ brackets, that is, the <code>&lt;p&gt;</code> characters.</p>
 is the closing tag, in this case <code>&lt;/p&gt;</code>. You know it’s a closing tag because
 it comens after the content, and it has a slash <code>/</code> before the <code>p</code> name. All
 closing tags have a slash in them.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-592"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-588"></span>
 <img src="images/html/html-syntax1.svg" alt="Anatomy of html elements" width="70%" />
 <p class="caption">
 Figure 40.6: Anatomy of html elements
@@ -1027,7 +1028,7 @@ that itself closes with a slash and the right angle bracket <code>/&gt;</code>.<
 information about an element. Attributes are declared inside the opening
 tag using special keywords. We assign values to aattributes with the equals
 sign, and we specify the values inside quotations.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-593"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-589"></span>
 <img src="images/html/html-syntax2.svg" alt="Attributes and values in html tags" width="70%" />
 <p class="caption">
 Figure 40.7: Attributes and values in html tags
@@ -1078,23 +1079,23 @@ world record progression, the url is</p>
 <p><a href="https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression" class="uri">https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression</a></p>
 <p>If we try to use functions like <code>readHTMLTable</code> from <code>"XML"</code> package, it will
 fail</p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="xml.html#cb577-1"></a>wiki &lt;-<span class="st"> &#39;https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression&#39;</span></span>
-<span id="cb577-2"><a href="xml.html#cb577-2"></a></span>
-<span id="cb577-3"><a href="xml.html#cb577-3"></a><span class="co"># this fails</span></span>
-<span id="cb577-4"><a href="xml.html#cb577-4"></a>tbls &lt;-<span class="st"> </span><span class="kw">readHTMLTable</span>(wiki)</span></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="xml.html#cb585-1"></a>wiki &lt;-<span class="st"> &#39;https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression&#39;</span></span>
+<span id="cb585-2"><a href="xml.html#cb585-2"></a></span>
+<span id="cb585-3"><a href="xml.html#cb585-3"></a><span class="co"># this fails</span></span>
+<span id="cb585-4"><a href="xml.html#cb585-4"></a>tbls &lt;-<span class="st"> </span><span class="kw">readHTMLTable</span>(wiki)</span></code></pre></div>
 <p>One option to read the html tables and extract them as R data frames, is to
 first download the html file to your computer, and then use <code>readHTMLTable()</code>
 to scrape the tables:</p>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="xml.html#cb578-1"></a><span class="co"># desired url</span></span>
-<span id="cb578-2"><a href="xml.html#cb578-2"></a>wiki &lt;-<span class="st"> &#39;https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression&#39;</span></span>
-<span id="cb578-3"><a href="xml.html#cb578-3"></a></span>
-<span id="cb578-4"><a href="xml.html#cb578-4"></a><span class="co"># destination file</span></span>
-<span id="cb578-5"><a href="xml.html#cb578-5"></a>jump_html &lt;-<span class="st"> &#39;men-long-jump-records.html&#39;</span></span>
-<span id="cb578-6"><a href="xml.html#cb578-6"></a></span>
-<span id="cb578-7"><a href="xml.html#cb578-7"></a><span class="co"># download file to your working directory</span></span>
-<span id="cb578-8"><a href="xml.html#cb578-8"></a><span class="kw">download.file</span>(wiki, jump_html)</span>
-<span id="cb578-9"><a href="xml.html#cb578-9"></a></span>
-<span id="cb578-10"><a href="xml.html#cb578-10"></a>tbls &lt;-<span class="st"> </span><span class="kw">readHTMLTable</span>(jump_html)</span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="xml.html#cb586-1"></a><span class="co"># desired url</span></span>
+<span id="cb586-2"><a href="xml.html#cb586-2"></a>wiki &lt;-<span class="st"> &#39;https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression&#39;</span></span>
+<span id="cb586-3"><a href="xml.html#cb586-3"></a></span>
+<span id="cb586-4"><a href="xml.html#cb586-4"></a><span class="co"># destination file</span></span>
+<span id="cb586-5"><a href="xml.html#cb586-5"></a>jump_html &lt;-<span class="st"> &#39;men-long-jump-records.html&#39;</span></span>
+<span id="cb586-6"><a href="xml.html#cb586-6"></a></span>
+<span id="cb586-7"><a href="xml.html#cb586-7"></a><span class="co"># download file to your working directory</span></span>
+<span id="cb586-8"><a href="xml.html#cb586-8"></a><span class="kw">download.file</span>(wiki, jump_html)</span>
+<span id="cb586-9"><a href="xml.html#cb586-9"></a></span>
+<span id="cb586-10"><a href="xml.html#cb586-10"></a>tbls &lt;-<span class="st"> </span><span class="kw">readHTMLTable</span>(jump_html)</span></code></pre></div>
 <p>We recommend using this option when:</p>
 <ul>
 <li>the data fits in your computer, in this way you also have the <em>raw data</em></li>

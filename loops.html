@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -693,17 +694,17 @@ is fulfilled</li>
 <div id="motivation-example" class="section level2">
 <h2><span class="header-section-number">26.1</span> Motivation Example</h2>
 <p>Consider a numeric vector with prices of five items:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="loops.html#cb360-1"></a>prices &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.50</span>, <span class="fl">2.95</span>, <span class="fl">3.45</span>, <span class="fl">3.25</span>)</span>
-<span id="cb360-2"><a href="loops.html#cb360-2"></a>prices</span>
-<span id="cb360-3"><a href="loops.html#cb360-3"></a><span class="co">#&gt; [1] 2.50 2.95 3.45 3.25</span></span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="loops.html#cb368-1"></a>prices &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.50</span>, <span class="fl">2.95</span>, <span class="fl">3.45</span>, <span class="fl">3.25</span>)</span>
+<span id="cb368-2"><a href="loops.html#cb368-2"></a>prices</span>
+<span id="cb368-3"><a href="loops.html#cb368-3"></a><span class="co">#&gt; [1] 2.50 2.95 3.45 3.25</span></span></code></pre></div>
 <div id="printing-prices-manually" class="section level3">
 <h3><span class="header-section-number">26.1.1</span> Printing prices “manually”</h3>
 <p>Say you are interested in printing each price individually. You can manually
 display them one by one, by typing the same command several times:</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="loops.html#cb361-1"></a><span class="kw">cat</span>(<span class="st">&quot;Price 1 is&quot;</span>, prices[<span class="dv">1</span>])</span>
-<span id="cb361-2"><a href="loops.html#cb361-2"></a><span class="kw">cat</span>(<span class="st">&quot;Price 2 is&quot;</span>, prices[<span class="dv">2</span>])</span>
-<span id="cb361-3"><a href="loops.html#cb361-3"></a><span class="kw">cat</span>(<span class="st">&quot;Price 3 is&quot;</span>, prices[<span class="dv">3</span>])</span>
-<span id="cb361-4"><a href="loops.html#cb361-4"></a><span class="kw">cat</span>(<span class="st">&quot;Price 4 is&quot;</span>, prices[<span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="loops.html#cb369-1"></a><span class="kw">cat</span>(<span class="st">&quot;Price 1 is&quot;</span>, prices[<span class="dv">1</span>])</span>
+<span id="cb369-2"><a href="loops.html#cb369-2"></a><span class="kw">cat</span>(<span class="st">&quot;Price 2 is&quot;</span>, prices[<span class="dv">2</span>])</span>
+<span id="cb369-3"><a href="loops.html#cb369-3"></a><span class="kw">cat</span>(<span class="st">&quot;Price 3 is&quot;</span>, prices[<span class="dv">3</span>])</span>
+<span id="cb369-4"><a href="loops.html#cb369-4"></a><span class="kw">cat</span>(<span class="st">&quot;Price 4 is&quot;</span>, prices[<span class="dv">4</span>])</span></code></pre></div>
 <pre><code>#&gt; Price 1 is 2.5
 #&gt; Price 2 is 2.95
 #&gt; Price 3 is 3.45
@@ -714,29 +715,29 @@ display them one by one, by typing the same command several times:</p>
 <p>Or you can use a loop structure in which you tell the computer to display the
 prices a given number of times, but using one command instead of typing it
 various times:</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="loops.html#cb363-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</span>
-<span id="cb363-2"><a href="loops.html#cb363-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;Price&quot;</span>, i, <span class="st">&quot;is&quot;</span>, prices[i], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb363-3"><a href="loops.html#cb363-3"></a>}</span>
-<span id="cb363-4"><a href="loops.html#cb363-4"></a><span class="co">#&gt; Price 1 is 2.5 </span></span>
-<span id="cb363-5"><a href="loops.html#cb363-5"></a><span class="co">#&gt; Price 2 is 2.95 </span></span>
-<span id="cb363-6"><a href="loops.html#cb363-6"></a><span class="co">#&gt; Price 3 is 3.45 </span></span>
-<span id="cb363-7"><a href="loops.html#cb363-7"></a><span class="co">#&gt; Price 4 is 3.25</span></span></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="loops.html#cb371-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</span>
+<span id="cb371-2"><a href="loops.html#cb371-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;Price&quot;</span>, i, <span class="st">&quot;is&quot;</span>, prices[i], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb371-3"><a href="loops.html#cb371-3"></a>}</span>
+<span id="cb371-4"><a href="loops.html#cb371-4"></a><span class="co">#&gt; Price 1 is 2.5 </span></span>
+<span id="cb371-5"><a href="loops.html#cb371-5"></a><span class="co">#&gt; Price 2 is 2.95 </span></span>
+<span id="cb371-6"><a href="loops.html#cb371-6"></a><span class="co">#&gt; Price 3 is 3.45 </span></span>
+<span id="cb371-7"><a href="loops.html#cb371-7"></a><span class="co">#&gt; Price 4 is 3.25</span></span></code></pre></div>
 <p>Let’s make it less simple by creating a vector of prices with the names of
 the associated coffees:</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="loops.html#cb364-1"></a>coffee_prices &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
-<span id="cb364-2"><a href="loops.html#cb364-2"></a>  <span class="dt">expresso =</span> <span class="fl">2.50</span>,</span>
-<span id="cb364-3"><a href="loops.html#cb364-3"></a>  <span class="dt">latte =</span> <span class="fl">2.95</span>,</span>
-<span id="cb364-4"><a href="loops.html#cb364-4"></a>  <span class="dt">mocha =</span> <span class="fl">3.45</span>, </span>
-<span id="cb364-5"><a href="loops.html#cb364-5"></a>  <span class="dt">cappuccino =</span> <span class="fl">3.25</span>)</span>
-<span id="cb364-6"><a href="loops.html#cb364-6"></a>coffee_prices</span>
-<span id="cb364-7"><a href="loops.html#cb364-7"></a><span class="co">#&gt;   expresso      latte      mocha cappuccino </span></span>
-<span id="cb364-8"><a href="loops.html#cb364-8"></a><span class="co">#&gt;       2.50       2.95       3.45       3.25</span></span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="loops.html#cb372-1"></a>coffee_prices &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb372-2"><a href="loops.html#cb372-2"></a>  <span class="dt">expresso =</span> <span class="fl">2.50</span>,</span>
+<span id="cb372-3"><a href="loops.html#cb372-3"></a>  <span class="dt">latte =</span> <span class="fl">2.95</span>,</span>
+<span id="cb372-4"><a href="loops.html#cb372-4"></a>  <span class="dt">mocha =</span> <span class="fl">3.45</span>, </span>
+<span id="cb372-5"><a href="loops.html#cb372-5"></a>  <span class="dt">cappuccino =</span> <span class="fl">3.25</span>)</span>
+<span id="cb372-6"><a href="loops.html#cb372-6"></a>coffee_prices</span>
+<span id="cb372-7"><a href="loops.html#cb372-7"></a><span class="co">#&gt;   expresso      latte      mocha cappuccino </span></span>
+<span id="cb372-8"><a href="loops.html#cb372-8"></a><span class="co">#&gt;       2.50       2.95       3.45       3.25</span></span></code></pre></div>
 <p>Without using a loop, you can display, via <code>cat()</code>, the prices one-by-one;
 (this, of course, involves a lot of repetition)</p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="loops.html#cb365-1"></a><span class="kw">cat</span>(<span class="st">&quot;Expresso has a price of&quot;</span>, coffee_prices[<span class="dv">1</span>])</span>
-<span id="cb365-2"><a href="loops.html#cb365-2"></a><span class="kw">cat</span>(<span class="st">&quot;Latte has a price of&quot;</span>, coffee_prices[<span class="dv">2</span>])</span>
-<span id="cb365-3"><a href="loops.html#cb365-3"></a><span class="kw">cat</span>(<span class="st">&quot;Mocha has a price of&quot;</span>, coffee_prices[<span class="dv">3</span>])</span>
-<span id="cb365-4"><a href="loops.html#cb365-4"></a><span class="kw">cat</span>(<span class="st">&quot;Capuccino has a price of&quot;</span>, coffee_prices[<span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="loops.html#cb373-1"></a><span class="kw">cat</span>(<span class="st">&quot;Expresso has a price of&quot;</span>, coffee_prices[<span class="dv">1</span>])</span>
+<span id="cb373-2"><a href="loops.html#cb373-2"></a><span class="kw">cat</span>(<span class="st">&quot;Latte has a price of&quot;</span>, coffee_prices[<span class="dv">2</span>])</span>
+<span id="cb373-3"><a href="loops.html#cb373-3"></a><span class="kw">cat</span>(<span class="st">&quot;Mocha has a price of&quot;</span>, coffee_prices[<span class="dv">3</span>])</span>
+<span id="cb373-4"><a href="loops.html#cb373-4"></a><span class="kw">cat</span>(<span class="st">&quot;Capuccino has a price of&quot;</span>, coffee_prices[<span class="dv">4</span>])</span></code></pre></div>
 <pre><code>#&gt; Expresso has a price of 2.5
 #&gt; Latte has a price of 2.95
 #&gt; Mocha has a price of 3.45
@@ -744,14 +745,14 @@ the associated coffees:</p>
 </div>
 <div id="printing-coffee-prices-with-a-for-loop" class="section level3">
 <h3><span class="header-section-number">26.1.3</span> Printing coffee prices with a <code>for</code> loop</h3>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="loops.html#cb367-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</span>
-<span id="cb367-2"><a href="loops.html#cb367-2"></a>  <span class="kw">cat</span>(<span class="kw">names</span>(coffee_prices)[i], <span class="st">&quot;has a price of&quot;</span>, </span>
-<span id="cb367-3"><a href="loops.html#cb367-3"></a>      prices[i], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb367-4"><a href="loops.html#cb367-4"></a>}</span>
-<span id="cb367-5"><a href="loops.html#cb367-5"></a><span class="co">#&gt; expresso has a price of 2.5 </span></span>
-<span id="cb367-6"><a href="loops.html#cb367-6"></a><span class="co">#&gt; latte has a price of 2.95 </span></span>
-<span id="cb367-7"><a href="loops.html#cb367-7"></a><span class="co">#&gt; mocha has a price of 3.45 </span></span>
-<span id="cb367-8"><a href="loops.html#cb367-8"></a><span class="co">#&gt; cappuccino has a price of 3.25</span></span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="loops.html#cb375-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</span>
+<span id="cb375-2"><a href="loops.html#cb375-2"></a>  <span class="kw">cat</span>(<span class="kw">names</span>(coffee_prices)[i], <span class="st">&quot;has a price of&quot;</span>, </span>
+<span id="cb375-3"><a href="loops.html#cb375-3"></a>      prices[i], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb375-4"><a href="loops.html#cb375-4"></a>}</span>
+<span id="cb375-5"><a href="loops.html#cb375-5"></a><span class="co">#&gt; expresso has a price of 2.5 </span></span>
+<span id="cb375-6"><a href="loops.html#cb375-6"></a><span class="co">#&gt; latte has a price of 2.95 </span></span>
+<span id="cb375-7"><a href="loops.html#cb375-7"></a><span class="co">#&gt; mocha has a price of 3.45 </span></span>
+<span id="cb375-8"><a href="loops.html#cb375-8"></a><span class="co">#&gt; cappuccino has a price of 3.25</span></span></code></pre></div>
 </div>
 </div>
 <div id="for-loops" class="section level2">
@@ -759,19 +760,19 @@ the associated coffees:</p>
 <p>Let’s start with a super simple example. Consider a vector <code>vec &lt;- c(3, 1, 4)</code>.
 And suppose you want to add 1 to every element of <code>vec</code>. You know that this
 can easily be achieved using vectorized code:</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="loops.html#cb368-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>) </span>
-<span id="cb368-2"><a href="loops.html#cb368-2"></a></span>
-<span id="cb368-3"><a href="loops.html#cb368-3"></a>vec <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb368-4"><a href="loops.html#cb368-4"></a><span class="co">#&gt; [1] 4 2 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="loops.html#cb376-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>) </span>
+<span id="cb376-2"><a href="loops.html#cb376-2"></a></span>
+<span id="cb376-3"><a href="loops.html#cb376-3"></a>vec <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb376-4"><a href="loops.html#cb376-4"></a><span class="co">#&gt; [1] 4 2 5</span></span></code></pre></div>
 <p>In order to learn about loops, I’m going to ask you to forget about the notion
 of vectorized code in R. That is, pretend that R does not have vectorized functions.</p>
 <p>Think about what you would manually need to do in order to add 1 to the elements
 in <code>vec</code>. This addition would involve taking the first element in <code>vec</code> and
 add 1, then taking the second element in <code>vec</code> and add 1, and finally the third
 element in <code>vec</code> and add 1, something like this:</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="loops.html#cb369-1"></a>vec[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb369-2"><a href="loops.html#cb369-2"></a>vec[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb369-3"><a href="loops.html#cb369-3"></a>vec[<span class="dv">3</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="loops.html#cb377-1"></a>vec[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb377-2"><a href="loops.html#cb377-2"></a>vec[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb377-3"><a href="loops.html#cb377-3"></a>vec[<span class="dv">3</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
 <p>The code above does the job. From a purely arithmetic standpoint, the three
 lines of code reflect the operation that you would need to carry out to add
 1 to all the elements in <code>vec</code>.</p>
@@ -780,33 +781,33 @@ three times: selecting an element in <code>vec</code> and adding 1 to it. But th
 a lot of (unnecessary) repetition.</p>
 <p>This is where loops come very handy. Here’s how to use a <code>for ()</code> loop
 to add 1 to each element in <code>vec</code>:</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="loops.html#cb370-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>)</span>
-<span id="cb370-2"><a href="loops.html#cb370-2"></a></span>
-<span id="cb370-3"><a href="loops.html#cb370-3"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) {</span>
-<span id="cb370-4"><a href="loops.html#cb370-4"></a>  <span class="kw">print</span>(vec[j] <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</span>
-<span id="cb370-5"><a href="loops.html#cb370-5"></a>}</span>
-<span id="cb370-6"><a href="loops.html#cb370-6"></a><span class="co">#&gt; [1] 4</span></span>
-<span id="cb370-7"><a href="loops.html#cb370-7"></a><span class="co">#&gt; [1] 2</span></span>
-<span id="cb370-8"><a href="loops.html#cb370-8"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="loops.html#cb378-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb378-2"><a href="loops.html#cb378-2"></a></span>
+<span id="cb378-3"><a href="loops.html#cb378-3"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) {</span>
+<span id="cb378-4"><a href="loops.html#cb378-4"></a>  <span class="kw">print</span>(vec[j] <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</span>
+<span id="cb378-5"><a href="loops.html#cb378-5"></a>}</span>
+<span id="cb378-6"><a href="loops.html#cb378-6"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb378-7"><a href="loops.html#cb378-7"></a><span class="co">#&gt; [1] 2</span></span>
+<span id="cb378-8"><a href="loops.html#cb378-8"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
 <p>In the code above we are taking each <code>vec</code> element <code>vec[j]</code>, adding 1 to it,
 and printing the outcome with <code>print()</code> so you can visualize the additions
 at each iteration of the loop.</p>
 <p><strong>Your turn</strong>: rewrite the <code>for</code> loop in order to triple every element in <code>vec</code>,
 and printing the output at each step of the loop:</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="loops.html#cb371-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>) <span class="co"># Change this value!</span></span>
-<span id="cb371-2"><a href="loops.html#cb371-2"></a></span>
-<span id="cb371-3"><a href="loops.html#cb371-3"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="kw">c</span>()) { <span class="co"># Replace c() with an appropriate sequence.</span></span>
-<span id="cb371-4"><a href="loops.html#cb371-4"></a>  <span class="co"># Fill in.</span></span>
-<span id="cb371-5"><a href="loops.html#cb371-5"></a>  </span>
-<span id="cb371-6"><a href="loops.html#cb371-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="loops.html#cb379-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>) <span class="co"># Change this value!</span></span>
+<span id="cb379-2"><a href="loops.html#cb379-2"></a></span>
+<span id="cb379-3"><a href="loops.html#cb379-3"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="kw">c</span>()) { <span class="co"># Replace c() with an appropriate sequence.</span></span>
+<span id="cb379-4"><a href="loops.html#cb379-4"></a>  <span class="co"># Fill in.</span></span>
+<span id="cb379-5"><a href="loops.html#cb379-5"></a>  </span>
+<span id="cb379-6"><a href="loops.html#cb379-6"></a>}</span></code></pre></div>
 <p>What if you want to create a vector <code>vec2</code>, in which you store the values
 produced at each iteration of the loop? Here’s one possibility:</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="loops.html#cb372-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>)  <span class="co"># Change this value!</span></span>
-<span id="cb372-2"><a href="loops.html#cb372-2"></a>vec2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">length</span>(vec))  <span class="co"># &quot;empty&quot; of zeros vector to be filled in the loop</span></span>
-<span id="cb372-3"><a href="loops.html#cb372-3"></a></span>
-<span id="cb372-4"><a href="loops.html#cb372-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>()) {<span class="co"># Replace c() with an appropriate sequence.</span></span>
-<span id="cb372-5"><a href="loops.html#cb372-5"></a>  <span class="co"># Fill in.</span></span>
-<span id="cb372-6"><a href="loops.html#cb372-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="loops.html#cb380-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>)  <span class="co"># Change this value!</span></span>
+<span id="cb380-2"><a href="loops.html#cb380-2"></a>vec2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">length</span>(vec))  <span class="co"># &quot;empty&quot; of zeros vector to be filled in the loop</span></span>
+<span id="cb380-3"><a href="loops.html#cb380-3"></a></span>
+<span id="cb380-4"><a href="loops.html#cb380-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>()) {<span class="co"># Replace c() with an appropriate sequence.</span></span>
+<span id="cb380-5"><a href="loops.html#cb380-5"></a>  <span class="co"># Fill in.</span></span>
+<span id="cb380-6"><a href="loops.html#cb380-6"></a>}</span></code></pre></div>
 </div>
 <div id="for-loops-1" class="section level2">
 <h2><span class="header-section-number">26.3</span> For Loops</h2>
@@ -817,104 +818,104 @@ produced at each iteration of the loop? Here’s one possibility:</p>
 <li><code>for</code> loops are used when <strong>we know exactly how many times</strong> we want the code to repeat</li>
 </ul>
 <p>The anatomy of a <code>for</code> loop is as follows:</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="loops.html#cb373-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> times) { </span>
-<span id="cb373-2"><a href="loops.html#cb373-2"></a>  do_something</span>
-<span id="cb373-3"><a href="loops.html#cb373-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="loops.html#cb381-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> times) { </span>
+<span id="cb381-2"><a href="loops.html#cb381-2"></a>  do_something</span>
+<span id="cb381-3"><a href="loops.html#cb381-3"></a>}</span></code></pre></div>
 <p><code>for()</code> takes an <strong>iterator</strong> variable and a vector of <strong>times</strong> to iterate
 through.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="loops.html#cb374-1"></a>value &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb374-2"><a href="loops.html#cb374-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) { </span>
-<span id="cb374-3"><a href="loops.html#cb374-3"></a>  value &lt;-<span class="st"> </span>value <span class="op">*</span><span class="st"> </span><span class="dv">2</span> </span>
-<span id="cb374-4"><a href="loops.html#cb374-4"></a>  <span class="kw">print</span>(value)</span>
-<span id="cb374-5"><a href="loops.html#cb374-5"></a>}</span>
-<span id="cb374-6"><a href="loops.html#cb374-6"></a><span class="co">#&gt; [1] 4</span></span>
-<span id="cb374-7"><a href="loops.html#cb374-7"></a><span class="co">#&gt; [1] 8</span></span>
-<span id="cb374-8"><a href="loops.html#cb374-8"></a><span class="co">#&gt; [1] 16</span></span>
-<span id="cb374-9"><a href="loops.html#cb374-9"></a><span class="co">#&gt; [1] 32</span></span>
-<span id="cb374-10"><a href="loops.html#cb374-10"></a><span class="co">#&gt; [1] 64</span></span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="loops.html#cb382-1"></a>value &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb382-2"><a href="loops.html#cb382-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) { </span>
+<span id="cb382-3"><a href="loops.html#cb382-3"></a>  value &lt;-<span class="st"> </span>value <span class="op">*</span><span class="st"> </span><span class="dv">2</span> </span>
+<span id="cb382-4"><a href="loops.html#cb382-4"></a>  <span class="kw">print</span>(value)</span>
+<span id="cb382-5"><a href="loops.html#cb382-5"></a>}</span>
+<span id="cb382-6"><a href="loops.html#cb382-6"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb382-7"><a href="loops.html#cb382-7"></a><span class="co">#&gt; [1] 8</span></span>
+<span id="cb382-8"><a href="loops.html#cb382-8"></a><span class="co">#&gt; [1] 16</span></span>
+<span id="cb382-9"><a href="loops.html#cb382-9"></a><span class="co">#&gt; [1] 32</span></span>
+<span id="cb382-10"><a href="loops.html#cb382-10"></a><span class="co">#&gt; [1] 64</span></span></code></pre></div>
 <p>The vector of <em>times</em> does NOT have to be a numeric vector; it can be <strong>any</strong> vector</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="loops.html#cb375-1"></a>value &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb375-2"><a href="loops.html#cb375-2"></a>times &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;one&#39;</span>, <span class="st">&#39;two&#39;</span>, <span class="st">&#39;three&#39;</span>, <span class="st">&#39;four&#39;</span>)</span>
-<span id="cb375-3"><a href="loops.html#cb375-3"></a><span class="cf">for</span> (i <span class="cf">in</span> times) { </span>
-<span id="cb375-4"><a href="loops.html#cb375-4"></a>  value &lt;-<span class="st"> </span>value <span class="op">*</span><span class="st"> </span><span class="dv">2</span> </span>
-<span id="cb375-5"><a href="loops.html#cb375-5"></a>  <span class="kw">print</span>(value)</span>
-<span id="cb375-6"><a href="loops.html#cb375-6"></a>}</span>
-<span id="cb375-7"><a href="loops.html#cb375-7"></a><span class="co">#&gt; [1] 4</span></span>
-<span id="cb375-8"><a href="loops.html#cb375-8"></a><span class="co">#&gt; [1] 8</span></span>
-<span id="cb375-9"><a href="loops.html#cb375-9"></a><span class="co">#&gt; [1] 16</span></span>
-<span id="cb375-10"><a href="loops.html#cb375-10"></a><span class="co">#&gt; [1] 32</span></span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="loops.html#cb383-1"></a>value &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb383-2"><a href="loops.html#cb383-2"></a>times &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;one&#39;</span>, <span class="st">&#39;two&#39;</span>, <span class="st">&#39;three&#39;</span>, <span class="st">&#39;four&#39;</span>)</span>
+<span id="cb383-3"><a href="loops.html#cb383-3"></a><span class="cf">for</span> (i <span class="cf">in</span> times) { </span>
+<span id="cb383-4"><a href="loops.html#cb383-4"></a>  value &lt;-<span class="st"> </span>value <span class="op">*</span><span class="st"> </span><span class="dv">2</span> </span>
+<span id="cb383-5"><a href="loops.html#cb383-5"></a>  <span class="kw">print</span>(value)</span>
+<span id="cb383-6"><a href="loops.html#cb383-6"></a>}</span>
+<span id="cb383-7"><a href="loops.html#cb383-7"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb383-8"><a href="loops.html#cb383-8"></a><span class="co">#&gt; [1] 8</span></span>
+<span id="cb383-9"><a href="loops.html#cb383-9"></a><span class="co">#&gt; [1] 16</span></span>
+<span id="cb383-10"><a href="loops.html#cb383-10"></a><span class="co">#&gt; [1] 32</span></span></code></pre></div>
 <p>However, if the <em>iterator</em> is used inside the loop in a numerical computation, then the vector of <em>times</em> will almost always be a numeric vector:</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="loops.html#cb376-1"></a><span class="kw">set.seed</span>(<span class="dv">4321</span>)</span>
-<span id="cb376-2"><a href="loops.html#cb376-2"></a>numbers &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">5</span>)</span>
-<span id="cb376-3"><a href="loops.html#cb376-3"></a><span class="cf">for</span> (h <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(numbers)) {</span>
-<span id="cb376-4"><a href="loops.html#cb376-4"></a>  <span class="cf">if</span> (numbers[h] <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
-<span id="cb376-5"><a href="loops.html#cb376-5"></a>    value &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="op">-</span>numbers[h])</span>
-<span id="cb376-6"><a href="loops.html#cb376-6"></a>  } <span class="cf">else</span> {</span>
-<span id="cb376-7"><a href="loops.html#cb376-7"></a>    value &lt;-<span class="st"> </span><span class="kw">sqrt</span>(numbers[h])</span>
-<span id="cb376-8"><a href="loops.html#cb376-8"></a>  }</span>
-<span id="cb376-9"><a href="loops.html#cb376-9"></a>  <span class="kw">print</span>(value)</span>
-<span id="cb376-10"><a href="loops.html#cb376-10"></a>}</span>
-<span id="cb376-11"><a href="loops.html#cb376-11"></a><span class="co">#&gt; [1] 0.653</span></span>
-<span id="cb376-12"><a href="loops.html#cb376-12"></a><span class="co">#&gt; [1] 0.473</span></span>
-<span id="cb376-13"><a href="loops.html#cb376-13"></a><span class="co">#&gt; [1] 0.847</span></span>
-<span id="cb376-14"><a href="loops.html#cb376-14"></a><span class="co">#&gt; [1] 0.917</span></span>
-<span id="cb376-15"><a href="loops.html#cb376-15"></a><span class="co">#&gt; [1] 0.358</span></span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="loops.html#cb384-1"></a><span class="kw">set.seed</span>(<span class="dv">4321</span>)</span>
+<span id="cb384-2"><a href="loops.html#cb384-2"></a>numbers &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">5</span>)</span>
+<span id="cb384-3"><a href="loops.html#cb384-3"></a><span class="cf">for</span> (h <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(numbers)) {</span>
+<span id="cb384-4"><a href="loops.html#cb384-4"></a>  <span class="cf">if</span> (numbers[h] <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb384-5"><a href="loops.html#cb384-5"></a>    value &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="op">-</span>numbers[h])</span>
+<span id="cb384-6"><a href="loops.html#cb384-6"></a>  } <span class="cf">else</span> {</span>
+<span id="cb384-7"><a href="loops.html#cb384-7"></a>    value &lt;-<span class="st"> </span><span class="kw">sqrt</span>(numbers[h])</span>
+<span id="cb384-8"><a href="loops.html#cb384-8"></a>  }</span>
+<span id="cb384-9"><a href="loops.html#cb384-9"></a>  <span class="kw">print</span>(value)</span>
+<span id="cb384-10"><a href="loops.html#cb384-10"></a>}</span>
+<span id="cb384-11"><a href="loops.html#cb384-11"></a><span class="co">#&gt; [1] 0.653</span></span>
+<span id="cb384-12"><a href="loops.html#cb384-12"></a><span class="co">#&gt; [1] 0.473</span></span>
+<span id="cb384-13"><a href="loops.html#cb384-13"></a><span class="co">#&gt; [1] 0.847</span></span>
+<span id="cb384-14"><a href="loops.html#cb384-14"></a><span class="co">#&gt; [1] 0.917</span></span>
+<span id="cb384-15"><a href="loops.html#cb384-15"></a><span class="co">#&gt; [1] 0.358</span></span></code></pre></div>
 <div id="for-loops-and-next-statement" class="section level3">
 <h3><span class="header-section-number">26.3.1</span> For Loops and Next statement</h3>
 <p>Sometimes we need to skip a loop iteration if a given condition is met, this can be done with a next statement</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="loops.html#cb377-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> times) { </span>
-<span id="cb377-2"><a href="loops.html#cb377-2"></a>  expr1</span>
-<span id="cb377-3"><a href="loops.html#cb377-3"></a>  expr2</span>
-<span id="cb377-4"><a href="loops.html#cb377-4"></a>  <span class="cf">if</span> (condition) {</span>
-<span id="cb377-5"><a href="loops.html#cb377-5"></a>    <span class="cf">next</span></span>
-<span id="cb377-6"><a href="loops.html#cb377-6"></a>  }</span>
-<span id="cb377-7"><a href="loops.html#cb377-7"></a>  expr3</span>
-<span id="cb377-8"><a href="loops.html#cb377-8"></a>  expr4</span>
-<span id="cb377-9"><a href="loops.html#cb377-9"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="loops.html#cb385-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> times) { </span>
+<span id="cb385-2"><a href="loops.html#cb385-2"></a>  expr1</span>
+<span id="cb385-3"><a href="loops.html#cb385-3"></a>  expr2</span>
+<span id="cb385-4"><a href="loops.html#cb385-4"></a>  <span class="cf">if</span> (condition) {</span>
+<span id="cb385-5"><a href="loops.html#cb385-5"></a>    <span class="cf">next</span></span>
+<span id="cb385-6"><a href="loops.html#cb385-6"></a>  }</span>
+<span id="cb385-7"><a href="loops.html#cb385-7"></a>  expr3</span>
+<span id="cb385-8"><a href="loops.html#cb385-8"></a>  expr4</span>
+<span id="cb385-9"><a href="loops.html#cb385-9"></a>}</span></code></pre></div>
 <p>Example:</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="loops.html#cb378-1"></a>x &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb378-2"><a href="loops.html#cb378-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) {</span>
-<span id="cb378-3"><a href="loops.html#cb378-3"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span>i</span>
-<span id="cb378-4"><a href="loops.html#cb378-4"></a>  <span class="cf">if</span> (y <span class="op">==</span><span class="st"> </span><span class="dv">8</span>) {</span>
-<span id="cb378-5"><a href="loops.html#cb378-5"></a>    <span class="cf">next</span></span>
-<span id="cb378-6"><a href="loops.html#cb378-6"></a>  }</span>
-<span id="cb378-7"><a href="loops.html#cb378-7"></a>  <span class="kw">print</span>(y)</span>
-<span id="cb378-8"><a href="loops.html#cb378-8"></a>}</span>
-<span id="cb378-9"><a href="loops.html#cb378-9"></a><span class="co">#&gt; [1] 2</span></span>
-<span id="cb378-10"><a href="loops.html#cb378-10"></a><span class="co">#&gt; [1] 4</span></span>
-<span id="cb378-11"><a href="loops.html#cb378-11"></a><span class="co">#&gt; [1] 6</span></span>
-<span id="cb378-12"><a href="loops.html#cb378-12"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="loops.html#cb386-1"></a>x &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb386-2"><a href="loops.html#cb386-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) {</span>
+<span id="cb386-3"><a href="loops.html#cb386-3"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span>i</span>
+<span id="cb386-4"><a href="loops.html#cb386-4"></a>  <span class="cf">if</span> (y <span class="op">==</span><span class="st"> </span><span class="dv">8</span>) {</span>
+<span id="cb386-5"><a href="loops.html#cb386-5"></a>    <span class="cf">next</span></span>
+<span id="cb386-6"><a href="loops.html#cb386-6"></a>  }</span>
+<span id="cb386-7"><a href="loops.html#cb386-7"></a>  <span class="kw">print</span>(y)</span>
+<span id="cb386-8"><a href="loops.html#cb386-8"></a>}</span>
+<span id="cb386-9"><a href="loops.html#cb386-9"></a><span class="co">#&gt; [1] 2</span></span>
+<span id="cb386-10"><a href="loops.html#cb386-10"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb386-11"><a href="loops.html#cb386-11"></a><span class="co">#&gt; [1] 6</span></span>
+<span id="cb386-12"><a href="loops.html#cb386-12"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
 </div>
 <div id="nested-loops" class="section level3">
 <h3><span class="header-section-number">26.3.2</span> Nested Loops</h3>
 <p>It is common to have nested loops</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="loops.html#cb379-1"></a><span class="cf">for</span> (iterator1 <span class="cf">in</span> times1) { </span>
-<span id="cb379-2"><a href="loops.html#cb379-2"></a>  <span class="cf">for</span> (iterator2 <span class="cf">in</span> times2) {</span>
-<span id="cb379-3"><a href="loops.html#cb379-3"></a>    expr1</span>
-<span id="cb379-4"><a href="loops.html#cb379-4"></a>    expr2</span>
-<span id="cb379-5"><a href="loops.html#cb379-5"></a>    ...</span>
-<span id="cb379-6"><a href="loops.html#cb379-6"></a>  }</span>
-<span id="cb379-7"><a href="loops.html#cb379-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="loops.html#cb387-1"></a><span class="cf">for</span> (iterator1 <span class="cf">in</span> times1) { </span>
+<span id="cb387-2"><a href="loops.html#cb387-2"></a>  <span class="cf">for</span> (iterator2 <span class="cf">in</span> times2) {</span>
+<span id="cb387-3"><a href="loops.html#cb387-3"></a>    expr1</span>
+<span id="cb387-4"><a href="loops.html#cb387-4"></a>    expr2</span>
+<span id="cb387-5"><a href="loops.html#cb387-5"></a>    ...</span>
+<span id="cb387-6"><a href="loops.html#cb387-6"></a>  }</span>
+<span id="cb387-7"><a href="loops.html#cb387-7"></a>}</span></code></pre></div>
 <p>Example: Nested loops</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="loops.html#cb380-1"></a><span class="co"># some matrix</span></span>
-<span id="cb380-2"><a href="loops.html#cb380-2"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
-<span id="cb380-3"><a href="loops.html#cb380-3"></a>A</span>
-<span id="cb380-4"><a href="loops.html#cb380-4"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
-<span id="cb380-5"><a href="loops.html#cb380-5"></a><span class="co">#&gt; [1,]    1    4    7   10</span></span>
-<span id="cb380-6"><a href="loops.html#cb380-6"></a><span class="co">#&gt; [2,]    2    5    8   11</span></span>
-<span id="cb380-7"><a href="loops.html#cb380-7"></a><span class="co">#&gt; [3,]    3    6    9   12</span></span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="loops.html#cb388-1"></a><span class="co"># some matrix</span></span>
+<span id="cb388-2"><a href="loops.html#cb388-2"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb388-3"><a href="loops.html#cb388-3"></a>A</span>
+<span id="cb388-4"><a href="loops.html#cb388-4"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb388-5"><a href="loops.html#cb388-5"></a><span class="co">#&gt; [1,]    1    4    7   10</span></span>
+<span id="cb388-6"><a href="loops.html#cb388-6"></a><span class="co">#&gt; [2,]    2    5    8   11</span></span>
+<span id="cb388-7"><a href="loops.html#cb388-7"></a><span class="co">#&gt; [3,]    3    6    9   12</span></span></code></pre></div>
 <p>Example: Nested Loops</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="loops.html#cb381-1"></a><span class="co"># reciprocal of values less than 6</span></span>
-<span id="cb381-2"><a href="loops.html#cb381-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(A)) { </span>
-<span id="cb381-3"><a href="loops.html#cb381-3"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(A)) {</span>
-<span id="cb381-4"><a href="loops.html#cb381-4"></a>    <span class="cf">if</span> (A[i,j] <span class="op">&lt;</span><span class="st"> </span><span class="dv">6</span>) A[i,j] &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span>A[i,j] </span>
-<span id="cb381-5"><a href="loops.html#cb381-5"></a>  }</span>
-<span id="cb381-6"><a href="loops.html#cb381-6"></a>}</span>
-<span id="cb381-7"><a href="loops.html#cb381-7"></a>A</span>
-<span id="cb381-8"><a href="loops.html#cb381-8"></a><span class="co">#&gt;       [,1] [,2] [,3] [,4]</span></span>
-<span id="cb381-9"><a href="loops.html#cb381-9"></a><span class="co">#&gt; [1,] 1.000 0.25    7   10</span></span>
-<span id="cb381-10"><a href="loops.html#cb381-10"></a><span class="co">#&gt; [2,] 0.500 0.20    8   11</span></span>
-<span id="cb381-11"><a href="loops.html#cb381-11"></a><span class="co">#&gt; [3,] 0.333 6.00    9   12</span></span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="loops.html#cb389-1"></a><span class="co"># reciprocal of values less than 6</span></span>
+<span id="cb389-2"><a href="loops.html#cb389-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(A)) { </span>
+<span id="cb389-3"><a href="loops.html#cb389-3"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(A)) {</span>
+<span id="cb389-4"><a href="loops.html#cb389-4"></a>    <span class="cf">if</span> (A[i,j] <span class="op">&lt;</span><span class="st"> </span><span class="dv">6</span>) A[i,j] &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span>A[i,j] </span>
+<span id="cb389-5"><a href="loops.html#cb389-5"></a>  }</span>
+<span id="cb389-6"><a href="loops.html#cb389-6"></a>}</span>
+<span id="cb389-7"><a href="loops.html#cb389-7"></a>A</span>
+<span id="cb389-8"><a href="loops.html#cb389-8"></a><span class="co">#&gt;       [,1] [,2] [,3] [,4]</span></span>
+<span id="cb389-9"><a href="loops.html#cb389-9"></a><span class="co">#&gt; [1,] 1.000 0.25    7   10</span></span>
+<span id="cb389-10"><a href="loops.html#cb389-10"></a><span class="co">#&gt; [2,] 0.500 0.20    8   11</span></span>
+<span id="cb389-11"><a href="loops.html#cb389-11"></a><span class="co">#&gt; [3,] 0.333 6.00    9   12</span></span></code></pre></div>
 </div>
 <div id="about-for-loops-and-vectorized-computations" class="section level3">
 <h3><span class="header-section-number">26.3.3</span> About <code>for</code> Loops and Vectorized Computations</h3>
@@ -984,47 +985,47 @@ sin(x) \approx x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \dots
 <div id="for-loop-with-a-matrix" class="section level2">
 <h2><span class="header-section-number">26.5</span> For loop with a matrix</h2>
 <p>Consider the following matrix <code>A</code>:</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="loops.html#cb382-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
-<span id="cb382-2"><a href="loops.html#cb382-2"></a>A</span>
-<span id="cb382-3"><a href="loops.html#cb382-3"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
-<span id="cb382-4"><a href="loops.html#cb382-4"></a><span class="co">#&gt; [1,]    1    6   11   16</span></span>
-<span id="cb382-5"><a href="loops.html#cb382-5"></a><span class="co">#&gt; [2,]    2    7   12   17</span></span>
-<span id="cb382-6"><a href="loops.html#cb382-6"></a><span class="co">#&gt; [3,]    3    8   13   18</span></span>
-<span id="cb382-7"><a href="loops.html#cb382-7"></a><span class="co">#&gt; [4,]    4    9   14   19</span></span>
-<span id="cb382-8"><a href="loops.html#cb382-8"></a><span class="co">#&gt; [5,]    5   10   15   20</span></span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="loops.html#cb390-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb390-2"><a href="loops.html#cb390-2"></a>A</span>
+<span id="cb390-3"><a href="loops.html#cb390-3"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb390-4"><a href="loops.html#cb390-4"></a><span class="co">#&gt; [1,]    1    6   11   16</span></span>
+<span id="cb390-5"><a href="loops.html#cb390-5"></a><span class="co">#&gt; [2,]    2    7   12   17</span></span>
+<span id="cb390-6"><a href="loops.html#cb390-6"></a><span class="co">#&gt; [3,]    3    8   13   18</span></span>
+<span id="cb390-7"><a href="loops.html#cb390-7"></a><span class="co">#&gt; [4,]    4    9   14   19</span></span>
+<span id="cb390-8"><a href="loops.html#cb390-8"></a><span class="co">#&gt; [5,]    5   10   15   20</span></span></code></pre></div>
 <p>Say we want to add 1 to all elements in row 1, add 2 to all elements in
 row 2, add 3 to all elements in row 3, and so on. To do this without using
 vectorized code, you need to work with two nested <code>for()</code> loops. One loop will
 control how you traverse the matrix by rows, the other loop will control how
 you traverse the matrix by columns. Here’s how:</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="loops.html#cb383-1"></a><span class="co"># empty matrix B</span></span>
-<span id="cb383-2"><a href="loops.html#cb383-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
-<span id="cb383-3"><a href="loops.html#cb383-3"></a></span>
-<span id="cb383-4"><a href="loops.html#cb383-4"></a><span class="co"># for loop to get matrix B</span></span>
-<span id="cb383-5"><a href="loops.html#cb383-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(A)) {</span>
-<span id="cb383-6"><a href="loops.html#cb383-6"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(A)) {</span>
-<span id="cb383-7"><a href="loops.html#cb383-7"></a>    B[i,j] &lt;-<span class="st"> </span>A[i,j] <span class="op">+</span><span class="st"> </span>i</span>
-<span id="cb383-8"><a href="loops.html#cb383-8"></a>  }</span>
-<span id="cb383-9"><a href="loops.html#cb383-9"></a>}</span>
-<span id="cb383-10"><a href="loops.html#cb383-10"></a></span>
-<span id="cb383-11"><a href="loops.html#cb383-11"></a>B</span>
-<span id="cb383-12"><a href="loops.html#cb383-12"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
-<span id="cb383-13"><a href="loops.html#cb383-13"></a><span class="co">#&gt; [1,]    2    7   12   17</span></span>
-<span id="cb383-14"><a href="loops.html#cb383-14"></a><span class="co">#&gt; [2,]    4    9   14   19</span></span>
-<span id="cb383-15"><a href="loops.html#cb383-15"></a><span class="co">#&gt; [3,]    6   11   16   21</span></span>
-<span id="cb383-16"><a href="loops.html#cb383-16"></a><span class="co">#&gt; [4,]    8   13   18   23</span></span>
-<span id="cb383-17"><a href="loops.html#cb383-17"></a><span class="co">#&gt; [5,]   10   15   20   25</span></span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="loops.html#cb391-1"></a><span class="co"># empty matrix B</span></span>
+<span id="cb391-2"><a href="loops.html#cb391-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb391-3"><a href="loops.html#cb391-3"></a></span>
+<span id="cb391-4"><a href="loops.html#cb391-4"></a><span class="co"># for loop to get matrix B</span></span>
+<span id="cb391-5"><a href="loops.html#cb391-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(A)) {</span>
+<span id="cb391-6"><a href="loops.html#cb391-6"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(A)) {</span>
+<span id="cb391-7"><a href="loops.html#cb391-7"></a>    B[i,j] &lt;-<span class="st"> </span>A[i,j] <span class="op">+</span><span class="st"> </span>i</span>
+<span id="cb391-8"><a href="loops.html#cb391-8"></a>  }</span>
+<span id="cb391-9"><a href="loops.html#cb391-9"></a>}</span>
+<span id="cb391-10"><a href="loops.html#cb391-10"></a></span>
+<span id="cb391-11"><a href="loops.html#cb391-11"></a>B</span>
+<span id="cb391-12"><a href="loops.html#cb391-12"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb391-13"><a href="loops.html#cb391-13"></a><span class="co">#&gt; [1,]    2    7   12   17</span></span>
+<span id="cb391-14"><a href="loops.html#cb391-14"></a><span class="co">#&gt; [2,]    4    9   14   19</span></span>
+<span id="cb391-15"><a href="loops.html#cb391-15"></a><span class="co">#&gt; [3,]    6   11   16   21</span></span>
+<span id="cb391-16"><a href="loops.html#cb391-16"></a><span class="co">#&gt; [4,]    8   13   18   23</span></span>
+<span id="cb391-17"><a href="loops.html#cb391-17"></a><span class="co">#&gt; [5,]   10   15   20   25</span></span></code></pre></div>
 <div id="your-turn-6" class="section level3 unnumbered">
 <h3>Your Turn</h3>
 <p>Consider the following matrix <code>X</code>:</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="loops.html#cb384-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb384-2"><a href="loops.html#cb384-2"></a>X &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">12</span>), <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb384-3"><a href="loops.html#cb384-3"></a>X</span>
-<span id="cb384-4"><a href="loops.html#cb384-4"></a><span class="co">#&gt;         [,1]   [,2]   [,3]</span></span>
-<span id="cb384-5"><a href="loops.html#cb384-5"></a><span class="co">#&gt; [1,] -0.5605  0.129 -0.687</span></span>
-<span id="cb384-6"><a href="loops.html#cb384-6"></a><span class="co">#&gt; [2,] -0.2302  1.715 -0.446</span></span>
-<span id="cb384-7"><a href="loops.html#cb384-7"></a><span class="co">#&gt; [3,]  1.5587  0.461  1.224</span></span>
-<span id="cb384-8"><a href="loops.html#cb384-8"></a><span class="co">#&gt; [4,]  0.0705 -1.265  0.360</span></span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="loops.html#cb392-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb392-2"><a href="loops.html#cb392-2"></a>X &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">12</span>), <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb392-3"><a href="loops.html#cb392-3"></a>X</span>
+<span id="cb392-4"><a href="loops.html#cb392-4"></a><span class="co">#&gt;         [,1]   [,2]   [,3]</span></span>
+<span id="cb392-5"><a href="loops.html#cb392-5"></a><span class="co">#&gt; [1,] -0.5605  0.129 -0.687</span></span>
+<span id="cb392-6"><a href="loops.html#cb392-6"></a><span class="co">#&gt; [2,] -0.2302  1.715 -0.446</span></span>
+<span id="cb392-7"><a href="loops.html#cb392-7"></a><span class="co">#&gt; [3,]  1.5587  0.461  1.224</span></span>
+<span id="cb392-8"><a href="loops.html#cb392-8"></a><span class="co">#&gt; [4,]  0.0705 -1.265  0.360</span></span></code></pre></div>
 <p>Write code in R, using loops, to get a matrix <code>Y</code> such that the negative
 numbers in <code>X</code> are transformed into squared values, while the positive
 numbers in <code>X</code> are transformed into square root values</p>
@@ -1035,56 +1036,56 @@ numbers in <code>X</code> are transformed into square root values</p>
 <p>The following examples involve dividing a number by 2 until it becomes odd.</p>
 <div id="using-a-repeat-loop" class="section level3 unnumbered">
 <h3>Using a <code>repeat</code> loop</h3>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="loops.html#cb385-1"></a><span class="co"># Divide a number by 2 until it becomes odd.</span></span>
-<span id="cb385-2"><a href="loops.html#cb385-2"></a>val_rep &lt;-<span class="st"> </span><span class="dv">898128000</span> <span class="co"># Change this value!</span></span>
-<span id="cb385-3"><a href="loops.html#cb385-3"></a></span>
-<span id="cb385-4"><a href="loops.html#cb385-4"></a><span class="cf">repeat</span> {</span>
-<span id="cb385-5"><a href="loops.html#cb385-5"></a>  <span class="kw">print</span>(val_rep)</span>
-<span id="cb385-6"><a href="loops.html#cb385-6"></a>  <span class="cf">if</span> (val_rep <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) { <span class="co"># If val_rep is odd,</span></span>
-<span id="cb385-7"><a href="loops.html#cb385-7"></a>    <span class="cf">break</span>                  <span class="co"># end the loop.</span></span>
-<span id="cb385-8"><a href="loops.html#cb385-8"></a>  }</span>
-<span id="cb385-9"><a href="loops.html#cb385-9"></a>  val_rep &lt;-<span class="st"> </span>val_rep <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="co"># Divide val_rep by 2 since val_rep was even.</span></span>
-<span id="cb385-10"><a href="loops.html#cb385-10"></a>  <span class="co"># When the end of the loop is reached, return to the beginning of the loop.</span></span>
-<span id="cb385-11"><a href="loops.html#cb385-11"></a>}</span>
-<span id="cb385-12"><a href="loops.html#cb385-12"></a><span class="co">#&gt; [1] 8.98e+08</span></span>
-<span id="cb385-13"><a href="loops.html#cb385-13"></a><span class="co">#&gt; [1] 4.49e+08</span></span>
-<span id="cb385-14"><a href="loops.html#cb385-14"></a><span class="co">#&gt; [1] 2.25e+08</span></span>
-<span id="cb385-15"><a href="loops.html#cb385-15"></a><span class="co">#&gt; [1] 1.12e+08</span></span>
-<span id="cb385-16"><a href="loops.html#cb385-16"></a><span class="co">#&gt; [1] 56133000</span></span>
-<span id="cb385-17"><a href="loops.html#cb385-17"></a><span class="co">#&gt; [1] 28066500</span></span>
-<span id="cb385-18"><a href="loops.html#cb385-18"></a><span class="co">#&gt; [1] 1.4e+07</span></span>
-<span id="cb385-19"><a href="loops.html#cb385-19"></a><span class="co">#&gt; [1] 7016625</span></span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="loops.html#cb393-1"></a><span class="co"># Divide a number by 2 until it becomes odd.</span></span>
+<span id="cb393-2"><a href="loops.html#cb393-2"></a>val_rep &lt;-<span class="st"> </span><span class="dv">898128000</span> <span class="co"># Change this value!</span></span>
+<span id="cb393-3"><a href="loops.html#cb393-3"></a></span>
+<span id="cb393-4"><a href="loops.html#cb393-4"></a><span class="cf">repeat</span> {</span>
+<span id="cb393-5"><a href="loops.html#cb393-5"></a>  <span class="kw">print</span>(val_rep)</span>
+<span id="cb393-6"><a href="loops.html#cb393-6"></a>  <span class="cf">if</span> (val_rep <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) { <span class="co"># If val_rep is odd,</span></span>
+<span id="cb393-7"><a href="loops.html#cb393-7"></a>    <span class="cf">break</span>                  <span class="co"># end the loop.</span></span>
+<span id="cb393-8"><a href="loops.html#cb393-8"></a>  }</span>
+<span id="cb393-9"><a href="loops.html#cb393-9"></a>  val_rep &lt;-<span class="st"> </span>val_rep <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="co"># Divide val_rep by 2 since val_rep was even.</span></span>
+<span id="cb393-10"><a href="loops.html#cb393-10"></a>  <span class="co"># When the end of the loop is reached, return to the beginning of the loop.</span></span>
+<span id="cb393-11"><a href="loops.html#cb393-11"></a>}</span>
+<span id="cb393-12"><a href="loops.html#cb393-12"></a><span class="co">#&gt; [1] 8.98e+08</span></span>
+<span id="cb393-13"><a href="loops.html#cb393-13"></a><span class="co">#&gt; [1] 4.49e+08</span></span>
+<span id="cb393-14"><a href="loops.html#cb393-14"></a><span class="co">#&gt; [1] 2.25e+08</span></span>
+<span id="cb393-15"><a href="loops.html#cb393-15"></a><span class="co">#&gt; [1] 1.12e+08</span></span>
+<span id="cb393-16"><a href="loops.html#cb393-16"></a><span class="co">#&gt; [1] 56133000</span></span>
+<span id="cb393-17"><a href="loops.html#cb393-17"></a><span class="co">#&gt; [1] 28066500</span></span>
+<span id="cb393-18"><a href="loops.html#cb393-18"></a><span class="co">#&gt; [1] 1.4e+07</span></span>
+<span id="cb393-19"><a href="loops.html#cb393-19"></a><span class="co">#&gt; [1] 7016625</span></span></code></pre></div>
 </div>
 <div id="using-a-while-loop" class="section level3 unnumbered">
 <h3>Using a <code>while</code> Loop</h3>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="loops.html#cb386-1"></a><span class="co"># Divide a number by 2 until it becomes odd.</span></span>
-<span id="cb386-2"><a href="loops.html#cb386-2"></a>val_while &lt;-<span class="st"> </span><span class="dv">898128000</span> <span class="co"># Change this value!</span></span>
-<span id="cb386-3"><a href="loops.html#cb386-3"></a></span>
-<span id="cb386-4"><a href="loops.html#cb386-4"></a><span class="cf">while</span> (val_while <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) { <span class="co"># Continue the loop as long as val_while is even.</span></span>
-<span id="cb386-5"><a href="loops.html#cb386-5"></a>  <span class="kw">print</span>(val_while)</span>
-<span id="cb386-6"><a href="loops.html#cb386-6"></a>  val_while &lt;-<span class="st"> </span>val_while <span class="op">/</span><span class="st"> </span><span class="dv">2</span></span>
-<span id="cb386-7"><a href="loops.html#cb386-7"></a>}</span>
-<span id="cb386-8"><a href="loops.html#cb386-8"></a><span class="co">#&gt; [1] 8.98e+08</span></span>
-<span id="cb386-9"><a href="loops.html#cb386-9"></a><span class="co">#&gt; [1] 4.49e+08</span></span>
-<span id="cb386-10"><a href="loops.html#cb386-10"></a><span class="co">#&gt; [1] 2.25e+08</span></span>
-<span id="cb386-11"><a href="loops.html#cb386-11"></a><span class="co">#&gt; [1] 1.12e+08</span></span>
-<span id="cb386-12"><a href="loops.html#cb386-12"></a><span class="co">#&gt; [1] 56133000</span></span>
-<span id="cb386-13"><a href="loops.html#cb386-13"></a><span class="co">#&gt; [1] 28066500</span></span>
-<span id="cb386-14"><a href="loops.html#cb386-14"></a><span class="co">#&gt; [1] 1.4e+07</span></span>
-<span id="cb386-15"><a href="loops.html#cb386-15"></a><span class="kw">print</span>(val_while)</span>
-<span id="cb386-16"><a href="loops.html#cb386-16"></a><span class="co">#&gt; [1] 7016625</span></span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="loops.html#cb394-1"></a><span class="co"># Divide a number by 2 until it becomes odd.</span></span>
+<span id="cb394-2"><a href="loops.html#cb394-2"></a>val_while &lt;-<span class="st"> </span><span class="dv">898128000</span> <span class="co"># Change this value!</span></span>
+<span id="cb394-3"><a href="loops.html#cb394-3"></a></span>
+<span id="cb394-4"><a href="loops.html#cb394-4"></a><span class="cf">while</span> (val_while <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) { <span class="co"># Continue the loop as long as val_while is even.</span></span>
+<span id="cb394-5"><a href="loops.html#cb394-5"></a>  <span class="kw">print</span>(val_while)</span>
+<span id="cb394-6"><a href="loops.html#cb394-6"></a>  val_while &lt;-<span class="st"> </span>val_while <span class="op">/</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb394-7"><a href="loops.html#cb394-7"></a>}</span>
+<span id="cb394-8"><a href="loops.html#cb394-8"></a><span class="co">#&gt; [1] 8.98e+08</span></span>
+<span id="cb394-9"><a href="loops.html#cb394-9"></a><span class="co">#&gt; [1] 4.49e+08</span></span>
+<span id="cb394-10"><a href="loops.html#cb394-10"></a><span class="co">#&gt; [1] 2.25e+08</span></span>
+<span id="cb394-11"><a href="loops.html#cb394-11"></a><span class="co">#&gt; [1] 1.12e+08</span></span>
+<span id="cb394-12"><a href="loops.html#cb394-12"></a><span class="co">#&gt; [1] 56133000</span></span>
+<span id="cb394-13"><a href="loops.html#cb394-13"></a><span class="co">#&gt; [1] 28066500</span></span>
+<span id="cb394-14"><a href="loops.html#cb394-14"></a><span class="co">#&gt; [1] 1.4e+07</span></span>
+<span id="cb394-15"><a href="loops.html#cb394-15"></a><span class="kw">print</span>(val_while)</span>
+<span id="cb394-16"><a href="loops.html#cb394-16"></a><span class="co">#&gt; [1] 7016625</span></span></code></pre></div>
 </div>
 <div id="make-a-reduce-function" class="section level3 unnumbered">
 <h3>Make a <code>reduce()</code> function</h3>
 <p>Now generalize the above code to create a function <code>reduce()</code> which performs
 the same operation. (You should change very little.)</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="loops.html#cb387-1"></a><span class="co"># your reduce() function</span></span>
-<span id="cb387-2"><a href="loops.html#cb387-2"></a>reduce &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb387-3"><a href="loops.html#cb387-3"></a>  <span class="co"># Fill in.</span></span>
-<span id="cb387-4"><a href="loops.html#cb387-4"></a>  </span>
-<span id="cb387-5"><a href="loops.html#cb387-5"></a>}</span>
-<span id="cb387-6"><a href="loops.html#cb387-6"></a></span>
-<span id="cb387-7"><a href="loops.html#cb387-7"></a><span class="kw">reduce</span>(<span class="dv">898128000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="loops.html#cb395-1"></a><span class="co"># your reduce() function</span></span>
+<span id="cb395-2"><a href="loops.html#cb395-2"></a>reduce &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb395-3"><a href="loops.html#cb395-3"></a>  <span class="co"># Fill in.</span></span>
+<span id="cb395-4"><a href="loops.html#cb395-4"></a>  </span>
+<span id="cb395-5"><a href="loops.html#cb395-5"></a>}</span>
+<span id="cb395-6"><a href="loops.html#cb395-6"></a></span>
+<span id="cb395-7"><a href="loops.html#cb395-7"></a><span class="kw">reduce</span>(<span class="dv">898128000</span>)</span></code></pre></div>
 </div>
 <div id="your-turn-average" class="section level3 unnumbered">
 <h3>Your Turn: Average</h3>
@@ -1120,27 +1121,27 @@ implement the geometric mean of the vector <code>x = 1:50</code></p>
 <h3>Your Turn: Distance Matrix of Letters</h3>
 <p>The following code generates a random matrix <code>distances</code> with arbitrary
 distance values among letters in English:</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="loops.html#cb388-1"></a><span class="co"># random distance matrix</span></span>
-<span id="cb388-2"><a href="loops.html#cb388-2"></a>num_letters &lt;-<span class="st"> </span><span class="kw">length</span>(LETTERS)</span>
-<span id="cb388-3"><a href="loops.html#cb388-3"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb388-4"><a href="loops.html#cb388-4"></a>values &lt;-<span class="st"> </span><span class="kw">sample.int</span>(num_letters) </span>
-<span id="cb388-5"><a href="loops.html#cb388-5"></a>distances &lt;-<span class="st"> </span>values <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(values)</span>
-<span id="cb388-6"><a href="loops.html#cb388-6"></a><span class="kw">diag</span>(distances) &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb388-7"><a href="loops.html#cb388-7"></a><span class="kw">dimnames</span>(distances) &lt;-<span class="st"> </span><span class="kw">list</span>(LETTERS, LETTERS)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="loops.html#cb396-1"></a><span class="co"># random distance matrix</span></span>
+<span id="cb396-2"><a href="loops.html#cb396-2"></a>num_letters &lt;-<span class="st"> </span><span class="kw">length</span>(LETTERS)</span>
+<span id="cb396-3"><a href="loops.html#cb396-3"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb396-4"><a href="loops.html#cb396-4"></a>values &lt;-<span class="st"> </span><span class="kw">sample.int</span>(num_letters) </span>
+<span id="cb396-5"><a href="loops.html#cb396-5"></a>distances &lt;-<span class="st"> </span>values <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(values)</span>
+<span id="cb396-6"><a href="loops.html#cb396-6"></a><span class="kw">diag</span>(distances) &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb396-7"><a href="loops.html#cb396-7"></a><span class="kw">dimnames</span>(distances) &lt;-<span class="st"> </span><span class="kw">list</span>(LETTERS, LETTERS)</span></code></pre></div>
 <p>The first 5 rows and columns of <code>distances</code> are:</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="loops.html#cb389-1"></a>distances[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
-<span id="cb389-2"><a href="loops.html#cb389-2"></a><span class="co">#&gt;     A   B   C  D   E</span></span>
-<span id="cb389-3"><a href="loops.html#cb389-3"></a><span class="co">#&gt; A   0 285 210 45 150</span></span>
-<span id="cb389-4"><a href="loops.html#cb389-4"></a><span class="co">#&gt; B 285   0 266 57 190</span></span>
-<span id="cb389-5"><a href="loops.html#cb389-5"></a><span class="co">#&gt; C 210 266   0 42 140</span></span>
-<span id="cb389-6"><a href="loops.html#cb389-6"></a><span class="co">#&gt; D  45  57  42  0  30</span></span>
-<span id="cb389-7"><a href="loops.html#cb389-7"></a><span class="co">#&gt; E 150 190 140 30   0</span></span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="loops.html#cb397-1"></a>distances[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb397-2"><a href="loops.html#cb397-2"></a><span class="co">#&gt;     A   B   C  D   E</span></span>
+<span id="cb397-3"><a href="loops.html#cb397-3"></a><span class="co">#&gt; A   0 285 210 45 150</span></span>
+<span id="cb397-4"><a href="loops.html#cb397-4"></a><span class="co">#&gt; B 285   0 266 57 190</span></span>
+<span id="cb397-5"><a href="loops.html#cb397-5"></a><span class="co">#&gt; C 210 266   0 42 140</span></span>
+<span id="cb397-6"><a href="loops.html#cb397-6"></a><span class="co">#&gt; D  45  57  42  0  30</span></span>
+<span id="cb397-7"><a href="loops.html#cb397-7"></a><span class="co">#&gt; E 150 190 140 30   0</span></span></code></pre></div>
 <p>Consider the following character vector <code>vec &lt;- c('E', 'D', 'A')</code>. The idea is
 to use the values in matrix <code>distances</code> to compute the total distance between
 the letters: that is from <code>E</code> to <code>D</code>, and then from <code>D</code> to <code>A</code>:</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="loops.html#cb390-1"></a><span class="co"># (E to D) + (D to A)</span></span>
-<span id="cb390-2"><a href="loops.html#cb390-2"></a><span class="dv">483</span> <span class="op">+</span><span class="st"> </span><span class="dv">168</span></span>
-<span id="cb390-3"><a href="loops.html#cb390-3"></a><span class="co">#&gt; [1] 651</span></span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="loops.html#cb398-1"></a><span class="co"># (E to D) + (D to A)</span></span>
+<span id="cb398-2"><a href="loops.html#cb398-2"></a><span class="dv">483</span> <span class="op">+</span><span class="st"> </span><span class="dv">168</span></span>
+<span id="cb398-3"><a href="loops.html#cb398-3"></a><span class="co">#&gt; [1] 651</span></span></code></pre></div>
 <p>Hence, you can say that the letters in the word <code>'E' 'D' 'A'</code> have a total distance value of 651.</p>
 </div>
 <div id="your-turn-7" class="section level3 unnumbered">
@@ -1154,11 +1155,11 @@ the letters: that is from <code>E</code> to <code>D</code>, and then from <code>
 a stopping condition—via <code>stop()</code>—for when a value in <code>ltrs</code> does not match
 any capital letter. The error message should be <code>"Unrecognized character"</code></p>
 <p>Here’s an example of how you should be able to invoke <code>get_dist()</code>:</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="loops.html#cb391-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;E&#39;</span>, <span class="st">&#39;D&#39;</span>, <span class="st">&#39;A&#39;</span>)</span>
-<span id="cb391-2"><a href="loops.html#cb391-2"></a><span class="kw">get_dist</span>(distances, vec)</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="loops.html#cb399-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;E&#39;</span>, <span class="st">&#39;D&#39;</span>, <span class="st">&#39;A&#39;</span>)</span>
+<span id="cb399-2"><a href="loops.html#cb399-2"></a><span class="kw">get_dist</span>(distances, vec)</span></code></pre></div>
 <p>And here’s an example that should raise an error:</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="loops.html#cb392-1"></a>err &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;E&#39;</span>, <span class="st">&#39;D&#39;</span>, <span class="st">&#39;)&#39;</span>)</span>
-<span id="cb392-2"><a href="loops.html#cb392-2"></a><span class="kw">get_dist</span>(distances, err)</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="loops.html#cb400-1"></a>err &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;E&#39;</span>, <span class="st">&#39;D&#39;</span>, <span class="st">&#39;)&#39;</span>)</span>
+<span id="cb400-2"><a href="loops.html#cb400-2"></a><span class="kw">get_dist</span>(distances, err)</span></code></pre></div>
 <p>Test your function with the following character vectors:</p>
 <ul>
 <li><code>cal &lt;- c('C', 'A', 'L')</code></li>
@@ -1171,16 +1172,16 @@ any capital letter. The error message should be <code>"Unrecognized character"</
 </ul>
 <p><strong>Your turn:</strong> Assuming that you already created the objects listed above,
 now create an R list <code>strings</code> like this:</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="loops.html#cb393-1"></a><span class="co"># use your own &#39;first&#39; and &#39;last&#39; objects</span></span>
-<span id="cb393-2"><a href="loops.html#cb393-2"></a>strings &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
-<span id="cb393-3"><a href="loops.html#cb393-3"></a>  <span class="dt">cal =</span> cal,</span>
-<span id="cb393-4"><a href="loops.html#cb393-4"></a>  <span class="dt">stats =</span> stats,</span>
-<span id="cb393-5"><a href="loops.html#cb393-5"></a>  <span class="dt">oski =</span> oski,</span>
-<span id="cb393-6"><a href="loops.html#cb393-6"></a>  <span class="dt">zzz =</span> zzz,</span>
-<span id="cb393-7"><a href="loops.html#cb393-7"></a>  <span class="dt">lets =</span> lets,</span>
-<span id="cb393-8"><a href="loops.html#cb393-8"></a>  <span class="dt">first =</span> first,</span>
-<span id="cb393-9"><a href="loops.html#cb393-9"></a>  <span class="dt">last =</span> last</span>
-<span id="cb393-10"><a href="loops.html#cb393-10"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="loops.html#cb401-1"></a><span class="co"># use your own &#39;first&#39; and &#39;last&#39; objects</span></span>
+<span id="cb401-2"><a href="loops.html#cb401-2"></a>strings &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb401-3"><a href="loops.html#cb401-3"></a>  <span class="dt">cal =</span> cal,</span>
+<span id="cb401-4"><a href="loops.html#cb401-4"></a>  <span class="dt">stats =</span> stats,</span>
+<span id="cb401-5"><a href="loops.html#cb401-5"></a>  <span class="dt">oski =</span> oski,</span>
+<span id="cb401-6"><a href="loops.html#cb401-6"></a>  <span class="dt">zzz =</span> zzz,</span>
+<span id="cb401-7"><a href="loops.html#cb401-7"></a>  <span class="dt">lets =</span> lets,</span>
+<span id="cb401-8"><a href="loops.html#cb401-8"></a>  <span class="dt">first =</span> first,</span>
+<span id="cb401-9"><a href="loops.html#cb401-9"></a>  <span class="dt">last =</span> last</span>
+<span id="cb401-10"><a href="loops.html#cb401-10"></a>)</span></code></pre></div>
 <p>Write a <code>for()</code> loop to iterate over the elements in <code>strings</code>, and compute
 their distances. At each iteration, store the calculated distances in a list
 called <code>strings_dists</code>; this list should have the same names as <code>strings</code>.</p>

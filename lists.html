@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -686,27 +687,27 @@ container in R.</p>
 creates a list the same way <code>c()</code> creates a vector. Let’s start with a simple
 example creating three numeric vectors of same length, that we then use to
 store them in a list:</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="lists.html#cb223-1"></a>vec1 &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
-<span id="cb223-2"><a href="lists.html#cb223-2"></a>vec2 &lt;-<span class="st"> </span><span class="dv">4</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb223-3"><a href="lists.html#cb223-3"></a>vec3 &lt;-<span class="st"> </span><span class="dv">7</span><span class="op">:</span><span class="dv">9</span></span>
-<span id="cb223-4"><a href="lists.html#cb223-4"></a></span>
-<span id="cb223-5"><a href="lists.html#cb223-5"></a><span class="co"># list with unnamed elements</span></span>
-<span id="cb223-6"><a href="lists.html#cb223-6"></a>lis &lt;-<span class="st"> </span><span class="kw">list</span>(vec1, vec2, vec3)</span>
-<span id="cb223-7"><a href="lists.html#cb223-7"></a>lis</span>
-<span id="cb223-8"><a href="lists.html#cb223-8"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb223-9"><a href="lists.html#cb223-9"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb223-10"><a href="lists.html#cb223-10"></a><span class="co">#&gt; </span></span>
-<span id="cb223-11"><a href="lists.html#cb223-11"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb223-12"><a href="lists.html#cb223-12"></a><span class="co">#&gt; [1] 4 5 6</span></span>
-<span id="cb223-13"><a href="lists.html#cb223-13"></a><span class="co">#&gt; </span></span>
-<span id="cb223-14"><a href="lists.html#cb223-14"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb223-15"><a href="lists.html#cb223-15"></a><span class="co">#&gt; [1] 7 8 9</span></span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="lists.html#cb231-1"></a>vec1 &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
+<span id="cb231-2"><a href="lists.html#cb231-2"></a>vec2 &lt;-<span class="st"> </span><span class="dv">4</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb231-3"><a href="lists.html#cb231-3"></a>vec3 &lt;-<span class="st"> </span><span class="dv">7</span><span class="op">:</span><span class="dv">9</span></span>
+<span id="cb231-4"><a href="lists.html#cb231-4"></a></span>
+<span id="cb231-5"><a href="lists.html#cb231-5"></a><span class="co"># list with unnamed elements</span></span>
+<span id="cb231-6"><a href="lists.html#cb231-6"></a>lis &lt;-<span class="st"> </span><span class="kw">list</span>(vec1, vec2, vec3)</span>
+<span id="cb231-7"><a href="lists.html#cb231-7"></a>lis</span>
+<span id="cb231-8"><a href="lists.html#cb231-8"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb231-9"><a href="lists.html#cb231-9"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb231-10"><a href="lists.html#cb231-10"></a><span class="co">#&gt; </span></span>
+<span id="cb231-11"><a href="lists.html#cb231-11"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb231-12"><a href="lists.html#cb231-12"></a><span class="co">#&gt; [1] 4 5 6</span></span>
+<span id="cb231-13"><a href="lists.html#cb231-13"></a><span class="co">#&gt; </span></span>
+<span id="cb231-14"><a href="lists.html#cb231-14"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb231-15"><a href="lists.html#cb231-15"></a><span class="co">#&gt; [1] 7 8 9</span></span></code></pre></div>
 <p>Note how the contents of a list with unnamed elements are displayed: there is a
 set of double brackets with an index indicating the position of each element,
 and below each double bracket the corresponding vector is printed.</p>
 <p>For illustration purposes, we could visualize the three input vectors and the
 list with the following conceptual diagram.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-224"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-220"></span>
 <img src="images/objects/obj-list-vectors1.svg" alt="A list containing three unnamed elements (numeric vectors of length 3)" width="60%" />
 <p class="caption">
 Figure 17.1: A list containing three unnamed elements (numeric vectors of length 3)
@@ -718,38 +719,38 @@ special type of vector: a <strong>non-atomic vector</strong>. This means that ea
 of a list can be any kind of object.</p>
 <p>In the same way you can give names to elements of a vector, you can also give
 names to elements of a list:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="lists.html#cb224-1"></a><span class="co"># list with named elements</span></span>
-<span id="cb224-2"><a href="lists.html#cb224-2"></a>lis &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;vec1&quot;</span> =<span class="st"> </span>vec1, <span class="st">&quot;vec2&quot;</span> =<span class="st"> </span>vec2, <span class="st">&quot;vec3&quot;</span> =<span class="st"> </span>vec3)</span>
-<span id="cb224-3"><a href="lists.html#cb224-3"></a>lis</span>
-<span id="cb224-4"><a href="lists.html#cb224-4"></a><span class="co">#&gt; $vec1</span></span>
-<span id="cb224-5"><a href="lists.html#cb224-5"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb224-6"><a href="lists.html#cb224-6"></a><span class="co">#&gt; </span></span>
-<span id="cb224-7"><a href="lists.html#cb224-7"></a><span class="co">#&gt; $vec2</span></span>
-<span id="cb224-8"><a href="lists.html#cb224-8"></a><span class="co">#&gt; [1] 4 5 6</span></span>
-<span id="cb224-9"><a href="lists.html#cb224-9"></a><span class="co">#&gt; </span></span>
-<span id="cb224-10"><a href="lists.html#cb224-10"></a><span class="co">#&gt; $vec3</span></span>
-<span id="cb224-11"><a href="lists.html#cb224-11"></a><span class="co">#&gt; [1] 7 8 9</span></span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="lists.html#cb232-1"></a><span class="co"># list with named elements</span></span>
+<span id="cb232-2"><a href="lists.html#cb232-2"></a>lis &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;vec1&quot;</span> =<span class="st"> </span>vec1, <span class="st">&quot;vec2&quot;</span> =<span class="st"> </span>vec2, <span class="st">&quot;vec3&quot;</span> =<span class="st"> </span>vec3)</span>
+<span id="cb232-3"><a href="lists.html#cb232-3"></a>lis</span>
+<span id="cb232-4"><a href="lists.html#cb232-4"></a><span class="co">#&gt; $vec1</span></span>
+<span id="cb232-5"><a href="lists.html#cb232-5"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb232-6"><a href="lists.html#cb232-6"></a><span class="co">#&gt; </span></span>
+<span id="cb232-7"><a href="lists.html#cb232-7"></a><span class="co">#&gt; $vec2</span></span>
+<span id="cb232-8"><a href="lists.html#cb232-8"></a><span class="co">#&gt; [1] 4 5 6</span></span>
+<span id="cb232-9"><a href="lists.html#cb232-9"></a><span class="co">#&gt; </span></span>
+<span id="cb232-10"><a href="lists.html#cb232-10"></a><span class="co">#&gt; $vec3</span></span>
+<span id="cb232-11"><a href="lists.html#cb232-11"></a><span class="co">#&gt; [1] 7 8 9</span></span></code></pre></div>
 <p>When you create a list in this form, you can actually omit the quotes of
 the given names. While this option of naming elements may create a bit of
 confusion for beginners and inexperienced users in R, we believe it’s not a big
 deal (based on our experience):</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="lists.html#cb225-1"></a><span class="co"># another option for giving names to elements in a list</span></span>
-<span id="cb225-2"><a href="lists.html#cb225-2"></a>lis &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">vec1 =</span> vec1, <span class="dt">vec2 =</span> vec2, <span class="dt">vec3 =</span> vec3)</span>
-<span id="cb225-3"><a href="lists.html#cb225-3"></a>lis</span>
-<span id="cb225-4"><a href="lists.html#cb225-4"></a><span class="co">#&gt; $vec1</span></span>
-<span id="cb225-5"><a href="lists.html#cb225-5"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb225-6"><a href="lists.html#cb225-6"></a><span class="co">#&gt; </span></span>
-<span id="cb225-7"><a href="lists.html#cb225-7"></a><span class="co">#&gt; $vec2</span></span>
-<span id="cb225-8"><a href="lists.html#cb225-8"></a><span class="co">#&gt; [1] 4 5 6</span></span>
-<span id="cb225-9"><a href="lists.html#cb225-9"></a><span class="co">#&gt; </span></span>
-<span id="cb225-10"><a href="lists.html#cb225-10"></a><span class="co">#&gt; $vec3</span></span>
-<span id="cb225-11"><a href="lists.html#cb225-11"></a><span class="co">#&gt; [1] 7 8 9</span></span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="lists.html#cb233-1"></a><span class="co"># another option for giving names to elements in a list</span></span>
+<span id="cb233-2"><a href="lists.html#cb233-2"></a>lis &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">vec1 =</span> vec1, <span class="dt">vec2 =</span> vec2, <span class="dt">vec3 =</span> vec3)</span>
+<span id="cb233-3"><a href="lists.html#cb233-3"></a>lis</span>
+<span id="cb233-4"><a href="lists.html#cb233-4"></a><span class="co">#&gt; $vec1</span></span>
+<span id="cb233-5"><a href="lists.html#cb233-5"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb233-6"><a href="lists.html#cb233-6"></a><span class="co">#&gt; </span></span>
+<span id="cb233-7"><a href="lists.html#cb233-7"></a><span class="co">#&gt; $vec2</span></span>
+<span id="cb233-8"><a href="lists.html#cb233-8"></a><span class="co">#&gt; [1] 4 5 6</span></span>
+<span id="cb233-9"><a href="lists.html#cb233-9"></a><span class="co">#&gt; </span></span>
+<span id="cb233-10"><a href="lists.html#cb233-10"></a><span class="co">#&gt; $vec3</span></span>
+<span id="cb233-11"><a href="lists.html#cb233-11"></a><span class="co">#&gt; [1] 7 8 9</span></span></code></pre></div>
 <p>Observe how the contents of a list with named elements are displayed: now,
 instead of the set of double brackets, there is a dollar sign followed by the
 name of the element, e.g. <code>$vec1</code>. Below each name, the corresponding vector is
 printed.</p>
 <p>The conceptual diagram in this case could look like this:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-227"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-223"></span>
 <img src="images/objects/obj-list-vectors2.svg" alt="A list with named elements (numeric vectors of length 3)" width="60%" />
 <p class="caption">
 Figure 17.2: A list with named elements (numeric vectors of length 3)
@@ -758,53 +759,53 @@ Figure 17.2: A list with named elements (numeric vectors of length 3)
 <p>As we just said, the elements of a list can be any kind of R object. For
 example, here’s a list called <code>lst</code> that contains a character vector, a
 numeric matrix, a factor, and another list:</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="lists.html#cb226-1"></a>lst &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
-<span id="cb226-2"><a href="lists.html#cb226-2"></a>  <span class="kw">c</span>(<span class="st">&quot;Harry&quot;</span>, <span class="st">&quot;Ron&quot;</span>, <span class="st">&quot;Hermione&quot;</span>),</span>
-<span id="cb226-3"><a href="lists.html#cb226-3"></a>  <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>),</span>
-<span id="cb226-4"><a href="lists.html#cb226-4"></a>  <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)),</span>
-<span id="cb226-5"><a href="lists.html#cb226-5"></a>  <span class="kw">list</span>(<span class="st">&quot;Harry&quot;</span>, <span class="st">&quot;Ron&quot;</span>, <span class="st">&quot;Hermione&quot;</span>)</span>
-<span id="cb226-6"><a href="lists.html#cb226-6"></a>)</span>
-<span id="cb226-7"><a href="lists.html#cb226-7"></a></span>
-<span id="cb226-8"><a href="lists.html#cb226-8"></a>lst</span>
-<span id="cb226-9"><a href="lists.html#cb226-9"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb226-10"><a href="lists.html#cb226-10"></a><span class="co">#&gt; [1] &quot;Harry&quot;    &quot;Ron&quot;      &quot;Hermione&quot;</span></span>
-<span id="cb226-11"><a href="lists.html#cb226-11"></a><span class="co">#&gt; </span></span>
-<span id="cb226-12"><a href="lists.html#cb226-12"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb226-13"><a href="lists.html#cb226-13"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb226-14"><a href="lists.html#cb226-14"></a><span class="co">#&gt; [1,]    1    3    5</span></span>
-<span id="cb226-15"><a href="lists.html#cb226-15"></a><span class="co">#&gt; [2,]    2    4    6</span></span>
-<span id="cb226-16"><a href="lists.html#cb226-16"></a><span class="co">#&gt; </span></span>
-<span id="cb226-17"><a href="lists.html#cb226-17"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb226-18"><a href="lists.html#cb226-18"></a><span class="co">#&gt; [1] yes no  no  no  yes</span></span>
-<span id="cb226-19"><a href="lists.html#cb226-19"></a><span class="co">#&gt; Levels: no yes</span></span>
-<span id="cb226-20"><a href="lists.html#cb226-20"></a><span class="co">#&gt; </span></span>
-<span id="cb226-21"><a href="lists.html#cb226-21"></a><span class="co">#&gt; [[4]]</span></span>
-<span id="cb226-22"><a href="lists.html#cb226-22"></a><span class="co">#&gt; [[4]][[1]]</span></span>
-<span id="cb226-23"><a href="lists.html#cb226-23"></a><span class="co">#&gt; [1] &quot;Harry&quot;</span></span>
-<span id="cb226-24"><a href="lists.html#cb226-24"></a><span class="co">#&gt; </span></span>
-<span id="cb226-25"><a href="lists.html#cb226-25"></a><span class="co">#&gt; [[4]][[2]]</span></span>
-<span id="cb226-26"><a href="lists.html#cb226-26"></a><span class="co">#&gt; [1] &quot;Ron&quot;</span></span>
-<span id="cb226-27"><a href="lists.html#cb226-27"></a><span class="co">#&gt; </span></span>
-<span id="cb226-28"><a href="lists.html#cb226-28"></a><span class="co">#&gt; [[4]][[3]]</span></span>
-<span id="cb226-29"><a href="lists.html#cb226-29"></a><span class="co">#&gt; [1] &quot;Hermione&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="lists.html#cb234-1"></a>lst &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb234-2"><a href="lists.html#cb234-2"></a>  <span class="kw">c</span>(<span class="st">&quot;Harry&quot;</span>, <span class="st">&quot;Ron&quot;</span>, <span class="st">&quot;Hermione&quot;</span>),</span>
+<span id="cb234-3"><a href="lists.html#cb234-3"></a>  <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>),</span>
+<span id="cb234-4"><a href="lists.html#cb234-4"></a>  <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)),</span>
+<span id="cb234-5"><a href="lists.html#cb234-5"></a>  <span class="kw">list</span>(<span class="st">&quot;Harry&quot;</span>, <span class="st">&quot;Ron&quot;</span>, <span class="st">&quot;Hermione&quot;</span>)</span>
+<span id="cb234-6"><a href="lists.html#cb234-6"></a>)</span>
+<span id="cb234-7"><a href="lists.html#cb234-7"></a></span>
+<span id="cb234-8"><a href="lists.html#cb234-8"></a>lst</span>
+<span id="cb234-9"><a href="lists.html#cb234-9"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb234-10"><a href="lists.html#cb234-10"></a><span class="co">#&gt; [1] &quot;Harry&quot;    &quot;Ron&quot;      &quot;Hermione&quot;</span></span>
+<span id="cb234-11"><a href="lists.html#cb234-11"></a><span class="co">#&gt; </span></span>
+<span id="cb234-12"><a href="lists.html#cb234-12"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb234-13"><a href="lists.html#cb234-13"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb234-14"><a href="lists.html#cb234-14"></a><span class="co">#&gt; [1,]    1    3    5</span></span>
+<span id="cb234-15"><a href="lists.html#cb234-15"></a><span class="co">#&gt; [2,]    2    4    6</span></span>
+<span id="cb234-16"><a href="lists.html#cb234-16"></a><span class="co">#&gt; </span></span>
+<span id="cb234-17"><a href="lists.html#cb234-17"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb234-18"><a href="lists.html#cb234-18"></a><span class="co">#&gt; [1] yes no  no  no  yes</span></span>
+<span id="cb234-19"><a href="lists.html#cb234-19"></a><span class="co">#&gt; Levels: no yes</span></span>
+<span id="cb234-20"><a href="lists.html#cb234-20"></a><span class="co">#&gt; </span></span>
+<span id="cb234-21"><a href="lists.html#cb234-21"></a><span class="co">#&gt; [[4]]</span></span>
+<span id="cb234-22"><a href="lists.html#cb234-22"></a><span class="co">#&gt; [[4]][[1]]</span></span>
+<span id="cb234-23"><a href="lists.html#cb234-23"></a><span class="co">#&gt; [1] &quot;Harry&quot;</span></span>
+<span id="cb234-24"><a href="lists.html#cb234-24"></a><span class="co">#&gt; </span></span>
+<span id="cb234-25"><a href="lists.html#cb234-25"></a><span class="co">#&gt; [[4]][[2]]</span></span>
+<span id="cb234-26"><a href="lists.html#cb234-26"></a><span class="co">#&gt; [1] &quot;Ron&quot;</span></span>
+<span id="cb234-27"><a href="lists.html#cb234-27"></a><span class="co">#&gt; </span></span>
+<span id="cb234-28"><a href="lists.html#cb234-28"></a><span class="co">#&gt; [[4]][[3]]</span></span>
+<span id="cb234-29"><a href="lists.html#cb234-29"></a><span class="co">#&gt; [1] &quot;Hermione&quot;</span></span></code></pre></div>
 <p>Whenever possible, we strongly recommend giving names to the elements of a list.
 Not only this makes it easy to identify one element from the others, but it also
 gives you more flexibility to rearrange the contents of the list without having
 to worry about the exact order or position they occupy.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="lists.html#cb227-1"></a><span class="co"># whenever possible, give names to elements in a list</span></span>
-<span id="cb227-2"><a href="lists.html#cb227-2"></a>lst &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
-<span id="cb227-3"><a href="lists.html#cb227-3"></a>  <span class="dt">first =</span> <span class="kw">c</span>(<span class="st">&quot;Harry&quot;</span>, <span class="st">&quot;Ron&quot;</span>, <span class="st">&quot;Hermione&quot;</span>),</span>
-<span id="cb227-4"><a href="lists.html#cb227-4"></a>  <span class="dt">second =</span> <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>),</span>
-<span id="cb227-5"><a href="lists.html#cb227-5"></a>  <span class="dt">third =</span> <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)),</span>
-<span id="cb227-6"><a href="lists.html#cb227-6"></a>  <span class="dt">fourth =</span> <span class="kw">list</span>(<span class="st">&quot;Harry&quot;</span>, <span class="st">&quot;Ron&quot;</span>, <span class="st">&quot;Hermione&quot;</span>)</span>
-<span id="cb227-7"><a href="lists.html#cb227-7"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="lists.html#cb235-1"></a><span class="co"># whenever possible, give names to elements in a list</span></span>
+<span id="cb235-2"><a href="lists.html#cb235-2"></a>lst &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb235-3"><a href="lists.html#cb235-3"></a>  <span class="dt">first =</span> <span class="kw">c</span>(<span class="st">&quot;Harry&quot;</span>, <span class="st">&quot;Ron&quot;</span>, <span class="st">&quot;Hermione&quot;</span>),</span>
+<span id="cb235-4"><a href="lists.html#cb235-4"></a>  <span class="dt">second =</span> <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>),</span>
+<span id="cb235-5"><a href="lists.html#cb235-5"></a>  <span class="dt">third =</span> <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)),</span>
+<span id="cb235-6"><a href="lists.html#cb235-6"></a>  <span class="dt">fourth =</span> <span class="kw">list</span>(<span class="st">&quot;Harry&quot;</span>, <span class="st">&quot;Ron&quot;</span>, <span class="st">&quot;Hermione&quot;</span>)</span>
+<span id="cb235-7"><a href="lists.html#cb235-7"></a>)</span></code></pre></div>
 </div>
 <div id="manipulating-lists" class="section level2">
 <h2><span class="header-section-number">17.2</span> Manipulating Lists</h2>
 <p>To manipulate the elements of a list you can use bracket notation. Because a
 list is a vector, you can use single brackets (e.g. <code>lis[1]</code>) as well as
 double brackets (e.g. <code>lis[[1]]</code>).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-230"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-226"></span>
 <img src="images/objects/obj-list-brackets1.svg" alt="Bracket notation with lists" width="75%" />
 <p class="caption">
 Figure 17.3: Bracket notation with lists
@@ -815,12 +816,12 @@ Figure 17.3: Bracket notation with lists
 <p>Just like any other vector, and any other data object in R, you can use single
 brackets on a list. For example, consider the unnamed version of a list, and
 the use of single brackets with index <code>1</code> inside them:</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="lists.html#cb228-1"></a><span class="co"># list with unnamed elements</span></span>
-<span id="cb228-2"><a href="lists.html#cb228-2"></a>lis &lt;-<span class="st"> </span><span class="kw">list</span>(vec1, vec2, vec3)</span>
-<span id="cb228-3"><a href="lists.html#cb228-3"></a></span>
-<span id="cb228-4"><a href="lists.html#cb228-4"></a>lis[<span class="dv">1</span>]</span>
-<span id="cb228-5"><a href="lists.html#cb228-5"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb228-6"><a href="lists.html#cb228-6"></a><span class="co">#&gt; [1] 1 2 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="lists.html#cb236-1"></a><span class="co"># list with unnamed elements</span></span>
+<span id="cb236-2"><a href="lists.html#cb236-2"></a>lis &lt;-<span class="st"> </span><span class="kw">list</span>(vec1, vec2, vec3)</span>
+<span id="cb236-3"><a href="lists.html#cb236-3"></a></span>
+<span id="cb236-4"><a href="lists.html#cb236-4"></a>lis[<span class="dv">1</span>]</span>
+<span id="cb236-5"><a href="lists.html#cb236-5"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb236-6"><a href="lists.html#cb236-6"></a><span class="co">#&gt; [1] 1 2 3</span></span></code></pre></div>
 <p>What a single bracket does, is give you access to the “container” of the
 specified element but without “unboxing” its contents. This is reflected by
 the way in which the output is displayed: note the double bracket <code>[[1]]</code> in
@@ -829,7 +830,7 @@ the first line, and then <code>[1] 1 2 3</code> in the second line.</p>
 contains a vector, but it does not give you direct access to the vector itself.
 Put another way, <code>lis[1]</code> lets you see that the first element of the list is
 a vector, but this vector is still <em>inside</em> its “box”.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-232"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-228"></span>
 <img src="images/objects/obj-list-brackets2.svg" alt="Use single brackets to select an element" width="75%" />
 <p class="caption">
 Figure 17.4: Use single brackets to select an element
@@ -840,22 +841,22 @@ Figure 17.4: Use single brackets to select an element
 <h3><span class="header-section-number">17.2.2</span> Double Brackets</h3>
 <p>In addition to single brackets, lists also accept double brackets: e.g. 
 <code>lis[[1]]</code></p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="lists.html#cb229-1"></a>lis[[<span class="dv">1</span>]]</span>
-<span id="cb229-2"><a href="lists.html#cb229-2"></a><span class="co">#&gt; [1] 1 2 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="lists.html#cb237-1"></a>lis[[<span class="dv">1</span>]]</span>
+<span id="cb237-2"><a href="lists.html#cb237-2"></a><span class="co">#&gt; [1] 1 2 3</span></span></code></pre></div>
 <p>Double brackets are used when you want to get access to the content of the
 list’s elements. Notice the output of the previous command: now there are no
 double brackets, just the output of the vector in the first position. Think
 of this command as “unboxing” the object of the first element in <code>lis</code>.</p>
 <p>What if you want to manipulate the elements of vector <code>vec1</code> or <code>vec2</code>? Use
 double brackets followed by single brackets</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="lists.html#cb230-1"></a><span class="co"># second index of first list&#39;s element</span></span>
-<span id="cb230-2"><a href="lists.html#cb230-2"></a>lis[[<span class="dv">1</span>]][<span class="dv">2</span>]</span>
-<span id="cb230-3"><a href="lists.html#cb230-3"></a><span class="co">#&gt; [1] 2</span></span>
-<span id="cb230-4"><a href="lists.html#cb230-4"></a></span>
-<span id="cb230-5"><a href="lists.html#cb230-5"></a><span class="co"># first index of second list&#39;s element</span></span>
-<span id="cb230-6"><a href="lists.html#cb230-6"></a>lis[[<span class="dv">2</span>]][<span class="dv">1</span>]</span>
-<span id="cb230-7"><a href="lists.html#cb230-7"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-235"></span>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="lists.html#cb238-1"></a><span class="co"># second index of first list&#39;s element</span></span>
+<span id="cb238-2"><a href="lists.html#cb238-2"></a>lis[[<span class="dv">1</span>]][<span class="dv">2</span>]</span>
+<span id="cb238-3"><a href="lists.html#cb238-3"></a><span class="co">#&gt; [1] 2</span></span>
+<span id="cb238-4"><a href="lists.html#cb238-4"></a></span>
+<span id="cb238-5"><a href="lists.html#cb238-5"></a><span class="co"># first index of second list&#39;s element</span></span>
+<span id="cb238-6"><a href="lists.html#cb238-6"></a>lis[[<span class="dv">2</span>]][<span class="dv">1</span>]</span>
+<span id="cb238-7"><a href="lists.html#cb238-7"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-231"></span>
 <img src="images/objects/obj-list-brackets3.svg" alt="Use double brackets to extract an element" width="75%" />
 <p class="caption">
 Figure 17.5: Use double brackets to extract an element
@@ -866,18 +867,18 @@ Figure 17.5: Use double brackets to extract an element
 <h3><span class="header-section-number">17.2.3</span> Dollar signs</h3>
 <p>R lists—and data frames—follow an optional second system of notation for
 extracting <strong>named elements</strong> using the dollar sign <strong><code>$</code></strong></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-236"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-232"></span>
 <img src="images/objects/obj-list-dollars1.svg" alt="Dollar notation with lists" width="60%" />
 <p class="caption">
 Figure 17.6: Dollar notation with lists
 </p>
 </div>
 <p>Let’s use the named version of <code>lis</code>:</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="lists.html#cb231-1"></a><span class="co"># list with named elements</span></span>
-<span id="cb231-2"><a href="lists.html#cb231-2"></a>lis &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;vec1&quot;</span> =<span class="st"> </span>vec1, <span class="st">&quot;vec2&quot;</span> =<span class="st"> </span>vec2, <span class="st">&quot;vec3&quot;</span> =<span class="st"> </span>vec3)</span>
-<span id="cb231-3"><a href="lists.html#cb231-3"></a></span>
-<span id="cb231-4"><a href="lists.html#cb231-4"></a>lis<span class="op">$</span>vec1</span>
-<span id="cb231-5"><a href="lists.html#cb231-5"></a><span class="co">#&gt; [1] 1 2 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="lists.html#cb239-1"></a><span class="co"># list with named elements</span></span>
+<span id="cb239-2"><a href="lists.html#cb239-2"></a>lis &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;vec1&quot;</span> =<span class="st"> </span>vec1, <span class="st">&quot;vec2&quot;</span> =<span class="st"> </span>vec2, <span class="st">&quot;vec3&quot;</span> =<span class="st"> </span>vec3)</span>
+<span id="cb239-3"><a href="lists.html#cb239-3"></a></span>
+<span id="cb239-4"><a href="lists.html#cb239-4"></a>lis<span class="op">$</span>vec1</span>
+<span id="cb239-5"><a href="lists.html#cb239-5"></a><span class="co">#&gt; [1] 1 2 3</span></span></code></pre></div>
 <p>The dollar sign <strong><code>$</code></strong> notation works for selecting <strong>named elements</strong> in a
 list. Notice the output of the above command: <code>lis$vec1</code> gives you vector
 <code>1 2 3</code>. In other words, dollar notation “unboxes” the object that is associated
@@ -887,45 +888,45 @@ to the specified name.</p>
 <h3><span class="header-section-number">17.2.4</span> Adding new elements</h3>
 <p>From time to time, you will want to add one or more elements to an existing
 list. For instance, consider a list <code>lst</code> with two elements:</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="lists.html#cb232-1"></a>lst &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>))</span>
-<span id="cb232-2"><a href="lists.html#cb232-2"></a></span>
-<span id="cb232-3"><a href="lists.html#cb232-3"></a>lst</span>
-<span id="cb232-4"><a href="lists.html#cb232-4"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb232-5"><a href="lists.html#cb232-5"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb232-6"><a href="lists.html#cb232-6"></a><span class="co">#&gt; </span></span>
-<span id="cb232-7"><a href="lists.html#cb232-7"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb232-8"><a href="lists.html#cb232-8"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="lists.html#cb240-1"></a>lst &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>))</span>
+<span id="cb240-2"><a href="lists.html#cb240-2"></a></span>
+<span id="cb240-3"><a href="lists.html#cb240-3"></a>lst</span>
+<span id="cb240-4"><a href="lists.html#cb240-4"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb240-5"><a href="lists.html#cb240-5"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb240-6"><a href="lists.html#cb240-6"></a><span class="co">#&gt; </span></span>
+<span id="cb240-7"><a href="lists.html#cb240-7"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb240-8"><a href="lists.html#cb240-8"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span></code></pre></div>
 <p>Say you want to add a logical vector as a third element to <code>lst</code>. One option to
 do this is with double brackets, specifying a new index position to which you
 assign the new element:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="lists.html#cb233-1"></a>lst[[<span class="dv">3</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)</span>
-<span id="cb233-2"><a href="lists.html#cb233-2"></a></span>
-<span id="cb233-3"><a href="lists.html#cb233-3"></a>lst</span>
-<span id="cb233-4"><a href="lists.html#cb233-4"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb233-5"><a href="lists.html#cb233-5"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb233-6"><a href="lists.html#cb233-6"></a><span class="co">#&gt; </span></span>
-<span id="cb233-7"><a href="lists.html#cb233-7"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb233-8"><a href="lists.html#cb233-8"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span>
-<span id="cb233-9"><a href="lists.html#cb233-9"></a><span class="co">#&gt; </span></span>
-<span id="cb233-10"><a href="lists.html#cb233-10"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb233-11"><a href="lists.html#cb233-11"></a><span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="lists.html#cb241-1"></a>lst[[<span class="dv">3</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)</span>
+<span id="cb241-2"><a href="lists.html#cb241-2"></a></span>
+<span id="cb241-3"><a href="lists.html#cb241-3"></a>lst</span>
+<span id="cb241-4"><a href="lists.html#cb241-4"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb241-5"><a href="lists.html#cb241-5"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb241-6"><a href="lists.html#cb241-6"></a><span class="co">#&gt; </span></span>
+<span id="cb241-7"><a href="lists.html#cb241-7"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb241-8"><a href="lists.html#cb241-8"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span>
+<span id="cb241-9"><a href="lists.html#cb241-9"></a><span class="co">#&gt; </span></span>
+<span id="cb241-10"><a href="lists.html#cb241-10"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb241-11"><a href="lists.html#cb241-11"></a><span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE</span></span></code></pre></div>
 <p>Another option is to use the dollar operator by giving a new name to which you
 assign the new element. Even though the previous elements in <code>lst</code>are unnamed,
 the new added element will have an associated label:</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="lists.html#cb234-1"></a>lst<span class="op">$</span>new_elem &lt;-<span class="st"> &#39;nuevo&#39;</span></span>
-<span id="cb234-2"><a href="lists.html#cb234-2"></a></span>
-<span id="cb234-3"><a href="lists.html#cb234-3"></a>lst</span>
-<span id="cb234-4"><a href="lists.html#cb234-4"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb234-5"><a href="lists.html#cb234-5"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb234-6"><a href="lists.html#cb234-6"></a><span class="co">#&gt; </span></span>
-<span id="cb234-7"><a href="lists.html#cb234-7"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb234-8"><a href="lists.html#cb234-8"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span>
-<span id="cb234-9"><a href="lists.html#cb234-9"></a><span class="co">#&gt; </span></span>
-<span id="cb234-10"><a href="lists.html#cb234-10"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb234-11"><a href="lists.html#cb234-11"></a><span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE</span></span>
-<span id="cb234-12"><a href="lists.html#cb234-12"></a><span class="co">#&gt; </span></span>
-<span id="cb234-13"><a href="lists.html#cb234-13"></a><span class="co">#&gt; $new_elem</span></span>
-<span id="cb234-14"><a href="lists.html#cb234-14"></a><span class="co">#&gt; [1] &quot;nuevo&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="lists.html#cb242-1"></a>lst<span class="op">$</span>new_elem &lt;-<span class="st"> &#39;nuevo&#39;</span></span>
+<span id="cb242-2"><a href="lists.html#cb242-2"></a></span>
+<span id="cb242-3"><a href="lists.html#cb242-3"></a>lst</span>
+<span id="cb242-4"><a href="lists.html#cb242-4"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb242-5"><a href="lists.html#cb242-5"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb242-6"><a href="lists.html#cb242-6"></a><span class="co">#&gt; </span></span>
+<span id="cb242-7"><a href="lists.html#cb242-7"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb242-8"><a href="lists.html#cb242-8"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span>
+<span id="cb242-9"><a href="lists.html#cb242-9"></a><span class="co">#&gt; </span></span>
+<span id="cb242-10"><a href="lists.html#cb242-10"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb242-11"><a href="lists.html#cb242-11"></a><span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE</span></span>
+<span id="cb242-12"><a href="lists.html#cb242-12"></a><span class="co">#&gt; </span></span>
+<span id="cb242-13"><a href="lists.html#cb242-13"></a><span class="co">#&gt; $new_elem</span></span>
+<span id="cb242-14"><a href="lists.html#cb242-14"></a><span class="co">#&gt; [1] &quot;nuevo&quot;</span></span></code></pre></div>
 </div>
 <div id="removing-elements" class="section level3">
 <h3><span class="header-section-number">17.2.5</span> Removing elements</h3>
@@ -933,39 +934,39 @@ the new added element will have an associated label:</p>
 occasions in which you need to remove one or more elements. Take the previous
 list <code>lst</code> with four elements, and say you want to remove the third element
 (containing the logical vector)</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="lists.html#cb235-1"></a>lst</span>
-<span id="cb235-2"><a href="lists.html#cb235-2"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb235-3"><a href="lists.html#cb235-3"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb235-4"><a href="lists.html#cb235-4"></a><span class="co">#&gt; </span></span>
-<span id="cb235-5"><a href="lists.html#cb235-5"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb235-6"><a href="lists.html#cb235-6"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span>
-<span id="cb235-7"><a href="lists.html#cb235-7"></a><span class="co">#&gt; </span></span>
-<span id="cb235-8"><a href="lists.html#cb235-8"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb235-9"><a href="lists.html#cb235-9"></a><span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE</span></span>
-<span id="cb235-10"><a href="lists.html#cb235-10"></a><span class="co">#&gt; </span></span>
-<span id="cb235-11"><a href="lists.html#cb235-11"></a><span class="co">#&gt; $new_elem</span></span>
-<span id="cb235-12"><a href="lists.html#cb235-12"></a><span class="co">#&gt; [1] &quot;nuevo&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="lists.html#cb243-1"></a>lst</span>
+<span id="cb243-2"><a href="lists.html#cb243-2"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb243-3"><a href="lists.html#cb243-3"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb243-4"><a href="lists.html#cb243-4"></a><span class="co">#&gt; </span></span>
+<span id="cb243-5"><a href="lists.html#cb243-5"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb243-6"><a href="lists.html#cb243-6"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span>
+<span id="cb243-7"><a href="lists.html#cb243-7"></a><span class="co">#&gt; </span></span>
+<span id="cb243-8"><a href="lists.html#cb243-8"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb243-9"><a href="lists.html#cb243-9"></a><span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE</span></span>
+<span id="cb243-10"><a href="lists.html#cb243-10"></a><span class="co">#&gt; </span></span>
+<span id="cb243-11"><a href="lists.html#cb243-11"></a><span class="co">#&gt; $new_elem</span></span>
+<span id="cb243-12"><a href="lists.html#cb243-12"></a><span class="co">#&gt; [1] &quot;nuevo&quot;</span></span></code></pre></div>
 <p>To remove the third element, which is unnamed, you use double brackets and
 assign a value <code>NULL</code> to that position:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="lists.html#cb236-1"></a>lst[[<span class="dv">3</span>]] &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
-<span id="cb236-2"><a href="lists.html#cb236-2"></a>lst</span>
-<span id="cb236-3"><a href="lists.html#cb236-3"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb236-4"><a href="lists.html#cb236-4"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb236-5"><a href="lists.html#cb236-5"></a><span class="co">#&gt; </span></span>
-<span id="cb236-6"><a href="lists.html#cb236-6"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb236-7"><a href="lists.html#cb236-7"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span>
-<span id="cb236-8"><a href="lists.html#cb236-8"></a><span class="co">#&gt; </span></span>
-<span id="cb236-9"><a href="lists.html#cb236-9"></a><span class="co">#&gt; $new_elem</span></span>
-<span id="cb236-10"><a href="lists.html#cb236-10"></a><span class="co">#&gt; [1] &quot;nuevo&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="lists.html#cb244-1"></a>lst[[<span class="dv">3</span>]] &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb244-2"><a href="lists.html#cb244-2"></a>lst</span>
+<span id="cb244-3"><a href="lists.html#cb244-3"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb244-4"><a href="lists.html#cb244-4"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb244-5"><a href="lists.html#cb244-5"></a><span class="co">#&gt; </span></span>
+<span id="cb244-6"><a href="lists.html#cb244-6"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb244-7"><a href="lists.html#cb244-7"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span>
+<span id="cb244-8"><a href="lists.html#cb244-8"></a><span class="co">#&gt; </span></span>
+<span id="cb244-9"><a href="lists.html#cb244-9"></a><span class="co">#&gt; $new_elem</span></span>
+<span id="cb244-10"><a href="lists.html#cb244-10"></a><span class="co">#&gt; [1] &quot;nuevo&quot;</span></span></code></pre></div>
 <p>As for those named elements, such as <code>lst$new_elem</code>, you do the same and assign
 a <code>NULL</code> value, but this time using dollar notation:</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="lists.html#cb237-1"></a>lst<span class="op">$</span>new_elem &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
-<span id="cb237-2"><a href="lists.html#cb237-2"></a>lst</span>
-<span id="cb237-3"><a href="lists.html#cb237-3"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb237-4"><a href="lists.html#cb237-4"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb237-5"><a href="lists.html#cb237-5"></a><span class="co">#&gt; </span></span>
-<span id="cb237-6"><a href="lists.html#cb237-6"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb237-7"><a href="lists.html#cb237-7"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="lists.html#cb245-1"></a>lst<span class="op">$</span>new_elem &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb245-2"><a href="lists.html#cb245-2"></a>lst</span>
+<span id="cb245-3"><a href="lists.html#cb245-3"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb245-4"><a href="lists.html#cb245-4"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb245-5"><a href="lists.html#cb245-5"></a><span class="co">#&gt; </span></span>
+<span id="cb245-6"><a href="lists.html#cb245-6"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb245-7"><a href="lists.html#cb245-7"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></span></code></pre></div>
 </div>
 <div id="slides-1" class="section level3">
 <h3><span class="header-section-number">17.2.6</span> Slides</h3>

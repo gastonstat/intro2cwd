@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -681,23 +682,23 @@ against the various dplyr syntax flavors.</p>
 <h3><span class="header-section-number">23.1.1</span> Starwars Data Set</h3>
 <p>In this tutorial we are going to use the data set <code>starwars</code> that comes in
 <code>"dplyr"</code>:</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="dplyr2.html#cb288-1"></a><span class="co"># data set</span></span>
-<span id="cb288-2"><a href="dplyr2.html#cb288-2"></a>starwars</span>
-<span id="cb288-3"><a href="dplyr2.html#cb288-3"></a><span class="co">#&gt; # A tibble: 87 x 13</span></span>
-<span id="cb288-4"><a href="dplyr2.html#cb288-4"></a><span class="co">#&gt;    name  height  mass hair_color skin_color eye_color birth_year gender</span></span>
-<span id="cb288-5"><a href="dplyr2.html#cb288-5"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; </span></span>
-<span id="cb288-6"><a href="dplyr2.html#cb288-6"></a><span class="co">#&gt;  1 Luke…    172    77 blond      fair       blue            19   male  </span></span>
-<span id="cb288-7"><a href="dplyr2.html#cb288-7"></a><span class="co">#&gt;  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;  </span></span>
-<span id="cb288-8"><a href="dplyr2.html#cb288-8"></a><span class="co">#&gt;  3 R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   &lt;NA&gt;  </span></span>
-<span id="cb288-9"><a href="dplyr2.html#cb288-9"></a><span class="co">#&gt;  4 Dart…    202   136 none       white      yellow          41.9 male  </span></span>
-<span id="cb288-10"><a href="dplyr2.html#cb288-10"></a><span class="co">#&gt;  5 Leia…    150    49 brown      light      brown           19   female</span></span>
-<span id="cb288-11"><a href="dplyr2.html#cb288-11"></a><span class="co">#&gt;  6 Owen…    178   120 brown, gr… light      blue            52   male  </span></span>
-<span id="cb288-12"><a href="dplyr2.html#cb288-12"></a><span class="co">#&gt;  7 Beru…    165    75 brown      light      blue            47   female</span></span>
-<span id="cb288-13"><a href="dplyr2.html#cb288-13"></a><span class="co">#&gt;  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   &lt;NA&gt;  </span></span>
-<span id="cb288-14"><a href="dplyr2.html#cb288-14"></a><span class="co">#&gt;  9 Bigg…    183    84 black      light      brown           24   male  </span></span>
-<span id="cb288-15"><a href="dplyr2.html#cb288-15"></a><span class="co">#&gt; 10 Obi-…    182    77 auburn, w… fair       blue-gray       57   male  </span></span>
-<span id="cb288-16"><a href="dplyr2.html#cb288-16"></a><span class="co">#&gt; # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,</span></span>
-<span id="cb288-17"><a href="dplyr2.html#cb288-17"></a><span class="co">#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="dplyr2.html#cb296-1"></a><span class="co"># data set</span></span>
+<span id="cb296-2"><a href="dplyr2.html#cb296-2"></a>starwars</span>
+<span id="cb296-3"><a href="dplyr2.html#cb296-3"></a><span class="co">#&gt; # A tibble: 87 x 13</span></span>
+<span id="cb296-4"><a href="dplyr2.html#cb296-4"></a><span class="co">#&gt;    name  height  mass hair_color skin_color eye_color birth_year gender</span></span>
+<span id="cb296-5"><a href="dplyr2.html#cb296-5"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; </span></span>
+<span id="cb296-6"><a href="dplyr2.html#cb296-6"></a><span class="co">#&gt;  1 Luke…    172    77 blond      fair       blue            19   male  </span></span>
+<span id="cb296-7"><a href="dplyr2.html#cb296-7"></a><span class="co">#&gt;  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;  </span></span>
+<span id="cb296-8"><a href="dplyr2.html#cb296-8"></a><span class="co">#&gt;  3 R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   &lt;NA&gt;  </span></span>
+<span id="cb296-9"><a href="dplyr2.html#cb296-9"></a><span class="co">#&gt;  4 Dart…    202   136 none       white      yellow          41.9 male  </span></span>
+<span id="cb296-10"><a href="dplyr2.html#cb296-10"></a><span class="co">#&gt;  5 Leia…    150    49 brown      light      brown           19   female</span></span>
+<span id="cb296-11"><a href="dplyr2.html#cb296-11"></a><span class="co">#&gt;  6 Owen…    178   120 brown, gr… light      blue            52   male  </span></span>
+<span id="cb296-12"><a href="dplyr2.html#cb296-12"></a><span class="co">#&gt;  7 Beru…    165    75 brown      light      blue            47   female</span></span>
+<span id="cb296-13"><a href="dplyr2.html#cb296-13"></a><span class="co">#&gt;  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   &lt;NA&gt;  </span></span>
+<span id="cb296-14"><a href="dplyr2.html#cb296-14"></a><span class="co">#&gt;  9 Bigg…    183    84 black      light      brown           24   male  </span></span>
+<span id="cb296-15"><a href="dplyr2.html#cb296-15"></a><span class="co">#&gt; 10 Obi-…    182    77 auburn, w… fair       blue-gray       57   male  </span></span>
+<span id="cb296-16"><a href="dplyr2.html#cb296-16"></a><span class="co">#&gt; # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,</span></span>
+<span id="cb296-17"><a href="dplyr2.html#cb296-17"></a><span class="co">#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</span></span></code></pre></div>
 <p>For illustration purposes, let’s consider a relatively simple example.
 Say we are interested in calculating the average (mean) height for both female
 and male individuals. Let’s discuss how to find the solution under the base R
@@ -708,28 +709,28 @@ approach, as well as the dplyr approach.</p>
 <h2><span class="header-section-number">23.2</span> Base R approach</h2>
 <p>Let’s see how to use base R operations to find the average <code>height</code> of
 individuals with <code>gender</code> female and male.</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="dplyr2.html#cb289-1"></a><span class="co"># identify female and male individuals</span></span>
-<span id="cb289-2"><a href="dplyr2.html#cb289-2"></a><span class="co"># (comparison operations)</span></span>
-<span id="cb289-3"><a href="dplyr2.html#cb289-3"></a>which_females &lt;-<span class="st"> </span>starwars<span class="op">$</span>gender <span class="op">==</span><span class="st"> &#39;female&#39;</span></span>
-<span id="cb289-4"><a href="dplyr2.html#cb289-4"></a>which_males &lt;-<span class="st"> </span>starwars<span class="op">$</span>gender <span class="op">==</span><span class="st"> &#39;male&#39;</span></span></code></pre></div>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="dplyr2.html#cb290-1"></a><span class="co"># select the height values of females and males</span></span>
-<span id="cb290-2"><a href="dplyr2.html#cb290-2"></a><span class="co"># (via logical subsetting)</span></span>
-<span id="cb290-3"><a href="dplyr2.html#cb290-3"></a>height_females &lt;-<span class="st"> </span>starwars<span class="op">$</span>height[which_females]</span>
-<span id="cb290-4"><a href="dplyr2.html#cb290-4"></a>height_males &lt;-<span class="st"> </span>starwars<span class="op">$</span>height[which_males]</span></code></pre></div>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="dplyr2.html#cb291-1"></a><span class="co"># calculate averages (removing missing values)</span></span>
-<span id="cb291-2"><a href="dplyr2.html#cb291-2"></a>avg_ht_female &lt;-<span class="st"> </span><span class="kw">mean</span>(height_females, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb291-3"><a href="dplyr2.html#cb291-3"></a>avg_ht_male &lt;-<span class="st"> </span><span class="kw">mean</span>(height_males, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb291-4"><a href="dplyr2.html#cb291-4"></a><span class="co"># optional: display averages in a vector</span></span>
-<span id="cb291-5"><a href="dplyr2.html#cb291-5"></a><span class="kw">c</span>(<span class="st">&#39;female&#39;</span> =<span class="st"> </span>avg_ht_female, <span class="st">&#39;male&#39;</span> =<span class="st"> </span>avg_ht_male)</span>
-<span id="cb291-6"><a href="dplyr2.html#cb291-6"></a><span class="co">#&gt; female   male </span></span>
-<span id="cb291-7"><a href="dplyr2.html#cb291-7"></a><span class="co">#&gt;    165    179</span></span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="dplyr2.html#cb297-1"></a><span class="co"># identify female and male individuals</span></span>
+<span id="cb297-2"><a href="dplyr2.html#cb297-2"></a><span class="co"># (comparison operations)</span></span>
+<span id="cb297-3"><a href="dplyr2.html#cb297-3"></a>which_females &lt;-<span class="st"> </span>starwars<span class="op">$</span>gender <span class="op">==</span><span class="st"> &#39;female&#39;</span></span>
+<span id="cb297-4"><a href="dplyr2.html#cb297-4"></a>which_males &lt;-<span class="st"> </span>starwars<span class="op">$</span>gender <span class="op">==</span><span class="st"> &#39;male&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="dplyr2.html#cb298-1"></a><span class="co"># select the height values of females and males</span></span>
+<span id="cb298-2"><a href="dplyr2.html#cb298-2"></a><span class="co"># (via logical subsetting)</span></span>
+<span id="cb298-3"><a href="dplyr2.html#cb298-3"></a>height_females &lt;-<span class="st"> </span>starwars<span class="op">$</span>height[which_females]</span>
+<span id="cb298-4"><a href="dplyr2.html#cb298-4"></a>height_males &lt;-<span class="st"> </span>starwars<span class="op">$</span>height[which_males]</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="dplyr2.html#cb299-1"></a><span class="co"># calculate averages (removing missing values)</span></span>
+<span id="cb299-2"><a href="dplyr2.html#cb299-2"></a>avg_ht_female &lt;-<span class="st"> </span><span class="kw">mean</span>(height_females, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb299-3"><a href="dplyr2.html#cb299-3"></a>avg_ht_male &lt;-<span class="st"> </span><span class="kw">mean</span>(height_males, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb299-4"><a href="dplyr2.html#cb299-4"></a><span class="co"># optional: display averages in a vector</span></span>
+<span id="cb299-5"><a href="dplyr2.html#cb299-5"></a><span class="kw">c</span>(<span class="st">&#39;female&#39;</span> =<span class="st"> </span>avg_ht_female, <span class="st">&#39;male&#39;</span> =<span class="st"> </span>avg_ht_male)</span>
+<span id="cb299-6"><a href="dplyr2.html#cb299-6"></a><span class="co">#&gt; female   male </span></span>
+<span id="cb299-7"><a href="dplyr2.html#cb299-7"></a><span class="co">#&gt;    165    179</span></span></code></pre></div>
 <p>All the previous code can be written with more compact expressions:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="dplyr2.html#cb292-1"></a><span class="co"># all calculations in a couple of lines of code</span></span>
-<span id="cb292-2"><a href="dplyr2.html#cb292-2"></a><span class="kw">c</span>(<span class="st">&quot;female&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(starwars<span class="op">$</span>height[starwars<span class="op">$</span>gender <span class="op">==</span><span class="st"> &#39;female&#39;</span>], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb292-3"><a href="dplyr2.html#cb292-3"></a>  <span class="st">&quot;male&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(starwars<span class="op">$</span>height[starwars<span class="op">$</span>gender <span class="op">==</span><span class="st"> &#39;male&#39;</span>], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb292-4"><a href="dplyr2.html#cb292-4"></a>)</span>
-<span id="cb292-5"><a href="dplyr2.html#cb292-5"></a><span class="co">#&gt; female   male </span></span>
-<span id="cb292-6"><a href="dplyr2.html#cb292-6"></a><span class="co">#&gt;    165    179</span></span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="dplyr2.html#cb300-1"></a><span class="co"># all calculations in a couple of lines of code</span></span>
+<span id="cb300-2"><a href="dplyr2.html#cb300-2"></a><span class="kw">c</span>(<span class="st">&quot;female&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(starwars<span class="op">$</span>height[starwars<span class="op">$</span>gender <span class="op">==</span><span class="st"> &#39;female&#39;</span>], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb300-3"><a href="dplyr2.html#cb300-3"></a>  <span class="st">&quot;male&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(starwars<span class="op">$</span>height[starwars<span class="op">$</span>gender <span class="op">==</span><span class="st"> &#39;male&#39;</span>], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb300-4"><a href="dplyr2.html#cb300-4"></a>)</span>
+<span id="cb300-5"><a href="dplyr2.html#cb300-5"></a><span class="co">#&gt; female   male </span></span>
+<span id="cb300-6"><a href="dplyr2.html#cb300-6"></a><span class="co">#&gt;    165    179</span></span></code></pre></div>
 </div>
 <div id="with-dplyr" class="section level2">
 <h2><span class="header-section-number">23.3</span> With <code>"dplyr"</code></h2>
@@ -740,34 +741,34 @@ especially if you want to do many operations at once.</p>
 <div id="option-1-step-by-step" class="section level3">
 <h3><span class="header-section-number">23.3.1</span> Option 1) Step-by-step</h3>
 <p>You either have to do it step-by-step:</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="dplyr2.html#cb293-1"></a><span class="co"># manipulation step-by-step</span></span>
-<span id="cb293-2"><a href="dplyr2.html#cb293-2"></a>gender_height &lt;-<span class="st"> </span><span class="kw">select</span>(starwars, gender, height)</span>
-<span id="cb293-3"><a href="dplyr2.html#cb293-3"></a>fem_male_height &lt;-<span class="st"> </span><span class="kw">filter</span>(gender_height, </span>
-<span id="cb293-4"><a href="dplyr2.html#cb293-4"></a>                          gender <span class="op">==</span><span class="st"> &#39;female&#39;</span> <span class="op">|</span><span class="st"> </span>gender <span class="op">==</span><span class="st"> &#39;male&#39;</span>)</span>
-<span id="cb293-5"><a href="dplyr2.html#cb293-5"></a>height_by_gender &lt;-<span class="st"> </span><span class="kw">group_by</span>(fem_male_height, gender)</span>
-<span id="cb293-6"><a href="dplyr2.html#cb293-6"></a><span class="kw">summarise</span>(height_by_gender, <span class="kw">mean</span>(height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb293-7"><a href="dplyr2.html#cb293-7"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
-<span id="cb293-8"><a href="dplyr2.html#cb293-8"></a><span class="co">#&gt;   gender `mean(height, na.rm = TRUE)`</span></span>
-<span id="cb293-9"><a href="dplyr2.html#cb293-9"></a><span class="co">#&gt;   &lt;chr&gt;                         &lt;dbl&gt;</span></span>
-<span id="cb293-10"><a href="dplyr2.html#cb293-10"></a><span class="co">#&gt; 1 female                         165.</span></span>
-<span id="cb293-11"><a href="dplyr2.html#cb293-11"></a><span class="co">#&gt; 2 male                           179.</span></span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="dplyr2.html#cb301-1"></a><span class="co"># manipulation step-by-step</span></span>
+<span id="cb301-2"><a href="dplyr2.html#cb301-2"></a>gender_height &lt;-<span class="st"> </span><span class="kw">select</span>(starwars, gender, height)</span>
+<span id="cb301-3"><a href="dplyr2.html#cb301-3"></a>fem_male_height &lt;-<span class="st"> </span><span class="kw">filter</span>(gender_height, </span>
+<span id="cb301-4"><a href="dplyr2.html#cb301-4"></a>                          gender <span class="op">==</span><span class="st"> &#39;female&#39;</span> <span class="op">|</span><span class="st"> </span>gender <span class="op">==</span><span class="st"> &#39;male&#39;</span>)</span>
+<span id="cb301-5"><a href="dplyr2.html#cb301-5"></a>height_by_gender &lt;-<span class="st"> </span><span class="kw">group_by</span>(fem_male_height, gender)</span>
+<span id="cb301-6"><a href="dplyr2.html#cb301-6"></a><span class="kw">summarise</span>(height_by_gender, <span class="kw">mean</span>(height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb301-7"><a href="dplyr2.html#cb301-7"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
+<span id="cb301-8"><a href="dplyr2.html#cb301-8"></a><span class="co">#&gt;   gender `mean(height, na.rm = TRUE)`</span></span>
+<span id="cb301-9"><a href="dplyr2.html#cb301-9"></a><span class="co">#&gt;   &lt;chr&gt;                         &lt;dbl&gt;</span></span>
+<span id="cb301-10"><a href="dplyr2.html#cb301-10"></a><span class="co">#&gt; 1 female                         165.</span></span>
+<span id="cb301-11"><a href="dplyr2.html#cb301-11"></a><span class="co">#&gt; 2 male                           179.</span></span></code></pre></div>
 </div>
 <div id="option-2-nested-embedded-code" class="section level3">
 <h3><span class="header-section-number">23.3.2</span> Option 2) Nested (embedded) code</h3>
 <p>Or if you don’t want to name the intermediate results, you need to wrap the
 function calls inside each other:</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="dplyr2.html#cb294-1"></a><span class="kw">summarise</span>(</span>
-<span id="cb294-2"><a href="dplyr2.html#cb294-2"></a>  <span class="kw">group_by</span>(</span>
-<span id="cb294-3"><a href="dplyr2.html#cb294-3"></a>    <span class="kw">filter</span>(<span class="kw">select</span>(starwars, gender, height),</span>
-<span id="cb294-4"><a href="dplyr2.html#cb294-4"></a>           gender <span class="op">==</span><span class="st"> &#39;female&#39;</span> <span class="op">|</span><span class="st"> </span>gender  <span class="op">==</span><span class="st"> &#39;male&#39;</span>),</span>
-<span id="cb294-5"><a href="dplyr2.html#cb294-5"></a>    gender),</span>
-<span id="cb294-6"><a href="dplyr2.html#cb294-6"></a>  <span class="kw">mean</span>(height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb294-7"><a href="dplyr2.html#cb294-7"></a>)</span>
-<span id="cb294-8"><a href="dplyr2.html#cb294-8"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
-<span id="cb294-9"><a href="dplyr2.html#cb294-9"></a><span class="co">#&gt;   gender `mean(height, na.rm = TRUE)`</span></span>
-<span id="cb294-10"><a href="dplyr2.html#cb294-10"></a><span class="co">#&gt;   &lt;chr&gt;                         &lt;dbl&gt;</span></span>
-<span id="cb294-11"><a href="dplyr2.html#cb294-11"></a><span class="co">#&gt; 1 female                         165.</span></span>
-<span id="cb294-12"><a href="dplyr2.html#cb294-12"></a><span class="co">#&gt; 2 male                           179.</span></span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="dplyr2.html#cb302-1"></a><span class="kw">summarise</span>(</span>
+<span id="cb302-2"><a href="dplyr2.html#cb302-2"></a>  <span class="kw">group_by</span>(</span>
+<span id="cb302-3"><a href="dplyr2.html#cb302-3"></a>    <span class="kw">filter</span>(<span class="kw">select</span>(starwars, gender, height),</span>
+<span id="cb302-4"><a href="dplyr2.html#cb302-4"></a>           gender <span class="op">==</span><span class="st"> &#39;female&#39;</span> <span class="op">|</span><span class="st"> </span>gender  <span class="op">==</span><span class="st"> &#39;male&#39;</span>),</span>
+<span id="cb302-5"><a href="dplyr2.html#cb302-5"></a>    gender),</span>
+<span id="cb302-6"><a href="dplyr2.html#cb302-6"></a>  <span class="kw">mean</span>(height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb302-7"><a href="dplyr2.html#cb302-7"></a>)</span>
+<span id="cb302-8"><a href="dplyr2.html#cb302-8"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
+<span id="cb302-9"><a href="dplyr2.html#cb302-9"></a><span class="co">#&gt;   gender `mean(height, na.rm = TRUE)`</span></span>
+<span id="cb302-10"><a href="dplyr2.html#cb302-10"></a><span class="co">#&gt;   &lt;chr&gt;                         &lt;dbl&gt;</span></span>
+<span id="cb302-11"><a href="dplyr2.html#cb302-11"></a><span class="co">#&gt; 1 female                         165.</span></span>
+<span id="cb302-12"><a href="dplyr2.html#cb302-12"></a><span class="co">#&gt; 2 male                           179.</span></span></code></pre></div>
 <p>This is difficult to read because the order of the operations is from inside
 to out. Thus, the arguments are a long way away from the function.</p>
 </div>
@@ -776,42 +777,42 @@ to out. Thus, the arguments are a long way away from the function.</p>
 <p>To get around the problem of nesting functions, <code>"dplyr"</code> also provides the
 <code>%&gt;%</code> operator from the R package <code>"magrittr"</code>.</p>
 <p>What does the <em>piper</em> <code>%&gt;%</code> do? Here’s a conceptual example:</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="dplyr2.html#cb295-1"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">f</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="dplyr2.html#cb303-1"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">f</span>(y)</span></code></pre></div>
 <p><code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code> so you can use it to rewrite multiple
 operations that you can read left-to-right, top-to-bottom.</p>
 <p>Here’s how to use the piper to calculate the average height for female and
 male individuals:</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="dplyr2.html#cb296-1"></a>avg_height_by_gender &lt;-<span class="st"> </span>starwars <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb296-2"><a href="dplyr2.html#cb296-2"></a><span class="st">  </span><span class="kw">select</span>(gender, height) <span class="op">%&gt;%</span></span>
-<span id="cb296-3"><a href="dplyr2.html#cb296-3"></a><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">==</span><span class="st"> &#39;female&#39;</span> <span class="op">|</span><span class="st"> </span>gender <span class="op">==</span><span class="st"> &#39;male&#39;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb296-4"><a href="dplyr2.html#cb296-4"></a><span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span></span>
-<span id="cb296-5"><a href="dplyr2.html#cb296-5"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg =</span> <span class="kw">mean</span>(height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb296-6"><a href="dplyr2.html#cb296-6"></a>avg_height_by_gender</span>
-<span id="cb296-7"><a href="dplyr2.html#cb296-7"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
-<span id="cb296-8"><a href="dplyr2.html#cb296-8"></a><span class="co">#&gt;   gender   avg</span></span>
-<span id="cb296-9"><a href="dplyr2.html#cb296-9"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt;</span></span>
-<span id="cb296-10"><a href="dplyr2.html#cb296-10"></a><span class="co">#&gt; 1 female  165.</span></span>
-<span id="cb296-11"><a href="dplyr2.html#cb296-11"></a><span class="co">#&gt; 2 male    179.</span></span>
-<span id="cb296-12"><a href="dplyr2.html#cb296-12"></a>avg_height_by_gender<span class="op">$</span>avg</span>
-<span id="cb296-13"><a href="dplyr2.html#cb296-13"></a><span class="co">#&gt; [1] 165 179</span></span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="dplyr2.html#cb304-1"></a>avg_height_by_gender &lt;-<span class="st"> </span>starwars <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb304-2"><a href="dplyr2.html#cb304-2"></a><span class="st">  </span><span class="kw">select</span>(gender, height) <span class="op">%&gt;%</span></span>
+<span id="cb304-3"><a href="dplyr2.html#cb304-3"></a><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">==</span><span class="st"> &#39;female&#39;</span> <span class="op">|</span><span class="st"> </span>gender <span class="op">==</span><span class="st"> &#39;male&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb304-4"><a href="dplyr2.html#cb304-4"></a><span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span></span>
+<span id="cb304-5"><a href="dplyr2.html#cb304-5"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg =</span> <span class="kw">mean</span>(height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb304-6"><a href="dplyr2.html#cb304-6"></a>avg_height_by_gender</span>
+<span id="cb304-7"><a href="dplyr2.html#cb304-7"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
+<span id="cb304-8"><a href="dplyr2.html#cb304-8"></a><span class="co">#&gt;   gender   avg</span></span>
+<span id="cb304-9"><a href="dplyr2.html#cb304-9"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt;</span></span>
+<span id="cb304-10"><a href="dplyr2.html#cb304-10"></a><span class="co">#&gt; 1 female  165.</span></span>
+<span id="cb304-11"><a href="dplyr2.html#cb304-11"></a><span class="co">#&gt; 2 male    179.</span></span>
+<span id="cb304-12"><a href="dplyr2.html#cb304-12"></a>avg_height_by_gender<span class="op">$</span>avg</span>
+<span id="cb304-13"><a href="dplyr2.html#cb304-13"></a><span class="co">#&gt; [1] 165 179</span></span></code></pre></div>
 <p>Here’s another example in which we calculate the mean <code>height</code> and mean <code>mass</code>
 of <code>species</code> Droid, Ewok, and Human; arranging the rows of the tibble by mean
 height, in descending order:</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="dplyr2.html#cb297-1"></a>starwars <span class="op">%&gt;%</span></span>
-<span id="cb297-2"><a href="dplyr2.html#cb297-2"></a><span class="st">  </span><span class="kw">select</span>(species, height, mass) <span class="op">%&gt;%</span></span>
-<span id="cb297-3"><a href="dplyr2.html#cb297-3"></a><span class="st">  </span><span class="kw">filter</span>(species <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Droid&#39;</span>, <span class="st">&#39;Ewok&#39;</span>, <span class="st">&#39;Human&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb297-4"><a href="dplyr2.html#cb297-4"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
-<span id="cb297-5"><a href="dplyr2.html#cb297-5"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
-<span id="cb297-6"><a href="dplyr2.html#cb297-6"></a>    <span class="dt">mean_height =</span> <span class="kw">mean</span>(height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb297-7"><a href="dplyr2.html#cb297-7"></a>    <span class="dt">mean_mass =</span> <span class="kw">mean</span>(mass, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb297-8"><a href="dplyr2.html#cb297-8"></a>  ) <span class="op">%&gt;%</span></span>
-<span id="cb297-9"><a href="dplyr2.html#cb297-9"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mean_height))</span>
-<span id="cb297-10"><a href="dplyr2.html#cb297-10"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
-<span id="cb297-11"><a href="dplyr2.html#cb297-11"></a><span class="co">#&gt;   species mean_height mean_mass</span></span>
-<span id="cb297-12"><a href="dplyr2.html#cb297-12"></a><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb297-13"><a href="dplyr2.html#cb297-13"></a><span class="co">#&gt; 1 Human          177.      82.8</span></span>
-<span id="cb297-14"><a href="dplyr2.html#cb297-14"></a><span class="co">#&gt; 2 Droid          140       69.8</span></span>
-<span id="cb297-15"><a href="dplyr2.html#cb297-15"></a><span class="co">#&gt; 3 Ewok            88       20</span></span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="dplyr2.html#cb305-1"></a>starwars <span class="op">%&gt;%</span></span>
+<span id="cb305-2"><a href="dplyr2.html#cb305-2"></a><span class="st">  </span><span class="kw">select</span>(species, height, mass) <span class="op">%&gt;%</span></span>
+<span id="cb305-3"><a href="dplyr2.html#cb305-3"></a><span class="st">  </span><span class="kw">filter</span>(species <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Droid&#39;</span>, <span class="st">&#39;Ewok&#39;</span>, <span class="st">&#39;Human&#39;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb305-4"><a href="dplyr2.html#cb305-4"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb305-5"><a href="dplyr2.html#cb305-5"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
+<span id="cb305-6"><a href="dplyr2.html#cb305-6"></a>    <span class="dt">mean_height =</span> <span class="kw">mean</span>(height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb305-7"><a href="dplyr2.html#cb305-7"></a>    <span class="dt">mean_mass =</span> <span class="kw">mean</span>(mass, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb305-8"><a href="dplyr2.html#cb305-8"></a>  ) <span class="op">%&gt;%</span></span>
+<span id="cb305-9"><a href="dplyr2.html#cb305-9"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mean_height))</span>
+<span id="cb305-10"><a href="dplyr2.html#cb305-10"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
+<span id="cb305-11"><a href="dplyr2.html#cb305-11"></a><span class="co">#&gt;   species mean_height mean_mass</span></span>
+<span id="cb305-12"><a href="dplyr2.html#cb305-12"></a><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb305-13"><a href="dplyr2.html#cb305-13"></a><span class="co">#&gt; 1 Human          177.      82.8</span></span>
+<span id="cb305-14"><a href="dplyr2.html#cb305-14"></a><span class="co">#&gt; 2 Droid          140       69.8</span></span>
+<span id="cb305-15"><a href="dplyr2.html#cb305-15"></a><span class="co">#&gt; 3 Ewok            88       20</span></span></code></pre></div>
 </div>
 </div>
 <div id="pipes-and-plots" class="section level2">
@@ -820,19 +821,19 @@ height, in descending order:</p>
 (and other R commands). The following examples combine some data manipulation
 to <code>filter()</code> female and males individuals, in order to graph a density plot
 of <code>height</code></p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="dplyr2.html#cb298-1"></a>starwars <span class="op">%&gt;%</span></span>
-<span id="cb298-2"><a href="dplyr2.html#cb298-2"></a><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb298-3"><a href="dplyr2.html#cb298-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">fill =</span> gender)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb298-4"><a href="dplyr2.html#cb298-4"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>)</span>
-<span id="cb298-5"><a href="dplyr2.html#cb298-5"></a><span class="co">#&gt; Warning: Removed 5 rows containing non-finite values (stat_density).</span></span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="dplyr2.html#cb306-1"></a>starwars <span class="op">%&gt;%</span></span>
+<span id="cb306-2"><a href="dplyr2.html#cb306-2"></a><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb306-3"><a href="dplyr2.html#cb306-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">fill =</span> gender)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb306-4"><a href="dplyr2.html#cb306-4"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.7</span>)</span>
+<span id="cb306-5"><a href="dplyr2.html#cb306-5"></a><span class="co">#&gt; Warning: Removed 5 rows containing non-finite values (stat_density).</span></span></code></pre></div>
 <p><img src="cwd_files/figure-html/densities-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Here’s another example in which instead of graphing density plots, we graph
 boxplots of <code>height</code> for female and male individuals:</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="dplyr2.html#cb299-1"></a>starwars <span class="op">%&gt;%</span></span>
-<span id="cb299-2"><a href="dplyr2.html#cb299-2"></a><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb299-3"><a href="dplyr2.html#cb299-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> gender, <span class="dt">y =</span> height, <span class="dt">fill =</span> gender)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb299-4"><a href="dplyr2.html#cb299-4"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span>
-<span id="cb299-5"><a href="dplyr2.html#cb299-5"></a><span class="co">#&gt; Warning: Removed 5 rows containing non-finite values (stat_boxplot).</span></span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="dplyr2.html#cb307-1"></a>starwars <span class="op">%&gt;%</span></span>
+<span id="cb307-2"><a href="dplyr2.html#cb307-2"></a><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb307-3"><a href="dplyr2.html#cb307-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> gender, <span class="dt">y =</span> height, <span class="dt">fill =</span> gender)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb307-4"><a href="dplyr2.html#cb307-4"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span>
+<span id="cb307-5"><a href="dplyr2.html#cb307-5"></a><span class="co">#&gt; Warning: Removed 5 rows containing non-finite values (stat_boxplot).</span></span></code></pre></div>
 <p><img src="cwd_files/figure-html/boxplots-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="more-pipes" class="section level2">
@@ -841,13 +842,13 @@ boxplots of <code>height</code> for female and male individuals:</p>
 inputs. A typical example is the base <code>plot()</code> function used to produce a
 scatterplot; you need to pass vectors to <code>plot()</code>, not data frames. In this
 situations you might find the <code>%$%</code> operator extremely useful.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="dplyr2.html#cb300-1"></a><span class="kw">library</span>(magrittr)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="dplyr2.html#cb308-1"></a><span class="kw">library</span>(magrittr)</span></code></pre></div>
 <p>The <code>%$%</code> operator, also from the package <code>"magrittr"</code>, is a cousin of the
 <code>%&gt;%</code> operator. What <code>%$%</code> does is to <em>extract</em> variables in a data frame
 so that you can refer to them explicitly. Let’s see a quick example:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="dplyr2.html#cb301-1"></a>starwars <span class="op">%&gt;%</span></span>
-<span id="cb301-2"><a href="dplyr2.html#cb301-2"></a><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>)) <span class="op">%$%</span></span>
-<span id="cb301-3"><a href="dplyr2.html#cb301-3"></a><span class="st">  </span><span class="kw">plot</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> mass, <span class="dt">col =</span> <span class="kw">factor</span>(gender), <span class="dt">las =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="dplyr2.html#cb309-1"></a>starwars <span class="op">%&gt;%</span></span>
+<span id="cb309-2"><a href="dplyr2.html#cb309-2"></a><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>)) <span class="op">%$%</span></span>
+<span id="cb309-3"><a href="dplyr2.html#cb309-3"></a><span class="st">  </span><span class="kw">plot</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> mass, <span class="dt">col =</span> <span class="kw">factor</span>(gender), <span class="dt">las =</span> <span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="exercises-11" class="section level2">
 <h2><span class="header-section-number">23.6</span> Exercises</h2>
@@ -881,13 +882,13 @@ so that you can refer to them explicitly. Let’s see a quick example:</p>
 8      6     4    84   9.2</code></pre>
 <p><strong>4)</strong> What is the output of the following command? Try to guess the output
 without running the command.</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="dplyr2.html#cb307-1"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb307-2"><a href="dplyr2.html#cb307-2"></a><span class="st">  </span><span class="kw">filter</span>(Month <span class="op">==</span><span class="st"> </span><span class="dv">5</span> <span class="op">&amp;</span><span class="st"> </span>(Temp <span class="op">&gt;</span><span class="st"> </span><span class="dv">70</span> <span class="op">|</span><span class="st"> </span>Wind <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="dplyr2.html#cb315-1"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb315-2"><a href="dplyr2.html#cb315-2"></a><span class="st">  </span><span class="kw">filter</span>(Month <span class="op">==</span><span class="st"> </span><span class="dv">5</span> <span class="op">&amp;</span><span class="st"> </span>(Temp <span class="op">&gt;</span><span class="st"> </span><span class="dv">70</span> <span class="op">|</span><span class="st"> </span>Wind <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>))</span></code></pre></div>
 <p><strong>5)</strong> What is the output of the following command? Try to guess the output
 without running the command.</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="dplyr2.html#cb308-1"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb308-2"><a href="dplyr2.html#cb308-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">max_temp =</span> <span class="kw">max</span>(Temp), </span>
-<span id="cb308-3"><a href="dplyr2.html#cb308-3"></a>            <span class="dt">max_wind =</span> <span class="kw">max</span>(Wind))</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="dplyr2.html#cb316-1"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb316-2"><a href="dplyr2.html#cb316-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">max_temp =</span> <span class="kw">max</span>(Temp), </span>
+<span id="cb316-3"><a href="dplyr2.html#cb316-3"></a>            <span class="dt">max_wind =</span> <span class="kw">max</span>(Wind))</span></code></pre></div>
 <p><strong>Consider the following data frame <code>dat</code></strong></p>
 <pre><code>      first       last  gender     title  gpa
 1       Jon       Snow    male      lord  3.0

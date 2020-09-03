@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -690,7 +691,7 @@ within or between computers.”</p>
 <li>you wait some fractions of a second, and then the website shows up in your
 screen.</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-595"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-591"></span>
 <img src="images/html/web-scheme1.png" alt="Surfing the web" width="70%" />
 <p class="caption">
 Figure 41.1: Surfing the web
@@ -710,7 +711,7 @@ audio, scripts)</li>
 that the clients request.</li>
 <li>The server <strong>sends responses</strong> back to the client</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-596"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-592"></span>
 <img src="images/html/web-scheme2.png" alt="Client makes a request, and the serve responds" width="70%" />
 <p class="caption">
 Figure 41.2: Client makes a request, and the serve responds
@@ -736,7 +737,7 @@ detail.</p>
 <p>To make web pages, programmers, developers and designers create files written
 in a special type of syntax called <strong>HyperText Markup Language</strong> or HTML for
 short. These files are stored in a Web server.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-597"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-593"></span>
 <img src="images/html/web-scheme3.png" alt="HTML files are the building blocks of web pages" width="80%" />
 <p class="caption">
 Figure 41.3: HTML files are the building blocks of web pages
@@ -745,7 +746,7 @@ Figure 41.3: HTML files are the building blocks of web pages
 <p>To be more precise, Web servers store more than one single HTML file. In
 practice, websites are made of several directories containing various types of
 files (image files, audio files, video files, scripts, etc).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-598"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-594"></span>
 <img src="images/html/web-scheme5.png" alt="Web server containing several types of files, not just HTML files" width="80%" />
 <p class="caption">
 Figure 41.4: Web server containing several types of files, not just HTML files
@@ -757,7 +758,7 @@ on your laptop, on your tablet, on your cellphone, you name it. As long as the
 device you are using is connected to the internet, the browser will retrieve
 the web page. The HTML content in the web page tells the browser everything it
 needs to know to display the page.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-599"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-595"></span>
 <img src="images/html/web-scheme4.png" alt="Diagram of the Web" width="75%" />
 <p class="caption">
 Figure 41.5: Diagram of the Web
@@ -797,7 +798,7 @@ email, file transfer (FTP), and many others.</p></li>
 <pre><code>https://www.r-project.org</code></pre>
 <p>Although we don’t see it, there’s is a client-server dialogue taking place,
 illustrated in the diagram below:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-600"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-596"></span>
 <img src="images/html/web-scheme6.png" alt="Client make a request, and the serve responds" width="70%" />
 <p class="caption">
 Figure 41.6: Client make a request, and the serve responds
@@ -807,7 +808,7 @@ Figure 41.6: Client make a request, and the serve responds
 <p>Using Chrome’s __DevTools_ (developer tools), we can see the associated
 information related to the HTTP “conversation” between the client and the
 server.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-601"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-597"></span>
 <img src="images/html/web-http-devtools.png" alt="Inspecting HTTP messages via DevTools" width="90%" />
 <p class="caption">
 Figure 41.7: Inspecting HTTP messages via DevTools
@@ -821,7 +822,7 @@ and the response is rendered by the browser as the website you see.
 Although we don’t see the “dialogue” between client and server, tt is possible
 to inspect this interaction using the development tools in a browser such as
 Chrome’s DevTools (like the screenshot above).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-602"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-598"></span>
 <img src="images/html/web-http-headers.png" alt="DevTools menu tab for inspecting HTTP messages" width="40%" />
 <p class="caption">
 Figure 41.8: DevTools menu tab for inspecting HTTP messages
@@ -843,7 +844,7 @@ and what type of response is expected</li>
 <li>Body: data sent to the server outside of the headers, common for <code>POST</code> and
 <code>PUT</code> requests</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-603"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-599"></span>
 <img src="images/html/web-http-request-headers.png" alt="HTTP request headers" width="90%" />
 <p class="caption">
 Figure 41.9: HTTP request headers
@@ -858,7 +859,7 @@ content delivered by the server. In the above example accessing
 www.r-project.com, we can see the status code success <code>200</code>, along with other
 details about the response content. Notice that the returned content is HTML.
 This HTML content is what the browser renders into a webpage.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-604"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-600"></span>
 <img src="images/html/web-http-response-headers.png" alt="HTTP response headers" width="50%" />
 <p class="caption">
 Figure 41.10: HTTP response headers
@@ -1004,11 +1005,11 @@ functions <code>download.url()</code> and url()`</p>
 <p><code>getURL()</code> downloads static or fixed content files. It collects and returns the
 body of the response into a single string. For instance, let’s fetch the content
 of the R-project’s homepage</p>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="http.html#cb582-1"></a><span class="co"># load RCurl (remember to install it first)</span></span>
-<span id="cb582-2"><a href="http.html#cb582-2"></a><span class="kw">library</span>(RCurl)</span>
-<span id="cb582-3"><a href="http.html#cb582-3"></a></span>
-<span id="cb582-4"><a href="http.html#cb582-4"></a><span class="co"># retrieving the content of the R homepage</span></span>
-<span id="cb582-5"><a href="http.html#cb582-5"></a>rproj &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;http://www.r-project.org/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="http.html#cb590-1"></a><span class="co"># load RCurl (remember to install it first)</span></span>
+<span id="cb590-2"><a href="http.html#cb590-2"></a><span class="kw">library</span>(RCurl)</span>
+<span id="cb590-3"><a href="http.html#cb590-3"></a></span>
+<span id="cb590-4"><a href="http.html#cb590-4"></a><span class="co"># retrieving the content of the R homepage</span></span>
+<span id="cb590-5"><a href="http.html#cb590-5"></a>rproj &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;http://www.r-project.org/&quot;</span>)</span></code></pre></div>
 <p>If you inspect the content of <code>rproj</code>, you should see this:</p>
 <pre><code>[1] &quot;&lt;!DOCTYPE HTML PUBLIC \&quot;-//W3C//DTD HTML 4.01 Transitional//EN\&quot;&gt;\n
 &lt;html&gt;\n&lt;head&gt;\n&lt;title&gt;The R Project for Statistical Computing&lt;/title&gt;\n
@@ -1027,11 +1028,11 @@ frameborder=0&gt;\n&lt;noframes&gt;\n&lt;h1&gt;The R Project for Statistical Com
 <h3><span class="header-section-number">41.3.2</span> Function <code>getURL()</code></h3>
 <p>What can we do with the retrieved content in <code>rproj</code>?</p>
 <p>We can parse it using the functions from the <code>"XML"</code> package:</p>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="http.html#cb584-1"></a><span class="co"># load XML</span></span>
-<span id="cb584-2"><a href="http.html#cb584-2"></a><span class="kw">library</span>(XML)</span>
-<span id="cb584-3"><a href="http.html#cb584-3"></a></span>
-<span id="cb584-4"><a href="http.html#cb584-4"></a><span class="co"># parsing the content of the R homepage</span></span>
-<span id="cb584-5"><a href="http.html#cb584-5"></a>rproj_doc =<span class="st"> </span><span class="kw">htmlParse</span>(rproj)</span></code></pre></div>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="http.html#cb592-1"></a><span class="co"># load XML</span></span>
+<span id="cb592-2"><a href="http.html#cb592-2"></a><span class="kw">library</span>(XML)</span>
+<span id="cb592-3"><a href="http.html#cb592-3"></a></span>
+<span id="cb592-4"><a href="http.html#cb592-4"></a><span class="co"># parsing the content of the R homepage</span></span>
+<span id="cb592-5"><a href="http.html#cb592-5"></a>rproj_doc =<span class="st"> </span><span class="kw">htmlParse</span>(rproj)</span></code></pre></div>
 <p>The real power and <em>raison d’etre</em> of <code>"RCurl"</code> is its capacity for making
 requests associated to Web Forms.</p>
 

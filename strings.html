@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="data-views.html"><a href="data-views.html#how-do-analysts-think-about-data"><i class="fa fa-check"></i><b>5.1.1</b> How do analysts think about data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-views.html"><a href="data-views.html#what-about-the-storage-organization-format-of-the-data"><i class="fa fa-check"></i><b>5.1.2</b> What about the storage, organization, format of the data?</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-views.html"><a href="data-views.html#how-do-programming-languages-handle-data"><i class="fa fa-check"></i><b>5.1.3</b> How do programming languages handle data?</a></li>
-<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram"><i class="fa fa-check"></i><b>5.1.4</b> Diagram</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-views.html"><a href="data-views.html#diagram-3-views-of-data"><i class="fa fa-check"></i><b>5.1.4</b> Diagram: 3 views of data</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II R Survival Skills</b></span></li>
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="eda-maps.html"><a href="eda-maps.html"><i class="fa fa-check"></i><b>11</b> Basic Geospatial EDA</a><ul>
 <li class="chapter" data-level="11.1" data-path="eda-maps.html"><a href="eda-maps.html#graphing-maps"><i class="fa fa-check"></i><b>11.1</b> Graphing Maps</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="eda-maps.html"><a href="eda-maps.html#plotting-location-of-storm-records"><i class="fa fa-check"></i><b>11.1.1</b> Plotting location of storm records</a></li>
-<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-map"><i class="fa fa-check"></i><b>11.1.2</b> Basic map</a></li>
-<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.3</b> Storms from 1975 to 1980</a></li>
-<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.1.2" data-path="eda-maps.html"><a href="eda-maps.html#basic-maps-with-ggplot2"><i class="fa fa-check"></i><b>11.1.2</b> Basic maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11.1.3" data-path="eda-maps.html"><a href="eda-maps.html#more-mapping-approaches"><i class="fa fa-check"></i><b>11.1.3</b> More mapping approaches</a></li>
+<li class="chapter" data-level="11.1.4" data-path="eda-maps.html"><a href="eda-maps.html#storms-from-1975-to-1980"><i class="fa fa-check"></i><b>11.1.4</b> Storms from 1975 to 1980</a></li>
+<li class="chapter" data-level="11.1.5" data-path="eda-maps.html"><a href="eda-maps.html#exercises-5"><i class="fa fa-check"></i><b>11.1.5</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Data Objects in R</b></span></li>
@@ -702,100 +703,100 @@ numbers, and symbols). The data type R provides for storing sequences of
 characters is character. Formally, the mode of an object that holds character
 strings in R is <code>"character"</code>.</p>
 <p>You express character strings by surrounding text within double quotes:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="strings.html#cb153-1"></a><span class="st">&quot;a character string using double quotes&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="strings.html#cb161-1"></a><span class="st">&quot;a character string using double quotes&quot;</span></span></code></pre></div>
 <p>or you can also surround text within single quotes:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="strings.html#cb154-1"></a><span class="st">&#39;a character string using single quotes&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="strings.html#cb162-1"></a><span class="st">&#39;a character string using single quotes&#39;</span></span></code></pre></div>
 <p>The important thing is that you must match the type of quotes that your are
 using. A starting double quote must have an ending double quote. Likewise, a
 string with an opening single quote must be closed with a single quote.</p>
 <p>Typing characters in R like in above examples is not very useful. Typically,
 you are going to create objects or variables containing some strings. For
 example, you can create a variable string that stores some string:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="strings.html#cb155-1"></a>string &lt;-<span class="st"> &#39;do more with less&#39;</span></span>
-<span id="cb155-2"><a href="strings.html#cb155-2"></a>string</span>
-<span id="cb155-3"><a href="strings.html#cb155-3"></a><span class="co">#&gt; [1] &quot;do more with less&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="strings.html#cb163-1"></a>string &lt;-<span class="st"> &#39;do more with less&#39;</span></span>
+<span id="cb163-2"><a href="strings.html#cb163-2"></a>string</span>
+<span id="cb163-3"><a href="strings.html#cb163-3"></a><span class="co">#&gt; [1] &quot;do more with less&quot;</span></span></code></pre></div>
 <p>Notice that when you print a character object, R displays it using double
 quotes (regardless of whether the string was created using single or double
 quotes). This allows you to quickly identify when an object contains character
 values.</p>
 <p>When writing strings, you can insert single quotes in a string with double
 quotes, and vice versa:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="strings.html#cb156-1"></a><span class="co"># single quotes within double quotes</span></span>
-<span id="cb156-2"><a href="strings.html#cb156-2"></a>ex1 &lt;-<span class="st"> &quot;The &#39;R&#39; project for statistical computing&quot;</span></span>
-<span id="cb156-3"><a href="strings.html#cb156-3"></a></span>
-<span id="cb156-4"><a href="strings.html#cb156-4"></a><span class="co"># double quotes within single quotes</span></span>
-<span id="cb156-5"><a href="strings.html#cb156-5"></a>ex2 &lt;-<span class="st"> &#39;The &quot;R&quot; project for statistical computing&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="strings.html#cb164-1"></a><span class="co"># single quotes within double quotes</span></span>
+<span id="cb164-2"><a href="strings.html#cb164-2"></a>ex1 &lt;-<span class="st"> &quot;The &#39;R&#39; project for statistical computing&quot;</span></span>
+<span id="cb164-3"><a href="strings.html#cb164-3"></a></span>
+<span id="cb164-4"><a href="strings.html#cb164-4"></a><span class="co"># double quotes within single quotes</span></span>
+<span id="cb164-5"><a href="strings.html#cb164-5"></a>ex2 &lt;-<span class="st"> &#39;The &quot;R&quot; project for statistical computing&#39;</span></span></code></pre></div>
 <p>However, you cannot directly insert single quotes in a string with single
 quotes, neither you can insert double quotes in a string with double quotes
 (Don’t do this!):</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="strings.html#cb157-1"></a>ex3 &lt;-<span class="st"> &quot;This &quot;</span>is<span class="st">&quot; totally unacceptable&quot;</span></span>
-<span id="cb157-2"><a href="strings.html#cb157-2"></a></span>
-<span id="cb157-3"><a href="strings.html#cb157-3"></a>ex4 &lt;-<span class="st"> &#39;This &#39;</span>is<span class="st">&#39; absolutely wrong&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="strings.html#cb165-1"></a>ex3 &lt;-<span class="st"> &quot;This &quot;</span>is<span class="st">&quot; totally unacceptable&quot;</span></span>
+<span id="cb165-2"><a href="strings.html#cb165-2"></a></span>
+<span id="cb165-3"><a href="strings.html#cb165-3"></a>ex4 &lt;-<span class="st"> &#39;This &#39;</span>is<span class="st">&#39; absolutely wrong&#39;</span></span></code></pre></div>
 <p>In both cases R will give you an error due to the unexpected presence of either
 a double quote within double quotes, or a single quote within single quotes.</p>
 <p>If you really want to include a double quote as part of the string, you need to
 escape the double quote using a backslash <code>\</code> before it:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="strings.html#cb158-1"></a><span class="st">&quot;The </span><span class="ch">\&quot;</span><span class="st">R</span><span class="ch">\&quot;</span><span class="st"> project for statistical computing&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="strings.html#cb166-1"></a><span class="st">&quot;The </span><span class="ch">\&quot;</span><span class="st">R</span><span class="ch">\&quot;</span><span class="st"> project for statistical computing&quot;</span></span></code></pre></div>
 <div id="empty-string" class="section level3">
 <h3><span class="header-section-number">15.2.1</span> Empty String</h3>
 <p>The most basic type of string is the empty string produced by consecutive
 quotation marks: <code>""</code>. Technically, <code>""</code> is a string with no characters in it,
 hence the name “empty string”:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="strings.html#cb159-1"></a><span class="co"># empty string</span></span>
-<span id="cb159-2"><a href="strings.html#cb159-2"></a>empty_str &lt;-<span class="st"> &quot;&quot;</span></span>
-<span id="cb159-3"><a href="strings.html#cb159-3"></a>empty_str</span>
-<span id="cb159-4"><a href="strings.html#cb159-4"></a><span class="co">#&gt; [1] &quot;&quot;</span></span>
-<span id="cb159-5"><a href="strings.html#cb159-5"></a></span>
-<span id="cb159-6"><a href="strings.html#cb159-6"></a><span class="co"># class</span></span>
-<span id="cb159-7"><a href="strings.html#cb159-7"></a><span class="kw">class</span>(empty_str)</span>
-<span id="cb159-8"><a href="strings.html#cb159-8"></a><span class="co">#&gt; [1] &quot;character&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="strings.html#cb167-1"></a><span class="co"># empty string</span></span>
+<span id="cb167-2"><a href="strings.html#cb167-2"></a>empty_str &lt;-<span class="st"> &quot;&quot;</span></span>
+<span id="cb167-3"><a href="strings.html#cb167-3"></a>empty_str</span>
+<span id="cb167-4"><a href="strings.html#cb167-4"></a><span class="co">#&gt; [1] &quot;&quot;</span></span>
+<span id="cb167-5"><a href="strings.html#cb167-5"></a></span>
+<span id="cb167-6"><a href="strings.html#cb167-6"></a><span class="co"># class</span></span>
+<span id="cb167-7"><a href="strings.html#cb167-7"></a><span class="kw">class</span>(empty_str)</span>
+<span id="cb167-8"><a href="strings.html#cb167-8"></a><span class="co">#&gt; [1] &quot;character&quot;</span></span></code></pre></div>
 </div>
 <div id="empty-character-vector" class="section level3">
 <h3><span class="header-section-number">15.2.2</span> Empty Character Vector</h3>
 <p>Another basic string structure is the empty character vector produced by the
 function <code>character()</code> and its argument <code>length = 0</code>:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="strings.html#cb160-1"></a><span class="co"># empty character vector</span></span>
-<span id="cb160-2"><a href="strings.html#cb160-2"></a>empty_chr &lt;-<span class="st"> </span><span class="kw">character</span>(<span class="dv">0</span>)</span>
-<span id="cb160-3"><a href="strings.html#cb160-3"></a>empty_chr</span>
-<span id="cb160-4"><a href="strings.html#cb160-4"></a><span class="co">#&gt; character(0)</span></span>
-<span id="cb160-5"><a href="strings.html#cb160-5"></a></span>
-<span id="cb160-6"><a href="strings.html#cb160-6"></a><span class="co"># class</span></span>
-<span id="cb160-7"><a href="strings.html#cb160-7"></a><span class="kw">class</span>(empty_chr)</span>
-<span id="cb160-8"><a href="strings.html#cb160-8"></a><span class="co">#&gt; [1] &quot;character&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="strings.html#cb168-1"></a><span class="co"># empty character vector</span></span>
+<span id="cb168-2"><a href="strings.html#cb168-2"></a>empty_chr &lt;-<span class="st"> </span><span class="kw">character</span>(<span class="dv">0</span>)</span>
+<span id="cb168-3"><a href="strings.html#cb168-3"></a>empty_chr</span>
+<span id="cb168-4"><a href="strings.html#cb168-4"></a><span class="co">#&gt; character(0)</span></span>
+<span id="cb168-5"><a href="strings.html#cb168-5"></a></span>
+<span id="cb168-6"><a href="strings.html#cb168-6"></a><span class="co"># class</span></span>
+<span id="cb168-7"><a href="strings.html#cb168-7"></a><span class="kw">class</span>(empty_chr)</span>
+<span id="cb168-8"><a href="strings.html#cb168-8"></a><span class="co">#&gt; [1] &quot;character&quot;</span></span></code></pre></div>
 <p>It is important not to confuse the empty character vector character(0) with the
 empty string <code>""</code>; one of the main differences between them is that they have
 different lengths:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="strings.html#cb161-1"></a><span class="co"># length of empty string</span></span>
-<span id="cb161-2"><a href="strings.html#cb161-2"></a><span class="kw">length</span>(empty_str)</span>
-<span id="cb161-3"><a href="strings.html#cb161-3"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb161-4"><a href="strings.html#cb161-4"></a></span>
-<span id="cb161-5"><a href="strings.html#cb161-5"></a><span class="co"># length of empty character vector</span></span>
-<span id="cb161-6"><a href="strings.html#cb161-6"></a><span class="kw">length</span>(empty_chr)</span>
-<span id="cb161-7"><a href="strings.html#cb161-7"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="strings.html#cb169-1"></a><span class="co"># length of empty string</span></span>
+<span id="cb169-2"><a href="strings.html#cb169-2"></a><span class="kw">length</span>(empty_str)</span>
+<span id="cb169-3"><a href="strings.html#cb169-3"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb169-4"><a href="strings.html#cb169-4"></a></span>
+<span id="cb169-5"><a href="strings.html#cb169-5"></a><span class="co"># length of empty character vector</span></span>
+<span id="cb169-6"><a href="strings.html#cb169-6"></a><span class="kw">length</span>(empty_chr)</span>
+<span id="cb169-7"><a href="strings.html#cb169-7"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
 <p>Notice that the empty string <code>empty_str</code> has length 1, while the empty
 character vector <code>empty_chr</code> has length 0.</p>
 <p>Related to <code>character()</code> R provides two related functions: <code>as.character()</code> and
 <code>is.character()</code>. These two functions are methods for coercing objects to type
 <code>"character"</code>, and testing whether an R object is of type <code>"character"</code>. For
 instance, let’s define two objects <code>a</code> and <code>b</code> as follows:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="strings.html#cb162-1"></a><span class="co"># define two objects &#39;a&#39; and &#39;b&#39;</span></span>
-<span id="cb162-2"><a href="strings.html#cb162-2"></a>a &lt;-<span class="st"> &quot;test me&quot;</span></span>
-<span id="cb162-3"><a href="strings.html#cb162-3"></a>b &lt;-<span class="st"> </span><span class="dv">8</span> <span class="op">+</span><span class="st"> </span><span class="dv">9</span></span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="strings.html#cb170-1"></a><span class="co"># define two objects &#39;a&#39; and &#39;b&#39;</span></span>
+<span id="cb170-2"><a href="strings.html#cb170-2"></a>a &lt;-<span class="st"> &quot;test me&quot;</span></span>
+<span id="cb170-3"><a href="strings.html#cb170-3"></a>b &lt;-<span class="st"> </span><span class="dv">8</span> <span class="op">+</span><span class="st"> </span><span class="dv">9</span></span></code></pre></div>
 <p>To test if <code>a</code> and <code>b</code> are of type <code>"character"</code> use the function
 <code>is.character()</code>:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="strings.html#cb163-1"></a><span class="co"># are &#39;a&#39; and &#39;b&#39; characters?</span></span>
-<span id="cb163-2"><a href="strings.html#cb163-2"></a><span class="kw">is.character</span>(a)</span>
-<span id="cb163-3"><a href="strings.html#cb163-3"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb163-4"><a href="strings.html#cb163-4"></a></span>
-<span id="cb163-5"><a href="strings.html#cb163-5"></a><span class="kw">is.character</span>(b)</span>
-<span id="cb163-6"><a href="strings.html#cb163-6"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="strings.html#cb171-1"></a><span class="co"># are &#39;a&#39; and &#39;b&#39; characters?</span></span>
+<span id="cb171-2"><a href="strings.html#cb171-2"></a><span class="kw">is.character</span>(a)</span>
+<span id="cb171-3"><a href="strings.html#cb171-3"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb171-4"><a href="strings.html#cb171-4"></a></span>
+<span id="cb171-5"><a href="strings.html#cb171-5"></a><span class="kw">is.character</span>(b)</span>
+<span id="cb171-6"><a href="strings.html#cb171-6"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
 <p>The function <code>as.character()</code> is a coercing method. For better or worse, R
 allows you to convert (i.e. coerce) non-character objects into character
 strings with the function <code>as.character()</code>:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="strings.html#cb164-1"></a><span class="co"># converting &#39;b&#39; as character</span></span>
-<span id="cb164-2"><a href="strings.html#cb164-2"></a>b &lt;-<span class="st"> </span><span class="kw">as.character</span>(b)</span>
-<span id="cb164-3"><a href="strings.html#cb164-3"></a>b</span>
-<span id="cb164-4"><a href="strings.html#cb164-4"></a><span class="co">#&gt; [1] &quot;17&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="strings.html#cb172-1"></a><span class="co"># converting &#39;b&#39; as character</span></span>
+<span id="cb172-2"><a href="strings.html#cb172-2"></a>b &lt;-<span class="st"> </span><span class="kw">as.character</span>(b)</span>
+<span id="cb172-3"><a href="strings.html#cb172-3"></a>b</span>
+<span id="cb172-4"><a href="strings.html#cb172-4"></a><span class="co">#&gt; [1] &quot;17&quot;</span></span></code></pre></div>
 </div>
 <div id="the-workhorse-function-paste" class="section level3">
 <h3><span class="header-section-number">15.2.3</span> The workhorse function <code>paste()</code></h3>
@@ -808,46 +809,46 @@ one or several character strings. Its usage has the following form:</p>
 is a character string that is used as a separator. The argument <code>collapse</code> is an
 optional string to indicate if you want all the terms to be collapsed into a
 single string. Here is a simple example with <code>paste()</code>:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="strings.html#cb166-1"></a><span class="co"># paste</span></span>
-<span id="cb166-2"><a href="strings.html#cb166-2"></a>PI &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;The life of&quot;</span>, pi)</span>
-<span id="cb166-3"><a href="strings.html#cb166-3"></a></span>
-<span id="cb166-4"><a href="strings.html#cb166-4"></a>PI</span>
-<span id="cb166-5"><a href="strings.html#cb166-5"></a><span class="co">#&gt; [1] &quot;The life of 3.14159265358979&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="strings.html#cb174-1"></a><span class="co"># paste</span></span>
+<span id="cb174-2"><a href="strings.html#cb174-2"></a>PI &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;The life of&quot;</span>, pi)</span>
+<span id="cb174-3"><a href="strings.html#cb174-3"></a></span>
+<span id="cb174-4"><a href="strings.html#cb174-4"></a>PI</span>
+<span id="cb174-5"><a href="strings.html#cb174-5"></a><span class="co">#&gt; [1] &quot;The life of 3.14159265358979&quot;</span></span></code></pre></div>
 <p>As you can see, the default separator is a blank space (<code>sep = " "</code>). But you
 can select another character, for example <code>sep = "-"</code>:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="strings.html#cb167-1"></a><span class="co"># paste</span></span>
-<span id="cb167-2"><a href="strings.html#cb167-2"></a>IloveR &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;love&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb167-3"><a href="strings.html#cb167-3"></a></span>
-<span id="cb167-4"><a href="strings.html#cb167-4"></a>IloveR</span>
-<span id="cb167-5"><a href="strings.html#cb167-5"></a><span class="co">#&gt; [1] &quot;I-love-R&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="strings.html#cb175-1"></a><span class="co"># paste</span></span>
+<span id="cb175-2"><a href="strings.html#cb175-2"></a>IloveR &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;love&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb175-3"><a href="strings.html#cb175-3"></a></span>
+<span id="cb175-4"><a href="strings.html#cb175-4"></a>IloveR</span>
+<span id="cb175-5"><a href="strings.html#cb175-5"></a><span class="co">#&gt; [1] &quot;I-love-R&quot;</span></span></code></pre></div>
 <p>If you give <code>paste()</code> objects of different length, then it will apply a
 recycling rule. For example, if you paste a single character <code>"X"</code> with the
 sequence <code>1:5</code>, and separator <code>sep = "."</code>, this is what you get:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="strings.html#cb168-1"></a><span class="co"># paste with objects of different lengths</span></span>
-<span id="cb168-2"><a href="strings.html#cb168-2"></a><span class="kw">paste</span>(<span class="st">&quot;X&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">sep =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb168-3"><a href="strings.html#cb168-3"></a><span class="co">#&gt; [1] &quot;X.1&quot; &quot;X.2&quot; &quot;X.3&quot; &quot;X.4&quot; &quot;X.5&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="strings.html#cb176-1"></a><span class="co"># paste with objects of different lengths</span></span>
+<span id="cb176-2"><a href="strings.html#cb176-2"></a><span class="kw">paste</span>(<span class="st">&quot;X&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">sep =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb176-3"><a href="strings.html#cb176-3"></a><span class="co">#&gt; [1] &quot;X.1&quot; &quot;X.2&quot; &quot;X.3&quot; &quot;X.4&quot; &quot;X.5&quot;</span></span></code></pre></div>
 <p>To see the effect of the collapse argument, let’s compare the difference with
 collapsing and without it:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="strings.html#cb169-1"></a><span class="co"># paste with collapsing</span></span>
-<span id="cb169-2"><a href="strings.html#cb169-2"></a><span class="kw">paste</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="kw">c</span>(<span class="st">&quot;!&quot;</span>,<span class="st">&quot;?&quot;</span>,<span class="st">&quot;+&quot;</span>), <span class="dt">sep =</span> <span class="st">&#39;&#39;</span>, <span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb169-3"><a href="strings.html#cb169-3"></a><span class="co">#&gt; [1] &quot;1!2?3+&quot;</span></span>
-<span id="cb169-4"><a href="strings.html#cb169-4"></a></span>
-<span id="cb169-5"><a href="strings.html#cb169-5"></a><span class="co"># paste without collapsing</span></span>
-<span id="cb169-6"><a href="strings.html#cb169-6"></a><span class="kw">paste</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="kw">c</span>(<span class="st">&quot;!&quot;</span>,<span class="st">&quot;?&quot;</span>,<span class="st">&quot;+&quot;</span>), <span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb169-7"><a href="strings.html#cb169-7"></a><span class="co">#&gt; [1] &quot;1!&quot; &quot;2?&quot; &quot;3+&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="strings.html#cb177-1"></a><span class="co"># paste with collapsing</span></span>
+<span id="cb177-2"><a href="strings.html#cb177-2"></a><span class="kw">paste</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="kw">c</span>(<span class="st">&quot;!&quot;</span>,<span class="st">&quot;?&quot;</span>,<span class="st">&quot;+&quot;</span>), <span class="dt">sep =</span> <span class="st">&#39;&#39;</span>, <span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb177-3"><a href="strings.html#cb177-3"></a><span class="co">#&gt; [1] &quot;1!2?3+&quot;</span></span>
+<span id="cb177-4"><a href="strings.html#cb177-4"></a></span>
+<span id="cb177-5"><a href="strings.html#cb177-5"></a><span class="co"># paste without collapsing</span></span>
+<span id="cb177-6"><a href="strings.html#cb177-6"></a><span class="kw">paste</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="kw">c</span>(<span class="st">&quot;!&quot;</span>,<span class="st">&quot;?&quot;</span>,<span class="st">&quot;+&quot;</span>), <span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb177-7"><a href="strings.html#cb177-7"></a><span class="co">#&gt; [1] &quot;1!&quot; &quot;2?&quot; &quot;3+&quot;</span></span></code></pre></div>
 <p>One of the potential problems with <code>paste()</code> is that it coerces missing values
 <code>NA</code> into the character <code>"NA"</code>:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="strings.html#cb170-1"></a><span class="co"># with missing values NA</span></span>
-<span id="cb170-2"><a href="strings.html#cb170-2"></a>evalue &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;the value of &#39;e&#39; is&quot;</span>, <span class="kw">exp</span>(<span class="dv">1</span>), <span class="ot">NA</span>)</span>
-<span id="cb170-3"><a href="strings.html#cb170-3"></a></span>
-<span id="cb170-4"><a href="strings.html#cb170-4"></a>evalue</span>
-<span id="cb170-5"><a href="strings.html#cb170-5"></a><span class="co">#&gt; [1] &quot;the value of &#39;e&#39; is 2.71828182845905 NA&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="strings.html#cb178-1"></a><span class="co"># with missing values NA</span></span>
+<span id="cb178-2"><a href="strings.html#cb178-2"></a>evalue &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;the value of &#39;e&#39; is&quot;</span>, <span class="kw">exp</span>(<span class="dv">1</span>), <span class="ot">NA</span>)</span>
+<span id="cb178-3"><a href="strings.html#cb178-3"></a></span>
+<span id="cb178-4"><a href="strings.html#cb178-4"></a>evalue</span>
+<span id="cb178-5"><a href="strings.html#cb178-5"></a><span class="co">#&gt; [1] &quot;the value of &#39;e&#39; is 2.71828182845905 NA&quot;</span></span></code></pre></div>
 <p>In addition to <code>paste()</code>, there’s also the function <code>paste0()</code> which is a
 wrapper of <code>paste()</code> equivalent to:</p>
 <pre><code>paste(..., sep = &quot;&quot;, collapse)</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="strings.html#cb172-1"></a><span class="co"># collapsing with paste0</span></span>
-<span id="cb172-2"><a href="strings.html#cb172-2"></a><span class="kw">paste0</span>(<span class="st">&quot;let&#39;s&quot;</span>, <span class="st">&quot;collapse&quot;</span>, <span class="st">&quot;all&quot;</span>, <span class="st">&quot;these&quot;</span>, <span class="st">&quot;words&quot;</span>)</span>
-<span id="cb172-3"><a href="strings.html#cb172-3"></a><span class="co">#&gt; [1] &quot;let&#39;scollapseallthesewords&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="strings.html#cb180-1"></a><span class="co"># collapsing with paste0</span></span>
+<span id="cb180-2"><a href="strings.html#cb180-2"></a><span class="kw">paste0</span>(<span class="st">&quot;let&#39;s&quot;</span>, <span class="st">&quot;collapse&quot;</span>, <span class="st">&quot;all&quot;</span>, <span class="st">&quot;these&quot;</span>, <span class="st">&quot;words&quot;</span>)</span>
+<span id="cb180-3"><a href="strings.html#cb180-3"></a><span class="co">#&gt; [1] &quot;let&#39;scollapseallthesewords&quot;</span></span></code></pre></div>
 </div>
 </div>
 <div id="basic-manipulations" class="section level2">
@@ -902,25 +903,25 @@ we will review the following functions:</p>
 <p>One of the main functions for manipulating character strings is <code>nchar()</code>
 which counts the number of characters in a string. In other words, <code>nchar()</code>
 provides the length of a string:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="strings.html#cb173-1"></a><span class="co"># how many characters?</span></span>
-<span id="cb173-2"><a href="strings.html#cb173-2"></a><span class="kw">nchar</span>(<span class="kw">c</span>(<span class="st">&quot;How&quot;</span>, <span class="st">&quot;many&quot;</span>, <span class="st">&quot;characters?&quot;</span>))</span>
-<span id="cb173-3"><a href="strings.html#cb173-3"></a><span class="co">#&gt; [1]  3  4 11</span></span>
-<span id="cb173-4"><a href="strings.html#cb173-4"></a></span>
-<span id="cb173-5"><a href="strings.html#cb173-5"></a><span class="co"># how many characters?</span></span>
-<span id="cb173-6"><a href="strings.html#cb173-6"></a><span class="kw">nchar</span>(<span class="st">&quot;How many characters?&quot;</span>)</span>
-<span id="cb173-7"><a href="strings.html#cb173-7"></a><span class="co">#&gt; [1] 20</span></span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="strings.html#cb181-1"></a><span class="co"># how many characters?</span></span>
+<span id="cb181-2"><a href="strings.html#cb181-2"></a><span class="kw">nchar</span>(<span class="kw">c</span>(<span class="st">&quot;How&quot;</span>, <span class="st">&quot;many&quot;</span>, <span class="st">&quot;characters?&quot;</span>))</span>
+<span id="cb181-3"><a href="strings.html#cb181-3"></a><span class="co">#&gt; [1]  3  4 11</span></span>
+<span id="cb181-4"><a href="strings.html#cb181-4"></a></span>
+<span id="cb181-5"><a href="strings.html#cb181-5"></a><span class="co"># how many characters?</span></span>
+<span id="cb181-6"><a href="strings.html#cb181-6"></a><span class="kw">nchar</span>(<span class="st">&quot;How many characters?&quot;</span>)</span>
+<span id="cb181-7"><a href="strings.html#cb181-7"></a><span class="co">#&gt; [1] 20</span></span></code></pre></div>
 <p>Notice that the white spaces between words in the second example are also
 counted as characters.</p>
 <p>It is important not to confuse <code>nchar()</code> with <code>length()</code>. While the former
 gives us the <strong>number of characters</strong>, the later only gives the number of
 elements in a vector.</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="strings.html#cb174-1"></a><span class="co"># how many elements?</span></span>
-<span id="cb174-2"><a href="strings.html#cb174-2"></a><span class="kw">length</span>(<span class="kw">c</span>(<span class="st">&quot;How&quot;</span>, <span class="st">&quot;many&quot;</span>, <span class="st">&quot;characters?&quot;</span>))</span>
-<span id="cb174-3"><a href="strings.html#cb174-3"></a><span class="co">#&gt; [1] 3</span></span>
-<span id="cb174-4"><a href="strings.html#cb174-4"></a></span>
-<span id="cb174-5"><a href="strings.html#cb174-5"></a><span class="co"># how many elements?</span></span>
-<span id="cb174-6"><a href="strings.html#cb174-6"></a><span class="kw">length</span>(<span class="st">&quot;How many characters?&quot;</span>)</span>
-<span id="cb174-7"><a href="strings.html#cb174-7"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="strings.html#cb182-1"></a><span class="co"># how many elements?</span></span>
+<span id="cb182-2"><a href="strings.html#cb182-2"></a><span class="kw">length</span>(<span class="kw">c</span>(<span class="st">&quot;How&quot;</span>, <span class="st">&quot;many&quot;</span>, <span class="st">&quot;characters?&quot;</span>))</span>
+<span id="cb182-3"><a href="strings.html#cb182-3"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb182-4"><a href="strings.html#cb182-4"></a></span>
+<span id="cb182-5"><a href="strings.html#cb182-5"></a><span class="co"># how many elements?</span></span>
+<span id="cb182-6"><a href="strings.html#cb182-6"></a><span class="kw">length</span>(<span class="st">&quot;How many characters?&quot;</span>)</span>
+<span id="cb182-7"><a href="strings.html#cb182-7"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 </div>
 <div id="casefolding" class="section level3">
 <h3><span class="header-section-number">15.3.2</span> Casefolding</h3>
@@ -931,59 +932,59 @@ elements in a vector.</p>
 <li><code>casefold()</code></li>
 </ol>
 <p>The function <code>tolower()</code> converts any upper case characters into lower case:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="strings.html#cb175-1"></a><span class="co"># to lower case</span></span>
-<span id="cb175-2"><a href="strings.html#cb175-2"></a><span class="kw">tolower</span>(<span class="kw">c</span>(<span class="st">&quot;aLL ChaRacterS in LoweR caSe&quot;</span>, <span class="st">&quot;ABCDE&quot;</span>))</span>
-<span id="cb175-3"><a href="strings.html#cb175-3"></a><span class="co">#&gt; [1] &quot;all characters in lower case&quot; &quot;abcde&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="strings.html#cb183-1"></a><span class="co"># to lower case</span></span>
+<span id="cb183-2"><a href="strings.html#cb183-2"></a><span class="kw">tolower</span>(<span class="kw">c</span>(<span class="st">&quot;aLL ChaRacterS in LoweR caSe&quot;</span>, <span class="st">&quot;ABCDE&quot;</span>))</span>
+<span id="cb183-3"><a href="strings.html#cb183-3"></a><span class="co">#&gt; [1] &quot;all characters in lower case&quot; &quot;abcde&quot;</span></span></code></pre></div>
 <p>The opposite function of <code>tolower()</code> is <code>toupper</code>. As you may guess, this
 function converts any lower case characters into upper case:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="strings.html#cb176-1"></a><span class="co"># to upper case</span></span>
-<span id="cb176-2"><a href="strings.html#cb176-2"></a><span class="kw">toupper</span>(<span class="kw">c</span>(<span class="st">&quot;All ChaRacterS in Upper Case&quot;</span>, <span class="st">&quot;abcde&quot;</span>))</span>
-<span id="cb176-3"><a href="strings.html#cb176-3"></a><span class="co">#&gt; [1] &quot;ALL CHARACTERS IN UPPER CASE&quot; &quot;ABCDE&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="strings.html#cb184-1"></a><span class="co"># to upper case</span></span>
+<span id="cb184-2"><a href="strings.html#cb184-2"></a><span class="kw">toupper</span>(<span class="kw">c</span>(<span class="st">&quot;All ChaRacterS in Upper Case&quot;</span>, <span class="st">&quot;abcde&quot;</span>))</span>
+<span id="cb184-3"><a href="strings.html#cb184-3"></a><span class="co">#&gt; [1] &quot;ALL CHARACTERS IN UPPER CASE&quot; &quot;ABCDE&quot;</span></span></code></pre></div>
 <p>The third function for case-folding is <code>casefold()</code> which is a wrapper for both <code>tolower()</code> and <code>toupper()</code>. Its uasge has the following form:</p>
 <pre><code>casefold(x, upper = FALSE)</code></pre>
 <p>By default, <code>casefold()</code> converts all characters to lower case, but you can
 use the argument <code>upper = TRUE</code> to indicate the opposite (characters in upper
 case):</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="strings.html#cb178-1"></a><span class="co"># lower case folding</span></span>
-<span id="cb178-2"><a href="strings.html#cb178-2"></a><span class="kw">casefold</span>(<span class="st">&quot;aLL ChaRacterS in LoweR caSe&quot;</span>)</span>
-<span id="cb178-3"><a href="strings.html#cb178-3"></a><span class="co">#&gt; [1] &quot;all characters in lower case&quot;</span></span>
-<span id="cb178-4"><a href="strings.html#cb178-4"></a></span>
-<span id="cb178-5"><a href="strings.html#cb178-5"></a><span class="co"># upper case folding</span></span>
-<span id="cb178-6"><a href="strings.html#cb178-6"></a><span class="kw">casefold</span>(<span class="st">&quot;All ChaRacterS in Upper Case&quot;</span>, <span class="dt">upper =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb178-7"><a href="strings.html#cb178-7"></a><span class="co">#&gt; [1] &quot;ALL CHARACTERS IN UPPER CASE&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="strings.html#cb186-1"></a><span class="co"># lower case folding</span></span>
+<span id="cb186-2"><a href="strings.html#cb186-2"></a><span class="kw">casefold</span>(<span class="st">&quot;aLL ChaRacterS in LoweR caSe&quot;</span>)</span>
+<span id="cb186-3"><a href="strings.html#cb186-3"></a><span class="co">#&gt; [1] &quot;all characters in lower case&quot;</span></span>
+<span id="cb186-4"><a href="strings.html#cb186-4"></a></span>
+<span id="cb186-5"><a href="strings.html#cb186-5"></a><span class="co"># upper case folding</span></span>
+<span id="cb186-6"><a href="strings.html#cb186-6"></a><span class="kw">casefold</span>(<span class="st">&quot;All ChaRacterS in Upper Case&quot;</span>, <span class="dt">upper =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb186-7"><a href="strings.html#cb186-7"></a><span class="co">#&gt; [1] &quot;ALL CHARACTERS IN UPPER CASE&quot;</span></span></code></pre></div>
 <p>I’ve found the case-folding functions to be very helpful when I write functions
 that take a character input which may be specified in lower or upper case, or
 perhaps as a mix of both cases. For instance, consider the function
 <code>temp_convert()</code> that takes a temperature value in Fahrenheit degress, and
 a character string indicating the name of the scale to be converted.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="strings.html#cb179-1"></a>temp_convert &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">deg =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="st">&quot;celsius&quot;</span>) {</span>
-<span id="cb179-2"><a href="strings.html#cb179-2"></a>  <span class="cf">switch</span>(to,</span>
-<span id="cb179-3"><a href="strings.html#cb179-3"></a>         <span class="st">&quot;celsius&quot;</span> =<span class="st"> </span>(deg <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>),</span>
-<span id="cb179-4"><a href="strings.html#cb179-4"></a>         <span class="st">&quot;kelvin&quot;</span> =<span class="st"> </span>(deg <span class="op">+</span><span class="st"> </span><span class="fl">459.67</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>),</span>
-<span id="cb179-5"><a href="strings.html#cb179-5"></a>         <span class="st">&quot;reaumur&quot;</span> =<span class="st"> </span>(deg <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">4</span><span class="op">/</span><span class="dv">9</span>),</span>
-<span id="cb179-6"><a href="strings.html#cb179-6"></a>         <span class="st">&quot;rankine&quot;</span> =<span class="st"> </span>deg <span class="op">+</span><span class="st"> </span><span class="fl">459.67</span>)</span>
-<span id="cb179-7"><a href="strings.html#cb179-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="strings.html#cb187-1"></a>temp_convert &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">deg =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="st">&quot;celsius&quot;</span>) {</span>
+<span id="cb187-2"><a href="strings.html#cb187-2"></a>  <span class="cf">switch</span>(to,</span>
+<span id="cb187-3"><a href="strings.html#cb187-3"></a>         <span class="st">&quot;celsius&quot;</span> =<span class="st"> </span>(deg <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>),</span>
+<span id="cb187-4"><a href="strings.html#cb187-4"></a>         <span class="st">&quot;kelvin&quot;</span> =<span class="st"> </span>(deg <span class="op">+</span><span class="st"> </span><span class="fl">459.67</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>),</span>
+<span id="cb187-5"><a href="strings.html#cb187-5"></a>         <span class="st">&quot;reaumur&quot;</span> =<span class="st"> </span>(deg <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">4</span><span class="op">/</span><span class="dv">9</span>),</span>
+<span id="cb187-6"><a href="strings.html#cb187-6"></a>         <span class="st">&quot;rankine&quot;</span> =<span class="st"> </span>deg <span class="op">+</span><span class="st"> </span><span class="fl">459.67</span>)</span>
+<span id="cb187-7"><a href="strings.html#cb187-7"></a>}</span></code></pre></div>
 <p>Here is how you call <code>temp_convert()</code> to convert 10 Fahrenheit degrees into
 celsius degrees:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="strings.html#cb180-1"></a><span class="kw">temp_convert</span>(<span class="dt">deg =</span> <span class="dv">10</span>, <span class="dt">to =</span> <span class="st">&quot;celsius&quot;</span>)</span>
-<span id="cb180-2"><a href="strings.html#cb180-2"></a><span class="co">#&gt; [1] -12.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="strings.html#cb188-1"></a><span class="kw">temp_convert</span>(<span class="dt">deg =</span> <span class="dv">10</span>, <span class="dt">to =</span> <span class="st">&quot;celsius&quot;</span>)</span>
+<span id="cb188-2"><a href="strings.html#cb188-2"></a><span class="co">#&gt; [1] -12.2</span></span></code></pre></div>
 <p><code>temp_convert()</code> works fine when the argument <code>to = 'celsius'</code>. But what
 happens if you try <code>temp_convert(30, 'Celsius')</code> or
 <code>temp_convert(30, 'CELSIUS')</code>?</p>
 <p>To have a more flexible function <code>temp_convert()</code> you can apply <code>tolower()</code>
 to the argument <code>to</code>, and in this way guarantee that the provided string by
 the user is always in lower case:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="strings.html#cb181-1"></a>temp_convert &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">deg =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="st">&quot;celsius&quot;</span>) {</span>
-<span id="cb181-2"><a href="strings.html#cb181-2"></a>  <span class="cf">switch</span>(<span class="kw">tolower</span>(to),</span>
-<span id="cb181-3"><a href="strings.html#cb181-3"></a>         <span class="st">&quot;celsius&quot;</span> =<span class="st"> </span>(deg <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>),</span>
-<span id="cb181-4"><a href="strings.html#cb181-4"></a>         <span class="st">&quot;kelvin&quot;</span> =<span class="st"> </span>(deg <span class="op">+</span><span class="st"> </span><span class="fl">459.67</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>),</span>
-<span id="cb181-5"><a href="strings.html#cb181-5"></a>         <span class="st">&quot;reaumur&quot;</span> =<span class="st"> </span>(deg <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">4</span><span class="op">/</span><span class="dv">9</span>),</span>
-<span id="cb181-6"><a href="strings.html#cb181-6"></a>         <span class="st">&quot;rankine&quot;</span> =<span class="st"> </span>deg <span class="op">+</span><span class="st"> </span><span class="fl">459.67</span>)</span>
-<span id="cb181-7"><a href="strings.html#cb181-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="strings.html#cb189-1"></a>temp_convert &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">deg =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="st">&quot;celsius&quot;</span>) {</span>
+<span id="cb189-2"><a href="strings.html#cb189-2"></a>  <span class="cf">switch</span>(<span class="kw">tolower</span>(to),</span>
+<span id="cb189-3"><a href="strings.html#cb189-3"></a>         <span class="st">&quot;celsius&quot;</span> =<span class="st"> </span>(deg <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>),</span>
+<span id="cb189-4"><a href="strings.html#cb189-4"></a>         <span class="st">&quot;kelvin&quot;</span> =<span class="st"> </span>(deg <span class="op">+</span><span class="st"> </span><span class="fl">459.67</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>),</span>
+<span id="cb189-5"><a href="strings.html#cb189-5"></a>         <span class="st">&quot;reaumur&quot;</span> =<span class="st"> </span>(deg <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">4</span><span class="op">/</span><span class="dv">9</span>),</span>
+<span id="cb189-6"><a href="strings.html#cb189-6"></a>         <span class="st">&quot;rankine&quot;</span> =<span class="st"> </span>deg <span class="op">+</span><span class="st"> </span><span class="fl">459.67</span>)</span>
+<span id="cb189-7"><a href="strings.html#cb189-7"></a>}</span></code></pre></div>
 <p>Now all the following three calls are equivalent:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="strings.html#cb182-1"></a><span class="kw">temp_convert</span>(<span class="dv">30</span>, <span class="st">&#39;celsius&#39;</span>)</span>
-<span id="cb182-2"><a href="strings.html#cb182-2"></a><span class="kw">temp_convert</span>(<span class="dv">30</span>, <span class="st">&#39;Celsius&#39;</span>)</span>
-<span id="cb182-3"><a href="strings.html#cb182-3"></a><span class="kw">temp_convert</span>(<span class="dv">30</span>, <span class="st">&#39;CELSIUS&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="strings.html#cb190-1"></a><span class="kw">temp_convert</span>(<span class="dv">30</span>, <span class="st">&#39;celsius&#39;</span>)</span>
+<span id="cb190-2"><a href="strings.html#cb190-2"></a><span class="kw">temp_convert</span>(<span class="dv">30</span>, <span class="st">&#39;Celsius&#39;</span>)</span>
+<span id="cb190-3"><a href="strings.html#cb190-3"></a><span class="kw">temp_convert</span>(<span class="dv">30</span>, <span class="st">&#39;CELSIUS&#39;</span>)</span></code></pre></div>
 </div>
 <div id="translating-characters" class="section level3">
 <h3><span class="header-section-number">15.3.3</span> Translating characters</h3>
@@ -994,23 +995,23 @@ character vector <code>x</code>:</p>
 in <code>x</code> by those indicated in <code>new</code>. For example, suppose we want to translate
 the letter <code>"a"</code> (lower case) with <code>"A"</code> (upper case) in the sentence
 <code>"This is a boring string"</code>:</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="strings.html#cb184-1"></a><span class="co"># replace &#39;a&#39; by &#39;A&#39;</span></span>
-<span id="cb184-2"><a href="strings.html#cb184-2"></a><span class="kw">chartr</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;This is a boring string&quot;</span>)</span>
-<span id="cb184-3"><a href="strings.html#cb184-3"></a><span class="co">#&gt; [1] &quot;This is A boring string&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="strings.html#cb192-1"></a><span class="co"># replace &#39;a&#39; by &#39;A&#39;</span></span>
+<span id="cb192-2"><a href="strings.html#cb192-2"></a><span class="kw">chartr</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;This is a boring string&quot;</span>)</span>
+<span id="cb192-3"><a href="strings.html#cb192-3"></a><span class="co">#&gt; [1] &quot;This is A boring string&quot;</span></span></code></pre></div>
 <p>It is important to note that <code>old</code> and <code>new</code> must have the same number of
 characters, otherwise you will get a nasty error message like this one:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="strings.html#cb185-1"></a><span class="co"># incorrect use</span></span>
-<span id="cb185-2"><a href="strings.html#cb185-2"></a><span class="kw">chartr</span>(<span class="st">&quot;ai&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;This is a bad example&quot;</span>)</span>
-<span id="cb185-3"><a href="strings.html#cb185-3"></a><span class="co">#&gt; Error in chartr(&quot;ai&quot;, &quot;X&quot;, &quot;This is a bad example&quot;): &#39;old&#39; is longer than &#39;new&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="strings.html#cb193-1"></a><span class="co"># incorrect use</span></span>
+<span id="cb193-2"><a href="strings.html#cb193-2"></a><span class="kw">chartr</span>(<span class="st">&quot;ai&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;This is a bad example&quot;</span>)</span>
+<span id="cb193-3"><a href="strings.html#cb193-3"></a><span class="co">#&gt; Error in chartr(&quot;ai&quot;, &quot;X&quot;, &quot;This is a bad example&quot;): &#39;old&#39; is longer than &#39;new&#39;</span></span></code></pre></div>
 <p>Here’s a more interesting example with <code>old = "aei"</code> and <code>new = "\#!?"</code>.
 This implies that any <code>'a'</code> in <code>'x'</code> will be replaced by <code>'\#'</code>, any <code>'e'</code> in
 <code>'x'</code> will be replaced by <code>'?'</code>, and any <code>'i'</code> in <code>'x'</code> will be replaced by
 <code>'?'</code>:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="strings.html#cb186-1"></a><span class="co"># multiple replacements</span></span>
-<span id="cb186-2"><a href="strings.html#cb186-2"></a>crazy &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Here&#39;s to the crazy ones&quot;</span>, <span class="st">&quot;The misfits&quot;</span>, <span class="st">&quot;The rebels&quot;</span>)</span>
-<span id="cb186-3"><a href="strings.html#cb186-3"></a><span class="kw">chartr</span>(<span class="st">&quot;aei&quot;</span>, <span class="st">&quot;#!?&quot;</span>, crazy)</span>
-<span id="cb186-4"><a href="strings.html#cb186-4"></a><span class="co">#&gt; [1] &quot;H!r!&#39;s to th! cr#zy on!s&quot; &quot;Th! m?sf?ts&quot;             </span></span>
-<span id="cb186-5"><a href="strings.html#cb186-5"></a><span class="co">#&gt; [3] &quot;Th! r!b!ls&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="strings.html#cb194-1"></a><span class="co"># multiple replacements</span></span>
+<span id="cb194-2"><a href="strings.html#cb194-2"></a>crazy &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Here&#39;s to the crazy ones&quot;</span>, <span class="st">&quot;The misfits&quot;</span>, <span class="st">&quot;The rebels&quot;</span>)</span>
+<span id="cb194-3"><a href="strings.html#cb194-3"></a><span class="kw">chartr</span>(<span class="st">&quot;aei&quot;</span>, <span class="st">&quot;#!?&quot;</span>, crazy)</span>
+<span id="cb194-4"><a href="strings.html#cb194-4"></a><span class="co">#&gt; [1] &quot;H!r!&#39;s to th! cr#zy on!s&quot; &quot;Th! m?sf?ts&quot;             </span></span>
+<span id="cb194-5"><a href="strings.html#cb194-5"></a><span class="co">#&gt; [3] &quot;Th! r!b!ls&quot;</span></span></code></pre></div>
 </div>
 <div id="abbreviating-strings" class="section level3">
 <h3><span class="header-section-number">15.3.4</span> Abbreviating strings</h3>
@@ -1020,40 +1021,40 @@ This implies that any <code>'a'</code> in <code>'x'</code> will be replaced by <
             method = c(&quot;left.keep&quot;, &quot;both.sides&quot;))</code></pre>
 <p>Although there are several arguments, the main parameter is the character
 vector (<code>names.org</code>) which will contain the names that we want to abbreviate:</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="strings.html#cb188-1"></a><span class="co"># some color names</span></span>
-<span id="cb188-2"><a href="strings.html#cb188-2"></a>some_colors &lt;-<span class="st"> </span><span class="kw">colors</span>()[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</span>
-<span id="cb188-3"><a href="strings.html#cb188-3"></a>some_colors</span>
-<span id="cb188-4"><a href="strings.html#cb188-4"></a><span class="co">#&gt; [1] &quot;white&quot;         &quot;aliceblue&quot;     &quot;antiquewhite&quot;  &quot;antiquewhite1&quot;</span></span>
-<span id="cb188-5"><a href="strings.html#cb188-5"></a></span>
-<span id="cb188-6"><a href="strings.html#cb188-6"></a><span class="co"># abbreviate (default usage)</span></span>
-<span id="cb188-7"><a href="strings.html#cb188-7"></a>colors1 &lt;-<span class="st"> </span><span class="kw">abbreviate</span>(some_colors)</span>
-<span id="cb188-8"><a href="strings.html#cb188-8"></a>colors1</span>
-<span id="cb188-9"><a href="strings.html#cb188-9"></a><span class="co">#&gt;         white     aliceblue  antiquewhite antiquewhite1 </span></span>
-<span id="cb188-10"><a href="strings.html#cb188-10"></a><span class="co">#&gt;        &quot;whit&quot;        &quot;alcb&quot;        &quot;antq&quot;        &quot;ant1&quot;</span></span>
-<span id="cb188-11"><a href="strings.html#cb188-11"></a></span>
-<span id="cb188-12"><a href="strings.html#cb188-12"></a><span class="co"># abbreviate with &#39;minlength&#39;</span></span>
-<span id="cb188-13"><a href="strings.html#cb188-13"></a>colors2 &lt;-<span class="st"> </span><span class="kw">abbreviate</span>(some_colors, <span class="dt">minlength =</span> <span class="dv">5</span>)</span>
-<span id="cb188-14"><a href="strings.html#cb188-14"></a>colors2</span>
-<span id="cb188-15"><a href="strings.html#cb188-15"></a><span class="co">#&gt;         white     aliceblue  antiquewhite antiquewhite1 </span></span>
-<span id="cb188-16"><a href="strings.html#cb188-16"></a><span class="co">#&gt;       &quot;white&quot;       &quot;alcbl&quot;       &quot;antqw&quot;       &quot;antq1&quot;</span></span>
-<span id="cb188-17"><a href="strings.html#cb188-17"></a></span>
-<span id="cb188-18"><a href="strings.html#cb188-18"></a><span class="co"># abbreviate</span></span>
-<span id="cb188-19"><a href="strings.html#cb188-19"></a>colors3 &lt;-<span class="st"> </span><span class="kw">abbreviate</span>(some_colors, <span class="dt">minlength =</span> <span class="dv">3</span>, <span class="dt">method =</span> <span class="st">&quot;both.sides&quot;</span>)</span>
-<span id="cb188-20"><a href="strings.html#cb188-20"></a>colors3</span>
-<span id="cb188-21"><a href="strings.html#cb188-21"></a><span class="co">#&gt;         white     aliceblue  antiquewhite antiquewhite1 </span></span>
-<span id="cb188-22"><a href="strings.html#cb188-22"></a><span class="co">#&gt;         &quot;wht&quot;         &quot;alc&quot;         &quot;ant&quot;         &quot;an1&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="strings.html#cb196-1"></a><span class="co"># some color names</span></span>
+<span id="cb196-2"><a href="strings.html#cb196-2"></a>some_colors &lt;-<span class="st"> </span><span class="kw">colors</span>()[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</span>
+<span id="cb196-3"><a href="strings.html#cb196-3"></a>some_colors</span>
+<span id="cb196-4"><a href="strings.html#cb196-4"></a><span class="co">#&gt; [1] &quot;white&quot;         &quot;aliceblue&quot;     &quot;antiquewhite&quot;  &quot;antiquewhite1&quot;</span></span>
+<span id="cb196-5"><a href="strings.html#cb196-5"></a></span>
+<span id="cb196-6"><a href="strings.html#cb196-6"></a><span class="co"># abbreviate (default usage)</span></span>
+<span id="cb196-7"><a href="strings.html#cb196-7"></a>colors1 &lt;-<span class="st"> </span><span class="kw">abbreviate</span>(some_colors)</span>
+<span id="cb196-8"><a href="strings.html#cb196-8"></a>colors1</span>
+<span id="cb196-9"><a href="strings.html#cb196-9"></a><span class="co">#&gt;         white     aliceblue  antiquewhite antiquewhite1 </span></span>
+<span id="cb196-10"><a href="strings.html#cb196-10"></a><span class="co">#&gt;        &quot;whit&quot;        &quot;alcb&quot;        &quot;antq&quot;        &quot;ant1&quot;</span></span>
+<span id="cb196-11"><a href="strings.html#cb196-11"></a></span>
+<span id="cb196-12"><a href="strings.html#cb196-12"></a><span class="co"># abbreviate with &#39;minlength&#39;</span></span>
+<span id="cb196-13"><a href="strings.html#cb196-13"></a>colors2 &lt;-<span class="st"> </span><span class="kw">abbreviate</span>(some_colors, <span class="dt">minlength =</span> <span class="dv">5</span>)</span>
+<span id="cb196-14"><a href="strings.html#cb196-14"></a>colors2</span>
+<span id="cb196-15"><a href="strings.html#cb196-15"></a><span class="co">#&gt;         white     aliceblue  antiquewhite antiquewhite1 </span></span>
+<span id="cb196-16"><a href="strings.html#cb196-16"></a><span class="co">#&gt;       &quot;white&quot;       &quot;alcbl&quot;       &quot;antqw&quot;       &quot;antq1&quot;</span></span>
+<span id="cb196-17"><a href="strings.html#cb196-17"></a></span>
+<span id="cb196-18"><a href="strings.html#cb196-18"></a><span class="co"># abbreviate</span></span>
+<span id="cb196-19"><a href="strings.html#cb196-19"></a>colors3 &lt;-<span class="st"> </span><span class="kw">abbreviate</span>(some_colors, <span class="dt">minlength =</span> <span class="dv">3</span>, <span class="dt">method =</span> <span class="st">&quot;both.sides&quot;</span>)</span>
+<span id="cb196-20"><a href="strings.html#cb196-20"></a>colors3</span>
+<span id="cb196-21"><a href="strings.html#cb196-21"></a><span class="co">#&gt;         white     aliceblue  antiquewhite antiquewhite1 </span></span>
+<span id="cb196-22"><a href="strings.html#cb196-22"></a><span class="co">#&gt;         &quot;wht&quot;         &quot;alc&quot;         &quot;ant&quot;         &quot;an1&quot;</span></span></code></pre></div>
 <p>A common use for <code>abbreviate()</code> is when plotting names of objects or variables
 in a graphic. I will use the built-in data set <code>mtcars</code> to show you a simple
 example with a scatterplot between variables <code>mpg</code> and <code>disp</code></p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="strings.html#cb189-1"></a><span class="kw">plot</span>(mtcars<span class="op">$</span>mpg, mtcars<span class="op">$</span>disp, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)</span>
-<span id="cb189-2"><a href="strings.html#cb189-2"></a><span class="kw">text</span>(mtcars<span class="op">$</span>mpg, mtcars<span class="op">$</span>disp, <span class="kw">rownames</span>(mtcars))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-189-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="strings.html#cb197-1"></a><span class="kw">plot</span>(mtcars<span class="op">$</span>mpg, mtcars<span class="op">$</span>disp, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb197-2"><a href="strings.html#cb197-2"></a><span class="kw">text</span>(mtcars<span class="op">$</span>mpg, mtcars<span class="op">$</span>disp, <span class="kw">rownames</span>(mtcars))</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-185-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>The names of the cars are all over the plot. In this situation you may want to
 consider using <code>abbreviate()</code> to shrink the names of the cars and produce a
 less “crowded” plot:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="strings.html#cb190-1"></a><span class="kw">plot</span>(mtcars<span class="op">$</span>mpg, mtcars<span class="op">$</span>disp, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)</span>
-<span id="cb190-2"><a href="strings.html#cb190-2"></a><span class="kw">text</span>(mtcars<span class="op">$</span>mpg, mtcars<span class="op">$</span>disp, <span class="kw">abbreviate</span>(<span class="kw">rownames</span>(mtcars)))</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-190-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="strings.html#cb198-1"></a><span class="kw">plot</span>(mtcars<span class="op">$</span>mpg, mtcars<span class="op">$</span>disp, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb198-2"><a href="strings.html#cb198-2"></a><span class="kw">text</span>(mtcars<span class="op">$</span>mpg, mtcars<span class="op">$</span>disp, <span class="kw">abbreviate</span>(<span class="kw">rownames</span>(mtcars)))</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-186-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="replacing-strings" class="section level3">
 <h3><span class="header-section-number">15.3.5</span> Replacing strings</h3>
@@ -1066,68 +1067,68 @@ the following form:</p>
 <pre><code>substr(x, start, stop)</code></pre>
 <p><code>x</code> is a character vector, <code>start</code> indicates the first element to be replaced,
 and <code>stop</code> indicates the last element to be replaced:</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="strings.html#cb192-1"></a><span class="co"># extract &#39;bcd&#39;</span></span>
-<span id="cb192-2"><a href="strings.html#cb192-2"></a><span class="kw">substr</span>(<span class="st">&quot;abcdef&quot;</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb192-3"><a href="strings.html#cb192-3"></a><span class="co">#&gt; [1] &quot;bcd&quot;</span></span>
-<span id="cb192-4"><a href="strings.html#cb192-4"></a></span>
-<span id="cb192-5"><a href="strings.html#cb192-5"></a><span class="co"># replace 2nd letter with hash symbol</span></span>
-<span id="cb192-6"><a href="strings.html#cb192-6"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;may&quot;</span>, <span class="st">&quot;the&quot;</span>, <span class="st">&quot;force&quot;</span>, <span class="st">&quot;be&quot;</span>, <span class="st">&quot;with&quot;</span>, <span class="st">&quot;you&quot;</span>)</span>
-<span id="cb192-7"><a href="strings.html#cb192-7"></a><span class="kw">substr</span>(x, <span class="dv">2</span>, <span class="dv">2</span>) &lt;-<span class="st"> &quot;#&quot;</span></span>
-<span id="cb192-8"><a href="strings.html#cb192-8"></a>x</span>
-<span id="cb192-9"><a href="strings.html#cb192-9"></a><span class="co">#&gt; [1] &quot;m#y&quot;   &quot;t#e&quot;   &quot;f#rce&quot; &quot;b#&quot;    &quot;w#th&quot;  &quot;y#u&quot;</span></span>
-<span id="cb192-10"><a href="strings.html#cb192-10"></a></span>
-<span id="cb192-11"><a href="strings.html#cb192-11"></a><span class="co"># replace 2nd and 3rd letters with happy face</span></span>
-<span id="cb192-12"><a href="strings.html#cb192-12"></a>y =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;may&quot;</span>, <span class="st">&quot;the&quot;</span>, <span class="st">&quot;force&quot;</span>, <span class="st">&quot;be&quot;</span>, <span class="st">&quot;with&quot;</span>, <span class="st">&quot;you&quot;</span>)</span>
-<span id="cb192-13"><a href="strings.html#cb192-13"></a><span class="kw">substr</span>(y, <span class="dv">2</span>, <span class="dv">3</span>) &lt;-<span class="st"> &quot;:)&quot;</span></span>
-<span id="cb192-14"><a href="strings.html#cb192-14"></a>y</span>
-<span id="cb192-15"><a href="strings.html#cb192-15"></a><span class="co">#&gt; [1] &quot;m:)&quot;   &quot;t:)&quot;   &quot;f:)ce&quot; &quot;b:&quot;    &quot;w:)h&quot;  &quot;y:)&quot;</span></span>
-<span id="cb192-16"><a href="strings.html#cb192-16"></a></span>
-<span id="cb192-17"><a href="strings.html#cb192-17"></a><span class="co"># replacement with recycling</span></span>
-<span id="cb192-18"><a href="strings.html#cb192-18"></a>z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;may&quot;</span>, <span class="st">&quot;the&quot;</span>, <span class="st">&quot;force&quot;</span>, <span class="st">&quot;be&quot;</span>, <span class="st">&quot;with&quot;</span>, <span class="st">&quot;you&quot;</span>)</span>
-<span id="cb192-19"><a href="strings.html#cb192-19"></a><span class="kw">substr</span>(z, <span class="dv">2</span>, <span class="dv">3</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#&quot;</span>, <span class="st">&quot;```&quot;</span>)</span>
-<span id="cb192-20"><a href="strings.html#cb192-20"></a>z</span>
-<span id="cb192-21"><a href="strings.html#cb192-21"></a><span class="co">#&gt; [1] &quot;m#y&quot;   &quot;t``&quot;   &quot;f#rce&quot; &quot;b`&quot;    &quot;w#th&quot;  &quot;y``&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="strings.html#cb200-1"></a><span class="co"># extract &#39;bcd&#39;</span></span>
+<span id="cb200-2"><a href="strings.html#cb200-2"></a><span class="kw">substr</span>(<span class="st">&quot;abcdef&quot;</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb200-3"><a href="strings.html#cb200-3"></a><span class="co">#&gt; [1] &quot;bcd&quot;</span></span>
+<span id="cb200-4"><a href="strings.html#cb200-4"></a></span>
+<span id="cb200-5"><a href="strings.html#cb200-5"></a><span class="co"># replace 2nd letter with hash symbol</span></span>
+<span id="cb200-6"><a href="strings.html#cb200-6"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;may&quot;</span>, <span class="st">&quot;the&quot;</span>, <span class="st">&quot;force&quot;</span>, <span class="st">&quot;be&quot;</span>, <span class="st">&quot;with&quot;</span>, <span class="st">&quot;you&quot;</span>)</span>
+<span id="cb200-7"><a href="strings.html#cb200-7"></a><span class="kw">substr</span>(x, <span class="dv">2</span>, <span class="dv">2</span>) &lt;-<span class="st"> &quot;#&quot;</span></span>
+<span id="cb200-8"><a href="strings.html#cb200-8"></a>x</span>
+<span id="cb200-9"><a href="strings.html#cb200-9"></a><span class="co">#&gt; [1] &quot;m#y&quot;   &quot;t#e&quot;   &quot;f#rce&quot; &quot;b#&quot;    &quot;w#th&quot;  &quot;y#u&quot;</span></span>
+<span id="cb200-10"><a href="strings.html#cb200-10"></a></span>
+<span id="cb200-11"><a href="strings.html#cb200-11"></a><span class="co"># replace 2nd and 3rd letters with happy face</span></span>
+<span id="cb200-12"><a href="strings.html#cb200-12"></a>y =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;may&quot;</span>, <span class="st">&quot;the&quot;</span>, <span class="st">&quot;force&quot;</span>, <span class="st">&quot;be&quot;</span>, <span class="st">&quot;with&quot;</span>, <span class="st">&quot;you&quot;</span>)</span>
+<span id="cb200-13"><a href="strings.html#cb200-13"></a><span class="kw">substr</span>(y, <span class="dv">2</span>, <span class="dv">3</span>) &lt;-<span class="st"> &quot;:)&quot;</span></span>
+<span id="cb200-14"><a href="strings.html#cb200-14"></a>y</span>
+<span id="cb200-15"><a href="strings.html#cb200-15"></a><span class="co">#&gt; [1] &quot;m:)&quot;   &quot;t:)&quot;   &quot;f:)ce&quot; &quot;b:&quot;    &quot;w:)h&quot;  &quot;y:)&quot;</span></span>
+<span id="cb200-16"><a href="strings.html#cb200-16"></a></span>
+<span id="cb200-17"><a href="strings.html#cb200-17"></a><span class="co"># replacement with recycling</span></span>
+<span id="cb200-18"><a href="strings.html#cb200-18"></a>z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;may&quot;</span>, <span class="st">&quot;the&quot;</span>, <span class="st">&quot;force&quot;</span>, <span class="st">&quot;be&quot;</span>, <span class="st">&quot;with&quot;</span>, <span class="st">&quot;you&quot;</span>)</span>
+<span id="cb200-19"><a href="strings.html#cb200-19"></a><span class="kw">substr</span>(z, <span class="dv">2</span>, <span class="dv">3</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#&quot;</span>, <span class="st">&quot;```&quot;</span>)</span>
+<span id="cb200-20"><a href="strings.html#cb200-20"></a>z</span>
+<span id="cb200-21"><a href="strings.html#cb200-21"></a><span class="co">#&gt; [1] &quot;m#y&quot;   &quot;t``&quot;   &quot;f#rce&quot; &quot;b`&quot;    &quot;w#th&quot;  &quot;y``&quot;</span></span></code></pre></div>
 <p>Closely related to <code>substr()</code> is the function <code>substring()</code> which extracts or
 replaces substrings in a character vector. Its usage has the following form:</p>
 <pre><code>substring(text, first, last = 1000000L)</code></pre>
 <p><code>text</code> is a character vector, <code>first</code> indicates the first element to be
 replaced, and <code>last</code> indicates the last element to be replaced:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="strings.html#cb194-1"></a><span class="co"># same as &#39;substr&#39;</span></span>
-<span id="cb194-2"><a href="strings.html#cb194-2"></a><span class="kw">substring</span>(<span class="st">&quot;ABCDEF&quot;</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb194-3"><a href="strings.html#cb194-3"></a><span class="co">#&gt; [1] &quot;BCD&quot;</span></span>
-<span id="cb194-4"><a href="strings.html#cb194-4"></a><span class="kw">substr</span>(<span class="st">&quot;ABCDEF&quot;</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb194-5"><a href="strings.html#cb194-5"></a><span class="co">#&gt; [1] &quot;BCD&quot;</span></span>
-<span id="cb194-6"><a href="strings.html#cb194-6"></a></span>
-<span id="cb194-7"><a href="strings.html#cb194-7"></a><span class="co"># extract each letter</span></span>
-<span id="cb194-8"><a href="strings.html#cb194-8"></a><span class="kw">substring</span>(<span class="st">&quot;ABCDEF&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)</span>
-<span id="cb194-9"><a href="strings.html#cb194-9"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot;</span></span>
-<span id="cb194-10"><a href="strings.html#cb194-10"></a></span>
-<span id="cb194-11"><a href="strings.html#cb194-11"></a><span class="co"># multiple replacement with recycling</span></span>
-<span id="cb194-12"><a href="strings.html#cb194-12"></a>text6 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;more&quot;</span>, <span class="st">&quot;emotions&quot;</span>, <span class="st">&quot;are&quot;</span>, <span class="st">&quot;better&quot;</span>, <span class="st">&quot;than&quot;</span>, <span class="st">&quot;less&quot;</span>)</span>
-<span id="cb194-13"><a href="strings.html#cb194-13"></a><span class="kw">substring</span>(text6, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;zzz&quot;</span>)</span>
-<span id="cb194-14"><a href="strings.html#cb194-14"></a>text6</span>
-<span id="cb194-15"><a href="strings.html#cb194-15"></a><span class="co">#&gt; [1] &quot; ore&quot;     &quot;ezzzions&quot; &quot;ar &quot;      &quot;zzzter&quot;   &quot;t an&quot;     &quot;lezz&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="strings.html#cb202-1"></a><span class="co"># same as &#39;substr&#39;</span></span>
+<span id="cb202-2"><a href="strings.html#cb202-2"></a><span class="kw">substring</span>(<span class="st">&quot;ABCDEF&quot;</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb202-3"><a href="strings.html#cb202-3"></a><span class="co">#&gt; [1] &quot;BCD&quot;</span></span>
+<span id="cb202-4"><a href="strings.html#cb202-4"></a><span class="kw">substr</span>(<span class="st">&quot;ABCDEF&quot;</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb202-5"><a href="strings.html#cb202-5"></a><span class="co">#&gt; [1] &quot;BCD&quot;</span></span>
+<span id="cb202-6"><a href="strings.html#cb202-6"></a></span>
+<span id="cb202-7"><a href="strings.html#cb202-7"></a><span class="co"># extract each letter</span></span>
+<span id="cb202-8"><a href="strings.html#cb202-8"></a><span class="kw">substring</span>(<span class="st">&quot;ABCDEF&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)</span>
+<span id="cb202-9"><a href="strings.html#cb202-9"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot;</span></span>
+<span id="cb202-10"><a href="strings.html#cb202-10"></a></span>
+<span id="cb202-11"><a href="strings.html#cb202-11"></a><span class="co"># multiple replacement with recycling</span></span>
+<span id="cb202-12"><a href="strings.html#cb202-12"></a>text6 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;more&quot;</span>, <span class="st">&quot;emotions&quot;</span>, <span class="st">&quot;are&quot;</span>, <span class="st">&quot;better&quot;</span>, <span class="st">&quot;than&quot;</span>, <span class="st">&quot;less&quot;</span>)</span>
+<span id="cb202-13"><a href="strings.html#cb202-13"></a><span class="kw">substring</span>(text6, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;zzz&quot;</span>)</span>
+<span id="cb202-14"><a href="strings.html#cb202-14"></a>text6</span>
+<span id="cb202-15"><a href="strings.html#cb202-15"></a><span class="co">#&gt; [1] &quot; ore&quot;     &quot;ezzzions&quot; &quot;ar &quot;      &quot;zzzter&quot;   &quot;t an&quot;     &quot;lezz&quot;</span></span></code></pre></div>
 </div>
 </div>
 <div id="exercises-7" class="section level2">
 <h2><span class="header-section-number">15.4</span> Exercises</h2>
 <p>The following exercises are based on the row names of data frame <code>USArrests</code>
 (this data comes already in R).</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="strings.html#cb195-1"></a><span class="co"># a few rows of USArrests</span></span>
-<span id="cb195-2"><a href="strings.html#cb195-2"></a><span class="kw">head</span>(USArrests)</span>
-<span id="cb195-3"><a href="strings.html#cb195-3"></a><span class="co">#&gt;            Murder Assault UrbanPop Rape</span></span>
-<span id="cb195-4"><a href="strings.html#cb195-4"></a><span class="co">#&gt; Alabama      13.2     236       58 21.2</span></span>
-<span id="cb195-5"><a href="strings.html#cb195-5"></a><span class="co">#&gt; Alaska       10.0     263       48 44.5</span></span>
-<span id="cb195-6"><a href="strings.html#cb195-6"></a><span class="co">#&gt; Arizona       8.1     294       80 31.0</span></span>
-<span id="cb195-7"><a href="strings.html#cb195-7"></a><span class="co">#&gt; Arkansas      8.8     190       50 19.5</span></span>
-<span id="cb195-8"><a href="strings.html#cb195-8"></a><span class="co">#&gt; California    9.0     276       91 40.6</span></span>
-<span id="cb195-9"><a href="strings.html#cb195-9"></a><span class="co">#&gt; Colorado      7.9     204       78 38.7</span></span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="strings.html#cb203-1"></a><span class="co"># a few rows of USArrests</span></span>
+<span id="cb203-2"><a href="strings.html#cb203-2"></a><span class="kw">head</span>(USArrests)</span>
+<span id="cb203-3"><a href="strings.html#cb203-3"></a><span class="co">#&gt;            Murder Assault UrbanPop Rape</span></span>
+<span id="cb203-4"><a href="strings.html#cb203-4"></a><span class="co">#&gt; Alabama      13.2     236       58 21.2</span></span>
+<span id="cb203-5"><a href="strings.html#cb203-5"></a><span class="co">#&gt; Alaska       10.0     263       48 44.5</span></span>
+<span id="cb203-6"><a href="strings.html#cb203-6"></a><span class="co">#&gt; Arizona       8.1     294       80 31.0</span></span>
+<span id="cb203-7"><a href="strings.html#cb203-7"></a><span class="co">#&gt; Arkansas      8.8     190       50 19.5</span></span>
+<span id="cb203-8"><a href="strings.html#cb203-8"></a><span class="co">#&gt; California    9.0     276       91 40.6</span></span>
+<span id="cb203-9"><a href="strings.html#cb203-9"></a><span class="co">#&gt; Colorado      7.9     204       78 38.7</span></span></code></pre></div>
 <p>For convenience reasons, let’s create a character vector <code>states</code> containing
 the row names of <code>USArrests</code>:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="strings.html#cb196-1"></a>states &lt;-<span class="st"> </span><span class="kw">rownames</span>(USArrests)</span>
-<span id="cb196-2"><a href="strings.html#cb196-2"></a><span class="kw">head</span>(states)</span>
-<span id="cb196-3"><a href="strings.html#cb196-3"></a><span class="co">#&gt; [1] &quot;Alabama&quot;    &quot;Alaska&quot;     &quot;Arizona&quot;    &quot;Arkansas&quot;   &quot;California&quot;</span></span>
-<span id="cb196-4"><a href="strings.html#cb196-4"></a><span class="co">#&gt; [6] &quot;Colorado&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="strings.html#cb204-1"></a>states &lt;-<span class="st"> </span><span class="kw">rownames</span>(USArrests)</span>
+<span id="cb204-2"><a href="strings.html#cb204-2"></a><span class="kw">head</span>(states)</span>
+<span id="cb204-3"><a href="strings.html#cb204-3"></a><span class="co">#&gt; [1] &quot;Alabama&quot;    &quot;Alaska&quot;     &quot;Arizona&quot;    &quot;Arkansas&quot;   &quot;California&quot;</span></span>
+<span id="cb204-4"><a href="strings.html#cb204-4"></a><span class="co">#&gt; [6] &quot;Colorado&quot;</span></span></code></pre></div>
 <p>Here are some functions that you may need to use in order to answer the
 exercises listed below.</p>
 <ul>
@@ -1163,11 +1164,11 @@ the files have the same prefix name but each of them has a different number:
 <code>file1.csv</code>, <code>file2.csv</code>, … , <code>file10.csv</code>. How can you use <code>paste()</code> and
 <code>paste0()</code> to generate a character vector with these names in R?</p>
 <p><strong>10)</strong> Consider the following vector <code>letrs</code> which contains various letters randomly generated:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="strings.html#cb199-1"></a><span class="co"># random vector of letters</span></span>
-<span id="cb199-2"><a href="strings.html#cb199-2"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb199-3"><a href="strings.html#cb199-3"></a>letrs &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb199-4"><a href="strings.html#cb199-4"></a><span class="kw">head</span>(letrs)</span>
-<span id="cb199-5"><a href="strings.html#cb199-5"></a><span class="co">#&gt; [1] &quot;y&quot; &quot;d&quot; &quot;g&quot; &quot;a&quot; &quot;b&quot; &quot;w&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="strings.html#cb207-1"></a><span class="co"># random vector of letters</span></span>
+<span id="cb207-2"><a href="strings.html#cb207-2"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb207-3"><a href="strings.html#cb207-3"></a>letrs &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb207-4"><a href="strings.html#cb207-4"></a><span class="kw">head</span>(letrs)</span>
+<span id="cb207-5"><a href="strings.html#cb207-5"></a><span class="co">#&gt; [1] &quot;y&quot; &quot;d&quot; &quot;g&quot; &quot;a&quot; &quot;b&quot; &quot;w&quot;</span></span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>Write code in R to count the number of vowels in vector <code>letrs</code>. <em>Hint</em>:
 see binary operator <code>%in%</code> (help documentation <code>?"%in%"</code>).</p></li>
