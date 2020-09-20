@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>31 De Mere’s Games | Computing With Data</title>
+  <title>31 De Mere’s Games | Introduction to Computing With Data</title>
   <meta name="description" content="This is a book for Concepts in Computing with Data" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="31 De Mere’s Games | Computing With Data" />
+  <meta property="og:title" content="31 De Mere’s Games | Introduction to Computing With Data" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="31 De Mere’s Games | Computing With Data" />
+  <meta name="twitter:title" content="31 De Mere’s Games | Introduction to Computing With Data" />
   
   <meta name="twitter:description" content="This is a book for Concepts in Computing with Data" />
   
@@ -532,8 +532,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="31.1.6" data-path="demere.html"><a href="demere.html#de-meres-game-1"><i class="fa fa-check"></i><b>31.1.6</b> De Mere’s Game 1</a></li>
 <li class="chapter" data-level="31.1.7" data-path="demere.html"><a href="demere.html#de-meres-game-2"><i class="fa fa-check"></i><b>31.1.7</b> De Mere’s Game 2</a></li>
 </ul></li>
-<li class="chapter" data-level="31.2" data-path="demere.html"><a href="demere.html#chafa"><i class="fa fa-check"></i><b>31.2</b> Chafa</a></li>
-<li class="chapter" data-level="31.3" data-path="demere.html"><a href="demere.html#testing-whether-a-die-is-fair"><i class="fa fa-check"></i><b>31.3</b> Testing whether a die is fair</a></li>
 </ul></li>
 <li class="chapter" data-level="32" data-path="savings.html"><a href="savings.html"><i class="fa fa-check"></i><b>32</b> Savings Simulations</a><ul>
 <li class="chapter" data-level="32.1" data-path="savings.html"><a href="savings.html#do-you-regularly-save-some-money"><i class="fa fa-check"></i><b>32.1</b> Do you regularly save some money?</a></li>
@@ -662,7 +660,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computing With Data</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Computing With Data</a>
           </h1>
         </div>
 
@@ -686,7 +684,7 @@ amateur mathematician, and avid gambler.</p>
 <h3><span class="header-section-number">31.1.1</span> Game 1</h3>
 <p>In version 1, you roll a die four times, and you win if you get at
 least one six.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-488"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
 <img src="images/simulation/dice4.jpg" alt="Game version 1: roll a pair of dice" width="25%" />
 <p class="caption">
 Figure 31.1: Game version 1: roll a pair of dice
@@ -725,9 +723,10 @@ getting one double six would be 24/36 = 2/3.</p>
 <p>So in version 2, you roll a pair of dice 24 times, and you win if you get at
 least one double-six.</p>
 <p>Unfortunately, with game 2 De Méré was losing money, and he did not understand
-why. He turned into Blaise Pascal for some help, who in turn contected
-Pierre de Fermat (beginning) of correspondence in the 1650s.</p>
-<p>Letter from Pascal to Fermat:</p>
+why. He turned into Blaise Pascal for some help, who in turn contacted
+Pierre de Fermat exchanging of correspondence in the 1650s.</p>
+<p>Here’s an extract from a letter written by Pascal to Fermat, posing the problem
+that De Méré was facing:</p>
 <blockquote>
 <p>If one undertakes to throw a six with one die, the advatange of undertaking
 it in 4 throws is as 671 to 625. If one undertakes to throw a double-six with
@@ -738,23 +737,42 @@ as 4 to 6 (which is the number of faces of one die).</p>
 </div>
 <div id="binomial-probability" class="section level3">
 <h3><span class="header-section-number">31.1.3</span> Binomial Probability</h3>
-<p><strong>In game 1</strong>, the probability of no six in four rolls is:</p>
+<p>The answer to De Méré’s question can be easily calculated with binomial
+probability formulas. Let’s do the math.</p>
+<p><strong>In game 1</strong>, we know that the probability of getting no six in a single roll
+is:</p>
 <p><span class="math display">\[
-\frac{5}{6} \times \frac{5}{6} \times \frac{5}{6} \times \frac{5}{6} = \frac{625}{1296} = 0.482253
+P(\text{no six in one roll}) = \frac{5}{6}
 \]</span></p>
-<p>P(at least one six) = 1 - Probability of no six in four rolls:</p>
+<p>In turn, the probability of no six in four rolls involves not getting a six
+in the first roll, <em>AND</em> not getting a six in the second roll, <em>AND</em> not
+getting a six in the third roll, <em>AND</em> not getting a six in the fourth roll:</p>
+<p><span class="math display">\[\begin{align*}
+P(\text{no six in 4 rolls}) &amp;= P(\text{no six in roll 1}) \times \dots \times P(\text{no six in roll 4}) \\
+&amp;= \frac{5}{6} \times \frac{5}{6} \times \frac{5}{6} \times \frac{5}{6} \\
+&amp;= \frac{625}{1296} = 0.482253
+\end{align*}\]</span></p>
+<p>Consequently, the probability of winning a game is:</p>
 <p><span class="math display">\[
-1 - \frac{625}{1296} = \frac{671}{1296} = 0.517747
+P(\text{at least one six in 4 rolls}) = 1 - \left( \frac{5}{6} \right)^4 = 0.517747
 \]</span></p>
-<p><strong>In game 2</strong>, the probability of no double six in 24 rolls is:</p>
+<p><strong>In game 2</strong>, we know that the probability of getting no double six when
+rolling a pair of dice is:</p>
+<p><span class="math display">\[
+P(\text{no double six when rolloing a pair of dice}) = \frac{35}{36}
+\]</span></p>
+<p>In turn, the probability of no double six when rolling a pair of dice 24 times
+is:</p>
 <p><span class="math display">\[
 P(\text{no double six in 24 rolls}) = \left(\frac{35}{36}\right)^{24} = 0.5086
 \]</span></p>
-<p>P(at least one double six in 24 rolls) =</p>
+<p>Consequently, the probability of winning a game is:</p>
 <p><span class="math display">\[
-1 - 0.5086 = 0.4914
+P(\text{at least one double six in 24 rolls}) = 1 - 0.5086 = 0.4914
 \]</span></p>
-<p>Rather than solve the problem analytically, we can simulate 4 rolls of a die
+<div id="simulations-perspective" class="section level4 unnumbered">
+<h4>Simulations Perspective</h4>
+<p>Rather than solving the problem analytically, we can simulate 4 rolls of a die
 and count the number of 6’s. If we simulate rolling 4 dice many times, then the
 proportion of times we get 0, 1, 2, 3, or 4 sixes should be close to the chance
 of that many sixes on any 4 rolls.</p>
@@ -772,156 +790,156 @@ of that many sixes on any 4 rolls.</p>
 <li>Count the number of sixes</li>
 </ul>
 </div>
+</div>
 <div id="simulating-one-die" class="section level3">
 <h3><span class="header-section-number">31.1.4</span> Simulating one die</h3>
 <p>Let’s start with one die</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-489"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
 <img src="images/simulation/die.jpg" alt="Simulating one die" width="15%" />
 <p class="caption">
 Figure 31.2: Simulating one die
 </p>
 </div>
 <p>This can easily be done with a vector to create a <code>die</code> object:</p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="demere.html#cb483-1"></a>die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb483-2"><a href="demere.html#cb483-2"></a></span>
-<span id="cb483-3"><a href="demere.html#cb483-3"></a>die</span>
-<span id="cb483-4"><a href="demere.html#cb483-4"></a><span class="co">#&gt; [1] 1 2 3 4 5 6</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="demere.html#cb1-1"></a>die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb1-2"><a href="demere.html#cb1-2"></a></span>
+<span id="cb1-3"><a href="demere.html#cb1-3"></a>die</span>
+<span id="cb1-4"><a href="demere.html#cb1-4"></a><span class="co">#&gt; [1] 1 2 3 4 5 6</span></span></code></pre></div>
 <p>Then comes rolling the <code>die</code>, using <code>sample()</code></p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="demere.html#cb484-1"></a><span class="kw">set.seed</span>(<span class="dv">5</span>)</span>
-<span id="cb484-2"><a href="demere.html#cb484-2"></a><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
-<span id="cb484-3"><a href="demere.html#cb484-3"></a><span class="co">#&gt; [1] 2</span></span>
-<span id="cb484-4"><a href="demere.html#cb484-4"></a><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
-<span id="cb484-5"><a href="demere.html#cb484-5"></a><span class="co">#&gt; [1] 3</span></span>
-<span id="cb484-6"><a href="demere.html#cb484-6"></a><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
-<span id="cb484-7"><a href="demere.html#cb484-7"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="demere.html#cb2-1"></a><span class="kw">set.seed</span>(<span class="dv">5</span>)</span>
+<span id="cb2-2"><a href="demere.html#cb2-2"></a><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
+<span id="cb2-3"><a href="demere.html#cb2-3"></a><span class="co">#&gt; [1] 2</span></span>
+<span id="cb2-4"><a href="demere.html#cb2-4"></a><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
+<span id="cb2-5"><a href="demere.html#cb2-5"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb2-6"><a href="demere.html#cb2-6"></a><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
+<span id="cb2-7"><a href="demere.html#cb2-7"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <p>Write a function to make it more convenient</p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="demere.html#cb485-1"></a><span class="co"># function</span></span>
-<span id="cb485-2"><a href="demere.html#cb485-2"></a>rolldie &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb485-3"><a href="demere.html#cb485-3"></a>  die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb485-4"><a href="demere.html#cb485-4"></a>  <span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
-<span id="cb485-5"><a href="demere.html#cb485-5"></a>}</span>
-<span id="cb485-6"><a href="demere.html#cb485-6"></a></span>
-<span id="cb485-7"><a href="demere.html#cb485-7"></a><span class="kw">rolldie</span>()</span>
-<span id="cb485-8"><a href="demere.html#cb485-8"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="demere.html#cb3-1"></a><span class="co"># function</span></span>
+<span id="cb3-2"><a href="demere.html#cb3-2"></a>rolldie &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb3-3"><a href="demere.html#cb3-3"></a>  die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb3-4"><a href="demere.html#cb3-4"></a>  <span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
+<span id="cb3-5"><a href="demere.html#cb3-5"></a>}</span>
+<span id="cb3-6"><a href="demere.html#cb3-6"></a></span>
+<span id="cb3-7"><a href="demere.html#cb3-7"></a><span class="kw">rolldie</span>()</span>
+<span id="cb3-8"><a href="demere.html#cb3-8"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
 </div>
 <div id="rolling-a-pair-of-dice" class="section level3">
 <h3><span class="header-section-number">31.1.5</span> Rolling a pair of dice</h3>
 <p>Function: roll a pair of dice</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="demere.html#cb486-1"></a><span class="co"># pair of dice function</span></span>
-<span id="cb486-2"><a href="demere.html#cb486-2"></a>roll2 &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb486-3"><a href="demere.html#cb486-3"></a>  die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb486-4"><a href="demere.html#cb486-4"></a>  rol1 &lt;-<span class="st"> </span><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
-<span id="cb486-5"><a href="demere.html#cb486-5"></a>  rol2 &lt;-<span class="st"> </span><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
-<span id="cb486-6"><a href="demere.html#cb486-6"></a>  <span class="kw">c</span>(rol1, rol2)</span>
-<span id="cb486-7"><a href="demere.html#cb486-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="demere.html#cb4-1"></a><span class="co"># pair of dice function</span></span>
+<span id="cb4-2"><a href="demere.html#cb4-2"></a>roll2 &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb4-3"><a href="demere.html#cb4-3"></a>  die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb4-4"><a href="demere.html#cb4-4"></a>  rol1 &lt;-<span class="st"> </span><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
+<span id="cb4-5"><a href="demere.html#cb4-5"></a>  rol2 &lt;-<span class="st"> </span><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)</span>
+<span id="cb4-6"><a href="demere.html#cb4-6"></a>  <span class="kw">c</span>(rol1, rol2)</span>
+<span id="cb4-7"><a href="demere.html#cb4-7"></a>}</span></code></pre></div>
 <p>We have some unnecessary repetition:</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="demere.html#cb487-1"></a><span class="co"># pair of dice function</span></span>
-<span id="cb487-2"><a href="demere.html#cb487-2"></a>roll2 &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb487-3"><a href="demere.html#cb487-3"></a>  die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb487-4"><a href="demere.html#cb487-4"></a>  rol1 &lt;-<span class="st"> </span><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)   </span>
-<span id="cb487-5"><a href="demere.html#cb487-5"></a>  rol2 &lt;-<span class="st"> </span><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)  <span class="co"># repeated command!</span></span>
-<span id="cb487-6"><a href="demere.html#cb487-6"></a>  <span class="kw">c</span>(rol1, rol2)</span>
-<span id="cb487-7"><a href="demere.html#cb487-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="demere.html#cb5-1"></a><span class="co"># pair of dice function</span></span>
+<span id="cb5-2"><a href="demere.html#cb5-2"></a>roll2 &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb5-3"><a href="demere.html#cb5-3"></a>  die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb5-4"><a href="demere.html#cb5-4"></a>  rol1 &lt;-<span class="st"> </span><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)   </span>
+<span id="cb5-5"><a href="demere.html#cb5-5"></a>  rol2 &lt;-<span class="st"> </span><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">1</span>)  <span class="co"># repeated command!</span></span>
+<span id="cb5-6"><a href="demere.html#cb5-6"></a>  <span class="kw">c</span>(rol1, rol2)</span>
+<span id="cb5-7"><a href="demere.html#cb5-7"></a>}</span></code></pre></div>
 <p>Suggestion:</p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="demere.html#cb488-1"></a>die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb488-2"><a href="demere.html#cb488-2"></a></span>
-<span id="cb488-3"><a href="demere.html#cb488-3"></a><span class="co"># avoid repetition with one call of &#39;sample()&#39;</span></span>
-<span id="cb488-4"><a href="demere.html#cb488-4"></a><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">2</span>)</span>
-<span id="cb488-5"><a href="demere.html#cb488-5"></a><span class="co">#&gt; [1] 1 6</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="demere.html#cb6-1"></a>die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb6-2"><a href="demere.html#cb6-2"></a></span>
+<span id="cb6-3"><a href="demere.html#cb6-3"></a><span class="co"># avoid repetition with one call of &#39;sample()&#39;</span></span>
+<span id="cb6-4"><a href="demere.html#cb6-4"></a><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">2</span>)</span>
+<span id="cb6-5"><a href="demere.html#cb6-5"></a><span class="co">#&gt; [1] 1 6</span></span></code></pre></div>
 <p>Now try it:</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="demere.html#cb489-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">15</span>) {</span>
-<span id="cb489-2"><a href="demere.html#cb489-2"></a>  <span class="kw">print</span>(<span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">2</span>))</span>
-<span id="cb489-3"><a href="demere.html#cb489-3"></a>}</span>
-<span id="cb489-4"><a href="demere.html#cb489-4"></a><span class="co">#&gt; [1] 5 3</span></span>
-<span id="cb489-5"><a href="demere.html#cb489-5"></a><span class="co">#&gt; [1] 3 2</span></span>
-<span id="cb489-6"><a href="demere.html#cb489-6"></a><span class="co">#&gt; [1] 5 4</span></span>
-<span id="cb489-7"><a href="demere.html#cb489-7"></a><span class="co">#&gt; [1] 2 5</span></span>
-<span id="cb489-8"><a href="demere.html#cb489-8"></a><span class="co">#&gt; [1] 3 1</span></span>
-<span id="cb489-9"><a href="demere.html#cb489-9"></a><span class="co">#&gt; [1] 6 4</span></span>
-<span id="cb489-10"><a href="demere.html#cb489-10"></a><span class="co">#&gt; [1] 3 2</span></span>
-<span id="cb489-11"><a href="demere.html#cb489-11"></a><span class="co">#&gt; [1] 5 2</span></span>
-<span id="cb489-12"><a href="demere.html#cb489-12"></a><span class="co">#&gt; [1] 2 3</span></span>
-<span id="cb489-13"><a href="demere.html#cb489-13"></a><span class="co">#&gt; [1] 1 2</span></span>
-<span id="cb489-14"><a href="demere.html#cb489-14"></a><span class="co">#&gt; [1] 6 4</span></span>
-<span id="cb489-15"><a href="demere.html#cb489-15"></a><span class="co">#&gt; [1] 5 3</span></span>
-<span id="cb489-16"><a href="demere.html#cb489-16"></a><span class="co">#&gt; [1] 6 2</span></span>
-<span id="cb489-17"><a href="demere.html#cb489-17"></a><span class="co">#&gt; [1] 1 2</span></span>
-<span id="cb489-18"><a href="demere.html#cb489-18"></a><span class="co">#&gt; [1] 2 4</span></span>
-<span id="cb489-19"><a href="demere.html#cb489-19"></a></span>
-<span id="cb489-20"><a href="demere.html#cb489-20"></a><span class="co"># Can you spot a problem?</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="demere.html#cb7-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">15</span>) {</span>
+<span id="cb7-2"><a href="demere.html#cb7-2"></a>  <span class="kw">print</span>(<span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">2</span>))</span>
+<span id="cb7-3"><a href="demere.html#cb7-3"></a>}</span>
+<span id="cb7-4"><a href="demere.html#cb7-4"></a><span class="co">#&gt; [1] 5 3</span></span>
+<span id="cb7-5"><a href="demere.html#cb7-5"></a><span class="co">#&gt; [1] 3 2</span></span>
+<span id="cb7-6"><a href="demere.html#cb7-6"></a><span class="co">#&gt; [1] 5 4</span></span>
+<span id="cb7-7"><a href="demere.html#cb7-7"></a><span class="co">#&gt; [1] 2 5</span></span>
+<span id="cb7-8"><a href="demere.html#cb7-8"></a><span class="co">#&gt; [1] 3 1</span></span>
+<span id="cb7-9"><a href="demere.html#cb7-9"></a><span class="co">#&gt; [1] 6 4</span></span>
+<span id="cb7-10"><a href="demere.html#cb7-10"></a><span class="co">#&gt; [1] 3 2</span></span>
+<span id="cb7-11"><a href="demere.html#cb7-11"></a><span class="co">#&gt; [1] 5 2</span></span>
+<span id="cb7-12"><a href="demere.html#cb7-12"></a><span class="co">#&gt; [1] 2 3</span></span>
+<span id="cb7-13"><a href="demere.html#cb7-13"></a><span class="co">#&gt; [1] 1 2</span></span>
+<span id="cb7-14"><a href="demere.html#cb7-14"></a><span class="co">#&gt; [1] 6 4</span></span>
+<span id="cb7-15"><a href="demere.html#cb7-15"></a><span class="co">#&gt; [1] 5 3</span></span>
+<span id="cb7-16"><a href="demere.html#cb7-16"></a><span class="co">#&gt; [1] 6 2</span></span>
+<span id="cb7-17"><a href="demere.html#cb7-17"></a><span class="co">#&gt; [1] 1 2</span></span>
+<span id="cb7-18"><a href="demere.html#cb7-18"></a><span class="co">#&gt; [1] 2 4</span></span>
+<span id="cb7-19"><a href="demere.html#cb7-19"></a></span>
+<span id="cb7-20"><a href="demere.html#cb7-20"></a><span class="co"># Can you spot a problem?</span></span></code></pre></div>
 <p>We need to sample with replacement:</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="demere.html#cb490-1"></a><span class="co"># rewrite roll2()</span></span>
-<span id="cb490-2"><a href="demere.html#cb490-2"></a>roll2 &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb490-3"><a href="demere.html#cb490-3"></a>  die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb490-4"><a href="demere.html#cb490-4"></a>  <span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb490-5"><a href="demere.html#cb490-5"></a>}</span></code></pre></div>
-<p>Rolling a die any number of times</p>
-<p>More general function to roll a die any number of times</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="demere.html#cb491-1"></a>roll &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">times =</span> <span class="dv">1</span>) {</span>
-<span id="cb491-2"><a href="demere.html#cb491-2"></a>  die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb491-3"><a href="demere.html#cb491-3"></a>  <span class="kw">sample</span>(die, <span class="dt">size =</span> times, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb491-4"><a href="demere.html#cb491-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="demere.html#cb8-1"></a><span class="co"># rewrite roll2()</span></span>
+<span id="cb8-2"><a href="demere.html#cb8-2"></a>roll2 &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb8-3"><a href="demere.html#cb8-3"></a>  die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb8-4"><a href="demere.html#cb8-4"></a>  <span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb8-5"><a href="demere.html#cb8-5"></a>}</span></code></pre></div>
+<p>Let’s create a more general function to roll a die any number of times</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="demere.html#cb9-1"></a>roll &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">times =</span> <span class="dv">1</span>) {</span>
+<span id="cb9-2"><a href="demere.html#cb9-2"></a>  die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb9-3"><a href="demere.html#cb9-3"></a>  <span class="kw">sample</span>(die, <span class="dt">size =</span> times, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb9-4"><a href="demere.html#cb9-4"></a>}</span></code></pre></div>
 <p>Now we can roll several dice:</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="demere.html#cb492-1"></a><span class="kw">set.seed</span>(<span class="dv">99</span>)</span>
-<span id="cb492-2"><a href="demere.html#cb492-2"></a><span class="co"># default (one roll)</span></span>
-<span id="cb492-3"><a href="demere.html#cb492-3"></a><span class="kw">roll</span>()</span>
-<span id="cb492-4"><a href="demere.html#cb492-4"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb492-5"><a href="demere.html#cb492-5"></a></span>
-<span id="cb492-6"><a href="demere.html#cb492-6"></a><span class="co"># two rolls</span></span>
-<span id="cb492-7"><a href="demere.html#cb492-7"></a><span class="kw">roll</span>(<span class="dv">2</span>)</span>
-<span id="cb492-8"><a href="demere.html#cb492-8"></a><span class="co">#&gt; [1] 4 6</span></span>
-<span id="cb492-9"><a href="demere.html#cb492-9"></a></span>
-<span id="cb492-10"><a href="demere.html#cb492-10"></a><span class="co"># 4 rolls </span></span>
-<span id="cb492-11"><a href="demere.html#cb492-11"></a><span class="kw">roll</span>(<span class="dv">4</span>)</span>
-<span id="cb492-12"><a href="demere.html#cb492-12"></a><span class="co">#&gt; [1] 6 5 3 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="demere.html#cb10-1"></a><span class="kw">set.seed</span>(<span class="dv">99</span>)</span>
+<span id="cb10-2"><a href="demere.html#cb10-2"></a><span class="co"># default (one roll)</span></span>
+<span id="cb10-3"><a href="demere.html#cb10-3"></a><span class="kw">roll</span>()</span>
+<span id="cb10-4"><a href="demere.html#cb10-4"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb10-5"><a href="demere.html#cb10-5"></a></span>
+<span id="cb10-6"><a href="demere.html#cb10-6"></a><span class="co"># two rolls</span></span>
+<span id="cb10-7"><a href="demere.html#cb10-7"></a><span class="kw">roll</span>(<span class="dv">2</span>)</span>
+<span id="cb10-8"><a href="demere.html#cb10-8"></a><span class="co">#&gt; [1] 4 6</span></span>
+<span id="cb10-9"><a href="demere.html#cb10-9"></a></span>
+<span id="cb10-10"><a href="demere.html#cb10-10"></a><span class="co"># 4 rolls </span></span>
+<span id="cb10-11"><a href="demere.html#cb10-11"></a><span class="kw">roll</span>(<span class="dv">4</span>)</span>
+<span id="cb10-12"><a href="demere.html#cb10-12"></a><span class="co">#&gt; [1] 6 5 3 2</span></span></code></pre></div>
 </div>
 <div id="de-meres-game-1" class="section level3">
 <h3><span class="header-section-number">31.1.6</span> De Mere’s Game 1</h3>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="demere.html#cb493-1"></a><span class="kw">set.seed</span>(<span class="dv">2</span>)</span>
-<span id="cb493-2"><a href="demere.html#cb493-2"></a><span class="co"># play 100 times</span></span>
-<span id="cb493-3"><a href="demere.html#cb493-3"></a>results &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">100</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
-<span id="cb493-4"><a href="demere.html#cb493-4"></a></span>
-<span id="cb493-5"><a href="demere.html#cb493-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</span>
-<span id="cb493-6"><a href="demere.html#cb493-6"></a>  results[i, ] &lt;-<span class="st"> </span><span class="kw">roll</span>(<span class="dt">times =</span> <span class="dv">4</span>)</span>
-<span id="cb493-7"><a href="demere.html#cb493-7"></a>}</span>
-<span id="cb493-8"><a href="demere.html#cb493-8"></a></span>
-<span id="cb493-9"><a href="demere.html#cb493-9"></a><span class="kw">head</span>(results)</span>
-<span id="cb493-10"><a href="demere.html#cb493-10"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
-<span id="cb493-11"><a href="demere.html#cb493-11"></a><span class="co">#&gt; [1,]    5    6    6    1</span></span>
-<span id="cb493-12"><a href="demere.html#cb493-12"></a><span class="co">#&gt; [2,]    5    1    4    5</span></span>
-<span id="cb493-13"><a href="demere.html#cb493-13"></a><span class="co">#&gt; [3,]    1    2    3    1</span></span>
-<span id="cb493-14"><a href="demere.html#cb493-14"></a><span class="co">#&gt; [4,]    3    6    2    3</span></span>
-<span id="cb493-15"><a href="demere.html#cb493-15"></a><span class="co">#&gt; [5,]    1    6    1    4</span></span>
-<span id="cb493-16"><a href="demere.html#cb493-16"></a><span class="co">#&gt; [6,]    3    6    1    6</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="demere.html#cb11-1"></a><span class="kw">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb11-2"><a href="demere.html#cb11-2"></a><span class="co"># play 100 times</span></span>
+<span id="cb11-3"><a href="demere.html#cb11-3"></a>results &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">100</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb11-4"><a href="demere.html#cb11-4"></a></span>
+<span id="cb11-5"><a href="demere.html#cb11-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</span>
+<span id="cb11-6"><a href="demere.html#cb11-6"></a>  results[i, ] &lt;-<span class="st"> </span><span class="kw">roll</span>(<span class="dt">times =</span> <span class="dv">4</span>)</span>
+<span id="cb11-7"><a href="demere.html#cb11-7"></a>}</span>
+<span id="cb11-8"><a href="demere.html#cb11-8"></a></span>
+<span id="cb11-9"><a href="demere.html#cb11-9"></a><span class="kw">head</span>(results)</span>
+<span id="cb11-10"><a href="demere.html#cb11-10"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb11-11"><a href="demere.html#cb11-11"></a><span class="co">#&gt; [1,]    5    6    6    1</span></span>
+<span id="cb11-12"><a href="demere.html#cb11-12"></a><span class="co">#&gt; [2,]    5    1    4    5</span></span>
+<span id="cb11-13"><a href="demere.html#cb11-13"></a><span class="co">#&gt; [3,]    1    2    3    1</span></span>
+<span id="cb11-14"><a href="demere.html#cb11-14"></a><span class="co">#&gt; [4,]    3    6    2    3</span></span>
+<span id="cb11-15"><a href="demere.html#cb11-15"></a><span class="co">#&gt; [5,]    1    6    1    4</span></span>
+<span id="cb11-16"><a href="demere.html#cb11-16"></a><span class="co">#&gt; [6,]    3    6    1    6</span></span></code></pre></div>
 <p>Let’s compute proportion of wins:</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="demere.html#cb494-1"></a>counts &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb494-2"><a href="demere.html#cb494-2"></a></span>
-<span id="cb494-3"><a href="demere.html#cb494-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</span>
-<span id="cb494-4"><a href="demere.html#cb494-4"></a>  <span class="cf">if</span> (<span class="kw">any</span>(results[i, ] <span class="op">==</span><span class="st"> </span><span class="dv">6</span>))</span>
-<span id="cb494-5"><a href="demere.html#cb494-5"></a>    counts &lt;-<span class="st"> </span>counts <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb494-6"><a href="demere.html#cb494-6"></a>}</span>
-<span id="cb494-7"><a href="demere.html#cb494-7"></a></span>
-<span id="cb494-8"><a href="demere.html#cb494-8"></a><span class="co"># proportion of wins</span></span>
-<span id="cb494-9"><a href="demere.html#cb494-9"></a>counts <span class="op">/</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb494-10"><a href="demere.html#cb494-10"></a><span class="co">#&gt; [1] 0.55</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="demere.html#cb12-1"></a>counts &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb12-2"><a href="demere.html#cb12-2"></a></span>
+<span id="cb12-3"><a href="demere.html#cb12-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</span>
+<span id="cb12-4"><a href="demere.html#cb12-4"></a>  <span class="cf">if</span> (<span class="kw">any</span>(results[i, ] <span class="op">==</span><span class="st"> </span><span class="dv">6</span>))</span>
+<span id="cb12-5"><a href="demere.html#cb12-5"></a>    counts &lt;-<span class="st"> </span>counts <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb12-6"><a href="demere.html#cb12-6"></a>}</span>
+<span id="cb12-7"><a href="demere.html#cb12-7"></a></span>
+<span id="cb12-8"><a href="demere.html#cb12-8"></a><span class="co"># proportion of wins</span></span>
+<span id="cb12-9"><a href="demere.html#cb12-9"></a>counts <span class="op">/</span><span class="st"> </span><span class="dv">100</span></span>
+<span id="cb12-10"><a href="demere.html#cb12-10"></a><span class="co">#&gt; [1] 0.55</span></span></code></pre></div>
 <p>Alternative code using <code>apply()</code></p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="demere.html#cb495-1"></a>sixes &lt;-<span class="st"> </span><span class="kw">apply</span>(results, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">sum</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">6</span>))</span>
-<span id="cb495-2"><a href="demere.html#cb495-2"></a></span>
-<span id="cb495-3"><a href="demere.html#cb495-3"></a><span class="kw">table</span>(sixes)</span>
-<span id="cb495-4"><a href="demere.html#cb495-4"></a><span class="co">#&gt; sixes</span></span>
-<span id="cb495-5"><a href="demere.html#cb495-5"></a><span class="co">#&gt;  0  1  2  3 </span></span>
-<span id="cb495-6"><a href="demere.html#cb495-6"></a><span class="co">#&gt; 45 40 11  4</span></span>
-<span id="cb495-7"><a href="demere.html#cb495-7"></a></span>
-<span id="cb495-8"><a href="demere.html#cb495-8"></a><span class="co"># rolls with at least one six</span></span>
-<span id="cb495-9"><a href="demere.html#cb495-9"></a><span class="kw">sum</span>(<span class="kw">table</span>(sixes)[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb495-10"><a href="demere.html#cb495-10"></a><span class="co">#&gt; [1] 55</span></span></code></pre></div>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="demere.html#cb496-1"></a><span class="kw">barplot</span>(<span class="kw">table</span>(sixes), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">las =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-503-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="demere.html#cb13-1"></a>sixes &lt;-<span class="st"> </span><span class="kw">apply</span>(results, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">sum</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">6</span>))</span>
+<span id="cb13-2"><a href="demere.html#cb13-2"></a></span>
+<span id="cb13-3"><a href="demere.html#cb13-3"></a><span class="kw">table</span>(sixes)</span>
+<span id="cb13-4"><a href="demere.html#cb13-4"></a><span class="co">#&gt; sixes</span></span>
+<span id="cb13-5"><a href="demere.html#cb13-5"></a><span class="co">#&gt;  0  1  2  3 </span></span>
+<span id="cb13-6"><a href="demere.html#cb13-6"></a><span class="co">#&gt; 45 40 11  4</span></span>
+<span id="cb13-7"><a href="demere.html#cb13-7"></a></span>
+<span id="cb13-8"><a href="demere.html#cb13-8"></a><span class="co"># rolls with at least one six</span></span>
+<span id="cb13-9"><a href="demere.html#cb13-9"></a><span class="kw">sum</span>(<span class="kw">table</span>(sixes)[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb13-10"><a href="demere.html#cb13-10"></a><span class="co">#&gt; [1] 55</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="demere.html#cb14-1"></a><span class="kw">barplot</span>(<span class="kw">table</span>(sixes), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">las =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p><strong>Considerations</strong></p>
 <ul>
 <li>How would you make the code more flexible?</li>
 <li>What type of parameters?</li>
-<li>Avoid Repetition</li>
+<li>How would you avoid repetition?</li>
 </ul>
 <hr />
 </div>
@@ -931,106 +949,48 @@ Figure 31.2: Simulating one die
 <ul>
 <li>Two dice</li>
 <li>24 rolls</li>
-<li>Win: at least one double 6</li>
+<li>Win: getting at least one double 6</li>
 </ul>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="demere.html#cb497-1"></a>roll2 &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">times =</span> <span class="dv">1</span>) {</span>
-<span id="cb497-2"><a href="demere.html#cb497-2"></a>  dice2 &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="cf">function</span>(x) x <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>))</span>
-<span id="cb497-3"><a href="demere.html#cb497-3"></a>  <span class="kw">sample</span>(dice2, <span class="dt">size =</span> times, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb497-4"><a href="demere.html#cb497-4"></a>}</span>
-<span id="cb497-5"><a href="demere.html#cb497-5"></a></span>
-<span id="cb497-6"><a href="demere.html#cb497-6"></a><span class="kw">roll2</span>()</span>
-<span id="cb497-7"><a href="demere.html#cb497-7"></a><span class="co">#&gt; [1] 9</span></span>
-<span id="cb497-8"><a href="demere.html#cb497-8"></a><span class="kw">roll2</span>(<span class="dv">24</span>)</span>
-<span id="cb497-9"><a href="demere.html#cb497-9"></a><span class="co">#&gt;  [1]  2  5 10  6  8  7  2  8  8  4  4  9 10  7  7  8  8  6  4 10  3  5  5  4</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="demere.html#cb15-1"></a><span class="co"># function to roll a pair of dice, a given number of times</span></span>
+<span id="cb15-2"><a href="demere.html#cb15-2"></a>roll2 &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">times =</span> <span class="dv">1</span>) {</span>
+<span id="cb15-3"><a href="demere.html#cb15-3"></a>  dice2 &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="cf">function</span>(x) x <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>))</span>
+<span id="cb15-4"><a href="demere.html#cb15-4"></a>  <span class="kw">sample</span>(dice2, <span class="dt">size =</span> times, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb15-5"><a href="demere.html#cb15-5"></a>}</span>
+<span id="cb15-6"><a href="demere.html#cb15-6"></a></span>
+<span id="cb15-7"><a href="demere.html#cb15-7"></a><span class="kw">roll2</span>()</span>
+<span id="cb15-8"><a href="demere.html#cb15-8"></a><span class="co">#&gt; [1] 9</span></span>
+<span id="cb15-9"><a href="demere.html#cb15-9"></a><span class="kw">roll2</span>(<span class="dv">24</span>)</span>
+<span id="cb15-10"><a href="demere.html#cb15-10"></a><span class="co">#&gt;  [1]  2  5 10  6  8  7  2  8  8  4  4  9 10  7  7  8  8  6  4 10  3  5  5  4</span></span></code></pre></div>
 <ul>
 <li>It’s better if we sum the points of rolling two dice</li>
 <li>Possible outcomes: <span class="math inline">\(\{2, 3, 4, \dots, 10, 11, 12\}\)</span></li>
 <li>Double six is equivalent to 12 points</li>
 </ul>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="demere.html#cb498-1"></a>games &lt;-<span class="st"> </span><span class="dv">10000</span></span>
-<span id="cb498-2"><a href="demere.html#cb498-2"></a>results &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> games, <span class="dt">ncol =</span> <span class="dv">24</span>)</span>
-<span id="cb498-3"><a href="demere.html#cb498-3"></a></span>
-<span id="cb498-4"><a href="demere.html#cb498-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>games) {</span>
-<span id="cb498-5"><a href="demere.html#cb498-5"></a>  results[i, ] &lt;-<span class="st"> </span><span class="kw">roll2</span>(<span class="dv">24</span>)</span>
-<span id="cb498-6"><a href="demere.html#cb498-6"></a>}</span>
-<span id="cb498-7"><a href="demere.html#cb498-7"></a></span>
-<span id="cb498-8"><a href="demere.html#cb498-8"></a>doublesix &lt;-<span class="st"> </span><span class="kw">apply</span>(results, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">sum</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">12</span>))</span>
-<span id="cb498-9"><a href="demere.html#cb498-9"></a></span>
-<span id="cb498-10"><a href="demere.html#cb498-10"></a><span class="kw">sum</span>(<span class="kw">table</span>(doublesix)[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb498-11"><a href="demere.html#cb498-11"></a><span class="co">#&gt; [1] 4887</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="demere.html#cb16-1"></a>games &lt;-<span class="st"> </span><span class="dv">10000</span></span>
+<span id="cb16-2"><a href="demere.html#cb16-2"></a>results &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> games, <span class="dt">ncol =</span> <span class="dv">24</span>)</span>
+<span id="cb16-3"><a href="demere.html#cb16-3"></a></span>
+<span id="cb16-4"><a href="demere.html#cb16-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>games) {</span>
+<span id="cb16-5"><a href="demere.html#cb16-5"></a>  results[i, ] &lt;-<span class="st"> </span><span class="kw">roll2</span>(<span class="dv">24</span>)</span>
+<span id="cb16-6"><a href="demere.html#cb16-6"></a>}</span>
+<span id="cb16-7"><a href="demere.html#cb16-7"></a></span>
+<span id="cb16-8"><a href="demere.html#cb16-8"></a>doublesix &lt;-<span class="st"> </span><span class="kw">apply</span>(results, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">sum</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">12</span>))</span>
+<span id="cb16-9"><a href="demere.html#cb16-9"></a></span>
+<span id="cb16-10"><a href="demere.html#cb16-10"></a><span class="kw">sum</span>(<span class="kw">table</span>(doublesix)[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb16-11"><a href="demere.html#cb16-11"></a><span class="co">#&gt; [1] 4887</span></span></code></pre></div>
 <p>Let’s graph the obtained results:</p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="demere.html#cb499-1"></a><span class="kw">barplot</span>(<span class="kw">table</span>(doublesix), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">las =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="cwd_files/figure-html/unnamed-chunk-506-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="demere.html#cb17-1"></a><span class="kw">barplot</span>(<span class="kw">table</span>(doublesix), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">las =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="cwd_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>and get estimated proportions:</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="demere.html#cb500-1"></a>counts &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb500-2"><a href="demere.html#cb500-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>games) {</span>
-<span id="cb500-3"><a href="demere.html#cb500-3"></a>  <span class="cf">if</span> (<span class="kw">any</span>(results[i, ] <span class="op">==</span><span class="st"> </span><span class="dv">12</span>))</span>
-<span id="cb500-4"><a href="demere.html#cb500-4"></a>    counts &lt;-<span class="st"> </span>counts <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb500-5"><a href="demere.html#cb500-5"></a>}</span>
-<span id="cb500-6"><a href="demere.html#cb500-6"></a></span>
-<span id="cb500-7"><a href="demere.html#cb500-7"></a>counts <span class="op">/</span><span class="st"> </span>games  <span class="co"># proportion of wins</span></span>
-<span id="cb500-8"><a href="demere.html#cb500-8"></a><span class="co">#&gt; [1] 0.489</span></span></code></pre></div>
-<hr />
-</div>
-</div>
-<div id="chafa" class="section level2">
-<h2><span class="header-section-number">31.2</span> Chafa</h2>
-<p>In this question we simulate the rolling of a die. To do this we use:
-<code>sample(1:6, size = 1)</code></p>
-<p>Suppose that you are playing the gambling <a href="https://introductorystats.wordpress.com/2010/11/12/one-gambling-problem-that-launched-modern-probability-theory/">game of the Chevalier de Mere</a>.
-That is, you are betting that you get at least one six in four throws of a die.
-Write a function <code>play()</code> that simulates one round of this game and prints out
-whether you win or lose. Check that your function can produce a different
-result each time you run it.</p>
-<p>For instance, here are three runs of my <code>play()</code> function:</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="demere.html#cb501-1"></a><span class="kw">play</span>()</span>
-<span id="cb501-2"><a href="demere.html#cb501-2"></a><span class="co">#&gt; [1] &quot;you lose&quot;</span></span>
-<span id="cb501-3"><a href="demere.html#cb501-3"></a><span class="kw">play</span>()</span>
-<span id="cb501-4"><a href="demere.html#cb501-4"></a><span class="co">#&gt; [1] &quot;you win&quot;</span></span>
-<span id="cb501-5"><a href="demere.html#cb501-5"></a><span class="kw">play</span>()</span>
-<span id="cb501-6"><a href="demere.html#cb501-6"></a><span class="co">#&gt; [1] &quot;you win&quot;</span></span></code></pre></div>
-<ol start="2" style="list-style-type: lower-alpha">
-<li><p>Now write a more general function <code>sixes()</code> that returns <code>TRUE</code> if you
-obtain one six in <span class="math inline">\(n\)</span> rolls of a fair die, and returns <code>FALSE</code> otherwise.
-That is, the argument is the number of rolls <span class="math inline">\(n\)</span>, and the value returned is
-<code>TRUE</code> if you get at least one six and <code>FALSE</code> otherwise. Make sure to check
-that <span class="math inline">\(n\)</span> is a positive integer, and give it a default value of 4.</p></li>
-<li><p>Finally, write code that uses your function <code>sixes()</code> from part b), to
-simulate <span class="math inline">\(N\)</span> plays of the game (each time you bet that you get at least one
-six in <span class="math inline">\(n\)</span> rolls of a fair die). Your code should then determine the proportion
-of times you win the bet. This proportion is an estimate of the
-<em>probability</em> of getting at least one six in <span class="math inline">\(n\)</span> rolls of a fair die. Run the
-code for <span class="math inline">\(n = 4\)</span> and <span class="math inline">\(N\)</span> = 100, 1000, and 10000, conducting several runs
-for each <span class="math inline">\(N\)</span> value. How does the variability of your results depend on <span class="math inline">\(N\)</span>?</p></li>
-</ol>
-</div>
-<div id="testing-whether-a-die-is-fair" class="section level2">
-<h2><span class="header-section-number">31.3</span> Testing whether a die is fair</h2>
-<p>Here’s one more challenge. The idea is to write R code, preferably a function,
-such that given a vector of outputs from rolling a die, it can be determined
-whether the die is fair.</p>
-<p>One way to approach this problem is by using Pearson’s Chi-square statistic:</p>
-<p><span class="math display">\[
-\chi^2 = \sum_{i=1}^{n} \frac{(O_i - E_i)^2}{E_i} = N \sum_{i=1}^{n} \frac{(O_i/ N - p_i)^2}{p_i}
-\]</span></p>
-<p>where:</p>
-<ul>
-<li><span class="math inline">\(n\)</span> is the number of sides (i.e. 6)</li>
-<li><span class="math inline">\(O_i\)</span> is the observed frequency of side <span class="math inline">\(i\)</span>, <span class="math inline">\(i = 1, 2, 3, 4, 5, 6\)</span></li>
-<li><span class="math inline">\(E_i = N p_i\)</span> is the expected frequency of side <span class="math inline">\(i\)</span></li>
-<li><span class="math inline">\(p_i\)</span> is the theoretical relative frequency (<span class="math inline">\(1/6\)</span> assuming a fair roll)</li>
-<li><span class="math inline">\(N\)</span> is the total number of rolls</li>
-</ul>
-<p>When testing for a fair six-sided die, the statistic <span class="math inline">\(\chi^2\)</span> asymptotically
-approaches a chi-square distirbution with degrees of freedom <span class="math inline">\(n - 1 = 5\)</span>.</p>
-<p>You can generate a loaded die, and roll it 1000 times:</p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="demere.html#cb502-1"></a><span class="kw">set.seed</span>(<span class="dv">3625</span>)</span>
-<span id="cb502-2"><a href="demere.html#cb502-2"></a>loaded_die &lt;-<span class="st"> </span><span class="kw">die</span>(<span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.075</span>, <span class="fl">0.1</span>, <span class="fl">0.125</span>, <span class="fl">0.15</span>, <span class="fl">0.20</span>, <span class="fl">0.35</span>))</span>
-<span id="cb502-3"><a href="demere.html#cb502-3"></a>load_rolls &lt;-<span class="st"> </span><span class="kw">roll</span>(loaded_die, <span class="dv">1000</span>)</span></code></pre></div>
-<p>Try implementing the chi-square statistic and compute a hypothesis test
-to see whether the rolls in <code>load_rolls</code> support the null hypothesis of a fair
-die.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="demere.html#cb18-1"></a>counts &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb18-2"><a href="demere.html#cb18-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>games) {</span>
+<span id="cb18-3"><a href="demere.html#cb18-3"></a>  <span class="cf">if</span> (<span class="kw">any</span>(results[i, ] <span class="op">==</span><span class="st"> </span><span class="dv">12</span>))</span>
+<span id="cb18-4"><a href="demere.html#cb18-4"></a>    counts &lt;-<span class="st"> </span>counts <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb18-5"><a href="demere.html#cb18-5"></a>}</span>
+<span id="cb18-6"><a href="demere.html#cb18-6"></a></span>
+<span id="cb18-7"><a href="demere.html#cb18-7"></a>counts <span class="op">/</span><span class="st"> </span>games  <span class="co"># proportion of wins</span></span>
+<span id="cb18-8"><a href="demere.html#cb18-8"></a><span class="co">#&gt; [1] 0.489</span></span></code></pre></div>
 
+</div>
 </div>
 </div>
             </section>
