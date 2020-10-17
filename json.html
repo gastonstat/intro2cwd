@@ -633,10 +633,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="41.3" data-path="json.html"><a href="json.html#json-r-packages"><i class="fa fa-check"></i><b>41.3</b> JSON R packages</a><ul>
 <li class="chapter" data-level="41.3.1" data-path="json.html"><a href="json.html#function-tojson"><i class="fa fa-check"></i><b>41.3.1</b> Function <code>toJSON()</code></a></li>
 <li class="chapter" data-level="41.3.2" data-path="json.html"><a href="json.html#function-fromjson"><i class="fa fa-check"></i><b>41.3.2</b> Function <code>fromJSON()</code></a></li>
-<li class="chapter" data-level="41.3.3" data-path="json.html"><a href="json.html#example-json-array-to-r-vector"><i class="fa fa-check"></i><b>41.3.3</b> Example: JSON-array to R vector</a></li>
-<li class="chapter" data-level="41.3.4" data-path="json.html"><a href="json.html#example-json-object-to-r-object"><i class="fa fa-check"></i><b>41.3.4</b> Example: JSON-object to R object</a></li>
-<li class="chapter" data-level="41.3.5" data-path="json.html"><a href="json.html#example-json-object-to-r-object-1"><i class="fa fa-check"></i><b>41.3.5</b> Example: JSON-object to R object</a></li>
-<li class="chapter" data-level="41.3.6" data-path="json.html"><a href="json.html#reading-json-data"><i class="fa fa-check"></i><b>41.3.6</b> Reading JSON Data</a></li>
+<li class="chapter" data-level="41.3.3" data-path="json.html"><a href="json.html#reading-json-data"><i class="fa fa-check"></i><b>41.3.3</b> Reading JSON Data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="42" data-path="http.html"><a href="http.html"><i class="fa fa-check"></i><b>42</b> Basics of HTTP</a><ul>
@@ -1082,16 +1079,15 @@ the names of the columns are lost.</li>
 <p>In practice, instead of converting R objects to JSON objects, it is more
 common to have data in JSON format which needs to be converted into an R object.</p>
 <p>The function <code>jsonlite::fromJSON()</code> converts a JSON-object to an R object.</p>
-</div>
-<div id="example-json-array-to-r-vector" class="section level3">
-<h3><span class="header-section-number">41.3.3</span> Example: JSON-array to R vector</h3>
+<div id="example-json-array-to-r-vector" class="section level4 unnumbered">
+<h4>Example: JSON-array to R vector</h4>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="json.html#cb23-1"></a>json_array &lt;-<span class="st"> &#39;[&quot;computing&quot;, &quot;with&quot;, &quot;data&quot;]&#39;</span></span>
 <span id="cb23-2"><a href="json.html#cb23-2"></a></span>
 <span id="cb23-3"><a href="json.html#cb23-3"></a><span class="kw">fromJSON</span>(json_array)</span>
 <span id="cb23-4"><a href="json.html#cb23-4"></a><span class="co">#&gt; [1] &quot;computing&quot; &quot;with&quot;      &quot;data&quot;</span></span></code></pre></div>
 </div>
-<div id="example-json-object-to-r-object" class="section level3">
-<h3><span class="header-section-number">41.3.4</span> Example: JSON-object to R object</h3>
+<div id="example-json-object-to-r-object" class="section level4 unnumbered">
+<h4>Example: JSON-object to R object</h4>
 <p>Consider a simple JSON-object, and its conversion to R with
 <code>jsonlite::fromJSON()</code></p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="json.html#cb24-1"></a>json_obj1 &lt;-<span class="st"> &#39;{&quot;name&quot;: &quot;Jessica&quot;}&#39;</span></span>
@@ -1128,8 +1124,8 @@ name of the list, and the <em>value</em> becomes the content of the list’s ele
 <span id="cb26-12"><a href="json.html#cb26-12"></a><span class="co">#&gt; $new</span></span>
 <span id="cb26-13"><a href="json.html#cb26-13"></a><span class="co">#&gt; [1]  TRUE FALSE</span></span></code></pre></div>
 </div>
-<div id="example-json-object-to-r-object-1" class="section level3">
-<h3><span class="header-section-number">41.3.5</span> Example: JSON-object to R object</h3>
+<div id="example-json-object-to-r-object-1" class="section level4 unnumbered">
+<h4>Example: JSON-object to R object</h4>
 <p>Suppose you have a JSON object with the following data:</p>
 <pre><code>{
   &quot;Name&quot;: [&quot;Anakin&quot;,&quot;Amidala&quot;,&quot;Luke&quot;,&quot;Leia&quot;],
@@ -1165,16 +1161,17 @@ to the function <code>data.frame()</code>:</p>
 <span id="cb29-5"><a href="json.html#cb29-5"></a><span class="co">#&gt; 3    Luke   male  Tatooine   19BBY  yes</span></span>
 <span id="cb29-6"><a href="json.html#cb29-6"></a><span class="co">#&gt; 4    Leia female  Alderaan   19BBY   no</span></span></code></pre></div>
 </div>
+</div>
 <div id="reading-json-data" class="section level3">
-<h3><span class="header-section-number">41.3.6</span> Reading JSON Data</h3>
+<h3><span class="header-section-number">41.3.3</span> Reading JSON Data</h3>
 <p>How do we read JSON data from the Web? We read JSON data in several ways. One
 way is to pass the url directly to <code>fromJSON()</code>. Another way is by passing
 <code>fromJSON()</code> the name of the file with the JSON content as a single string.</p>
-<p>Heer’s an example reading a JSON string from the website <em>Advice Slip</em>.
+<p>Here’s an example reading a JSON string from the website <em>Advice Slip</em>.
 The url <a href="https://api.adviceslip.com/advice" target="_blank">https://api.adviceslip.com/advice</a>
 gives you a random advice (see figure below):</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-27"></span>
-<img src="images/html/advice-slip-happiness.png" alt="Random advice from Advice Slip" width="70%" />
+<img src="images/html/advice-slip-happiness.png" alt="Random advice from Advice Slip" width="80%" />
 <p class="caption">
 Figure 41.1: Random advice from Advice Slip
 </p>
