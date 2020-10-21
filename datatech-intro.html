@@ -669,6 +669,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="44.5.2" data-path="apis.html"><a href="apis.html#rules-of-api-etiquette"><i class="fa fa-check"></i><b>44.5.2</b> Rules of API-etiquette</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="45" data-path="pubmed.html"><a href="pubmed.html"><i class="fa fa-check"></i><b>45</b> Searching PubMed</a><ul>
+<li class="chapter" data-level="45.1" data-path="pubmed.html"><a href="pubmed.html#pubmed-1"><i class="fa fa-check"></i><b>45.1</b> PubMed</a></li>
+<li class="chapter" data-level="45.2" data-path="pubmed.html"><a href="pubmed.html#basics-of-e-utilities"><i class="fa fa-check"></i><b>45.2</b> Basics of E-utilities</a><ul>
+<li class="chapter" data-level="45.2.1" data-path="pubmed.html"><a href="pubmed.html#how-does-e-utilities-work"><i class="fa fa-check"></i><b>45.2.1</b> How does E-utilities work?</a></li>
+<li class="chapter" data-level="45.2.2" data-path="pubmed.html"><a href="pubmed.html#searching-pubmed-from-within-r"><i class="fa fa-check"></i><b>45.2.2</b> Searching PubMed from within R</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
 
@@ -704,11 +711,11 @@ to group things like:</p>
 </ul>
 <p>Below, we provide the names of R packages that you will need for this part of
 the book.</p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="datatech-intro.html#cb549-1"></a><span class="kw">library</span>(stringr)   <span class="co"># for strings and regular expressions</span></span>
-<span id="cb549-2"><a href="datatech-intro.html#cb549-2"></a><span class="kw">library</span>(xml2)      <span class="co"># for parsing data in XML (e.g. HTML)</span></span>
-<span id="cb549-3"><a href="datatech-intro.html#cb549-3"></a><span class="kw">library</span>(rvest)     <span class="co"># for web scraping</span></span>
-<span id="cb549-4"><a href="datatech-intro.html#cb549-4"></a><span class="kw">library</span>(jsonlite)  <span class="co"># for handling data in JSON format</span></span>
-<span id="cb549-5"><a href="datatech-intro.html#cb549-5"></a><span class="kw">library</span>(httr)      <span class="co"># for working with HTTP requests (e.g. with APIs)</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="datatech-intro.html#cb1-1"></a><span class="kw">library</span>(stringr)   <span class="co"># for strings and regular expressions</span></span>
+<span id="cb1-2"><a href="datatech-intro.html#cb1-2"></a><span class="kw">library</span>(xml2)      <span class="co"># for parsing data in XML (e.g. HTML)</span></span>
+<span id="cb1-3"><a href="datatech-intro.html#cb1-3"></a><span class="kw">library</span>(rvest)     <span class="co"># for scraping XML and HTML content</span></span>
+<span id="cb1-4"><a href="datatech-intro.html#cb1-4"></a><span class="kw">library</span>(jsonlite)  <span class="co"># for handling data in JSON format</span></span>
+<span id="cb1-5"><a href="datatech-intro.html#cb1-5"></a><span class="kw">library</span>(httr)      <span class="co"># for working with HTTP requests (e.g. with APIs)</span></span></code></pre></div>
 <p>By the way, at the beginning of each chapter we will also indicate which
 specific packages you need to load.</p>
 <p>Keep in mind that this list of packages is not comprehensive. As a matter of fact,
@@ -772,20 +779,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

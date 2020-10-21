@@ -669,6 +669,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="44.5.2" data-path="apis.html"><a href="apis.html#rules-of-api-etiquette"><i class="fa fa-check"></i><b>44.5.2</b> Rules of API-etiquette</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="45" data-path="pubmed.html"><a href="pubmed.html"><i class="fa fa-check"></i><b>45</b> Searching PubMed</a><ul>
+<li class="chapter" data-level="45.1" data-path="pubmed.html"><a href="pubmed.html#pubmed-1"><i class="fa fa-check"></i><b>45.1</b> PubMed</a></li>
+<li class="chapter" data-level="45.2" data-path="pubmed.html"><a href="pubmed.html#basics-of-e-utilities"><i class="fa fa-check"></i><b>45.2</b> Basics of E-utilities</a><ul>
+<li class="chapter" data-level="45.2.1" data-path="pubmed.html"><a href="pubmed.html#how-does-e-utilities-work"><i class="fa fa-check"></i><b>45.2.1</b> How does E-utilities work?</a></li>
+<li class="chapter" data-level="45.2.2" data-path="pubmed.html"><a href="pubmed.html#searching-pubmed-from-within-r"><i class="fa fa-check"></i><b>45.2.2</b> Searching PubMed from within R</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
 
@@ -714,12 +721,12 @@ y &lt;- log(sqrt(x))
 &quot;some strings&quot;
 dat &lt;- read.table(file = &#39;data.csv&#39;, header = TRUE)</code></pre>
 <p>versus with:</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="coding.html#cb423-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb423-2"><a href="coding.html#cb423-2"></a>x &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb423-3"><a href="coding.html#cb423-3"></a>y &lt;-<span class="st"> </span><span class="kw">log</span>(<span class="kw">sqrt</span>(x))</span>
-<span id="cb423-4"><a href="coding.html#cb423-4"></a><span class="dv">3</span><span class="op">*</span>x<span class="op">^</span><span class="dv">7</span> <span class="op">-</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>x <span class="op">/</span><span class="st"> </span>(y <span class="op">-</span><span class="st"> </span>a)</span>
-<span id="cb423-5"><a href="coding.html#cb423-5"></a><span class="st">&quot;some strings&quot;</span></span>
-<span id="cb423-6"><a href="coding.html#cb423-6"></a>dat &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&#39;data.csv&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="coding.html#cb2-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb2-2"><a href="coding.html#cb2-2"></a>x &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb2-3"><a href="coding.html#cb2-3"></a>y &lt;-<span class="st"> </span><span class="kw">log</span>(<span class="kw">sqrt</span>(x))</span>
+<span id="cb2-4"><a href="coding.html#cb2-4"></a><span class="dv">3</span><span class="op">*</span>x<span class="op">^</span><span class="dv">7</span> <span class="op">-</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>x <span class="op">/</span><span class="st"> </span>(y <span class="op">-</span><span class="st"> </span>a)</span>
+<span id="cb2-5"><a href="coding.html#cb2-5"></a><span class="st">&quot;some strings&quot;</span></span>
+<span id="cb2-6"><a href="coding.html#cb2-6"></a>dat &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&#39;data.csv&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p>Without highlighting it’s harder to detect syntax errors:</p>
 <pre><code>numbers &lt;- c(&quot;one&quot;, &quot;two, &quot;three&quot;)
 
@@ -729,13 +736,13 @@ if (x &gt; 0) {
   2 * x - 20
 }</code></pre>
 <p>With highlighting it’s easier to detect syntax errors:</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="coding.html#cb425-1"></a>numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;two, &quot;</span>three<span class="st">&quot;)</span></span>
-<span id="cb425-2"><a href="coding.html#cb425-2"></a></span>
-<span id="cb425-3"><a href="coding.html#cb425-3"></a><span class="st">if (x &gt; 0) {</span></span>
-<span id="cb425-4"><a href="coding.html#cb425-4"></a><span class="st">  3 * x + 19</span></span>
-<span id="cb425-5"><a href="coding.html#cb425-5"></a><span class="st">} esle {</span></span>
-<span id="cb425-6"><a href="coding.html#cb425-6"></a><span class="st">  2 * x - 20</span></span>
-<span id="cb425-7"><a href="coding.html#cb425-7"></a><span class="st">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="coding.html#cb4-1"></a>numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;two, &quot;</span>three<span class="st">&quot;)</span></span>
+<span id="cb4-2"><a href="coding.html#cb4-2"></a></span>
+<span id="cb4-3"><a href="coding.html#cb4-3"></a><span class="st">if (x &gt; 0) {</span></span>
+<span id="cb4-4"><a href="coding.html#cb4-4"></a><span class="st">  3 * x + 19</span></span>
+<span id="cb4-5"><a href="coding.html#cb4-5"></a><span class="st">} esle {</span></span>
+<span id="cb4-6"><a href="coding.html#cb4-6"></a><span class="st">  2 * x - 20</span></span>
+<span id="cb4-7"><a href="coding.html#cb4-7"></a><span class="st">}</span></span></code></pre></div>
 <p>RStudio IDE has features of all good IDEs:</p>
 <ul>
 <li>Syntax highlighting</li>
@@ -749,14 +756,14 @@ if (x &gt; 0) {
 <li>Command completion</li>
 </ul>
 <p>Use an IDE with autocompletion</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-418"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="images/coding/rstudio-ide1.png" alt="IDE with autocompletion" width="75%" />
 <p class="caption">
 Figure 28.1: IDE with autocompletion
 </p>
 </div>
 <p>Use an IDE that provides helpful documentation</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-419"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="images/coding/rstudio-ide3.png" alt="IDE with help documentation" width="75%" />
 <p class="caption">
 Figure 28.2: IDE with help documentation
@@ -782,22 +789,22 @@ computer to do”. <em>Donald Knuth (Literate Programming, 1984)</em></p>
 <li>Introduce concepts in an order that is best for human understanding</li>
 </ul>
 <p>Here’s an example of instructing a computer what to do</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="coding.html#cb426-1"></a><span class="co"># good for computers (not much for humans)</span></span>
-<span id="cb426-2"><a href="coding.html#cb426-2"></a><span class="cf">if</span> (<span class="kw">is.numeric</span>(x) <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">%%</span><span class="st"> </span><span class="dv">1</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="ot">TRUE</span> <span class="cf">else</span> <span class="ot">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="coding.html#cb5-1"></a><span class="co"># good for computers (not much for humans)</span></span>
+<span id="cb5-2"><a href="coding.html#cb5-2"></a><span class="cf">if</span> (<span class="kw">is.numeric</span>(x) <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">%%</span><span class="st"> </span><span class="dv">1</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="ot">TRUE</span> <span class="cf">else</span> <span class="ot">FALSE</span></span></code></pre></div>
 <p>Can you guess what the above code is doing? It’s better to write code in a way
 that we explain a human being what we want a computer to do</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="coding.html#cb427-1"></a><span class="co"># good for humans</span></span>
-<span id="cb427-2"><a href="coding.html#cb427-2"></a><span class="kw">is_positive_integer</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="coding.html#cb6-1"></a><span class="co"># good for humans</span></span>
+<span id="cb6-2"><a href="coding.html#cb6-2"></a><span class="kw">is_positive_integer</span>(x)</span></code></pre></div>
 <p>Better to write a function that is human-understandable, not just
 machine-understandable</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="coding.html#cb428-1"></a><span class="co"># example</span></span>
-<span id="cb428-2"><a href="coding.html#cb428-2"></a>is_positive_integer &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb428-3"><a href="coding.html#cb428-3"></a>  (<span class="kw">is.numeric</span>(x) <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">%%</span><span class="st"> </span><span class="dv">1</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</span>
-<span id="cb428-4"><a href="coding.html#cb428-4"></a>}</span>
-<span id="cb428-5"><a href="coding.html#cb428-5"></a></span>
-<span id="cb428-6"><a href="coding.html#cb428-6"></a><span class="kw">is_positive_integer</span>(<span class="dv">2</span>)</span>
-<span id="cb428-7"><a href="coding.html#cb428-7"></a></span>
-<span id="cb428-8"><a href="coding.html#cb428-8"></a><span class="kw">is_positive_integer</span>(<span class="fl">2.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="coding.html#cb7-1"></a><span class="co"># example</span></span>
+<span id="cb7-2"><a href="coding.html#cb7-2"></a>is_positive_integer &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb7-3"><a href="coding.html#cb7-3"></a>  (<span class="kw">is.numeric</span>(x) <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">%%</span><span class="st"> </span><span class="dv">1</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb7-4"><a href="coding.html#cb7-4"></a>}</span>
+<span id="cb7-5"><a href="coding.html#cb7-5"></a></span>
+<span id="cb7-6"><a href="coding.html#cb7-6"></a><span class="kw">is_positive_integer</span>(<span class="dv">2</span>)</span>
+<span id="cb7-7"><a href="coding.html#cb7-7"></a></span>
+<span id="cb7-8"><a href="coding.html#cb7-8"></a><span class="kw">is_positive_integer</span>(<span class="fl">2.1</span>)</span></code></pre></div>
 <div id="indentation" class="section level3">
 <h3><span class="header-section-number">28.2.1</span> Indentation</h3>
 <ul>
@@ -809,56 +816,56 @@ machine-understandable</p>
 <li>Do this systematically (RStudio editor helps a lot)</li>
 </ul>
 <p>Don’t write code like this:</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="coding.html#cb429-1"></a><span class="co"># Don&#39;t do this!</span></span>
-<span id="cb429-2"><a href="coding.html#cb429-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">is.vector</span>(x)) {</span>
-<span id="cb429-3"><a href="coding.html#cb429-3"></a><span class="kw">stop</span>(<span class="st">&#39;x must be a vector&#39;</span>)</span>
-<span id="cb429-4"><a href="coding.html#cb429-4"></a>} <span class="cf">else</span> {</span>
-<span id="cb429-5"><a href="coding.html#cb429-5"></a><span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">is.na</span>(x))){</span>
-<span id="cb429-6"><a href="coding.html#cb429-6"></a>x &lt;-<span class="st"> </span>x[<span class="op">!</span><span class="kw">is.na</span>(x)]</span>
-<span id="cb429-7"><a href="coding.html#cb429-7"></a>}</span>
-<span id="cb429-8"><a href="coding.html#cb429-8"></a>total &lt;-<span class="st"> </span><span class="kw">length</span>(x)</span>
-<span id="cb429-9"><a href="coding.html#cb429-9"></a>x_sum &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb429-10"><a href="coding.html#cb429-10"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(x)) {</span>
-<span id="cb429-11"><a href="coding.html#cb429-11"></a>  x_sum &lt;-<span class="st"> </span>x_sum <span class="op">+</span><span class="st"> </span>x[i]</span>
-<span id="cb429-12"><a href="coding.html#cb429-12"></a>}</span>
-<span id="cb429-13"><a href="coding.html#cb429-13"></a>x_sum <span class="op">/</span><span class="st"> </span>total</span>
-<span id="cb429-14"><a href="coding.html#cb429-14"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="coding.html#cb8-1"></a><span class="co"># Don&#39;t do this!</span></span>
+<span id="cb8-2"><a href="coding.html#cb8-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">is.vector</span>(x)) {</span>
+<span id="cb8-3"><a href="coding.html#cb8-3"></a><span class="kw">stop</span>(<span class="st">&#39;x must be a vector&#39;</span>)</span>
+<span id="cb8-4"><a href="coding.html#cb8-4"></a>} <span class="cf">else</span> {</span>
+<span id="cb8-5"><a href="coding.html#cb8-5"></a><span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">is.na</span>(x))){</span>
+<span id="cb8-6"><a href="coding.html#cb8-6"></a>x &lt;-<span class="st"> </span>x[<span class="op">!</span><span class="kw">is.na</span>(x)]</span>
+<span id="cb8-7"><a href="coding.html#cb8-7"></a>}</span>
+<span id="cb8-8"><a href="coding.html#cb8-8"></a>total &lt;-<span class="st"> </span><span class="kw">length</span>(x)</span>
+<span id="cb8-9"><a href="coding.html#cb8-9"></a>x_sum &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb8-10"><a href="coding.html#cb8-10"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(x)) {</span>
+<span id="cb8-11"><a href="coding.html#cb8-11"></a>  x_sum &lt;-<span class="st"> </span>x_sum <span class="op">+</span><span class="st"> </span>x[i]</span>
+<span id="cb8-12"><a href="coding.html#cb8-12"></a>}</span>
+<span id="cb8-13"><a href="coding.html#cb8-13"></a>x_sum <span class="op">/</span><span class="st"> </span>total</span>
+<span id="cb8-14"><a href="coding.html#cb8-14"></a>}</span></code></pre></div>
 <p>Instead, write with indentation</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="coding.html#cb430-1"></a><span class="co"># better with indentation</span></span>
-<span id="cb430-2"><a href="coding.html#cb430-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">is.vector</span>(x)) {</span>
-<span id="cb430-3"><a href="coding.html#cb430-3"></a>  <span class="kw">stop</span>(<span class="st">&#39;x must be a vector&#39;</span>)</span>
-<span id="cb430-4"><a href="coding.html#cb430-4"></a>} <span class="cf">else</span> {</span>
-<span id="cb430-5"><a href="coding.html#cb430-5"></a>  <span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">is.na</span>(x))) {</span>
-<span id="cb430-6"><a href="coding.html#cb430-6"></a>    x &lt;-<span class="st"> </span>x[<span class="op">!</span><span class="kw">is.na</span>(x)]</span>
-<span id="cb430-7"><a href="coding.html#cb430-7"></a>  }</span>
-<span id="cb430-8"><a href="coding.html#cb430-8"></a>  total &lt;-<span class="st"> </span><span class="kw">length</span>(x)</span>
-<span id="cb430-9"><a href="coding.html#cb430-9"></a>  x_sum &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb430-10"><a href="coding.html#cb430-10"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(x)) {</span>
-<span id="cb430-11"><a href="coding.html#cb430-11"></a>    x_sum &lt;-<span class="st"> </span>x_sum <span class="op">+</span><span class="st"> </span>x[i]</span>
-<span id="cb430-12"><a href="coding.html#cb430-12"></a>  }</span>
-<span id="cb430-13"><a href="coding.html#cb430-13"></a>  x_sum <span class="op">/</span><span class="st"> </span>total</span>
-<span id="cb430-14"><a href="coding.html#cb430-14"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="coding.html#cb9-1"></a><span class="co"># better with indentation</span></span>
+<span id="cb9-2"><a href="coding.html#cb9-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">is.vector</span>(x)) {</span>
+<span id="cb9-3"><a href="coding.html#cb9-3"></a>  <span class="kw">stop</span>(<span class="st">&#39;x must be a vector&#39;</span>)</span>
+<span id="cb9-4"><a href="coding.html#cb9-4"></a>} <span class="cf">else</span> {</span>
+<span id="cb9-5"><a href="coding.html#cb9-5"></a>  <span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">is.na</span>(x))) {</span>
+<span id="cb9-6"><a href="coding.html#cb9-6"></a>    x &lt;-<span class="st"> </span>x[<span class="op">!</span><span class="kw">is.na</span>(x)]</span>
+<span id="cb9-7"><a href="coding.html#cb9-7"></a>  }</span>
+<span id="cb9-8"><a href="coding.html#cb9-8"></a>  total &lt;-<span class="st"> </span><span class="kw">length</span>(x)</span>
+<span id="cb9-9"><a href="coding.html#cb9-9"></a>  x_sum &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb9-10"><a href="coding.html#cb9-10"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(x)) {</span>
+<span id="cb9-11"><a href="coding.html#cb9-11"></a>    x_sum &lt;-<span class="st"> </span>x_sum <span class="op">+</span><span class="st"> </span>x[i]</span>
+<span id="cb9-12"><a href="coding.html#cb9-12"></a>  }</span>
+<span id="cb9-13"><a href="coding.html#cb9-13"></a>  x_sum <span class="op">/</span><span class="st"> </span>total</span>
+<span id="cb9-14"><a href="coding.html#cb9-14"></a>}</span></code></pre></div>
 <p>There are several Indenting Styles</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="coding.html#cb431-1"></a><span class="co"># style 1</span></span>
-<span id="cb431-2"><a href="coding.html#cb431-2"></a>find_roots &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">1</span>, <span class="dt">c =</span> <span class="dv">0</span>) </span>
-<span id="cb431-3"><a href="coding.html#cb431-3"></a>{</span>
-<span id="cb431-4"><a href="coding.html#cb431-4"></a>  <span class="cf">if</span> (b<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span><span class="op">*</span>a<span class="op">*</span>c <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) </span>
-<span id="cb431-5"><a href="coding.html#cb431-5"></a>  {</span>
-<span id="cb431-6"><a href="coding.html#cb431-6"></a>    <span class="kw">return</span>(<span class="st">&quot;No real roots&quot;</span>)</span>
-<span id="cb431-7"><a href="coding.html#cb431-7"></a>  } <span class="cf">else</span> </span>
-<span id="cb431-8"><a href="coding.html#cb431-8"></a>  {</span>
-<span id="cb431-9"><a href="coding.html#cb431-9"></a>    <span class="kw">return</span>(<span class="kw">quadratic</span>(<span class="dt">a =</span> a, <span class="dt">b =</span> b, <span class="dt">c =</span> c))</span>
-<span id="cb431-10"><a href="coding.html#cb431-10"></a>  }</span>
-<span id="cb431-11"><a href="coding.html#cb431-11"></a>}</span>
-<span id="cb431-12"><a href="coding.html#cb431-12"></a></span>
-<span id="cb431-13"><a href="coding.html#cb431-13"></a><span class="co"># style 2</span></span>
-<span id="cb431-14"><a href="coding.html#cb431-14"></a>find_roots &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">1</span>, <span class="dt">c =</span> <span class="dv">0</span>) {</span>
-<span id="cb431-15"><a href="coding.html#cb431-15"></a>  <span class="cf">if</span> (b<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span><span class="op">*</span>a<span class="op">*</span>c <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
-<span id="cb431-16"><a href="coding.html#cb431-16"></a>    <span class="kw">return</span>(<span class="st">&quot;No real roots&quot;</span>)</span>
-<span id="cb431-17"><a href="coding.html#cb431-17"></a>  } <span class="cf">else</span> {</span>
-<span id="cb431-18"><a href="coding.html#cb431-18"></a>    <span class="kw">return</span>(<span class="kw">quadratic</span>(<span class="dt">a =</span> a, <span class="dt">b =</span> b, <span class="dt">c =</span> c))</span>
-<span id="cb431-19"><a href="coding.html#cb431-19"></a>  }</span>
-<span id="cb431-20"><a href="coding.html#cb431-20"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="coding.html#cb10-1"></a><span class="co"># style 1</span></span>
+<span id="cb10-2"><a href="coding.html#cb10-2"></a>find_roots &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">1</span>, <span class="dt">c =</span> <span class="dv">0</span>) </span>
+<span id="cb10-3"><a href="coding.html#cb10-3"></a>{</span>
+<span id="cb10-4"><a href="coding.html#cb10-4"></a>  <span class="cf">if</span> (b<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span><span class="op">*</span>a<span class="op">*</span>c <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) </span>
+<span id="cb10-5"><a href="coding.html#cb10-5"></a>  {</span>
+<span id="cb10-6"><a href="coding.html#cb10-6"></a>    <span class="kw">return</span>(<span class="st">&quot;No real roots&quot;</span>)</span>
+<span id="cb10-7"><a href="coding.html#cb10-7"></a>  } <span class="cf">else</span> </span>
+<span id="cb10-8"><a href="coding.html#cb10-8"></a>  {</span>
+<span id="cb10-9"><a href="coding.html#cb10-9"></a>    <span class="kw">return</span>(<span class="kw">quadratic</span>(<span class="dt">a =</span> a, <span class="dt">b =</span> b, <span class="dt">c =</span> c))</span>
+<span id="cb10-10"><a href="coding.html#cb10-10"></a>  }</span>
+<span id="cb10-11"><a href="coding.html#cb10-11"></a>}</span>
+<span id="cb10-12"><a href="coding.html#cb10-12"></a></span>
+<span id="cb10-13"><a href="coding.html#cb10-13"></a><span class="co"># style 2</span></span>
+<span id="cb10-14"><a href="coding.html#cb10-14"></a>find_roots &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">1</span>, <span class="dt">c =</span> <span class="dv">0</span>) {</span>
+<span id="cb10-15"><a href="coding.html#cb10-15"></a>  <span class="cf">if</span> (b<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span><span class="op">*</span>a<span class="op">*</span>c <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb10-16"><a href="coding.html#cb10-16"></a>    <span class="kw">return</span>(<span class="st">&quot;No real roots&quot;</span>)</span>
+<span id="cb10-17"><a href="coding.html#cb10-17"></a>  } <span class="cf">else</span> {</span>
+<span id="cb10-18"><a href="coding.html#cb10-18"></a>    <span class="kw">return</span>(<span class="kw">quadratic</span>(<span class="dt">a =</span> a, <span class="dt">b =</span> b, <span class="dt">c =</span> c))</span>
+<span id="cb10-19"><a href="coding.html#cb10-19"></a>  }</span>
+<span id="cb10-20"><a href="coding.html#cb10-20"></a>}</span></code></pre></div>
 <p>Benefits of code indentation:</p>
 <ul>
 <li>Easier to read</li>
@@ -875,28 +882,28 @@ machine-understandable</p>
 <li>Click <strong>Code</strong> on the menu bar</li>
 <li>Then click <strong>Reformat Code</strong></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-426"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
 <img src="images/coding/reformat-code.png" alt="Reformat code in RStudio" width="60%" />
 <p class="caption">
 Figure 28.3: Reformat code in RStudio
 </p>
 </div>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="coding.html#cb432-1"></a><span class="co"># unformatted code</span></span>
-<span id="cb432-2"><a href="coding.html#cb432-2"></a>quadratic&lt;-<span class="cf">function</span>(<span class="dt">a=</span><span class="dv">1</span>,<span class="dt">b=</span><span class="dv">1</span>,<span class="dt">c=</span><span class="dv">0</span>){</span>
-<span id="cb432-3"><a href="coding.html#cb432-3"></a>root&lt;-<span class="kw">sqrt</span>(b<span class="op">^</span><span class="dv">2-4</span><span class="op">*</span>a<span class="op">*</span>c)</span>
-<span id="cb432-4"><a href="coding.html#cb432-4"></a>x1&lt;-(<span class="op">-</span>b<span class="op">+</span>root)<span class="op">/</span><span class="dv">2</span><span class="op">*</span>a</span>
-<span id="cb432-5"><a href="coding.html#cb432-5"></a>x2&lt;-(<span class="op">-</span>b<span class="op">-</span>root)<span class="op">/</span><span class="dv">2</span><span class="op">*</span>a</span>
-<span id="cb432-6"><a href="coding.html#cb432-6"></a><span class="kw">list</span>(<span class="dt">sol1=</span>x1,<span class="dt">sol2=</span>x2)</span>
-<span id="cb432-7"><a href="coding.html#cb432-7"></a>}</span>
-<span id="cb432-8"><a href="coding.html#cb432-8"></a></span>
-<span id="cb432-9"><a href="coding.html#cb432-9"></a></span>
-<span id="cb432-10"><a href="coding.html#cb432-10"></a><span class="co"># reformatted code</span></span>
-<span id="cb432-11"><a href="coding.html#cb432-11"></a>quadratic &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">1</span>, <span class="dt">c =</span> <span class="dv">0</span>) {</span>
-<span id="cb432-12"><a href="coding.html#cb432-12"></a>  root &lt;-<span class="st"> </span><span class="kw">sqrt</span>(b <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>a <span class="op">*</span><span class="st"> </span>c)</span>
-<span id="cb432-13"><a href="coding.html#cb432-13"></a>  x1 &lt;-<span class="st"> </span>(<span class="op">-</span>b <span class="op">+</span><span class="st"> </span>root) <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>a</span>
-<span id="cb432-14"><a href="coding.html#cb432-14"></a>  x2 &lt;-<span class="st"> </span>(<span class="op">-</span>b <span class="op">-</span><span class="st"> </span>root) <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>a</span>
-<span id="cb432-15"><a href="coding.html#cb432-15"></a>  <span class="kw">list</span>(<span class="dt">sol1 =</span> x1,<span class="dt">sol2 =</span> x2)</span>
-<span id="cb432-16"><a href="coding.html#cb432-16"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="coding.html#cb11-1"></a><span class="co"># unformatted code</span></span>
+<span id="cb11-2"><a href="coding.html#cb11-2"></a>quadratic&lt;-<span class="cf">function</span>(<span class="dt">a=</span><span class="dv">1</span>,<span class="dt">b=</span><span class="dv">1</span>,<span class="dt">c=</span><span class="dv">0</span>){</span>
+<span id="cb11-3"><a href="coding.html#cb11-3"></a>root&lt;-<span class="kw">sqrt</span>(b<span class="op">^</span><span class="dv">2-4</span><span class="op">*</span>a<span class="op">*</span>c)</span>
+<span id="cb11-4"><a href="coding.html#cb11-4"></a>x1&lt;-(<span class="op">-</span>b<span class="op">+</span>root)<span class="op">/</span><span class="dv">2</span><span class="op">*</span>a</span>
+<span id="cb11-5"><a href="coding.html#cb11-5"></a>x2&lt;-(<span class="op">-</span>b<span class="op">-</span>root)<span class="op">/</span><span class="dv">2</span><span class="op">*</span>a</span>
+<span id="cb11-6"><a href="coding.html#cb11-6"></a><span class="kw">list</span>(<span class="dt">sol1=</span>x1,<span class="dt">sol2=</span>x2)</span>
+<span id="cb11-7"><a href="coding.html#cb11-7"></a>}</span>
+<span id="cb11-8"><a href="coding.html#cb11-8"></a></span>
+<span id="cb11-9"><a href="coding.html#cb11-9"></a></span>
+<span id="cb11-10"><a href="coding.html#cb11-10"></a><span class="co"># reformatted code</span></span>
+<span id="cb11-11"><a href="coding.html#cb11-11"></a>quadratic &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">1</span>, <span class="dt">c =</span> <span class="dv">0</span>) {</span>
+<span id="cb11-12"><a href="coding.html#cb11-12"></a>  root &lt;-<span class="st"> </span><span class="kw">sqrt</span>(b <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>a <span class="op">*</span><span class="st"> </span>c)</span>
+<span id="cb11-13"><a href="coding.html#cb11-13"></a>  x1 &lt;-<span class="st"> </span>(<span class="op">-</span>b <span class="op">+</span><span class="st"> </span>root) <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>a</span>
+<span id="cb11-14"><a href="coding.html#cb11-14"></a>  x2 &lt;-<span class="st"> </span>(<span class="op">-</span>b <span class="op">-</span><span class="st"> </span>root) <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>a</span>
+<span id="cb11-15"><a href="coding.html#cb11-15"></a>  <span class="kw">list</span>(<span class="dt">sol1 =</span> x1,<span class="dt">sol2 =</span> x2)</span>
+<span id="cb11-16"><a href="coding.html#cb11-16"></a>}</span></code></pre></div>
 </div>
 <div id="meaningful-names" class="section level3">
 <h3><span class="header-section-number">28.2.3</span> Meaningful Names</h3>
@@ -934,58 +941,58 @@ Figure 28.3: Reformat code in RStudio
 <li><code>first_last</code></li>
 <li><code>some_colors</code></li>
 </ul>
-<p>Here’s a quiz example, what does the following functino <code>getTehm()</code> do?</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="coding.html#cb433-1"></a>getThem &lt;-<span class="st"> </span><span class="cf">function</span>(values, y) {</span>
-<span id="cb433-2"><a href="coding.html#cb433-2"></a>  list1 &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
-<span id="cb433-3"><a href="coding.html#cb433-3"></a>  </span>
-<span id="cb433-4"><a href="coding.html#cb433-4"></a>  <span class="cf">for</span> (i <span class="cf">in</span> values) {</span>
-<span id="cb433-5"><a href="coding.html#cb433-5"></a>    <span class="cf">if</span> (values[i] <span class="op">==</span><span class="st"> </span>y)</span>
-<span id="cb433-6"><a href="coding.html#cb433-6"></a>      list1 &lt;-<span class="st"> </span><span class="kw">c</span>(list1, x)</span>
-<span id="cb433-7"><a href="coding.html#cb433-7"></a>  }</span>
-<span id="cb433-8"><a href="coding.html#cb433-8"></a>  <span class="kw">return</span>(list1)</span>
-<span id="cb433-9"><a href="coding.html#cb433-9"></a>}</span></code></pre></div>
+<p>Here’s a quiz example, what does the following functino <code>getThem()</code> do?</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="coding.html#cb12-1"></a>getThem &lt;-<span class="st"> </span><span class="cf">function</span>(values, y) {</span>
+<span id="cb12-2"><a href="coding.html#cb12-2"></a>  list1 &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
+<span id="cb12-3"><a href="coding.html#cb12-3"></a>  </span>
+<span id="cb12-4"><a href="coding.html#cb12-4"></a>  <span class="cf">for</span> (i <span class="cf">in</span> values) {</span>
+<span id="cb12-5"><a href="coding.html#cb12-5"></a>    <span class="cf">if</span> (values[i] <span class="op">==</span><span class="st"> </span>y)</span>
+<span id="cb12-6"><a href="coding.html#cb12-6"></a>      list1 &lt;-<span class="st"> </span><span class="kw">c</span>(list1, x)</span>
+<span id="cb12-7"><a href="coding.html#cb12-7"></a>  }</span>
+<span id="cb12-8"><a href="coding.html#cb12-8"></a>  <span class="kw">return</span>(list1)</span>
+<span id="cb12-9"><a href="coding.html#cb12-9"></a>}</span></code></pre></div>
 <p>this is more meaningful:</p>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="coding.html#cb434-1"></a>getFlaggedCells &lt;-<span class="st"> </span><span class="cf">function</span>(gameBoard, flagged) {</span>
-<span id="cb434-2"><a href="coding.html#cb434-2"></a>  flaggedCells &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
-<span id="cb434-3"><a href="coding.html#cb434-3"></a>  </span>
-<span id="cb434-4"><a href="coding.html#cb434-4"></a>  <span class="cf">for</span> (cell <span class="cf">in</span> gameBoard) {</span>
-<span id="cb434-5"><a href="coding.html#cb434-5"></a>    <span class="cf">if</span> (gameBoard[cell] <span class="op">==</span><span class="st"> </span>flagged)</span>
-<span id="cb434-6"><a href="coding.html#cb434-6"></a>      flaggedCells &lt;-<span class="st"> </span><span class="kw">c</span>(flaggedCells, x)</span>
-<span id="cb434-7"><a href="coding.html#cb434-7"></a>  }</span>
-<span id="cb434-8"><a href="coding.html#cb434-8"></a>  <span class="kw">return</span>(flaggedCells)</span>
-<span id="cb434-9"><a href="coding.html#cb434-9"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="coding.html#cb13-1"></a>getFlaggedCells &lt;-<span class="st"> </span><span class="cf">function</span>(gameBoard, flagged) {</span>
+<span id="cb13-2"><a href="coding.html#cb13-2"></a>  flaggedCells &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
+<span id="cb13-3"><a href="coding.html#cb13-3"></a>  </span>
+<span id="cb13-4"><a href="coding.html#cb13-4"></a>  <span class="cf">for</span> (cell <span class="cf">in</span> gameBoard) {</span>
+<span id="cb13-5"><a href="coding.html#cb13-5"></a>    <span class="cf">if</span> (gameBoard[cell] <span class="op">==</span><span class="st"> </span>flagged)</span>
+<span id="cb13-6"><a href="coding.html#cb13-6"></a>      flaggedCells &lt;-<span class="st"> </span><span class="kw">c</span>(flaggedCells, x)</span>
+<span id="cb13-7"><a href="coding.html#cb13-7"></a>  }</span>
+<span id="cb13-8"><a href="coding.html#cb13-8"></a>  <span class="kw">return</span>(flaggedCells)</span>
+<span id="cb13-9"><a href="coding.html#cb13-9"></a>}</span></code></pre></div>
 <p>Also, better to use meaningful distinctions</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="coding.html#cb435-1"></a><span class="co"># argument names &#39;a1&#39; and &#39;a2&#39;?</span></span>
-<span id="cb435-2"><a href="coding.html#cb435-2"></a>move_strings &lt;-<span class="st"> </span><span class="cf">function</span>(a1, a2) {</span>
-<span id="cb435-3"><a href="coding.html#cb435-3"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(a1)) {</span>
-<span id="cb435-4"><a href="coding.html#cb435-4"></a>    a1[i] &lt;-<span class="st"> </span><span class="kw">toupper</span>(<span class="kw">substr</span>(a1, <span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb435-5"><a href="coding.html#cb435-5"></a>  }</span>
-<span id="cb435-6"><a href="coding.html#cb435-6"></a>  a2</span>
-<span id="cb435-7"><a href="coding.html#cb435-7"></a>}</span>
-<span id="cb435-8"><a href="coding.html#cb435-8"></a></span>
-<span id="cb435-9"><a href="coding.html#cb435-9"></a></span>
-<span id="cb435-10"><a href="coding.html#cb435-10"></a><span class="co"># argument names </span></span>
-<span id="cb435-11"><a href="coding.html#cb435-11"></a>move_strings &lt;-<span class="st"> </span><span class="cf">function</span>(origin, destination) {</span>
-<span id="cb435-12"><a href="coding.html#cb435-12"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(origin)) {</span>
-<span id="cb435-13"><a href="coding.html#cb435-13"></a>    destination[i] &lt;-<span class="st"> </span><span class="kw">toupper</span>(<span class="kw">substr</span>(origin, <span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb435-14"><a href="coding.html#cb435-14"></a>  }</span>
-<span id="cb435-15"><a href="coding.html#cb435-15"></a>  destination</span>
-<span id="cb435-16"><a href="coding.html#cb435-16"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="coding.html#cb14-1"></a><span class="co"># argument names &#39;a1&#39; and &#39;a2&#39;?</span></span>
+<span id="cb14-2"><a href="coding.html#cb14-2"></a>move_strings &lt;-<span class="st"> </span><span class="cf">function</span>(a1, a2) {</span>
+<span id="cb14-3"><a href="coding.html#cb14-3"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(a1)) {</span>
+<span id="cb14-4"><a href="coding.html#cb14-4"></a>    a1[i] &lt;-<span class="st"> </span><span class="kw">toupper</span>(<span class="kw">substr</span>(a1, <span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb14-5"><a href="coding.html#cb14-5"></a>  }</span>
+<span id="cb14-6"><a href="coding.html#cb14-6"></a>  a2</span>
+<span id="cb14-7"><a href="coding.html#cb14-7"></a>}</span>
+<span id="cb14-8"><a href="coding.html#cb14-8"></a></span>
+<span id="cb14-9"><a href="coding.html#cb14-9"></a></span>
+<span id="cb14-10"><a href="coding.html#cb14-10"></a><span class="co"># argument names </span></span>
+<span id="cb14-11"><a href="coding.html#cb14-11"></a>move_strings &lt;-<span class="st"> </span><span class="cf">function</span>(origin, destination) {</span>
+<span id="cb14-12"><a href="coding.html#cb14-12"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(origin)) {</span>
+<span id="cb14-13"><a href="coding.html#cb14-13"></a>    destination[i] &lt;-<span class="st"> </span><span class="kw">toupper</span>(<span class="kw">substr</span>(origin, <span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb14-14"><a href="coding.html#cb14-14"></a>  }</span>
+<span id="cb14-15"><a href="coding.html#cb14-15"></a>  destination</span>
+<span id="cb14-16"><a href="coding.html#cb14-16"></a>}</span></code></pre></div>
 <p>Prefer Pronounceable Names</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="coding.html#cb436-1"></a><span class="co"># cryptic abbreviations </span></span>
-<span id="cb436-2"><a href="coding.html#cb436-2"></a>DtaRcrd102 &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
-<span id="cb436-3"><a href="coding.html#cb436-3"></a>  <span class="dt">nm =</span> <span class="st">&#39;John Doe&#39;</span>,</span>
-<span id="cb436-4"><a href="coding.html#cb436-4"></a>  <span class="dt">bdg =</span> <span class="st">&#39;Valley Life Sciences Building&#39;</span>,</span>
-<span id="cb436-5"><a href="coding.html#cb436-5"></a>  <span class="dt">rm =</span> <span class="dv">2060</span></span>
-<span id="cb436-6"><a href="coding.html#cb436-6"></a>)</span>
-<span id="cb436-7"><a href="coding.html#cb436-7"></a></span>
-<span id="cb436-8"><a href="coding.html#cb436-8"></a></span>
-<span id="cb436-9"><a href="coding.html#cb436-9"></a><span class="co"># pronounceable names </span></span>
-<span id="cb436-10"><a href="coding.html#cb436-10"></a>Customer &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
-<span id="cb436-11"><a href="coding.html#cb436-11"></a>  <span class="dt">name =</span> <span class="st">&#39;John Doe&#39;</span>,</span>
-<span id="cb436-12"><a href="coding.html#cb436-12"></a>  <span class="dt">building =</span> <span class="st">&#39;Valley Life Sciences Building&#39;</span>,</span>
-<span id="cb436-13"><a href="coding.html#cb436-13"></a>  <span class="dt">room =</span> <span class="dv">2060</span></span>
-<span id="cb436-14"><a href="coding.html#cb436-14"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="coding.html#cb15-1"></a><span class="co"># cryptic abbreviations </span></span>
+<span id="cb15-2"><a href="coding.html#cb15-2"></a>DtaRcrd102 &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb15-3"><a href="coding.html#cb15-3"></a>  <span class="dt">nm =</span> <span class="st">&#39;John Doe&#39;</span>,</span>
+<span id="cb15-4"><a href="coding.html#cb15-4"></a>  <span class="dt">bdg =</span> <span class="st">&#39;Valley Life Sciences Building&#39;</span>,</span>
+<span id="cb15-5"><a href="coding.html#cb15-5"></a>  <span class="dt">rm =</span> <span class="dv">2060</span></span>
+<span id="cb15-6"><a href="coding.html#cb15-6"></a>)</span>
+<span id="cb15-7"><a href="coding.html#cb15-7"></a></span>
+<span id="cb15-8"><a href="coding.html#cb15-8"></a></span>
+<span id="cb15-9"><a href="coding.html#cb15-9"></a><span class="co"># pronounceable names </span></span>
+<span id="cb15-10"><a href="coding.html#cb15-10"></a>Customer &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb15-11"><a href="coding.html#cb15-11"></a>  <span class="dt">name =</span> <span class="st">&#39;John Doe&#39;</span>,</span>
+<span id="cb15-12"><a href="coding.html#cb15-12"></a>  <span class="dt">building =</span> <span class="st">&#39;Valley Life Sciences Building&#39;</span>,</span>
+<span id="cb15-13"><a href="coding.html#cb15-13"></a>  <span class="dt">room =</span> <span class="dv">2060</span></span>
+<span id="cb15-14"><a href="coding.html#cb15-14"></a>)</span></code></pre></div>
 </div>
 <div id="white-spaces" class="section level3">
 <h3><span class="header-section-number">28.2.4</span> White Spaces</h3>
@@ -997,38 +1004,38 @@ Figure 28.3: Reformat code in RStudio
 <li>Split long lines at meaningful places</li>
 </ul>
 <p>Avoid this</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="coding.html#cb437-1"></a>a&lt;-<span class="dv">2</span></span>
-<span id="cb437-2"><a href="coding.html#cb437-2"></a>x&lt;-<span class="dv">3</span></span>
-<span id="cb437-3"><a href="coding.html#cb437-3"></a>y&lt;-<span class="kw">log</span>(<span class="kw">sqrt</span>(x))</span>
-<span id="cb437-4"><a href="coding.html#cb437-4"></a><span class="dv">3</span><span class="op">*</span>x<span class="op">^</span><span class="dv">7</span><span class="op">-</span>pi<span class="op">*</span>x<span class="op">/</span>(y<span class="op">-</span>a)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="coding.html#cb16-1"></a>a&lt;-<span class="dv">2</span></span>
+<span id="cb16-2"><a href="coding.html#cb16-2"></a>x&lt;-<span class="dv">3</span></span>
+<span id="cb16-3"><a href="coding.html#cb16-3"></a>y&lt;-<span class="kw">log</span>(<span class="kw">sqrt</span>(x))</span>
+<span id="cb16-4"><a href="coding.html#cb16-4"></a><span class="dv">3</span><span class="op">*</span>x<span class="op">^</span><span class="dv">7</span><span class="op">-</span>pi<span class="op">*</span>x<span class="op">/</span>(y<span class="op">-</span>a)</span></code></pre></div>
 <p>Much Better</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="coding.html#cb438-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb438-2"><a href="coding.html#cb438-2"></a>x &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb438-3"><a href="coding.html#cb438-3"></a>y &lt;-<span class="st"> </span><span class="kw">log</span>(<span class="kw">sqrt</span>(x))</span>
-<span id="cb438-4"><a href="coding.html#cb438-4"></a><span class="dv">3</span><span class="op">*</span>x<span class="op">^</span><span class="dv">7</span> <span class="op">-</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>x <span class="op">/</span><span class="st"> </span>(y <span class="op">-</span><span class="st"> </span>a)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="coding.html#cb17-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb17-2"><a href="coding.html#cb17-2"></a>x &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb17-3"><a href="coding.html#cb17-3"></a>y &lt;-<span class="st"> </span><span class="kw">log</span>(<span class="kw">sqrt</span>(x))</span>
+<span id="cb17-4"><a href="coding.html#cb17-4"></a><span class="dv">3</span><span class="op">*</span>x<span class="op">^</span><span class="dv">7</span> <span class="op">-</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>x <span class="op">/</span><span class="st"> </span>(y <span class="op">-</span><span class="st"> </span>a)</span></code></pre></div>
 <p>Another example:</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="coding.html#cb439-1"></a><span class="co"># Avoid this</span></span>
-<span id="cb439-2"><a href="coding.html#cb439-2"></a><span class="kw">plot</span>(x,y,<span class="dt">col=</span><span class="kw">rgb</span>(<span class="fl">0.5</span>,<span class="fl">0.7</span>,<span class="fl">0.4</span>),<span class="dt">pch=</span><span class="st">&#39;+&#39;</span>,<span class="dt">cex=</span><span class="dv">5</span>)</span>
-<span id="cb439-3"><a href="coding.html#cb439-3"></a></span>
-<span id="cb439-4"><a href="coding.html#cb439-4"></a><span class="co"># okay</span></span>
-<span id="cb439-5"><a href="coding.html#cb439-5"></a><span class="kw">plot</span>(x, y, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">0.4</span>), <span class="dt">pch =</span> <span class="st">&#39;+&#39;</span>, <span class="dt">cex =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="coding.html#cb18-1"></a><span class="co"># Avoid this</span></span>
+<span id="cb18-2"><a href="coding.html#cb18-2"></a><span class="kw">plot</span>(x,y,<span class="dt">col=</span><span class="kw">rgb</span>(<span class="fl">0.5</span>,<span class="fl">0.7</span>,<span class="fl">0.4</span>),<span class="dt">pch=</span><span class="st">&#39;+&#39;</span>,<span class="dt">cex=</span><span class="dv">5</span>)</span>
+<span id="cb18-3"><a href="coding.html#cb18-3"></a></span>
+<span id="cb18-4"><a href="coding.html#cb18-4"></a><span class="co"># okay</span></span>
+<span id="cb18-5"><a href="coding.html#cb18-5"></a><span class="kw">plot</span>(x, y, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">0.4</span>), <span class="dt">pch =</span> <span class="st">&#39;+&#39;</span>, <span class="dt">cex =</span> <span class="dv">5</span>)</span></code></pre></div>
 <p>Another readability recommendation is to limit the width of line: they should
 be broken/wrapped around so that they are less than 80 columns wide</p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="coding.html#cb440-1"></a><span class="co"># lines too long</span></span>
-<span id="cb440-2"><a href="coding.html#cb440-2"></a>histogram &lt;-<span class="st"> </span><span class="cf">function</span>(data){</span>
-<span id="cb440-3"><a href="coding.html#cb440-3"></a><span class="kw">hist</span>(data, <span class="dt">col =</span> <span class="st">&#39;gray90&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;x&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Frequency&#39;</span>, <span class="dt">main =</span> <span class="st">&#39;Histogram of x&#39;</span>)</span>
-<span id="cb440-4"><a href="coding.html#cb440-4"></a><span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">c</span>(<span class="kw">min</span>(data), <span class="kw">max</span>(data), <span class="kw">median</span>(data), <span class="kw">mean</span>(data)),</span>
-<span id="cb440-5"><a href="coding.html#cb440-5"></a><span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;orange&#39;</span>, <span class="st">&#39;tomato&#39;</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">lwd =</span> <span class="dv">3</span>)</span>
-<span id="cb440-6"><a href="coding.html#cb440-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="coding.html#cb19-1"></a><span class="co"># lines too long</span></span>
+<span id="cb19-2"><a href="coding.html#cb19-2"></a>histogram &lt;-<span class="st"> </span><span class="cf">function</span>(data){</span>
+<span id="cb19-3"><a href="coding.html#cb19-3"></a><span class="kw">hist</span>(data, <span class="dt">col =</span> <span class="st">&#39;gray90&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;x&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Frequency&#39;</span>, <span class="dt">main =</span> <span class="st">&#39;Histogram of x&#39;</span>)</span>
+<span id="cb19-4"><a href="coding.html#cb19-4"></a><span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">c</span>(<span class="kw">min</span>(data), <span class="kw">max</span>(data), <span class="kw">median</span>(data), <span class="kw">mean</span>(data)),</span>
+<span id="cb19-5"><a href="coding.html#cb19-5"></a><span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;orange&#39;</span>, <span class="st">&#39;tomato&#39;</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb19-6"><a href="coding.html#cb19-6"></a>}</span></code></pre></div>
 <p>Lines should be broken/wrapped aroung so that they are less than 80 columns wide</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="coding.html#cb441-1"></a><span class="co"># lines with okay width</span></span>
-<span id="cb441-2"><a href="coding.html#cb441-2"></a>histogram &lt;-<span class="st"> </span><span class="cf">function</span>(data) {</span>
-<span id="cb441-3"><a href="coding.html#cb441-3"></a>  <span class="kw">hist</span>(data, <span class="dt">col =</span> <span class="st">&#39;gray90&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;x&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Frequency&#39;</span>, </span>
-<span id="cb441-4"><a href="coding.html#cb441-4"></a>       <span class="dt">main =</span> <span class="st">&#39;Histogram of x&#39;</span>)</span>
-<span id="cb441-5"><a href="coding.html#cb441-5"></a>  <span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">c</span>(<span class="kw">min</span>(data), <span class="kw">max</span>(data), <span class="kw">median</span>(data), <span class="kw">mean</span>(data)),</span>
-<span id="cb441-6"><a href="coding.html#cb441-6"></a>         <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;orange&#39;</span>, <span class="st">&#39;tomato&#39;</span>), </span>
-<span id="cb441-7"><a href="coding.html#cb441-7"></a>         <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">lwd =</span> <span class="dv">3</span>)</span>
-<span id="cb441-8"><a href="coding.html#cb441-8"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="coding.html#cb20-1"></a><span class="co"># lines with okay width</span></span>
+<span id="cb20-2"><a href="coding.html#cb20-2"></a>histogram &lt;-<span class="st"> </span><span class="cf">function</span>(data) {</span>
+<span id="cb20-3"><a href="coding.html#cb20-3"></a>  <span class="kw">hist</span>(data, <span class="dt">col =</span> <span class="st">&#39;gray90&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;x&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Frequency&#39;</span>, </span>
+<span id="cb20-4"><a href="coding.html#cb20-4"></a>       <span class="dt">main =</span> <span class="st">&#39;Histogram of x&#39;</span>)</span>
+<span id="cb20-5"><a href="coding.html#cb20-5"></a>  <span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">c</span>(<span class="kw">min</span>(data), <span class="kw">max</span>(data), <span class="kw">median</span>(data), <span class="kw">mean</span>(data)),</span>
+<span id="cb20-6"><a href="coding.html#cb20-6"></a>         <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;orange&#39;</span>, <span class="st">&#39;tomato&#39;</span>), </span>
+<span id="cb20-7"><a href="coding.html#cb20-7"></a>         <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb20-8"><a href="coding.html#cb20-8"></a>}</span></code></pre></div>
 </div>
 <div id="white-spaces-1" class="section level3">
 <h3><span class="header-section-number">28.2.5</span> White spaces</h3>
@@ -1038,37 +1045,37 @@ be broken/wrapped around so that they are less than 80 columns wide</p>
 <li>Follow proper spacing through out your coding</li>
 <li>Use spacing consistently</li>
 </ul>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="coding.html#cb442-1"></a><span class="co"># this can be improved</span></span>
-<span id="cb442-2"><a href="coding.html#cb442-2"></a>stats &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="kw">max</span>(x)<span class="op">-</span><span class="kw">min</span>(x),</span>
-<span id="cb442-3"><a href="coding.html#cb442-3"></a>  <span class="kw">quantile</span>(x, <span class="dt">probs=</span><span class="fl">0.25</span>), <span class="kw">quantile</span>(x, <span class="dt">probs=</span><span class="fl">0.75</span>), <span class="kw">IQR</span>(x),</span>
-<span id="cb442-4"><a href="coding.html#cb442-4"></a>  <span class="kw">median</span>(x), <span class="kw">mean</span>(x), <span class="kw">sd</span>(x)</span>
-<span id="cb442-5"><a href="coding.html#cb442-5"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="coding.html#cb21-1"></a><span class="co"># this can be improved</span></span>
+<span id="cb21-2"><a href="coding.html#cb21-2"></a>stats &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="kw">max</span>(x)<span class="op">-</span><span class="kw">min</span>(x),</span>
+<span id="cb21-3"><a href="coding.html#cb21-3"></a>  <span class="kw">quantile</span>(x, <span class="dt">probs=</span><span class="fl">0.25</span>), <span class="kw">quantile</span>(x, <span class="dt">probs=</span><span class="fl">0.75</span>), <span class="kw">IQR</span>(x),</span>
+<span id="cb21-4"><a href="coding.html#cb21-4"></a>  <span class="kw">median</span>(x), <span class="kw">mean</span>(x), <span class="kw">sd</span>(x)</span>
+<span id="cb21-5"><a href="coding.html#cb21-5"></a>)</span></code></pre></div>
 <p>Don’t be afraid of splitting one long line into individual pieces:</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="coding.html#cb443-1"></a><span class="co"># much better</span></span>
-<span id="cb443-2"><a href="coding.html#cb443-2"></a>stats &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
-<span id="cb443-3"><a href="coding.html#cb443-3"></a>  <span class="kw">min</span>(x), </span>
-<span id="cb443-4"><a href="coding.html#cb443-4"></a>  <span class="kw">max</span>(x), </span>
-<span id="cb443-5"><a href="coding.html#cb443-5"></a>  <span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x),</span>
-<span id="cb443-6"><a href="coding.html#cb443-6"></a>  <span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="fl">0.25</span>),</span>
-<span id="cb443-7"><a href="coding.html#cb443-7"></a>  <span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="fl">0.75</span>),</span>
-<span id="cb443-8"><a href="coding.html#cb443-8"></a>  <span class="kw">IQR</span>(x),</span>
-<span id="cb443-9"><a href="coding.html#cb443-9"></a>  <span class="kw">median</span>(x), </span>
-<span id="cb443-10"><a href="coding.html#cb443-10"></a>  <span class="kw">mean</span>(x), </span>
-<span id="cb443-11"><a href="coding.html#cb443-11"></a>  <span class="kw">sd</span>(x)</span>
-<span id="cb443-12"><a href="coding.html#cb443-12"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="coding.html#cb22-1"></a><span class="co"># much better</span></span>
+<span id="cb22-2"><a href="coding.html#cb22-2"></a>stats &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb22-3"><a href="coding.html#cb22-3"></a>  <span class="kw">min</span>(x), </span>
+<span id="cb22-4"><a href="coding.html#cb22-4"></a>  <span class="kw">max</span>(x), </span>
+<span id="cb22-5"><a href="coding.html#cb22-5"></a>  <span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x),</span>
+<span id="cb22-6"><a href="coding.html#cb22-6"></a>  <span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="fl">0.25</span>),</span>
+<span id="cb22-7"><a href="coding.html#cb22-7"></a>  <span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="fl">0.75</span>),</span>
+<span id="cb22-8"><a href="coding.html#cb22-8"></a>  <span class="kw">IQR</span>(x),</span>
+<span id="cb22-9"><a href="coding.html#cb22-9"></a>  <span class="kw">median</span>(x), </span>
+<span id="cb22-10"><a href="coding.html#cb22-10"></a>  <span class="kw">mean</span>(x), </span>
+<span id="cb22-11"><a href="coding.html#cb22-11"></a>  <span class="kw">sd</span>(x)</span>
+<span id="cb22-12"><a href="coding.html#cb22-12"></a>)</span></code></pre></div>
 <p>You can even do this:</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="coding.html#cb444-1"></a><span class="co"># also OK</span></span>
-<span id="cb444-2"><a href="coding.html#cb444-2"></a>stats &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
-<span id="cb444-3"><a href="coding.html#cb444-3"></a>  <span class="dt">min    =</span> <span class="kw">min</span>(x), </span>
-<span id="cb444-4"><a href="coding.html#cb444-4"></a>  <span class="dt">max    =</span> <span class="kw">max</span>(x), </span>
-<span id="cb444-5"><a href="coding.html#cb444-5"></a>  <span class="dt">range  =</span> <span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x),</span>
-<span id="cb444-6"><a href="coding.html#cb444-6"></a>  <span class="dt">q1     =</span> <span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="fl">0.25</span>),</span>
-<span id="cb444-7"><a href="coding.html#cb444-7"></a>  <span class="dt">q3     =</span> <span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="fl">0.75</span>),</span>
-<span id="cb444-8"><a href="coding.html#cb444-8"></a>  <span class="dt">iqr    =</span> <span class="kw">IQR</span>(x),</span>
-<span id="cb444-9"><a href="coding.html#cb444-9"></a>  <span class="dt">median =</span> <span class="kw">median</span>(x), </span>
-<span id="cb444-10"><a href="coding.html#cb444-10"></a>  <span class="dt">mean   =</span> <span class="kw">mean</span>(x), </span>
-<span id="cb444-11"><a href="coding.html#cb444-11"></a>  <span class="dt">stdev  =</span> <span class="kw">sd</span>(x)</span>
-<span id="cb444-12"><a href="coding.html#cb444-12"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="coding.html#cb23-1"></a><span class="co"># also OK</span></span>
+<span id="cb23-2"><a href="coding.html#cb23-2"></a>stats &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb23-3"><a href="coding.html#cb23-3"></a>  <span class="dt">min    =</span> <span class="kw">min</span>(x), </span>
+<span id="cb23-4"><a href="coding.html#cb23-4"></a>  <span class="dt">max    =</span> <span class="kw">max</span>(x), </span>
+<span id="cb23-5"><a href="coding.html#cb23-5"></a>  <span class="dt">range  =</span> <span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x),</span>
+<span id="cb23-6"><a href="coding.html#cb23-6"></a>  <span class="dt">q1     =</span> <span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="fl">0.25</span>),</span>
+<span id="cb23-7"><a href="coding.html#cb23-7"></a>  <span class="dt">q3     =</span> <span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="fl">0.75</span>),</span>
+<span id="cb23-8"><a href="coding.html#cb23-8"></a>  <span class="dt">iqr    =</span> <span class="kw">IQR</span>(x),</span>
+<span id="cb23-9"><a href="coding.html#cb23-9"></a>  <span class="dt">median =</span> <span class="kw">median</span>(x), </span>
+<span id="cb23-10"><a href="coding.html#cb23-10"></a>  <span class="dt">mean   =</span> <span class="kw">mean</span>(x), </span>
+<span id="cb23-11"><a href="coding.html#cb23-11"></a>  <span class="dt">stdev  =</span> <span class="kw">sd</span>(x)</span>
+<span id="cb23-12"><a href="coding.html#cb23-12"></a>)</span></code></pre></div>
 <ul>
 <li>All commas and semicolons must be followed by single whitespace</li>
 <li>All binary operators should maintain a space on either side of the operator</li>
@@ -1077,59 +1084,59 @@ be broken/wrapped around so that they are less than 80 columns wide</p>
 single space.</li>
 </ul>
 <p>All binary operators should maintain a space on either side of the operator</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="coding.html#cb445-1"></a><span class="co"># NOT Recommended </span></span>
-<span id="cb445-2"><a href="coding.html#cb445-2"></a>a=b<span class="op">-</span>c</span>
-<span id="cb445-3"><a href="coding.html#cb445-3"></a>a =<span class="st"> </span>b<span class="op">-</span>c</span>
-<span id="cb445-4"><a href="coding.html#cb445-4"></a>a=b <span class="op">-</span><span class="st"> </span>c; </span>
-<span id="cb445-5"><a href="coding.html#cb445-5"></a></span>
-<span id="cb445-6"><a href="coding.html#cb445-6"></a><span class="co"># Recommended </span></span>
-<span id="cb445-7"><a href="coding.html#cb445-7"></a>a =<span class="st"> </span>b <span class="op">-</span><span class="st"> </span>c</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="coding.html#cb24-1"></a><span class="co"># NOT Recommended </span></span>
+<span id="cb24-2"><a href="coding.html#cb24-2"></a>a=b<span class="op">-</span>c</span>
+<span id="cb24-3"><a href="coding.html#cb24-3"></a>a =<span class="st"> </span>b<span class="op">-</span>c</span>
+<span id="cb24-4"><a href="coding.html#cb24-4"></a>a=b <span class="op">-</span><span class="st"> </span>c; </span>
+<span id="cb24-5"><a href="coding.html#cb24-5"></a></span>
+<span id="cb24-6"><a href="coding.html#cb24-6"></a><span class="co"># Recommended </span></span>
+<span id="cb24-7"><a href="coding.html#cb24-7"></a>a =<span class="st"> </span>b <span class="op">-</span><span class="st"> </span>c</span></code></pre></div>
 <p>All binary operators should maintain a space on either side of the operator</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="coding.html#cb446-1"></a><span class="co"># Not really recommended </span></span>
-<span id="cb446-2"><a href="coding.html#cb446-2"></a>z &lt;-<span class="st"> </span><span class="dv">6</span><span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="dv">9</span><span class="op">*</span>y</span>
-<span id="cb446-3"><a href="coding.html#cb446-3"></a></span>
-<span id="cb446-4"><a href="coding.html#cb446-4"></a><span class="co"># Recommended (option 1)</span></span>
-<span id="cb446-5"><a href="coding.html#cb446-5"></a>z &lt;-<span class="st"> </span><span class="dv">6</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">9</span> <span class="op">*</span><span class="st"> </span>y</span>
-<span id="cb446-6"><a href="coding.html#cb446-6"></a></span>
-<span id="cb446-7"><a href="coding.html#cb446-7"></a><span class="co"># Recommended (option 2)</span></span>
-<span id="cb446-8"><a href="coding.html#cb446-8"></a>z &lt;-<span class="st"> </span>(<span class="dv">7</span> <span class="op">*</span><span class="st"> </span>x) <span class="op">+</span><span class="st"> </span>(<span class="dv">9</span> <span class="op">*</span><span class="st"> </span>y)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="coding.html#cb25-1"></a><span class="co"># Not really recommended </span></span>
+<span id="cb25-2"><a href="coding.html#cb25-2"></a>z &lt;-<span class="st"> </span><span class="dv">6</span><span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="dv">9</span><span class="op">*</span>y</span>
+<span id="cb25-3"><a href="coding.html#cb25-3"></a></span>
+<span id="cb25-4"><a href="coding.html#cb25-4"></a><span class="co"># Recommended (option 1)</span></span>
+<span id="cb25-5"><a href="coding.html#cb25-5"></a>z &lt;-<span class="st"> </span><span class="dv">6</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">9</span> <span class="op">*</span><span class="st"> </span>y</span>
+<span id="cb25-6"><a href="coding.html#cb25-6"></a></span>
+<span id="cb25-7"><a href="coding.html#cb25-7"></a><span class="co"># Recommended (option 2)</span></span>
+<span id="cb25-8"><a href="coding.html#cb25-8"></a>z &lt;-<span class="st"> </span>(<span class="dv">7</span> <span class="op">*</span><span class="st"> </span>x) <span class="op">+</span><span class="st"> </span>(<span class="dv">9</span> <span class="op">*</span><span class="st"> </span>y)</span></code></pre></div>
 <p>Left parenthesis should start immediately after a function name</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="coding.html#cb447-1"></a><span class="co"># NOT Recommended </span></span>
-<span id="cb447-2"><a href="coding.html#cb447-2"></a><span class="kw">read.table</span> (<span class="st">&#39;data.csv&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb447-3"><a href="coding.html#cb447-3"></a></span>
-<span id="cb447-4"><a href="coding.html#cb447-4"></a><span class="co"># Recommended </span></span>
-<span id="cb447-5"><a href="coding.html#cb447-5"></a><span class="kw">read.table</span>(<span class="st">&#39;data.csv&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="coding.html#cb26-1"></a><span class="co"># NOT Recommended </span></span>
+<span id="cb26-2"><a href="coding.html#cb26-2"></a><span class="kw">read.table</span> (<span class="st">&#39;data.csv&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb26-3"><a href="coding.html#cb26-3"></a></span>
+<span id="cb26-4"><a href="coding.html#cb26-4"></a><span class="co"># Recommended </span></span>
+<span id="cb26-5"><a href="coding.html#cb26-5"></a><span class="kw">read.table</span>(<span class="st">&#39;data.csv&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p>All keywords like <code>if</code>, <code>while</code>, <code>for</code>, <code>repeat</code> should be followed by a single
 space.</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="coding.html#cb448-1"></a><span class="co"># not bad</span></span>
-<span id="cb448-2"><a href="coding.html#cb448-2"></a><span class="cf">if</span>(<span class="kw">is.numeric</span>(object)) {</span>
-<span id="cb448-3"><a href="coding.html#cb448-3"></a>  <span class="kw">mean</span>(object)</span>
-<span id="cb448-4"><a href="coding.html#cb448-4"></a>}</span>
-<span id="cb448-5"><a href="coding.html#cb448-5"></a></span>
-<span id="cb448-6"><a href="coding.html#cb448-6"></a><span class="co"># much better</span></span>
-<span id="cb448-7"><a href="coding.html#cb448-7"></a><span class="cf">if</span> (<span class="kw">is.numeric</span>(object)) {</span>
-<span id="cb448-8"><a href="coding.html#cb448-8"></a>  <span class="kw">mean</span>(object)</span>
-<span id="cb448-9"><a href="coding.html#cb448-9"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="coding.html#cb27-1"></a><span class="co"># not bad</span></span>
+<span id="cb27-2"><a href="coding.html#cb27-2"></a><span class="cf">if</span>(<span class="kw">is.numeric</span>(object)) {</span>
+<span id="cb27-3"><a href="coding.html#cb27-3"></a>  <span class="kw">mean</span>(object)</span>
+<span id="cb27-4"><a href="coding.html#cb27-4"></a>}</span>
+<span id="cb27-5"><a href="coding.html#cb27-5"></a></span>
+<span id="cb27-6"><a href="coding.html#cb27-6"></a><span class="co"># much better</span></span>
+<span id="cb27-7"><a href="coding.html#cb27-7"></a><span class="cf">if</span> (<span class="kw">is.numeric</span>(object)) {</span>
+<span id="cb27-8"><a href="coding.html#cb27-8"></a>  <span class="kw">mean</span>(object)</span>
+<span id="cb27-9"><a href="coding.html#cb27-9"></a>}</span></code></pre></div>
 </div>
 <div id="syntax-parentheses" class="section level3">
 <h3><span class="header-section-number">28.2.6</span> Syntax: Parentheses</h3>
 <p>Use parentheses for clarity even if not needed for order of operations.</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="coding.html#cb449-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb449-2"><a href="coding.html#cb449-2"></a>x &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb449-3"><a href="coding.html#cb449-3"></a>y &lt;-<span class="st"> </span><span class="dv">4</span></span>
-<span id="cb449-4"><a href="coding.html#cb449-4"></a></span>
-<span id="cb449-5"><a href="coding.html#cb449-5"></a>a<span class="op">/</span>y<span class="op">*</span>x</span>
-<span id="cb449-6"><a href="coding.html#cb449-6"></a></span>
-<span id="cb449-7"><a href="coding.html#cb449-7"></a><span class="co"># better</span></span>
-<span id="cb449-8"><a href="coding.html#cb449-8"></a>(a <span class="op">/</span><span class="st"> </span>y) <span class="op">*</span><span class="st"> </span>x</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="coding.html#cb28-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb28-2"><a href="coding.html#cb28-2"></a>x &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb28-3"><a href="coding.html#cb28-3"></a>y &lt;-<span class="st"> </span><span class="dv">4</span></span>
+<span id="cb28-4"><a href="coding.html#cb28-4"></a></span>
+<span id="cb28-5"><a href="coding.html#cb28-5"></a>a<span class="op">/</span>y<span class="op">*</span>x</span>
+<span id="cb28-6"><a href="coding.html#cb28-6"></a></span>
+<span id="cb28-7"><a href="coding.html#cb28-7"></a><span class="co"># better</span></span>
+<span id="cb28-8"><a href="coding.html#cb28-8"></a>(a <span class="op">/</span><span class="st"> </span>y) <span class="op">*</span><span class="st"> </span>x</span></code></pre></div>
 <p>another example</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="coding.html#cb450-1"></a><span class="co"># confusing</span></span>
-<span id="cb450-2"><a href="coding.html#cb450-2"></a><span class="dv">1</span><span class="op">:</span><span class="dv">3</span><span class="op">^</span><span class="dv">2</span></span>
-<span id="cb450-3"><a href="coding.html#cb450-3"></a><span class="co">#&gt; [1] 1 2 3 4 5 6 7 8 9</span></span>
-<span id="cb450-4"><a href="coding.html#cb450-4"></a></span>
-<span id="cb450-5"><a href="coding.html#cb450-5"></a><span class="co"># better</span></span>
-<span id="cb450-6"><a href="coding.html#cb450-6"></a><span class="dv">1</span><span class="op">:</span>(<span class="dv">3</span><span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb450-7"><a href="coding.html#cb450-7"></a><span class="co">#&gt; [1] 1 2 3 4 5 6 7 8 9</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="coding.html#cb29-1"></a><span class="co"># confusing</span></span>
+<span id="cb29-2"><a href="coding.html#cb29-2"></a><span class="dv">1</span><span class="op">:</span><span class="dv">3</span><span class="op">^</span><span class="dv">2</span></span>
+<span id="cb29-3"><a href="coding.html#cb29-3"></a><span class="co">#&gt; [1] 1 2 3 4 5 6 7 8 9</span></span>
+<span id="cb29-4"><a href="coding.html#cb29-4"></a></span>
+<span id="cb29-5"><a href="coding.html#cb29-5"></a><span class="co"># better</span></span>
+<span id="cb29-6"><a href="coding.html#cb29-6"></a><span class="dv">1</span><span class="op">:</span>(<span class="dv">3</span><span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb29-7"><a href="coding.html#cb29-7"></a><span class="co">#&gt; [1] 1 2 3 4 5 6 7 8 9</span></span></code></pre></div>
 </div>
 <div id="comments" class="section level3">
 <h3><span class="header-section-number">28.2.7</span> Comments</h3>
@@ -1149,76 +1156,76 @@ than a stranger</li>
 </ul></li>
 </ul>
 <p>Line spaces and Comments</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="coding.html#cb451-1"></a>MV &lt;-<span class="st"> </span><span class="kw">get_manifests</span>(Data, blocks)</span>
-<span id="cb451-2"><a href="coding.html#cb451-2"></a>check_MV &lt;-<span class="st"> </span><span class="kw">test_manifest_scaling</span>(MV, specs<span class="op">$</span>scaling)</span>
-<span id="cb451-3"><a href="coding.html#cb451-3"></a>gens &lt;-<span class="st"> </span><span class="kw">get_generals</span>(MV, path_matrix)</span>
-<span id="cb451-4"><a href="coding.html#cb451-4"></a><span class="kw">names</span>(blocks) &lt;-<span class="st"> </span>gens<span class="op">$</span>lvs_names</span>
-<span id="cb451-5"><a href="coding.html#cb451-5"></a>block_sizes &lt;-<span class="st"> </span><span class="kw">lengths</span>(blocks)</span>
-<span id="cb451-6"><a href="coding.html#cb451-6"></a>blockinds &lt;-<span class="st"> </span><span class="kw">indexify</span>(blocks) </span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="coding.html#cb30-1"></a>MV &lt;-<span class="st"> </span><span class="kw">get_manifests</span>(Data, blocks)</span>
+<span id="cb30-2"><a href="coding.html#cb30-2"></a>check_MV &lt;-<span class="st"> </span><span class="kw">test_manifest_scaling</span>(MV, specs<span class="op">$</span>scaling)</span>
+<span id="cb30-3"><a href="coding.html#cb30-3"></a>gens &lt;-<span class="st"> </span><span class="kw">get_generals</span>(MV, path_matrix)</span>
+<span id="cb30-4"><a href="coding.html#cb30-4"></a><span class="kw">names</span>(blocks) &lt;-<span class="st"> </span>gens<span class="op">$</span>lvs_names</span>
+<span id="cb30-5"><a href="coding.html#cb30-5"></a>block_sizes &lt;-<span class="st"> </span><span class="kw">lengths</span>(blocks)</span>
+<span id="cb30-6"><a href="coding.html#cb30-6"></a>blockinds &lt;-<span class="st"> </span><span class="kw">indexify</span>(blocks) </span></code></pre></div>
 <p>with line spaces and comments</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="coding.html#cb452-1"></a><span class="co"># ==================================================</span></span>
-<span id="cb452-2"><a href="coding.html#cb452-2"></a><span class="co"># Preparing data and blocks indexification</span></span>
-<span id="cb452-3"><a href="coding.html#cb452-3"></a><span class="co"># ==================================================</span></span>
-<span id="cb452-4"><a href="coding.html#cb452-4"></a><span class="co"># building data matrix &#39;MV&#39;</span></span>
-<span id="cb452-5"><a href="coding.html#cb452-5"></a>MV &lt;-<span class="st"> </span><span class="kw">get_manifests</span>(Data, blocks)</span>
-<span id="cb452-6"><a href="coding.html#cb452-6"></a>check_MV &lt;-<span class="st"> </span><span class="kw">test_manifest_scaling</span>(MV, specs<span class="op">$</span>scaling)</span>
-<span id="cb452-7"><a href="coding.html#cb452-7"></a></span>
-<span id="cb452-8"><a href="coding.html#cb452-8"></a><span class="co"># generals about obs, mvs, lvs</span></span>
-<span id="cb452-9"><a href="coding.html#cb452-9"></a>gens &lt;-<span class="st"> </span><span class="kw">get_generals</span>(MV, path_matrix)</span>
-<span id="cb452-10"><a href="coding.html#cb452-10"></a></span>
-<span id="cb452-11"><a href="coding.html#cb452-11"></a><span class="co"># indexing blocks</span></span>
-<span id="cb452-12"><a href="coding.html#cb452-12"></a><span class="kw">names</span>(blocks) &lt;-<span class="st"> </span>gens<span class="op">$</span>lvs_names</span>
-<span id="cb452-13"><a href="coding.html#cb452-13"></a>block_sizes &lt;-<span class="st"> </span><span class="kw">lengths</span>(blocks)</span>
-<span id="cb452-14"><a href="coding.html#cb452-14"></a>blockinds &lt;-<span class="st"> </span><span class="kw">indexify</span>(blocks)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="coding.html#cb31-1"></a><span class="co"># ==================================================</span></span>
+<span id="cb31-2"><a href="coding.html#cb31-2"></a><span class="co"># Preparing data and blocks indexification</span></span>
+<span id="cb31-3"><a href="coding.html#cb31-3"></a><span class="co"># ==================================================</span></span>
+<span id="cb31-4"><a href="coding.html#cb31-4"></a><span class="co"># building data matrix &#39;MV&#39;</span></span>
+<span id="cb31-5"><a href="coding.html#cb31-5"></a>MV &lt;-<span class="st"> </span><span class="kw">get_manifests</span>(Data, blocks)</span>
+<span id="cb31-6"><a href="coding.html#cb31-6"></a>check_MV &lt;-<span class="st"> </span><span class="kw">test_manifest_scaling</span>(MV, specs<span class="op">$</span>scaling)</span>
+<span id="cb31-7"><a href="coding.html#cb31-7"></a></span>
+<span id="cb31-8"><a href="coding.html#cb31-8"></a><span class="co"># generals about obs, mvs, lvs</span></span>
+<span id="cb31-9"><a href="coding.html#cb31-9"></a>gens &lt;-<span class="st"> </span><span class="kw">get_generals</span>(MV, path_matrix)</span>
+<span id="cb31-10"><a href="coding.html#cb31-10"></a></span>
+<span id="cb31-11"><a href="coding.html#cb31-11"></a><span class="co"># indexing blocks</span></span>
+<span id="cb31-12"><a href="coding.html#cb31-12"></a><span class="kw">names</span>(blocks) &lt;-<span class="st"> </span>gens<span class="op">$</span>lvs_names</span>
+<span id="cb31-13"><a href="coding.html#cb31-13"></a>block_sizes &lt;-<span class="st"> </span><span class="kw">lengths</span>(blocks)</span>
+<span id="cb31-14"><a href="coding.html#cb31-14"></a>blockinds &lt;-<span class="st"> </span><span class="kw">indexify</span>(blocks)</span></code></pre></div>
 <p>Different line styles:</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="coding.html#cb453-1"></a><span class="co">####################################################</span></span>
-<span id="cb453-2"><a href="coding.html#cb453-2"></a></span>
-<span id="cb453-3"><a href="coding.html#cb453-3"></a><span class="co"># ==================================================</span></span>
-<span id="cb453-4"><a href="coding.html#cb453-4"></a></span>
-<span id="cb453-5"><a href="coding.html#cb453-5"></a><span class="co"># **************************************************</span></span>
-<span id="cb453-6"><a href="coding.html#cb453-6"></a></span>
-<span id="cb453-7"><a href="coding.html#cb453-7"></a><span class="co"># --------------------------------------------------</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="coding.html#cb32-1"></a><span class="co">####################################################</span></span>
+<span id="cb32-2"><a href="coding.html#cb32-2"></a></span>
+<span id="cb32-3"><a href="coding.html#cb32-3"></a><span class="co"># ==================================================</span></span>
+<span id="cb32-4"><a href="coding.html#cb32-4"></a></span>
+<span id="cb32-5"><a href="coding.html#cb32-5"></a><span class="co"># **************************************************</span></span>
+<span id="cb32-6"><a href="coding.html#cb32-6"></a></span>
+<span id="cb32-7"><a href="coding.html#cb32-7"></a><span class="co"># --------------------------------------------------</span></span></code></pre></div>
 <p>for example:</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="coding.html#cb454-1"></a><span class="co"># ==================================================</span></span>
-<span id="cb454-2"><a href="coding.html#cb454-2"></a><span class="co"># Preparing data and blocks indexification</span></span>
-<span id="cb454-3"><a href="coding.html#cb454-3"></a><span class="co"># ==================================================</span></span>
-<span id="cb454-4"><a href="coding.html#cb454-4"></a><span class="co"># building data matrix &#39;MV&#39;</span></span>
-<span id="cb454-5"><a href="coding.html#cb454-5"></a>MV &lt;-<span class="st"> </span><span class="kw">get_manifests</span>(Data, blocks)</span>
-<span id="cb454-6"><a href="coding.html#cb454-6"></a>check_MV &lt;-<span class="st"> </span><span class="kw">test_manifest_scaling</span>(MV, specs<span class="op">$</span>scaling)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="coding.html#cb33-1"></a><span class="co"># ==================================================</span></span>
+<span id="cb33-2"><a href="coding.html#cb33-2"></a><span class="co"># Preparing data and blocks indexification</span></span>
+<span id="cb33-3"><a href="coding.html#cb33-3"></a><span class="co"># ==================================================</span></span>
+<span id="cb33-4"><a href="coding.html#cb33-4"></a><span class="co"># building data matrix &#39;MV&#39;</span></span>
+<span id="cb33-5"><a href="coding.html#cb33-5"></a>MV &lt;-<span class="st"> </span><span class="kw">get_manifests</span>(Data, blocks)</span>
+<span id="cb33-6"><a href="coding.html#cb33-6"></a>check_MV &lt;-<span class="st"> </span><span class="kw">test_manifest_scaling</span>(MV, specs<span class="op">$</span>scaling)</span></code></pre></div>
 <p>or this one</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="coding.html#cb455-1"></a><span class="co"># ---- Preparing data and blocks indexification ----</span></span>
-<span id="cb455-2"><a href="coding.html#cb455-2"></a></span>
-<span id="cb455-3"><a href="coding.html#cb455-3"></a><span class="co"># building data matrix &#39;MV&#39;</span></span>
-<span id="cb455-4"><a href="coding.html#cb455-4"></a>MV &lt;-<span class="st"> </span><span class="kw">get_manifests</span>(Data, blocks)</span>
-<span id="cb455-5"><a href="coding.html#cb455-5"></a>check_MV &lt;-<span class="st"> </span><span class="kw">test_manifest_scaling</span>(MV, specs<span class="op">$</span>scaling)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="coding.html#cb34-1"></a><span class="co"># ---- Preparing data and blocks indexification ----</span></span>
+<span id="cb34-2"><a href="coding.html#cb34-2"></a></span>
+<span id="cb34-3"><a href="coding.html#cb34-3"></a><span class="co"># building data matrix &#39;MV&#39;</span></span>
+<span id="cb34-4"><a href="coding.html#cb34-4"></a>MV &lt;-<span class="st"> </span><span class="kw">get_manifests</span>(Data, blocks)</span>
+<span id="cb34-5"><a href="coding.html#cb34-5"></a>check_MV &lt;-<span class="st"> </span><span class="kw">test_manifest_scaling</span>(MV, specs<span class="op">$</span>scaling)</span></code></pre></div>
 <p>Include comments to say what a block does, or what a block is intended for</p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="coding.html#cb456-1"></a><span class="co"># =====================================================</span></span>
-<span id="cb456-2"><a href="coding.html#cb456-2"></a><span class="co"># Data: liga2015</span></span>
-<span id="cb456-3"><a href="coding.html#cb456-3"></a><span class="co"># =====================================================</span></span>
-<span id="cb456-4"><a href="coding.html#cb456-4"></a><span class="co"># For this session we&#39;ll be using the dataset that </span></span>
-<span id="cb456-5"><a href="coding.html#cb456-5"></a><span class="co"># comes in the file &#39;liga2015.csv&#39; (see github repo)</span></span>
-<span id="cb456-6"><a href="coding.html#cb456-6"></a><span class="co"># This dataset contains basic statistics from the</span></span>
-<span id="cb456-7"><a href="coding.html#cb456-7"></a><span class="co"># Spanish soccer league during the season 2014-2015</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="coding.html#cb35-1"></a><span class="co"># =====================================================</span></span>
+<span id="cb35-2"><a href="coding.html#cb35-2"></a><span class="co"># Data: liga2015</span></span>
+<span id="cb35-3"><a href="coding.html#cb35-3"></a><span class="co"># =====================================================</span></span>
+<span id="cb35-4"><a href="coding.html#cb35-4"></a><span class="co"># For this session we&#39;ll be using the dataset that </span></span>
+<span id="cb35-5"><a href="coding.html#cb35-5"></a><span class="co"># comes in the file &#39;liga2015.csv&#39; (see github repo)</span></span>
+<span id="cb35-6"><a href="coding.html#cb35-6"></a><span class="co"># This dataset contains basic statistics from the</span></span>
+<span id="cb35-7"><a href="coding.html#cb35-7"></a><span class="co"># Spanish soccer league during the season 2014-2015</span></span></code></pre></div>
 <p>Another example</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="coding.html#cb457-1"></a>x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)</span>
-<span id="cb457-2"><a href="coding.html#cb457-2"></a></span>
-<span id="cb457-3"><a href="coding.html#cb457-3"></a><span class="co"># mean vectors by rows and columns</span></span>
-<span id="cb457-4"><a href="coding.html#cb457-4"></a>xmean1 &lt;-<span class="st"> </span><span class="kw">apply</span>(x, <span class="dv">1</span>, mean)</span>
-<span id="cb457-5"><a href="coding.html#cb457-5"></a>xmean2 &lt;-<span class="st"> </span><span class="kw">apply</span>(x, <span class="dv">2</span>, mean)</span>
-<span id="cb457-6"><a href="coding.html#cb457-6"></a></span>
-<span id="cb457-7"><a href="coding.html#cb457-7"></a><span class="co"># Subtract off the mean of each row/column</span></span>
-<span id="cb457-8"><a href="coding.html#cb457-8"></a>y &lt;-<span class="st"> </span><span class="kw">sweep</span>(x, <span class="dv">1</span>, xmean1)</span>
-<span id="cb457-9"><a href="coding.html#cb457-9"></a>z &lt;-<span class="st"> </span><span class="kw">sweep</span>(x, <span class="dv">2</span>, xmean2)</span>
-<span id="cb457-10"><a href="coding.html#cb457-10"></a></span>
-<span id="cb457-11"><a href="coding.html#cb457-11"></a><span class="co"># Multiply by the mean of each column (for some reason)</span></span>
-<span id="cb457-12"><a href="coding.html#cb457-12"></a>w &lt;-<span class="st"> </span><span class="kw">sweep</span>(x, <span class="dv">2</span>, xmean1, <span class="dt">FUN =</span> <span class="st">&quot;*&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="coding.html#cb36-1"></a>x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb36-2"><a href="coding.html#cb36-2"></a></span>
+<span id="cb36-3"><a href="coding.html#cb36-3"></a><span class="co"># mean vectors by rows and columns</span></span>
+<span id="cb36-4"><a href="coding.html#cb36-4"></a>xmean1 &lt;-<span class="st"> </span><span class="kw">apply</span>(x, <span class="dv">1</span>, mean)</span>
+<span id="cb36-5"><a href="coding.html#cb36-5"></a>xmean2 &lt;-<span class="st"> </span><span class="kw">apply</span>(x, <span class="dv">2</span>, mean)</span>
+<span id="cb36-6"><a href="coding.html#cb36-6"></a></span>
+<span id="cb36-7"><a href="coding.html#cb36-7"></a><span class="co"># Subtract off the mean of each row/column</span></span>
+<span id="cb36-8"><a href="coding.html#cb36-8"></a>y &lt;-<span class="st"> </span><span class="kw">sweep</span>(x, <span class="dv">1</span>, xmean1)</span>
+<span id="cb36-9"><a href="coding.html#cb36-9"></a>z &lt;-<span class="st"> </span><span class="kw">sweep</span>(x, <span class="dv">2</span>, xmean2)</span>
+<span id="cb36-10"><a href="coding.html#cb36-10"></a></span>
+<span id="cb36-11"><a href="coding.html#cb36-11"></a><span class="co"># Multiply by the mean of each column (for some reason)</span></span>
+<span id="cb36-12"><a href="coding.html#cb36-12"></a>w &lt;-<span class="st"> </span><span class="kw">sweep</span>(x, <span class="dv">2</span>, xmean1, <span class="dt">FUN =</span> <span class="st">&quot;*&quot;</span>)</span></code></pre></div>
 <p>Be careful with your comments (you never know who will end up looking at your
 code, or where you’ll be in the future)</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="coding.html#cb458-1"></a><span class="co"># F***ing piece of code that drives me bananas</span></span>
-<span id="cb458-2"><a href="coding.html#cb458-2"></a></span>
-<span id="cb458-3"><a href="coding.html#cb458-3"></a><span class="co"># wtf function</span></span>
-<span id="cb458-4"><a href="coding.html#cb458-4"></a></span>
-<span id="cb458-5"><a href="coding.html#cb458-5"></a><span class="co"># best for loop ever</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="coding.html#cb37-1"></a><span class="co"># F***ing piece of code that drives me bananas</span></span>
+<span id="cb37-2"><a href="coding.html#cb37-2"></a></span>
+<span id="cb37-3"><a href="coding.html#cb37-3"></a><span class="co"># wtf function</span></span>
+<span id="cb37-4"><a href="coding.html#cb37-4"></a></span>
+<span id="cb37-5"><a href="coding.html#cb37-5"></a><span class="co"># best for loop ever</span></span></code></pre></div>
 </div>
 <div id="source-code-files" class="section level3">
 <h3><span class="header-section-number">28.2.8</span> Source Code Files</h3>
@@ -1235,25 +1242,25 @@ code, or where you’ll be in the future)</p>
 <li>How the code might fit within a larger program</li>
 </ul>
 <p>Header example:</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="coding.html#cb459-1"></a><span class="co"># ===================================================</span></span>
-<span id="cb459-2"><a href="coding.html#cb459-2"></a><span class="co"># Some Title</span></span>
-<span id="cb459-3"><a href="coding.html#cb459-3"></a><span class="co"># Author(s): First Last</span></span>
-<span id="cb459-4"><a href="coding.html#cb459-4"></a><span class="co"># Date: month-day-year</span></span>
-<span id="cb459-5"><a href="coding.html#cb459-5"></a><span class="co"># Description: what this code is about</span></span>
-<span id="cb459-6"><a href="coding.html#cb459-6"></a><span class="co"># Data: perhaps is designed for a specific data set</span></span>
-<span id="cb459-7"><a href="coding.html#cb459-7"></a><span class="co"># ===================================================</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="coding.html#cb38-1"></a><span class="co"># ===================================================</span></span>
+<span id="cb38-2"><a href="coding.html#cb38-2"></a><span class="co"># Some Title</span></span>
+<span id="cb38-3"><a href="coding.html#cb38-3"></a><span class="co"># Author(s): First Last</span></span>
+<span id="cb38-4"><a href="coding.html#cb38-4"></a><span class="co"># Date: month-day-year</span></span>
+<span id="cb38-5"><a href="coding.html#cb38-5"></a><span class="co"># Description: what this code is about</span></span>
+<span id="cb38-6"><a href="coding.html#cb38-6"></a><span class="co"># Data: perhaps is designed for a specific data set</span></span>
+<span id="cb38-7"><a href="coding.html#cb38-7"></a><span class="co"># ===================================================</span></span></code></pre></div>
 <p>If you need to load R packages, do so at the beginning of your script, after the header:</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="coding.html#cb460-1"></a><span class="co"># ===================================================</span></span>
-<span id="cb460-2"><a href="coding.html#cb460-2"></a><span class="co"># Some Title</span></span>
-<span id="cb460-3"><a href="coding.html#cb460-3"></a><span class="co"># Author(s): First Last</span></span>
-<span id="cb460-4"><a href="coding.html#cb460-4"></a><span class="co"># Date: month-day-year</span></span>
-<span id="cb460-5"><a href="coding.html#cb460-5"></a><span class="co"># Description: what this code is about</span></span>
-<span id="cb460-6"><a href="coding.html#cb460-6"></a><span class="co"># Data: perhaps is designed for a specific data set</span></span>
-<span id="cb460-7"><a href="coding.html#cb460-7"></a><span class="co"># ===================================================</span></span>
-<span id="cb460-8"><a href="coding.html#cb460-8"></a></span>
-<span id="cb460-9"><a href="coding.html#cb460-9"></a><span class="kw">library</span>(stringr)</span>
-<span id="cb460-10"><a href="coding.html#cb460-10"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb460-11"><a href="coding.html#cb460-11"></a><span class="kw">library</span>(MASS)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="coding.html#cb39-1"></a><span class="co"># ===================================================</span></span>
+<span id="cb39-2"><a href="coding.html#cb39-2"></a><span class="co"># Some Title</span></span>
+<span id="cb39-3"><a href="coding.html#cb39-3"></a><span class="co"># Author(s): First Last</span></span>
+<span id="cb39-4"><a href="coding.html#cb39-4"></a><span class="co"># Date: month-day-year</span></span>
+<span id="cb39-5"><a href="coding.html#cb39-5"></a><span class="co"># Description: what this code is about</span></span>
+<span id="cb39-6"><a href="coding.html#cb39-6"></a><span class="co"># Data: perhaps is designed for a specific data set</span></span>
+<span id="cb39-7"><a href="coding.html#cb39-7"></a><span class="co"># ===================================================</span></span>
+<span id="cb39-8"><a href="coding.html#cb39-8"></a></span>
+<span id="cb39-9"><a href="coding.html#cb39-9"></a><span class="kw">library</span>(stringr)</span>
+<span id="cb39-10"><a href="coding.html#cb39-10"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb39-11"><a href="coding.html#cb39-11"></a><span class="kw">library</span>(MASS)</span></code></pre></div>
 </div>
 </div>
 <div id="dont-repeat-yourself" class="section level2">
@@ -1264,21 +1271,21 @@ code, or where you’ll be in the future)</p>
 representation within a system.</p>
 </blockquote>
 <p>Many people write code like this:</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="coding.html#cb461-1"></a><span class="co"># avoid repetition</span></span>
-<span id="cb461-2"><a href="coding.html#cb461-2"></a><span class="kw">plot</span>(x, y, <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>)</span>
-<span id="cb461-3"><a href="coding.html#cb461-3"></a><span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> &#39;xsmall&#39;</span>], y[size <span class="op">==</span><span class="st"> &#39;xsmall&#39;</span>], <span class="dt">col =</span> <span class="st">&#39;purple&#39;</span>)</span>
-<span id="cb461-4"><a href="coding.html#cb461-4"></a><span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> &#39;small&#39;</span>], y[size <span class="op">==</span><span class="st"> &#39;small&#39;</span>], <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb461-5"><a href="coding.html#cb461-5"></a><span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> &#39;medium&#39;</span>], y[size <span class="op">==</span><span class="st"> &#39;medium&#39;</span>], <span class="dt">col =</span> <span class="st">&#39;green&#39;</span>)</span>
-<span id="cb461-6"><a href="coding.html#cb461-6"></a><span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> &#39;large&#39;</span>], y[size <span class="op">==</span><span class="st"> &#39;large&#39;</span>], <span class="dt">col =</span> <span class="st">&#39;orange&#39;</span>)</span>
-<span id="cb461-7"><a href="coding.html#cb461-7"></a><span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> &#39;xlarge&#39;</span>], y[size <span class="op">==</span><span class="st"> &#39;xlarge&#39;</span>], <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p>There’s a lot pf repetition in the previous code chunk; this can be solved
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="coding.html#cb40-1"></a><span class="co"># avoid repetition</span></span>
+<span id="cb40-2"><a href="coding.html#cb40-2"></a><span class="kw">plot</span>(x, y, <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>)</span>
+<span id="cb40-3"><a href="coding.html#cb40-3"></a><span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> &#39;xsmall&#39;</span>], y[size <span class="op">==</span><span class="st"> &#39;xsmall&#39;</span>], <span class="dt">col =</span> <span class="st">&#39;purple&#39;</span>)</span>
+<span id="cb40-4"><a href="coding.html#cb40-4"></a><span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> &#39;small&#39;</span>], y[size <span class="op">==</span><span class="st"> &#39;small&#39;</span>], <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb40-5"><a href="coding.html#cb40-5"></a><span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> &#39;medium&#39;</span>], y[size <span class="op">==</span><span class="st"> &#39;medium&#39;</span>], <span class="dt">col =</span> <span class="st">&#39;green&#39;</span>)</span>
+<span id="cb40-6"><a href="coding.html#cb40-6"></a><span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> &#39;large&#39;</span>], y[size <span class="op">==</span><span class="st"> &#39;large&#39;</span>], <span class="dt">col =</span> <span class="st">&#39;orange&#39;</span>)</span>
+<span id="cb40-7"><a href="coding.html#cb40-7"></a><span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> &#39;xlarge&#39;</span>], y[size <span class="op">==</span><span class="st"> &#39;xlarge&#39;</span>], <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p>There’s a lot of repetition in the previous code chunk; this can be solved
 with the use of a <code>for()</code> loop:</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="coding.html#cb462-1"></a><span class="co"># avoid repetition</span></span>
-<span id="cb462-2"><a href="coding.html#cb462-2"></a>size_colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;purple&#39;</span>, <span class="st">&#39;blue&#39;</span>, <span class="st">&#39;green&#39;</span>, <span class="st">&#39;orange&#39;</span>, <span class="st">&#39;red&#39;</span>)</span>
-<span id="cb462-3"><a href="coding.html#cb462-3"></a><span class="kw">plot</span>(x, y, <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>)</span>
-<span id="cb462-4"><a href="coding.html#cb462-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(<span class="kw">levels</span>(size))) {</span>
-<span id="cb462-5"><a href="coding.html#cb462-5"></a>  <span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> </span>i], y[size <span class="op">==</span><span class="st"> </span>i], <span class="dt">col =</span> size_colors[i])</span>
-<span id="cb462-6"><a href="coding.html#cb462-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="coding.html#cb41-1"></a><span class="co"># avoid repetition</span></span>
+<span id="cb41-2"><a href="coding.html#cb41-2"></a>size_colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;purple&#39;</span>, <span class="st">&#39;blue&#39;</span>, <span class="st">&#39;green&#39;</span>, <span class="st">&#39;orange&#39;</span>, <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb41-3"><a href="coding.html#cb41-3"></a><span class="kw">plot</span>(x, y, <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>)</span>
+<span id="cb41-4"><a href="coding.html#cb41-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(<span class="kw">levels</span>(size))) {</span>
+<span id="cb41-5"><a href="coding.html#cb41-5"></a>  <span class="kw">points</span>(x[size <span class="op">==</span><span class="st"> </span>i], y[size <span class="op">==</span><span class="st"> </span>i], <span class="dt">col =</span> size_colors[i])</span>
+<span id="cb41-6"><a href="coding.html#cb41-6"></a>}</span></code></pre></div>
 <div id="look-at-other-peoples-code" class="section level3">
 <h3><span class="header-section-number">28.3.1</span> Look at other people’s code</h3>
 <p>Look at other people’s code</p>
@@ -1301,29 +1308,29 @@ with the use of a <code>for()</code> loop:</p>
 <div id="exercises-12" class="section level3">
 <h3><span class="header-section-number">28.3.2</span> Exercises</h3>
 <p>What’s wrong with this function?</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="coding.html#cb463-1"></a>average &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb463-2"><a href="coding.html#cb463-2"></a>  l &lt;-<span class="st"> </span><span class="kw">length</span>(x)</span>
-<span id="cb463-3"><a href="coding.html#cb463-3"></a>  <span class="cf">for</span>(i <span class="cf">in</span> l) {</span>
-<span id="cb463-4"><a href="coding.html#cb463-4"></a>    y[i] &lt;-<span class="st"> </span>x[i]<span class="op">/</span>l</span>
-<span id="cb463-5"><a href="coding.html#cb463-5"></a>    z &lt;-<span class="st"> </span><span class="kw">sum</span>(y[<span class="dv">1</span><span class="op">:</span>l])</span>
-<span id="cb463-6"><a href="coding.html#cb463-6"></a>    <span class="kw">return</span>(<span class="kw">as.numeric</span>(z))</span>
-<span id="cb463-7"><a href="coding.html#cb463-7"></a>  }</span>
-<span id="cb463-8"><a href="coding.html#cb463-8"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="coding.html#cb42-1"></a>average &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb42-2"><a href="coding.html#cb42-2"></a>  l &lt;-<span class="st"> </span><span class="kw">length</span>(x)</span>
+<span id="cb42-3"><a href="coding.html#cb42-3"></a>  <span class="cf">for</span>(i <span class="cf">in</span> l) {</span>
+<span id="cb42-4"><a href="coding.html#cb42-4"></a>    y[i] &lt;-<span class="st"> </span>x[i]<span class="op">/</span>l</span>
+<span id="cb42-5"><a href="coding.html#cb42-5"></a>    z &lt;-<span class="st"> </span><span class="kw">sum</span>(y[<span class="dv">1</span><span class="op">:</span>l])</span>
+<span id="cb42-6"><a href="coding.html#cb42-6"></a>    <span class="kw">return</span>(<span class="kw">as.numeric</span>(z))</span>
+<span id="cb42-7"><a href="coding.html#cb42-7"></a>  }</span>
+<span id="cb42-8"><a href="coding.html#cb42-8"></a>}</span></code></pre></div>
 <p>What’s wrong with this function?</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="coding.html#cb464-1"></a>freq_table &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb464-2"><a href="coding.html#cb464-2"></a>  table &lt;-<span class="st"> </span><span class="kw">table</span>(x)</span>
-<span id="cb464-3"><a href="coding.html#cb464-3"></a>  <span class="st">&#39;category&#39;</span> &lt;-<span class="st"> </span><span class="kw">levels</span>(x)</span>
-<span id="cb464-4"><a href="coding.html#cb464-4"></a>  <span class="st">&#39;count&#39;</span> &lt;-<span class="st"> </span><span class="kw">print</span>(table)</span>
-<span id="cb464-5"><a href="coding.html#cb464-5"></a>  <span class="st">&#39;prop&#39;</span> &lt;-<span class="st"> </span>table<span class="op">/</span><span class="kw">length</span>(x)</span>
-<span id="cb464-6"><a href="coding.html#cb464-6"></a>  <span class="st">&#39;cumcount&#39;</span> &lt;-<span class="st"> </span><span class="kw">print</span>(table)</span>
-<span id="cb464-7"><a href="coding.html#cb464-7"></a>  <span class="st">&#39;cumprop&#39;</span> &lt;-<span class="st"> </span>table<span class="op">/</span><span class="kw">length</span>(x)</span>
-<span id="cb464-8"><a href="coding.html#cb464-8"></a>  <span class="cf">if</span>(<span class="kw">is.factor</span>(x)) {</span>
-<span id="cb464-9"><a href="coding.html#cb464-9"></a>    <span class="kw">return</span>(<span class="kw">data.frame</span>(<span class="dt">rownames=</span><span class="kw">c</span>(<span class="st">&#39;category&#39;</span>, <span class="st">&#39;count&#39;</span>,<span class="st">&#39;prop&#39;</span>,</span>
-<span id="cb464-10"><a href="coding.html#cb464-10"></a>                                 <span class="st">&#39;cumcount&#39;</span>,<span class="st">&#39;cumprop&#39;</span>)))</span>
-<span id="cb464-11"><a href="coding.html#cb464-11"></a>  } <span class="cf">else</span> {</span>
-<span id="cb464-12"><a href="coding.html#cb464-12"></a>    <span class="kw">stop</span>(<span class="st">&#39;Not a factor&#39;</span>)</span>
-<span id="cb464-13"><a href="coding.html#cb464-13"></a>  }</span>
-<span id="cb464-14"><a href="coding.html#cb464-14"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="coding.html#cb43-1"></a>freq_table &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb43-2"><a href="coding.html#cb43-2"></a>  table &lt;-<span class="st"> </span><span class="kw">table</span>(x)</span>
+<span id="cb43-3"><a href="coding.html#cb43-3"></a>  <span class="st">&#39;category&#39;</span> &lt;-<span class="st"> </span><span class="kw">levels</span>(x)</span>
+<span id="cb43-4"><a href="coding.html#cb43-4"></a>  <span class="st">&#39;count&#39;</span> &lt;-<span class="st"> </span><span class="kw">print</span>(table)</span>
+<span id="cb43-5"><a href="coding.html#cb43-5"></a>  <span class="st">&#39;prop&#39;</span> &lt;-<span class="st"> </span>table<span class="op">/</span><span class="kw">length</span>(x)</span>
+<span id="cb43-6"><a href="coding.html#cb43-6"></a>  <span class="st">&#39;cumcount&#39;</span> &lt;-<span class="st"> </span><span class="kw">print</span>(table)</span>
+<span id="cb43-7"><a href="coding.html#cb43-7"></a>  <span class="st">&#39;cumprop&#39;</span> &lt;-<span class="st"> </span>table<span class="op">/</span><span class="kw">length</span>(x)</span>
+<span id="cb43-8"><a href="coding.html#cb43-8"></a>  <span class="cf">if</span>(<span class="kw">is.factor</span>(x)) {</span>
+<span id="cb43-9"><a href="coding.html#cb43-9"></a>    <span class="kw">return</span>(<span class="kw">data.frame</span>(<span class="dt">rownames=</span><span class="kw">c</span>(<span class="st">&#39;category&#39;</span>, <span class="st">&#39;count&#39;</span>,<span class="st">&#39;prop&#39;</span>,</span>
+<span id="cb43-10"><a href="coding.html#cb43-10"></a>                                 <span class="st">&#39;cumcount&#39;</span>,<span class="st">&#39;cumprop&#39;</span>)))</span>
+<span id="cb43-11"><a href="coding.html#cb43-11"></a>  } <span class="cf">else</span> {</span>
+<span id="cb43-12"><a href="coding.html#cb43-12"></a>    <span class="kw">stop</span>(<span class="st">&#39;Not a factor&#39;</span>)</span>
+<span id="cb43-13"><a href="coding.html#cb43-13"></a>  }</span>
+<span id="cb43-14"><a href="coding.html#cb43-14"></a>}</span></code></pre></div>
 <ul>
 <li>What other suggestions do you have?</li>
 <li>How could we restructure the code, to make it easier to read?</li>
@@ -1394,20 +1401,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
