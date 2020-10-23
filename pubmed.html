@@ -702,11 +702,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 PubMed, using the <strong>Entrez Programming Utilities</strong>, commonly referred to as
 E-utilities, from the National Center for Biotechnology Information (NCBI).</p>
 <p>You will need the following packages:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="pubmed.html#cb1-1"></a><span class="kw">library</span>(stringr)    <span class="co"># for strings and regular expressions</span></span>
-<span id="cb1-2"><a href="pubmed.html#cb1-2"></a><span class="kw">library</span>(xml2)       <span class="co"># for parsing data in XML (e.g. HTML)</span></span>
-<span id="cb1-3"><a href="pubmed.html#cb1-3"></a><span class="kw">library</span>(rvest)      <span class="co"># for scraping XML and HTML content</span></span>
-<span id="cb1-4"><a href="pubmed.html#cb1-4"></a><span class="kw">library</span>(tm)         <span class="co"># for text mining</span></span>
-<span id="cb1-5"><a href="pubmed.html#cb1-5"></a><span class="kw">library</span>(wordcloud2) <span class="co"># for graphing wordclouds</span></span></code></pre></div>
+<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="pubmed.html#cb674-1"></a><span class="kw">library</span>(stringr)    <span class="co"># for strings and regular expressions</span></span>
+<span id="cb674-2"><a href="pubmed.html#cb674-2"></a><span class="kw">library</span>(xml2)       <span class="co"># for parsing data in XML (e.g. HTML)</span></span>
+<span id="cb674-3"><a href="pubmed.html#cb674-3"></a><span class="kw">library</span>(rvest)      <span class="co"># for scraping XML and HTML content</span></span>
+<span id="cb674-4"><a href="pubmed.html#cb674-4"></a><span class="kw">library</span>(tm)         <span class="co"># for text mining</span></span>
+<span id="cb674-5"><a href="pubmed.html#cb674-5"></a><span class="co">#&gt; Loading required package: NLP</span></span>
+<span id="cb674-6"><a href="pubmed.html#cb674-6"></a><span class="co">#&gt; </span></span>
+<span id="cb674-7"><a href="pubmed.html#cb674-7"></a><span class="co">#&gt; Attaching package: &#39;NLP&#39;</span></span>
+<span id="cb674-8"><a href="pubmed.html#cb674-8"></a><span class="co">#&gt; The following object is masked from &#39;package:httr&#39;:</span></span>
+<span id="cb674-9"><a href="pubmed.html#cb674-9"></a><span class="co">#&gt; </span></span>
+<span id="cb674-10"><a href="pubmed.html#cb674-10"></a><span class="co">#&gt;     content</span></span>
+<span id="cb674-11"><a href="pubmed.html#cb674-11"></a><span class="co">#&gt; The following object is masked from &#39;package:ggplot2&#39;:</span></span>
+<span id="cb674-12"><a href="pubmed.html#cb674-12"></a><span class="co">#&gt; </span></span>
+<span id="cb674-13"><a href="pubmed.html#cb674-13"></a><span class="co">#&gt;     annotate</span></span>
+<span id="cb674-14"><a href="pubmed.html#cb674-14"></a><span class="kw">library</span>(wordcloud2) <span class="co"># for graphing wordclouds</span></span></code></pre></div>
 <div id="pubmed-1" class="section level2">
 <h2><span class="header-section-number">45.1</span> PubMed</h2>
 <p><strong>PubMed</strong> (<a href="https://www.pubmed.gov" class="uri">https://www.pubmed.gov</a>) is a database of the largest collection of
@@ -717,7 +726,7 @@ from several display formats, and share their results. Keep in mind that when
 people talk about PubMed, they could be referring to both the search interface
 and to the database itself.</p>
 <p>PubMed’s website provides a search engine to obtain bibliographic information:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-679"></span>
 <img src="images/api/pubmed-homepage.png" alt="Partial screenshot of PubMed's homepage" width="70%" />
 <p class="caption">
 Figure 45.1: Partial screenshot of PubMed’s homepage
@@ -730,7 +739,7 @@ with some of the effects that exposure to Bisphenol A (BPA) has on reproductive
 health. Therefore, we can type in <code>BPA exposure reproductive health</code> inside the
 search box, and obtain some results (like those displayed in the screenshot
 below).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-680"></span>
 <img src="images/api/pubmed-search1.png" alt="PubMed search example" width="70%" />
 <p class="caption">
 Figure 45.2: PubMed search example
@@ -743,7 +752,7 @@ allow you to filter results by year of publication, by searching for the query
 in the abstract, or just in the titles, and things like that. As an example,
 we can move the slider for the year of publication to retrieve results that
 were published in 2018 and 2019 (see screenshot below)</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-681"></span>
 <img src="images/api/pubmed-search2.png" alt="PubMed search example (cont'd)" width="70%" />
 <p class="caption">
 Figure 45.3: PubMed search example (cont’d)
@@ -756,7 +765,7 @@ above the barchart of years of publication).</p>
 “Advanced” button displayed below the search box. Clicking on this option
 will take you to a new page with more query boxes and a long list of query
 fields (screenshot below).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-682"></span>
 <img src="images/api/pubmed-search3.png" alt="PubMed search example (cont'd)" width="70%" />
 <p class="caption">
 Figure 45.4: PubMed search example (cont’d)
@@ -910,7 +919,7 @@ term <em>reproductive health</em>.</p></li>
 <p>By default, the information is retrieved in XML format (see screenshot below).
 If you scroll through the XML output you’ll see the number of records retrieved
 along with a list of unique document PubMed IDs (PMIDs) for those records.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-683"></span>
 <img src="images/api/pubmed-esearch.png" alt="List of PubMed IDs in XML format" width="80%" />
 <p class="caption">
 Figure 45.5: List of PubMed IDs in XML format
@@ -931,7 +940,7 @@ URL would look something like this:</p>
 <li><p><code>retmode=abstract</code>: indicates <code>the</code>abstract` as the <em>return mode</em>.</p></li>
 <li><p><code>rettype=text</code>: determines <code>the</code>text` as the <em>return type</em> format.</p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-684"></span>
 <img src="images/api/pubmed-efetch.png" alt="Return type in text format for abstract of specified IDs" width="80%" />
 <p class="caption">
 Figure 45.6: Return type in text format for abstract of specified IDs
@@ -952,7 +961,7 @@ list of PMIDs, and the URL would look something like this:</p>
 <p>The output of ESummary is a series of XML <code>"DocSums"</code> (Document Summaries), the
 format of which depends on the database. Below is an example DocSum for PubMed
 ID 33073741.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-685"></span>
 <img src="images/api/pubmed-esummary.png" alt="Summary in XML format for specified IDs" width="80%" />
 <p class="caption">
 Figure 45.7: Summary in XML format for specified IDs
@@ -973,12 +982,12 @@ programs, let’s see how to make requests from R.</p>
 <p><strong>Step 1</strong>: As a first step, we can define a character string <code>entrez_url</code> with
 the base URL, and three more strings for each of the E-utilities: <code>esearch</code>,
 <code>efetch</code>, and <code>esummary</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="pubmed.html#cb6-1"></a><span class="co"># base URL, and paths of associated e-utilities</span></span>
-<span id="cb6-2"><a href="pubmed.html#cb6-2"></a>entrez_url &lt;-<span class="st"> &quot;https://eutils.ncbi.nlm.nih.gov/entrez/eutils/&quot;</span></span>
-<span id="cb6-3"><a href="pubmed.html#cb6-3"></a></span>
-<span id="cb6-4"><a href="pubmed.html#cb6-4"></a>esearch &lt;-<span class="st"> &quot;esearch.fcgi?&quot;</span></span>
-<span id="cb6-5"><a href="pubmed.html#cb6-5"></a>efetch &lt;-<span class="st"> &quot;efetch.fcgi?&quot;</span></span>
-<span id="cb6-6"><a href="pubmed.html#cb6-6"></a>esummary &lt;-<span class="st"> &quot;esummary.fcgi?&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="pubmed.html#cb679-1"></a><span class="co"># base URL, and paths of associated e-utilities</span></span>
+<span id="cb679-2"><a href="pubmed.html#cb679-2"></a>entrez_url &lt;-<span class="st"> &quot;https://eutils.ncbi.nlm.nih.gov/entrez/eutils/&quot;</span></span>
+<span id="cb679-3"><a href="pubmed.html#cb679-3"></a></span>
+<span id="cb679-4"><a href="pubmed.html#cb679-4"></a>esearch &lt;-<span class="st"> &quot;esearch.fcgi?&quot;</span></span>
+<span id="cb679-5"><a href="pubmed.html#cb679-5"></a>efetch &lt;-<span class="st"> &quot;efetch.fcgi?&quot;</span></span>
+<span id="cb679-6"><a href="pubmed.html#cb679-6"></a>esummary &lt;-<span class="st"> &quot;esummary.fcgi?&quot;</span></span></code></pre></div>
 <p>Suppose we are interested in performing a search with the following parameters:</p>
 <ul>
 <li><p>searching for the term <em>BPA exposure reproductive health</em>;</p></li>
@@ -987,76 +996,76 @@ the base URL, and three more strings for each of the E-utilities: <code>esearch<
 </ul>
 <p><strong>Step 2</strong>: We can assemble an R string <code>params_esearch</code> with all the previous
 ESearch query parameters:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="pubmed.html#cb7-1"></a><span class="co"># assembling string of parameters for the query</span></span>
-<span id="cb7-2"><a href="pubmed.html#cb7-2"></a>params_esearch &lt;-<span class="st"> </span><span class="kw">paste0</span>(</span>
-<span id="cb7-3"><a href="pubmed.html#cb7-3"></a>  <span class="kw">c</span>(<span class="st">&quot;db=pubmed&quot;</span>, </span>
-<span id="cb7-4"><a href="pubmed.html#cb7-4"></a>    <span class="st">&quot;term=BPA+exposure+reproductive+health&quot;</span>,</span>
-<span id="cb7-5"><a href="pubmed.html#cb7-5"></a>    <span class="st">&quot;mindate=2018&quot;</span>,</span>
-<span id="cb7-6"><a href="pubmed.html#cb7-6"></a>    <span class="st">&quot;maxdate=2019&quot;</span>,</span>
-<span id="cb7-7"><a href="pubmed.html#cb7-7"></a>    <span class="st">&quot;retmax=100&quot;</span>),</span>
-<span id="cb7-8"><a href="pubmed.html#cb7-8"></a>  <span class="dt">collapse =</span> <span class="st">&quot;&amp;&quot;</span>)</span>
-<span id="cb7-9"><a href="pubmed.html#cb7-9"></a></span>
-<span id="cb7-10"><a href="pubmed.html#cb7-10"></a>params_esearch</span>
-<span id="cb7-11"><a href="pubmed.html#cb7-11"></a><span class="co">#&gt; [1] &quot;db=pubmed&amp;term=BPA+exposure+reproductive+health&amp;mindate=2018&amp;maxdate=2019&amp;retmax=100&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="pubmed.html#cb680-1"></a><span class="co"># assembling string of parameters for the query</span></span>
+<span id="cb680-2"><a href="pubmed.html#cb680-2"></a>params_esearch &lt;-<span class="st"> </span><span class="kw">paste0</span>(</span>
+<span id="cb680-3"><a href="pubmed.html#cb680-3"></a>  <span class="kw">c</span>(<span class="st">&quot;db=pubmed&quot;</span>, </span>
+<span id="cb680-4"><a href="pubmed.html#cb680-4"></a>    <span class="st">&quot;term=BPA+exposure+reproductive+health&quot;</span>,</span>
+<span id="cb680-5"><a href="pubmed.html#cb680-5"></a>    <span class="st">&quot;mindate=2018&quot;</span>,</span>
+<span id="cb680-6"><a href="pubmed.html#cb680-6"></a>    <span class="st">&quot;maxdate=2019&quot;</span>,</span>
+<span id="cb680-7"><a href="pubmed.html#cb680-7"></a>    <span class="st">&quot;retmax=100&quot;</span>),</span>
+<span id="cb680-8"><a href="pubmed.html#cb680-8"></a>  <span class="dt">collapse =</span> <span class="st">&quot;&amp;&quot;</span>)</span>
+<span id="cb680-9"><a href="pubmed.html#cb680-9"></a></span>
+<span id="cb680-10"><a href="pubmed.html#cb680-10"></a>params_esearch</span>
+<span id="cb680-11"><a href="pubmed.html#cb680-11"></a><span class="co">#&gt; [1] &quot;db=pubmed&amp;term=BPA+exposure+reproductive+health&amp;mindate=2018&amp;maxdate=2019&amp;retmax=100&quot;</span></span></code></pre></div>
 <p><strong>Step 3</strong>: With the base URL, the <code>esearch</code> utility, and the parameters, we
 assemble the required URL that we can pass to <code>read_xml()</code>, and then use
 <code>html_nodes()</code> and <code>html_text()</code> to extract the list of documents IDs:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="pubmed.html#cb8-1"></a><span class="co"># assemble an esearch URL</span></span>
-<span id="cb8-2"><a href="pubmed.html#cb8-2"></a>ids_query &lt;-<span class="st"> </span><span class="kw">paste0</span>(entrez_url, esearch, params_esearch)</span>
-<span id="cb8-3"><a href="pubmed.html#cb8-3"></a></span>
-<span id="cb8-4"><a href="pubmed.html#cb8-4"></a><span class="co"># Retrieving IDs with ESearch</span></span>
-<span id="cb8-5"><a href="pubmed.html#cb8-5"></a>ids_xml &lt;-<span class="st"> </span><span class="kw">read_xml</span>(ids_query)</span>
-<span id="cb8-6"><a href="pubmed.html#cb8-6"></a></span>
-<span id="cb8-7"><a href="pubmed.html#cb8-7"></a><span class="co"># extract Ids (PMIDs)</span></span>
-<span id="cb8-8"><a href="pubmed.html#cb8-8"></a>ids &lt;-<span class="st"> </span><span class="kw">html_text</span>(<span class="kw">html_nodes</span>(ids_xml, <span class="dt">xpath =</span> <span class="st">&quot;//Id&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="pubmed.html#cb681-1"></a><span class="co"># assemble an esearch URL</span></span>
+<span id="cb681-2"><a href="pubmed.html#cb681-2"></a>ids_query &lt;-<span class="st"> </span><span class="kw">paste0</span>(entrez_url, esearch, params_esearch)</span>
+<span id="cb681-3"><a href="pubmed.html#cb681-3"></a></span>
+<span id="cb681-4"><a href="pubmed.html#cb681-4"></a><span class="co"># Retrieving IDs with ESearch</span></span>
+<span id="cb681-5"><a href="pubmed.html#cb681-5"></a>ids_xml &lt;-<span class="st"> </span><span class="kw">read_xml</span>(ids_query)</span>
+<span id="cb681-6"><a href="pubmed.html#cb681-6"></a></span>
+<span id="cb681-7"><a href="pubmed.html#cb681-7"></a><span class="co"># extract Ids (PMIDs)</span></span>
+<span id="cb681-8"><a href="pubmed.html#cb681-8"></a>ids &lt;-<span class="st"> </span><span class="kw">html_text</span>(<span class="kw">html_nodes</span>(ids_xml, <span class="dt">xpath =</span> <span class="st">&quot;//Id&quot;</span>))</span></code></pre></div>
 <p>The vector <code>ids</code> contains 94 retrieved document IDs, the first
 5 and the last 5 five displayed below:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="pubmed.html#cb9-1"></a><span class="kw">head</span>(ids, <span class="dv">5</span>)</span>
-<span id="cb9-2"><a href="pubmed.html#cb9-2"></a><span class="co">#&gt; [1] &quot;31771501&quot; &quot;31697385&quot; &quot;31683046&quot; &quot;31658598&quot; &quot;31648075&quot;</span></span>
-<span id="cb9-3"><a href="pubmed.html#cb9-3"></a></span>
-<span id="cb9-4"><a href="pubmed.html#cb9-4"></a><span class="kw">tail</span>(ids, <span class="dv">5</span>)</span>
-<span id="cb9-5"><a href="pubmed.html#cb9-5"></a><span class="co">#&gt; [1] &quot;29549734&quot; &quot;29428396&quot; &quot;29415642&quot; &quot;29385186&quot; &quot;29317319&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="pubmed.html#cb682-1"></a><span class="kw">head</span>(ids, <span class="dv">5</span>)</span>
+<span id="cb682-2"><a href="pubmed.html#cb682-2"></a><span class="co">#&gt; [1] &quot;31771501&quot; &quot;31697385&quot; &quot;31683046&quot; &quot;31658598&quot; &quot;31648075&quot;</span></span>
+<span id="cb682-3"><a href="pubmed.html#cb682-3"></a></span>
+<span id="cb682-4"><a href="pubmed.html#cb682-4"></a><span class="kw">tail</span>(ids, <span class="dv">5</span>)</span>
+<span id="cb682-5"><a href="pubmed.html#cb682-5"></a><span class="co">#&gt; [1] &quot;29549734&quot; &quot;29428396&quot; &quot;29415642&quot; &quot;29385186&quot; &quot;29317319&quot;</span></span></code></pre></div>
 <p><strong>Step 4</strong>: We can then use this list of IDs to assemble a URL for obtaining
 summary information of documents—via ESummary. Notice that Esummary uses
 different parameters from the ones used in ESearch. The query parameters in
 this case are <code>db</code> (name of database) and <code>id</code> (list of IDs). With the base URL,
 the <code>esummary</code> utility, and the parameters <code>params_esummary</code>, we assemble the
 required URL that we can pass to <code>read_xml()</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="pubmed.html#cb10-1"></a><span class="co"># parameters for esummary</span></span>
-<span id="cb10-2"><a href="pubmed.html#cb10-2"></a>params_esummary &lt;-<span class="st"> </span><span class="kw">paste0</span>(</span>
-<span id="cb10-3"><a href="pubmed.html#cb10-3"></a>  <span class="st">&quot;db=pubmed&amp;id=&quot;</span>, </span>
-<span id="cb10-4"><a href="pubmed.html#cb10-4"></a>  <span class="kw">paste</span>(ids, <span class="dt">collapse =</span> <span class="st">&quot;,&quot;</span>))</span>
-<span id="cb10-5"><a href="pubmed.html#cb10-5"></a></span>
-<span id="cb10-6"><a href="pubmed.html#cb10-6"></a><span class="co"># assemble an essumary URL</span></span>
-<span id="cb10-7"><a href="pubmed.html#cb10-7"></a>summaries_query &lt;-<span class="st"> </span><span class="kw">paste0</span>(entrez_url, esummary, params_esummary)</span>
-<span id="cb10-8"><a href="pubmed.html#cb10-8"></a></span>
-<span id="cb10-9"><a href="pubmed.html#cb10-9"></a>summaries_xml &lt;-<span class="st"> </span><span class="kw">read_xml</span>(summaries_query)</span></code></pre></div>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="pubmed.html#cb683-1"></a><span class="co"># parameters for esummary</span></span>
+<span id="cb683-2"><a href="pubmed.html#cb683-2"></a>params_esummary &lt;-<span class="st"> </span><span class="kw">paste0</span>(</span>
+<span id="cb683-3"><a href="pubmed.html#cb683-3"></a>  <span class="st">&quot;db=pubmed&amp;id=&quot;</span>, </span>
+<span id="cb683-4"><a href="pubmed.html#cb683-4"></a>  <span class="kw">paste</span>(ids, <span class="dt">collapse =</span> <span class="st">&quot;,&quot;</span>))</span>
+<span id="cb683-5"><a href="pubmed.html#cb683-5"></a></span>
+<span id="cb683-6"><a href="pubmed.html#cb683-6"></a><span class="co"># assemble an essumary URL</span></span>
+<span id="cb683-7"><a href="pubmed.html#cb683-7"></a>summaries_query &lt;-<span class="st"> </span><span class="kw">paste0</span>(entrez_url, esummary, params_esummary)</span>
+<span id="cb683-8"><a href="pubmed.html#cb683-8"></a></span>
+<span id="cb683-9"><a href="pubmed.html#cb683-9"></a>summaries_xml &lt;-<span class="st"> </span><span class="kw">read_xml</span>(summaries_query)</span></code></pre></div>
 <p><strong>Step 5</strong>: To inspect the XML output we can use functions from package <code>"xml2"</code>
 such as <code>xml_child()</code> for instance. Let’s take a look at the first node:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="pubmed.html#cb11-1"></a><span class="kw">xml_child</span>(summaries_xml, <span class="dt">search =</span> <span class="dv">1</span>)</span>
-<span id="cb11-2"><a href="pubmed.html#cb11-2"></a><span class="co">#&gt; {xml_node}</span></span>
-<span id="cb11-3"><a href="pubmed.html#cb11-3"></a><span class="co">#&gt; &lt;DocSum&gt;</span></span>
-<span id="cb11-4"><a href="pubmed.html#cb11-4"></a><span class="co">#&gt;  [1] &lt;Id&gt;31771501&lt;/Id&gt;</span></span>
-<span id="cb11-5"><a href="pubmed.html#cb11-5"></a><span class="co">#&gt;  [2] &lt;Item Name=&quot;PubDate&quot; Type=&quot;Date&quot;&gt;2019 Oct&lt;/Item&gt;</span></span>
-<span id="cb11-6"><a href="pubmed.html#cb11-6"></a><span class="co">#&gt;  [3] &lt;Item Name=&quot;EPubDate&quot; Type=&quot;Date&quot;/&gt;</span></span>
-<span id="cb11-7"><a href="pubmed.html#cb11-7"></a><span class="co">#&gt;  [4] &lt;Item Name=&quot;Source&quot; Type=&quot;String&quot;&gt;Toxicol Ind Health&lt;/Item&gt;</span></span>
-<span id="cb11-8"><a href="pubmed.html#cb11-8"></a><span class="co">#&gt;  [5] &lt;Item Name=&quot;AuthorList&quot; Type=&quot;List&quot;&gt;\n  &lt;Item Name=&quot;Author&quot; Type=&quot;String ...</span></span>
-<span id="cb11-9"><a href="pubmed.html#cb11-9"></a><span class="co">#&gt;  [6] &lt;Item Name=&quot;LastAuthor&quot; Type=&quot;String&quot;&gt;Sun Z&lt;/Item&gt;</span></span>
-<span id="cb11-10"><a href="pubmed.html#cb11-10"></a><span class="co">#&gt;  [7] &lt;Item Name=&quot;Title&quot; Type=&quot;String&quot;&gt;Oral exposure to low-dose bisphenol A i ...</span></span>
-<span id="cb11-11"><a href="pubmed.html#cb11-11"></a><span class="co">#&gt;  [8] &lt;Item Name=&quot;Volume&quot; Type=&quot;String&quot;&gt;35&lt;/Item&gt;</span></span>
-<span id="cb11-12"><a href="pubmed.html#cb11-12"></a><span class="co">#&gt;  [9] &lt;Item Name=&quot;Issue&quot; Type=&quot;String&quot;&gt;10&lt;/Item&gt;</span></span>
-<span id="cb11-13"><a href="pubmed.html#cb11-13"></a><span class="co">#&gt; [10] &lt;Item Name=&quot;Pages&quot; Type=&quot;String&quot;&gt;647-659&lt;/Item&gt;</span></span>
-<span id="cb11-14"><a href="pubmed.html#cb11-14"></a><span class="co">#&gt; [11] &lt;Item Name=&quot;LangList&quot; Type=&quot;List&quot;&gt;\n  &lt;Item Name=&quot;Lang&quot; Type=&quot;String&quot;&gt;En ...</span></span>
-<span id="cb11-15"><a href="pubmed.html#cb11-15"></a><span class="co">#&gt; [12] &lt;Item Name=&quot;NlmUniqueID&quot; Type=&quot;String&quot;&gt;8602702&lt;/Item&gt;</span></span>
-<span id="cb11-16"><a href="pubmed.html#cb11-16"></a><span class="co">#&gt; [13] &lt;Item Name=&quot;ISSN&quot; Type=&quot;String&quot;&gt;0748-2337&lt;/Item&gt;</span></span>
-<span id="cb11-17"><a href="pubmed.html#cb11-17"></a><span class="co">#&gt; [14] &lt;Item Name=&quot;ESSN&quot; Type=&quot;String&quot;&gt;1477-0393&lt;/Item&gt;</span></span>
-<span id="cb11-18"><a href="pubmed.html#cb11-18"></a><span class="co">#&gt; [15] &lt;Item Name=&quot;PubTypeList&quot; Type=&quot;List&quot;&gt;\n  &lt;Item Name=&quot;PubType&quot; Type=&quot;Stri ...</span></span>
-<span id="cb11-19"><a href="pubmed.html#cb11-19"></a><span class="co">#&gt; [16] &lt;Item Name=&quot;RecordStatus&quot; Type=&quot;String&quot;&gt;PubMed - indexed for MEDLINE&lt;/Item&gt;</span></span>
-<span id="cb11-20"><a href="pubmed.html#cb11-20"></a><span class="co">#&gt; [17] &lt;Item Name=&quot;PubStatus&quot; Type=&quot;String&quot;&gt;ppublish&lt;/Item&gt;</span></span>
-<span id="cb11-21"><a href="pubmed.html#cb11-21"></a><span class="co">#&gt; [18] &lt;Item Name=&quot;ArticleIds&quot; Type=&quot;List&quot;&gt;\n  &lt;Item Name=&quot;pubmed&quot; Type=&quot;String ...</span></span>
-<span id="cb11-22"><a href="pubmed.html#cb11-22"></a><span class="co">#&gt; [19] &lt;Item Name=&quot;DOI&quot; Type=&quot;String&quot;&gt;10.1177/0748233719885565&lt;/Item&gt;</span></span>
-<span id="cb11-23"><a href="pubmed.html#cb11-23"></a><span class="co">#&gt; [20] &lt;Item Name=&quot;History&quot; Type=&quot;List&quot;&gt;\n  &lt;Item Name=&quot;entrez&quot; Type=&quot;Date&quot;&gt;201 ...</span></span>
-<span id="cb11-24"><a href="pubmed.html#cb11-24"></a><span class="co">#&gt; ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="pubmed.html#cb684-1"></a><span class="kw">xml_child</span>(summaries_xml, <span class="dt">search =</span> <span class="dv">1</span>)</span>
+<span id="cb684-2"><a href="pubmed.html#cb684-2"></a><span class="co">#&gt; {xml_node}</span></span>
+<span id="cb684-3"><a href="pubmed.html#cb684-3"></a><span class="co">#&gt; &lt;DocSum&gt;</span></span>
+<span id="cb684-4"><a href="pubmed.html#cb684-4"></a><span class="co">#&gt;  [1] &lt;Id&gt;31771501&lt;/Id&gt;</span></span>
+<span id="cb684-5"><a href="pubmed.html#cb684-5"></a><span class="co">#&gt;  [2] &lt;Item Name=&quot;PubDate&quot; Type=&quot;Date&quot;&gt;2019 Oct&lt;/Item&gt;</span></span>
+<span id="cb684-6"><a href="pubmed.html#cb684-6"></a><span class="co">#&gt;  [3] &lt;Item Name=&quot;EPubDate&quot; Type=&quot;Date&quot;/&gt;</span></span>
+<span id="cb684-7"><a href="pubmed.html#cb684-7"></a><span class="co">#&gt;  [4] &lt;Item Name=&quot;Source&quot; Type=&quot;String&quot;&gt;Toxicol Ind Health&lt;/Item&gt;</span></span>
+<span id="cb684-8"><a href="pubmed.html#cb684-8"></a><span class="co">#&gt;  [5] &lt;Item Name=&quot;AuthorList&quot; Type=&quot;List&quot;&gt;\n  &lt;Item Name=&quot;Author&quot; Type=&quot;String ...</span></span>
+<span id="cb684-9"><a href="pubmed.html#cb684-9"></a><span class="co">#&gt;  [6] &lt;Item Name=&quot;LastAuthor&quot; Type=&quot;String&quot;&gt;Sun Z&lt;/Item&gt;</span></span>
+<span id="cb684-10"><a href="pubmed.html#cb684-10"></a><span class="co">#&gt;  [7] &lt;Item Name=&quot;Title&quot; Type=&quot;String&quot;&gt;Oral exposure to low-dose bisphenol A i ...</span></span>
+<span id="cb684-11"><a href="pubmed.html#cb684-11"></a><span class="co">#&gt;  [8] &lt;Item Name=&quot;Volume&quot; Type=&quot;String&quot;&gt;35&lt;/Item&gt;</span></span>
+<span id="cb684-12"><a href="pubmed.html#cb684-12"></a><span class="co">#&gt;  [9] &lt;Item Name=&quot;Issue&quot; Type=&quot;String&quot;&gt;10&lt;/Item&gt;</span></span>
+<span id="cb684-13"><a href="pubmed.html#cb684-13"></a><span class="co">#&gt; [10] &lt;Item Name=&quot;Pages&quot; Type=&quot;String&quot;&gt;647-659&lt;/Item&gt;</span></span>
+<span id="cb684-14"><a href="pubmed.html#cb684-14"></a><span class="co">#&gt; [11] &lt;Item Name=&quot;LangList&quot; Type=&quot;List&quot;&gt;\n  &lt;Item Name=&quot;Lang&quot; Type=&quot;String&quot;&gt;En ...</span></span>
+<span id="cb684-15"><a href="pubmed.html#cb684-15"></a><span class="co">#&gt; [12] &lt;Item Name=&quot;NlmUniqueID&quot; Type=&quot;String&quot;&gt;8602702&lt;/Item&gt;</span></span>
+<span id="cb684-16"><a href="pubmed.html#cb684-16"></a><span class="co">#&gt; [13] &lt;Item Name=&quot;ISSN&quot; Type=&quot;String&quot;&gt;0748-2337&lt;/Item&gt;</span></span>
+<span id="cb684-17"><a href="pubmed.html#cb684-17"></a><span class="co">#&gt; [14] &lt;Item Name=&quot;ESSN&quot; Type=&quot;String&quot;&gt;1477-0393&lt;/Item&gt;</span></span>
+<span id="cb684-18"><a href="pubmed.html#cb684-18"></a><span class="co">#&gt; [15] &lt;Item Name=&quot;PubTypeList&quot; Type=&quot;List&quot;&gt;\n  &lt;Item Name=&quot;PubType&quot; Type=&quot;Stri ...</span></span>
+<span id="cb684-19"><a href="pubmed.html#cb684-19"></a><span class="co">#&gt; [16] &lt;Item Name=&quot;RecordStatus&quot; Type=&quot;String&quot;&gt;PubMed - indexed for MEDLINE&lt;/Item&gt;</span></span>
+<span id="cb684-20"><a href="pubmed.html#cb684-20"></a><span class="co">#&gt; [17] &lt;Item Name=&quot;PubStatus&quot; Type=&quot;String&quot;&gt;ppublish&lt;/Item&gt;</span></span>
+<span id="cb684-21"><a href="pubmed.html#cb684-21"></a><span class="co">#&gt; [18] &lt;Item Name=&quot;ArticleIds&quot; Type=&quot;List&quot;&gt;\n  &lt;Item Name=&quot;pubmed&quot; Type=&quot;String ...</span></span>
+<span id="cb684-22"><a href="pubmed.html#cb684-22"></a><span class="co">#&gt; [19] &lt;Item Name=&quot;DOI&quot; Type=&quot;String&quot;&gt;10.1177/0748233719885565&lt;/Item&gt;</span></span>
+<span id="cb684-23"><a href="pubmed.html#cb684-23"></a><span class="co">#&gt; [20] &lt;Item Name=&quot;History&quot; Type=&quot;List&quot;&gt;\n  &lt;Item Name=&quot;entrez&quot; Type=&quot;Date&quot;&gt;201 ...</span></span>
+<span id="cb684-24"><a href="pubmed.html#cb684-24"></a><span class="co">#&gt; ...</span></span></code></pre></div>
 <p>The obtained summary information contains various fields such as date of
 publication <code>PubDate</code>, list of authors <code>AuthorList</code>, title <code>Title</code>, starting
 and ending pages <code>Pages</code>, etc.</p>
@@ -1064,50 +1073,50 @@ and ending pages <code>Pages</code>, etc.</p>
 argument <code>Name="Title"</code>. To be more precise, we can define an XPath pattern
 <code>'//Item[@Name="Title"]'</code> for <code>xml_nodes()</code>, and then extract the content
 with <code>xml_text()</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="pubmed.html#cb12-1"></a>title_nodes &lt;-<span class="st"> </span><span class="kw">xml_nodes</span>(summaries_xml, <span class="dt">xpath =</span> <span class="st">&#39;//Item[@Name=&quot;Title&quot;]&#39;</span>)</span>
-<span id="cb12-2"><a href="pubmed.html#cb12-2"></a>titles &lt;-<span class="st"> </span><span class="kw">xml_text</span>(title_nodes)</span>
-<span id="cb12-3"><a href="pubmed.html#cb12-3"></a><span class="kw">head</span>(titles)</span>
-<span id="cb12-4"><a href="pubmed.html#cb12-4"></a><span class="co">#&gt; [1] &quot;Oral exposure to low-dose bisphenol A induces hyperplasia of dorsolateral prostate and upregulates EGFR expression in adult &lt;i&gt;Sprague-Dawley&lt;/i&gt; rats.&quot;                                   </span></span>
-<span id="cb12-5"><a href="pubmed.html#cb12-5"></a><span class="co">#&gt; [2] &quot;Juvenile Toxicity Rodent Model to Study Toxicological Effects of Bisphenol A (BPA) at Dose Levels Derived From Italian Children Biomonitoring Study.&quot;                                      </span></span>
-<span id="cb12-6"><a href="pubmed.html#cb12-6"></a><span class="co">#&gt; [3] &quot;Bisphenol F exposure impairs neurodevelopment in zebrafish larvae (Danio rerio).&quot;                                                                                                          </span></span>
-<span id="cb12-7"><a href="pubmed.html#cb12-7"></a><span class="co">#&gt; [4] &quot;Effects of Dietary Bisphenol A on the Reproductive Function of Gilthead Sea Bream (&lt;i&gt;Sparus aurata&lt;/i&gt;) Testes.&quot;                                                                          </span></span>
-<span id="cb12-8"><a href="pubmed.html#cb12-8"></a><span class="co">#&gt; [5] &quot;Urinary bisphenol A concentration is correlated with poorer oocyte retrieval and embryo implantation outcomes in patients with tubal factor infertility undergoing in vitro fertilisation.&quot;</span></span>
-<span id="cb12-9"><a href="pubmed.html#cb12-9"></a><span class="co">#&gt; [6] &quot;In utero exposure to persistent and nonpersistent endocrine-disrupting chemicals and anogenital distance. A systematic review of epidemiological studies†.&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="pubmed.html#cb685-1"></a>title_nodes &lt;-<span class="st"> </span><span class="kw">xml_nodes</span>(summaries_xml, <span class="dt">xpath =</span> <span class="st">&#39;//Item[@Name=&quot;Title&quot;]&#39;</span>)</span>
+<span id="cb685-2"><a href="pubmed.html#cb685-2"></a>titles &lt;-<span class="st"> </span><span class="kw">xml_text</span>(title_nodes)</span>
+<span id="cb685-3"><a href="pubmed.html#cb685-3"></a><span class="kw">head</span>(titles)</span>
+<span id="cb685-4"><a href="pubmed.html#cb685-4"></a><span class="co">#&gt; [1] &quot;Oral exposure to low-dose bisphenol A induces hyperplasia of dorsolateral prostate and upregulates EGFR expression in adult &lt;i&gt;Sprague-Dawley&lt;/i&gt; rats.&quot;                                   </span></span>
+<span id="cb685-5"><a href="pubmed.html#cb685-5"></a><span class="co">#&gt; [2] &quot;Juvenile Toxicity Rodent Model to Study Toxicological Effects of Bisphenol A (BPA) at Dose Levels Derived From Italian Children Biomonitoring Study.&quot;                                      </span></span>
+<span id="cb685-6"><a href="pubmed.html#cb685-6"></a><span class="co">#&gt; [3] &quot;Bisphenol F exposure impairs neurodevelopment in zebrafish larvae (Danio rerio).&quot;                                                                                                          </span></span>
+<span id="cb685-7"><a href="pubmed.html#cb685-7"></a><span class="co">#&gt; [4] &quot;Effects of Dietary Bisphenol A on the Reproductive Function of Gilthead Sea Bream (&lt;i&gt;Sparus aurata&lt;/i&gt;) Testes.&quot;                                                                          </span></span>
+<span id="cb685-8"><a href="pubmed.html#cb685-8"></a><span class="co">#&gt; [5] &quot;Urinary bisphenol A concentration is correlated with poorer oocyte retrieval and embryo implantation outcomes in patients with tubal factor infertility undergoing in vitro fertilisation.&quot;</span></span>
+<span id="cb685-9"><a href="pubmed.html#cb685-9"></a><span class="co">#&gt; [6] &quot;In utero exposure to persistent and nonpersistent endocrine-disrupting chemicals and anogenital distance. A systematic review of epidemiological studies†.&quot;</span></span></code></pre></div>
 <p>We can make a wordcloud</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="pubmed.html#cb13-1"></a><span class="co"># title words</span></span>
-<span id="cb13-2"><a href="pubmed.html#cb13-2"></a>twords &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">str_split</span>(titles, <span class="st">&quot; &quot;</span>))</span>
-<span id="cb13-3"><a href="pubmed.html#cb13-3"></a>twords &lt;-<span class="st"> </span><span class="kw">tolower</span>(twords)</span>
-<span id="cb13-4"><a href="pubmed.html#cb13-4"></a></span>
-<span id="cb13-5"><a href="pubmed.html#cb13-5"></a><span class="co"># auxiliary vector of stop words</span></span>
-<span id="cb13-6"><a href="pubmed.html#cb13-6"></a>stop_words &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
-<span id="cb13-7"><a href="pubmed.html#cb13-7"></a>  <span class="kw">stopwords</span>(<span class="dt">kind =</span> <span class="st">&quot;en&quot;</span>),</span>
-<span id="cb13-8"><a href="pubmed.html#cb13-8"></a>  <span class="kw">c</span>(<span class="st">&quot;bisphenol&quot;</span>, <span class="st">&quot;exposure&quot;</span>, <span class="st">&quot;reproductive&quot;</span>, <span class="st">&quot;health&quot;</span>, <span class="st">&quot;bpa&quot;</span>)</span>
-<span id="cb13-9"><a href="pubmed.html#cb13-9"></a>)</span>
-<span id="cb13-10"><a href="pubmed.html#cb13-10"></a></span>
-<span id="cb13-11"><a href="pubmed.html#cb13-11"></a><span class="co"># removing unnecessary things</span></span>
-<span id="cb13-12"><a href="pubmed.html#cb13-12"></a>twords &lt;-<span class="st"> </span><span class="kw">removePunctuation</span>(twords)</span>
-<span id="cb13-13"><a href="pubmed.html#cb13-13"></a>twords &lt;-<span class="st"> </span><span class="kw">removeNumbers</span>(twords)</span>
-<span id="cb13-14"><a href="pubmed.html#cb13-14"></a>twords &lt;-<span class="st"> </span><span class="kw">removeWords</span>(twords, <span class="kw">stopwords</span>(<span class="dt">kind =</span> <span class="st">&quot;en&quot;</span>))</span>
-<span id="cb13-15"><a href="pubmed.html#cb13-15"></a>twords &lt;-<span class="st"> </span><span class="kw">removeWords</span>(twords, stop_words)</span>
-<span id="cb13-16"><a href="pubmed.html#cb13-16"></a>twords &lt;-<span class="st"> </span>twords[twords <span class="op">!=</span><span class="st"> &quot;&quot;</span>]</span>
-<span id="cb13-17"><a href="pubmed.html#cb13-17"></a></span>
-<span id="cb13-18"><a href="pubmed.html#cb13-18"></a><span class="co"># data frame of terms and frequencies</span></span>
-<span id="cb13-19"><a href="pubmed.html#cb13-19"></a>dat_words &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">table</span>(twords))</span>
-<span id="cb13-20"><a href="pubmed.html#cb13-20"></a>dat_words &lt;-<span class="st"> </span>dat_words[<span class="kw">order</span>(dat_words<span class="op">$</span>Freq, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>), ]</span>
-<span id="cb13-21"><a href="pubmed.html#cb13-21"></a><span class="kw">head</span>(dat_words, <span class="dt">n =</span> <span class="dv">10</span>)</span>
-<span id="cb13-22"><a href="pubmed.html#cb13-22"></a><span class="co">#&gt;            twords Freq</span></span>
-<span id="cb13-23"><a href="pubmed.html#cb13-23"></a><span class="co">#&gt; 161       effects   18</span></span>
-<span id="cb13-24"><a href="pubmed.html#cb13-24"></a><span class="co">#&gt; 500         study   10</span></span>
-<span id="cb13-25"><a href="pubmed.html#cb13-25"></a><span class="co">#&gt; 519      toxicity    9</span></span>
-<span id="cb13-26"><a href="pubmed.html#cb13-26"></a><span class="co">#&gt; 313          male    8</span></span>
-<span id="cb13-27"><a href="pubmed.html#cb13-27"></a><span class="co">#&gt; 192             f    7</span></span>
-<span id="cb13-28"><a href="pubmed.html#cb13-28"></a><span class="co">#&gt; 197        female    7</span></span>
-<span id="cb13-29"><a href="pubmed.html#cb13-29"></a><span class="co">#&gt; 303        levels    7</span></span>
-<span id="cb13-30"><a href="pubmed.html#cb13-30"></a><span class="co">#&gt; 464             s    7</span></span>
-<span id="cb13-31"><a href="pubmed.html#cb13-31"></a><span class="co">#&gt; 173 environmental    6</span></span>
-<span id="cb13-32"><a href="pubmed.html#cb13-32"></a><span class="co">#&gt; 180      estrogen    6</span></span></code></pre></div>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="pubmed.html#cb686-1"></a><span class="co"># title words</span></span>
+<span id="cb686-2"><a href="pubmed.html#cb686-2"></a>twords &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">str_split</span>(titles, <span class="st">&quot; &quot;</span>))</span>
+<span id="cb686-3"><a href="pubmed.html#cb686-3"></a>twords &lt;-<span class="st"> </span><span class="kw">tolower</span>(twords)</span>
+<span id="cb686-4"><a href="pubmed.html#cb686-4"></a></span>
+<span id="cb686-5"><a href="pubmed.html#cb686-5"></a><span class="co"># auxiliary vector of stop words</span></span>
+<span id="cb686-6"><a href="pubmed.html#cb686-6"></a>stop_words &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb686-7"><a href="pubmed.html#cb686-7"></a>  <span class="kw">stopwords</span>(<span class="dt">kind =</span> <span class="st">&quot;en&quot;</span>),</span>
+<span id="cb686-8"><a href="pubmed.html#cb686-8"></a>  <span class="kw">c</span>(<span class="st">&quot;bisphenol&quot;</span>, <span class="st">&quot;exposure&quot;</span>, <span class="st">&quot;reproductive&quot;</span>, <span class="st">&quot;health&quot;</span>, <span class="st">&quot;bpa&quot;</span>)</span>
+<span id="cb686-9"><a href="pubmed.html#cb686-9"></a>)</span>
+<span id="cb686-10"><a href="pubmed.html#cb686-10"></a></span>
+<span id="cb686-11"><a href="pubmed.html#cb686-11"></a><span class="co"># removing unnecessary things</span></span>
+<span id="cb686-12"><a href="pubmed.html#cb686-12"></a>twords &lt;-<span class="st"> </span><span class="kw">removePunctuation</span>(twords)</span>
+<span id="cb686-13"><a href="pubmed.html#cb686-13"></a>twords &lt;-<span class="st"> </span><span class="kw">removeNumbers</span>(twords)</span>
+<span id="cb686-14"><a href="pubmed.html#cb686-14"></a>twords &lt;-<span class="st"> </span><span class="kw">removeWords</span>(twords, <span class="kw">stopwords</span>(<span class="dt">kind =</span> <span class="st">&quot;en&quot;</span>))</span>
+<span id="cb686-15"><a href="pubmed.html#cb686-15"></a>twords &lt;-<span class="st"> </span><span class="kw">removeWords</span>(twords, stop_words)</span>
+<span id="cb686-16"><a href="pubmed.html#cb686-16"></a>twords &lt;-<span class="st"> </span>twords[twords <span class="op">!=</span><span class="st"> &quot;&quot;</span>]</span>
+<span id="cb686-17"><a href="pubmed.html#cb686-17"></a></span>
+<span id="cb686-18"><a href="pubmed.html#cb686-18"></a><span class="co"># data frame of terms and frequencies</span></span>
+<span id="cb686-19"><a href="pubmed.html#cb686-19"></a>dat_words &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">table</span>(twords))</span>
+<span id="cb686-20"><a href="pubmed.html#cb686-20"></a>dat_words &lt;-<span class="st"> </span>dat_words[<span class="kw">order</span>(dat_words<span class="op">$</span>Freq, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>), ]</span>
+<span id="cb686-21"><a href="pubmed.html#cb686-21"></a><span class="kw">head</span>(dat_words, <span class="dt">n =</span> <span class="dv">10</span>)</span>
+<span id="cb686-22"><a href="pubmed.html#cb686-22"></a><span class="co">#&gt;            twords Freq</span></span>
+<span id="cb686-23"><a href="pubmed.html#cb686-23"></a><span class="co">#&gt; 161       effects   18</span></span>
+<span id="cb686-24"><a href="pubmed.html#cb686-24"></a><span class="co">#&gt; 500         study   10</span></span>
+<span id="cb686-25"><a href="pubmed.html#cb686-25"></a><span class="co">#&gt; 519      toxicity    9</span></span>
+<span id="cb686-26"><a href="pubmed.html#cb686-26"></a><span class="co">#&gt; 313          male    8</span></span>
+<span id="cb686-27"><a href="pubmed.html#cb686-27"></a><span class="co">#&gt; 192             f    7</span></span>
+<span id="cb686-28"><a href="pubmed.html#cb686-28"></a><span class="co">#&gt; 197        female    7</span></span>
+<span id="cb686-29"><a href="pubmed.html#cb686-29"></a><span class="co">#&gt; 303        levels    7</span></span>
+<span id="cb686-30"><a href="pubmed.html#cb686-30"></a><span class="co">#&gt; 464             s    7</span></span>
+<span id="cb686-31"><a href="pubmed.html#cb686-31"></a><span class="co">#&gt; 173 environmental    6</span></span>
+<span id="cb686-32"><a href="pubmed.html#cb686-32"></a><span class="co">#&gt; 180      estrogen    6</span></span></code></pre></div>
 <p>and then plotting a wordcloud with the function <code>wordcloud2()</code></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="pubmed.html#cb14-1"></a><span class="kw">wordcloud2</span>(dat_words)</span></code></pre></div>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="pubmed.html#cb687-1"></a><span class="kw">wordcloud2</span>(dat_words)</span></code></pre></div>
 <p><img src="images/api/wordcloud_img.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
@@ -1169,6 +1178,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

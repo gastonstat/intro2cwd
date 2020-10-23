@@ -49,11 +49,6 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
-<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
-<script src="libs/wordcloud2-0.0.1/hover.js"></script>
-<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
 
 
 <style type="text/css">
@@ -794,12 +789,7 @@ request to the URL <code>https://api.adviceslip.com/advice</code></p>
 <span id="cb658-2"><a href="apis.html#cb658-2"></a>request_url &lt;-<span class="st"> &quot;https://api.adviceslip.com/advice&quot;</span></span>
 <span id="cb658-3"><a href="apis.html#cb658-3"></a></span>
 <span id="cb658-4"><a href="apis.html#cb658-4"></a>request_get &lt;-<span class="st"> </span><span class="kw">GET</span>(request_url)</span>
-<span id="cb658-5"><a href="apis.html#cb658-5"></a>request_get</span>
-<span id="cb658-6"><a href="apis.html#cb658-6"></a><span class="co">#&gt; Response [https://api.adviceslip.com/advice]</span></span>
-<span id="cb658-7"><a href="apis.html#cb658-7"></a><span class="co">#&gt;   Date: 2020-10-23 21:08</span></span>
-<span id="cb658-8"><a href="apis.html#cb658-8"></a><span class="co">#&gt;   Status: 200</span></span>
-<span id="cb658-9"><a href="apis.html#cb658-9"></a><span class="co">#&gt;   Content-Type: text/html; charset=UTF-8</span></span>
-<span id="cb658-10"><a href="apis.html#cb658-10"></a><span class="co">#&gt;   Size: 73 B</span></span></code></pre></div>
+<span id="cb658-5"><a href="apis.html#cb658-5"></a>request_get</span></code></pre></div>
 <pre><code>Response [https://api.adviceslip.com/advice]
   Date: 2020-10-16 02:08
   Status: 200
@@ -807,57 +797,58 @@ request to the URL <code>https://api.adviceslip.com/advice</code></p>
   Size: 77 B</code></pre>
 <p>The object <code>request_get</code> is an object of class <code>"response"</code>, which is basically
 an R list that contains 10 elements:</p>
-<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="apis.html#cb660-1"></a><span class="kw">class</span>(request_get)</span>
-<span id="cb660-2"><a href="apis.html#cb660-2"></a><span class="co">#&gt; [1] &quot;response&quot;</span></span>
-<span id="cb660-3"><a href="apis.html#cb660-3"></a></span>
-<span id="cb660-4"><a href="apis.html#cb660-4"></a><span class="kw">is.list</span>(request_get)</span>
-<span id="cb660-5"><a href="apis.html#cb660-5"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb660-6"><a href="apis.html#cb660-6"></a></span>
-<span id="cb660-7"><a href="apis.html#cb660-7"></a><span class="kw">names</span>(request_get)</span>
-<span id="cb660-8"><a href="apis.html#cb660-8"></a><span class="co">#&gt;  [1] &quot;url&quot;         &quot;status_code&quot; &quot;headers&quot;     &quot;all_headers&quot; &quot;cookies&quot;    </span></span>
-<span id="cb660-9"><a href="apis.html#cb660-9"></a><span class="co">#&gt;  [6] &quot;content&quot;     &quot;date&quot;        &quot;times&quot;       &quot;request&quot;     &quot;handle&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="apis.html#cb660-1"></a><span class="kw">names</span>(request_get)</span></code></pre></div>
+<pre><code> [1] &quot;url&quot;         &quot;status_code&quot; &quot;headers&quot;     &quot;all_headers&quot; &quot;cookies&quot;    
+ [6] &quot;content&quot;     &quot;date&quot;        &quot;times&quot;       &quot;request&quot;     &quot;handle&quot;</code></pre>
 <p>As you can tell, one of the elements in <code>request_get</code> is <code>"content"</code>. If you
 try the <code>$</code> operator to extract this element and print it, you will get
 something like this:</p>
-<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="apis.html#cb661-1"></a>request_get<span class="op">$</span>content</span>
-<span id="cb661-2"><a href="apis.html#cb661-2"></a><span class="co">#&gt;  [1] 7b 22 73 6c 69 70 22 3a 20 7b 20 22 69 64 22 3a 20 31 30 36 2c 20 22 61 64</span></span>
-<span id="cb661-3"><a href="apis.html#cb661-3"></a><span class="co">#&gt; [26] 76 69 63 65 22 3a 20 22 41 20 70 72 6f 62 6c 65 6d 20 73 68 61 72 65 64 20</span></span>
-<span id="cb661-4"><a href="apis.html#cb661-4"></a><span class="co">#&gt; [51] 69 73 20 61 20 70 72 6f 62 6c 65 6d 20 68 61 6c 76 65 64 2e 22 7d 7d</span></span></code></pre></div>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="apis.html#cb662-1"></a>request_get<span class="op">$</span>content</span></code></pre></div>
+<pre><code> [1] 7b 22 73 6c 69 70 22 3a 20 7b 20 22 69 64 22 3a 20 39 36 2c 20 22 61 64 76
+[26] 69 63 65 22 3a 20 22 44 6f 6e 27 74 20 67 69 76 65 20 74 6f 20 6f 74 68 65
+[51] 72 73 20 61 64 76 69 63 65 20 77 68 69 63 68 20 79 6f 75 20 77 6f 75 6c 64
+[76] 6e 27 74 20 66 6f 6c 6c 6f 77 2e 22 7d 7d</code></pre>
 <p>which is not very helpful.</p>
 <p>Instead of directly extracting the <code>"content"</code> element, it is recommended to
 use the extractor function <code>content()</code> which will return the content in the
 form of an <code>"html_document"</code> object:</p>
-<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="apis.html#cb662-1"></a><span class="kw">content</span>(request_get)</span>
-<span id="cb662-2"><a href="apis.html#cb662-2"></a><span class="co">#&gt; {html_document}</span></span>
-<span id="cb662-3"><a href="apis.html#cb662-3"></a><span class="co">#&gt; &lt;html&gt;</span></span>
-<span id="cb662-4"><a href="apis.html#cb662-4"></a><span class="co">#&gt; [1] &lt;body&gt;&lt;p&gt;{&quot;slip&quot;: { &quot;id&quot;: 106, &quot;advice&quot;: &quot;A problem shared is a problem h ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="apis.html#cb664-1"></a><span class="kw">content</span>(request_get)</span></code></pre></div>
+<pre><code>{html_document}
+&lt;html&gt;
+[1] &lt;body&gt;&lt;p&gt;{&quot;slip&quot;: { &quot;id&quot;: 96, &quot;advice&quot;: &quot;Don&#39;t give to others advice which  ...</code></pre>
 <p>The above output is not the most friendly one. However, we can use the argument
 <code>as = "text"</code> to change the output into a character vector:</p>
-<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="apis.html#cb663-1"></a>request_content &lt;-<span class="st"> </span><span class="kw">content</span>(request_get, <span class="dt">as =</span> <span class="st">&quot;text&quot;</span>)</span>
-<span id="cb663-2"><a href="apis.html#cb663-2"></a>request_content</span>
-<span id="cb663-3"><a href="apis.html#cb663-3"></a><span class="co">#&gt; [1] &quot;{\&quot;slip\&quot;: { \&quot;id\&quot;: 106, \&quot;advice\&quot;: \&quot;A problem shared is a problem halved.\&quot;}}&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="apis.html#cb666-1"></a>request_content &lt;-<span class="st"> </span><span class="kw">content</span>(request_get, <span class="dt">as =</span> <span class="st">&quot;text&quot;</span>)</span>
+<span id="cb666-2"><a href="apis.html#cb666-2"></a>request_content</span></code></pre></div>
+<pre><code>[1] &quot;{\&quot;slip\&quot;: { \&quot;id\&quot;: 96, \&quot;advice\&quot;: \&quot;Don&#39;t give to others advice which you wouldn&#39;t follow.\&quot;}}&quot;</code></pre>
 <p>It turns out that this content is in JSON format. Therefore, we need to use
 a converting function <code>fromJSON()</code></p>
-<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="apis.html#cb664-1"></a><span class="kw">fromJSON</span>(request_content)</span>
-<span id="cb664-2"><a href="apis.html#cb664-2"></a><span class="co">#&gt; $slip</span></span>
-<span id="cb664-3"><a href="apis.html#cb664-3"></a><span class="co">#&gt; $slip$id</span></span>
-<span id="cb664-4"><a href="apis.html#cb664-4"></a><span class="co">#&gt; [1] 106</span></span>
-<span id="cb664-5"><a href="apis.html#cb664-5"></a><span class="co">#&gt; </span></span>
-<span id="cb664-6"><a href="apis.html#cb664-6"></a><span class="co">#&gt; $slip$advice</span></span>
-<span id="cb664-7"><a href="apis.html#cb664-7"></a><span class="co">#&gt; [1] &quot;A problem shared is a problem halved.&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="apis.html#cb668-1"></a><span class="kw">fromJSON</span>(request_content)</span></code></pre></div>
+<pre><code>$slip
+$slip$id
+[1] 96
+
+$slip$advice
+[1] &quot;Don&#39;t give to others advice which you wouldn&#39;t follow.&quot;</code></pre>
 <p>All of the above steps can be compactly integrated into a single block of code
 using the piper opeartor <code>%&gt;%</code> as follows:</p>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="apis.html#cb665-1"></a><span class="co"># getting a random advice</span></span>
-<span id="cb665-2"><a href="apis.html#cb665-2"></a>request_url &lt;-<span class="st"> &quot;https://api.adviceslip.com/advice&quot;</span></span>
-<span id="cb665-3"><a href="apis.html#cb665-3"></a></span>
-<span id="cb665-4"><a href="apis.html#cb665-4"></a>random_advice &lt;-<span class="st"> </span>request_url <span class="op">%&gt;%</span></span>
-<span id="cb665-5"><a href="apis.html#cb665-5"></a><span class="st">  </span><span class="kw">GET</span>() <span class="op">%&gt;%</span></span>
-<span id="cb665-6"><a href="apis.html#cb665-6"></a><span class="st">  </span><span class="kw">content</span>(<span class="dt">as =</span> <span class="st">&quot;text&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb665-7"><a href="apis.html#cb665-7"></a><span class="st">  </span><span class="kw">fromJSON</span>()</span>
-<span id="cb665-8"><a href="apis.html#cb665-8"></a></span>
-<span id="cb665-9"><a href="apis.html#cb665-9"></a><span class="kw">names</span>(random_advice)</span>
-<span id="cb665-10"><a href="apis.html#cb665-10"></a></span>
-<span id="cb665-11"><a href="apis.html#cb665-11"></a>random_advice<span class="op">$</span>slip</span></code></pre></div>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="apis.html#cb670-1"></a><span class="co"># getting a random advice</span></span>
+<span id="cb670-2"><a href="apis.html#cb670-2"></a>request_url &lt;-<span class="st"> &quot;https://api.adviceslip.com/advice&quot;</span></span>
+<span id="cb670-3"><a href="apis.html#cb670-3"></a></span>
+<span id="cb670-4"><a href="apis.html#cb670-4"></a>random_advice &lt;-<span class="st"> </span>request_url <span class="op">%&gt;%</span></span>
+<span id="cb670-5"><a href="apis.html#cb670-5"></a><span class="st">  </span><span class="kw">GET</span>() <span class="op">%&gt;%</span></span>
+<span id="cb670-6"><a href="apis.html#cb670-6"></a><span class="st">  </span><span class="kw">content</span>(<span class="dt">as =</span> <span class="st">&quot;text&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb670-7"><a href="apis.html#cb670-7"></a><span class="st">  </span><span class="kw">fromJSON</span>()</span>
+<span id="cb670-8"><a href="apis.html#cb670-8"></a></span>
+<span id="cb670-9"><a href="apis.html#cb670-9"></a><span class="kw">names</span>(random_advice)</span>
+<span id="cb670-10"><a href="apis.html#cb670-10"></a></span>
+<span id="cb670-11"><a href="apis.html#cb670-11"></a>random_advice<span class="op">$</span>slip</span></code></pre></div>
+<pre><code>[1] &quot;slip&quot;
+$id
+[1] 23
+
+$advice
+[1] &quot;Your smile could make someone&#39;s day, don&#39;t forget to wear it.&quot;</code></pre>
 <div id="example-search-with-advice-id" class="section level4 unnumbered">
 <h4>Example: Search with Advice ID</h4>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-671"></span>
@@ -873,15 +864,11 @@ Figure 44.3: Random advices by id
 Figure 44.4: Random advice from Advice Slip
 </p>
 </div>
-<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="apis.html#cb666-1"></a><span class="co"># advice id=5</span></span>
-<span id="cb666-2"><a href="apis.html#cb666-2"></a>advice_id5 &lt;-<span class="st"> &quot;https://api.adviceslip.com/advice/5&quot;</span> <span class="op">%&gt;%</span></span>
-<span id="cb666-3"><a href="apis.html#cb666-3"></a><span class="st">  </span><span class="kw">GET</span>() <span class="op">%&gt;%</span></span>
-<span id="cb666-4"><a href="apis.html#cb666-4"></a><span class="st">  </span><span class="kw">content</span>(<span class="dt">as =</span> <span class="st">&quot;text&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb666-5"><a href="apis.html#cb666-5"></a><span class="st">  </span><span class="kw">fromJSON</span>()</span>
-<span id="cb666-6"><a href="apis.html#cb666-6"></a></span>
-<span id="cb666-7"><a href="apis.html#cb666-7"></a><span class="kw">names</span>(advice_id5)</span>
-<span id="cb666-8"><a href="apis.html#cb666-8"></a></span>
-<span id="cb666-9"><a href="apis.html#cb666-9"></a>advice_id5<span class="op">$</span>slip</span></code></pre></div>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="apis.html#cb672-1"></a><span class="co"># advice id=5</span></span>
+<span id="cb672-2"><a href="apis.html#cb672-2"></a>advice_id5 &lt;-<span class="st"> &quot;https://api.adviceslip.com/advice/5&quot;</span> <span class="op">%&gt;%</span></span>
+<span id="cb672-3"><a href="apis.html#cb672-3"></a><span class="st">  </span><span class="kw">GET</span>() <span class="op">%&gt;%</span></span>
+<span id="cb672-4"><a href="apis.html#cb672-4"></a><span class="st">  </span><span class="kw">content</span>(<span class="dt">as =</span> <span class="st">&quot;text&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb672-5"><a href="apis.html#cb672-5"></a><span class="st">  </span><span class="kw">fromJSON</span>()</span></code></pre></div>
 </div>
 <div id="example-search-query" class="section level4 unnumbered">
 <h4>Example: Search Query</h4>
@@ -900,15 +887,11 @@ Figure 44.6: Random advices with search query ‘chance’
 </p>
 </div>
 <p>Let’s search for the term <code>chance</code></p>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="apis.html#cb667-1"></a><span class="co"># advice query &#39;chance&#39;</span></span>
-<span id="cb667-2"><a href="apis.html#cb667-2"></a>advice_chance &lt;-<span class="st"> &quot;https://api.adviceslip.com/advice/search/chance&quot;</span> <span class="op">%&gt;%</span></span>
-<span id="cb667-3"><a href="apis.html#cb667-3"></a><span class="st">  </span><span class="kw">GET</span>() <span class="op">%&gt;%</span></span>
-<span id="cb667-4"><a href="apis.html#cb667-4"></a><span class="st">  </span><span class="kw">content</span>(<span class="dt">as =</span> <span class="st">&quot;text&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb667-5"><a href="apis.html#cb667-5"></a><span class="st">  </span><span class="kw">fromJSON</span>()</span>
-<span id="cb667-6"><a href="apis.html#cb667-6"></a></span>
-<span id="cb667-7"><a href="apis.html#cb667-7"></a><span class="kw">names</span>(advice_chance)</span>
-<span id="cb667-8"><a href="apis.html#cb667-8"></a></span>
-<span id="cb667-9"><a href="apis.html#cb667-9"></a>advice_chance<span class="op">$</span>slip</span></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="apis.html#cb673-1"></a><span class="co"># advice query &#39;chance&#39;</span></span>
+<span id="cb673-2"><a href="apis.html#cb673-2"></a>advice_chance &lt;-<span class="st"> &quot;https://api.adviceslip.com/advice/search/chance&quot;</span> <span class="op">%&gt;%</span></span>
+<span id="cb673-3"><a href="apis.html#cb673-3"></a><span class="st">  </span><span class="kw">GET</span>() <span class="op">%&gt;%</span></span>
+<span id="cb673-4"><a href="apis.html#cb673-4"></a><span class="st">  </span><span class="kw">content</span>(<span class="dt">as =</span> <span class="st">&quot;text&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb673-5"><a href="apis.html#cb673-5"></a><span class="st">  </span><span class="kw">fromJSON</span>()</span></code></pre></div>
 </div>
 </div>
 </div>
