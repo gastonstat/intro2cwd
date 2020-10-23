@@ -49,6 +49,11 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
 
 
 <style type="text/css">
@@ -711,11 +716,11 @@ to group things like:</p>
 </ul>
 <p>Below, we provide the names of R packages that you will need for this part of
 the book.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="datatech-intro.html#cb1-1"></a><span class="kw">library</span>(stringr)   <span class="co"># for strings and regular expressions</span></span>
-<span id="cb1-2"><a href="datatech-intro.html#cb1-2"></a><span class="kw">library</span>(xml2)      <span class="co"># for parsing data in XML (e.g. HTML)</span></span>
-<span id="cb1-3"><a href="datatech-intro.html#cb1-3"></a><span class="kw">library</span>(rvest)     <span class="co"># for scraping XML and HTML content</span></span>
-<span id="cb1-4"><a href="datatech-intro.html#cb1-4"></a><span class="kw">library</span>(jsonlite)  <span class="co"># for handling data in JSON format</span></span>
-<span id="cb1-5"><a href="datatech-intro.html#cb1-5"></a><span class="kw">library</span>(httr)      <span class="co"># for working with HTTP requests (e.g. with APIs)</span></span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="datatech-intro.html#cb549-1"></a><span class="kw">library</span>(stringr)   <span class="co"># for strings and regular expressions</span></span>
+<span id="cb549-2"><a href="datatech-intro.html#cb549-2"></a><span class="kw">library</span>(xml2)      <span class="co"># for parsing data in XML (e.g. HTML)</span></span>
+<span id="cb549-3"><a href="datatech-intro.html#cb549-3"></a><span class="kw">library</span>(rvest)     <span class="co"># for scraping XML and HTML content</span></span>
+<span id="cb549-4"><a href="datatech-intro.html#cb549-4"></a><span class="kw">library</span>(jsonlite)  <span class="co"># for handling data in JSON format</span></span>
+<span id="cb549-5"><a href="datatech-intro.html#cb549-5"></a><span class="kw">library</span>(httr)      <span class="co"># for working with HTTP requests (e.g. with APIs)</span></span></code></pre></div>
 <p>By the way, at the beginning of each chapter we will also indicate which
 specific packages you need to load.</p>
 <p>Keep in mind that this list of packages is not comprehensive. As a matter of fact,
@@ -779,6 +784,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

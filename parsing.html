@@ -49,6 +49,11 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
 
 
 <style type="text/css">
@@ -669,6 +674,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="44.5.2" data-path="apis.html"><a href="apis.html#rules-of-api-etiquette"><i class="fa fa-check"></i><b>44.5.2</b> Rules of API-etiquette</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="45" data-path="pubmed.html"><a href="pubmed.html"><i class="fa fa-check"></i><b>45</b> Searching PubMed</a><ul>
+<li class="chapter" data-level="45.1" data-path="pubmed.html"><a href="pubmed.html#pubmed-1"><i class="fa fa-check"></i><b>45.1</b> PubMed</a></li>
+<li class="chapter" data-level="45.2" data-path="pubmed.html"><a href="pubmed.html#basics-of-e-utilities"><i class="fa fa-check"></i><b>45.2</b> Basics of E-utilities</a><ul>
+<li class="chapter" data-level="45.2.1" data-path="pubmed.html"><a href="pubmed.html#how-does-e-utilities-work"><i class="fa fa-check"></i><b>45.2.1</b> How does E-utilities work?</a></li>
+<li class="chapter" data-level="45.2.2" data-path="pubmed.html"><a href="pubmed.html#searching-pubmed-from-within-r"><i class="fa fa-check"></i><b>45.2.2</b> Searching PubMed from within R</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
 
@@ -1031,9 +1043,74 @@ nodes <code>good_will</code> and <code>tu_mama</code> have:</p>
 <span id="cb608-7"><a href="parsing.html#cb608-7"></a><span class="co">#&gt; [4] &lt;genre&gt;drama&lt;/genre&gt;</span></span></code></pre></div>
 <p>The visual diagram for <code>good_will</code> depicts the four nodes:</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-609"></span>
-<img src="images/html/xml-movies-tree3.svg" alt="Children nodes of 'Good Will hunting'" width="85%" />
+<img src="images/html/xml-movies-tree3.svg" alt="Children nodes of 'Good Will Hunting'" width="85%" />
 <p class="caption">
-Figure 41.6: Children nodes of ‘Good Will hunting’
+Figure 41.6: Children nodes of ‘Good Will Hunting’
+</p>
+</div>
+<p>The code below shows a deeper inspection of <code>good_will</code>. The function
+<code>xml_name()</code> gives the name of a node.</p>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="parsing.html#cb609-1"></a><span class="co"># name of an element</span></span>
+<span id="cb609-2"><a href="parsing.html#cb609-2"></a><span class="kw">xml_name</span>(good_will)</span>
+<span id="cb609-3"><a href="parsing.html#cb609-3"></a><span class="co">#&gt; [1] &quot;movie&quot;</span></span></code></pre></div>
+<p>The function <code>xml_attrs()</code> gives you the attributes of a node. In this case,
+the node of <code>good_will</code> has to attributes <code>"mins"</code> and <code>"lang"</code></p>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="parsing.html#cb610-1"></a><span class="co"># attributes</span></span>
+<span id="cb610-2"><a href="parsing.html#cb610-2"></a><span class="kw">xml_attrs</span>(good_will)</span>
+<span id="cb610-3"><a href="parsing.html#cb610-3"></a><span class="co">#&gt;  mins  lang </span></span>
+<span id="cb610-4"><a href="parsing.html#cb610-4"></a><span class="co">#&gt; &quot;126&quot; &quot;eng&quot;</span></span></code></pre></div>
+<p>As we previously saw, <code>xml_length()</code> gives the number of children nodes inside
+a given node:</p>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="parsing.html#cb611-1"></a><span class="co"># how many children</span></span>
+<span id="cb611-2"><a href="parsing.html#cb611-2"></a><span class="kw">xml_length</span>(good_will)</span>
+<span id="cb611-3"><a href="parsing.html#cb611-3"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<p>Likewise, we can move along the children nodes, and find information about
+their names, their subchildren, and so on:</p>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="parsing.html#cb612-1"></a><span class="co"># name of children (of good_will)</span></span>
+<span id="cb612-2"><a href="parsing.html#cb612-2"></a><span class="kw">xml_name</span>(<span class="kw">xml_children</span>(good_will))</span>
+<span id="cb612-3"><a href="parsing.html#cb612-3"></a><span class="co">#&gt; [1] &quot;title&quot;    &quot;director&quot; &quot;year&quot;     &quot;genre&quot;</span></span>
+<span id="cb612-4"><a href="parsing.html#cb612-4"></a></span>
+<span id="cb612-5"><a href="parsing.html#cb612-5"></a><span class="co"># good_will title</span></span>
+<span id="cb612-6"><a href="parsing.html#cb612-6"></a><span class="kw">xml_child</span>(good_will, <span class="st">&quot;title&quot;</span>)</span>
+<span id="cb612-7"><a href="parsing.html#cb612-7"></a><span class="co">#&gt; {xml_node}</span></span>
+<span id="cb612-8"><a href="parsing.html#cb612-8"></a><span class="co">#&gt; &lt;title&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="parsing.html#cb613-1"></a><span class="co"># good_will title</span></span>
+<span id="cb613-2"><a href="parsing.html#cb613-2"></a>title1 &lt;-<span class="st"> </span><span class="kw">xml_child</span>(good_will, <span class="st">&quot;title&quot;</span>)</span>
+<span id="cb613-3"><a href="parsing.html#cb613-3"></a>title1</span>
+<span id="cb613-4"><a href="parsing.html#cb613-4"></a><span class="co">#&gt; {xml_node}</span></span>
+<span id="cb613-5"><a href="parsing.html#cb613-5"></a><span class="co">#&gt; &lt;title&gt;</span></span>
+<span id="cb613-6"><a href="parsing.html#cb613-6"></a></span>
+<span id="cb613-7"><a href="parsing.html#cb613-7"></a><span class="co"># content good_will title</span></span>
+<span id="cb613-8"><a href="parsing.html#cb613-8"></a><span class="kw">xml_contents</span>(title1)</span>
+<span id="cb613-9"><a href="parsing.html#cb613-9"></a><span class="co">#&gt; {xml_nodeset (1)}</span></span>
+<span id="cb613-10"><a href="parsing.html#cb613-10"></a><span class="co">#&gt; [1] Good Will Hunting</span></span>
+<span id="cb613-11"><a href="parsing.html#cb613-11"></a></span>
+<span id="cb613-12"><a href="parsing.html#cb613-12"></a><span class="co"># text good_will title</span></span>
+<span id="cb613-13"><a href="parsing.html#cb613-13"></a><span class="kw">xml_text</span>(title1)</span>
+<span id="cb613-14"><a href="parsing.html#cb613-14"></a><span class="co">#&gt; [1] &quot;Good Will Hunting&quot;</span></span></code></pre></div>
+</div>
+<div id="inspecting-director-node" class="section level4">
+<h4><span class="header-section-number">41.1.3.1</span> Inspecting director node</h4>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="parsing.html#cb614-1"></a><span class="co"># good_will director</span></span>
+<span id="cb614-2"><a href="parsing.html#cb614-2"></a>dir1 &lt;-<span class="st"> </span><span class="kw">xml_child</span>(good_will, <span class="st">&quot;director&quot;</span>)</span>
+<span id="cb614-3"><a href="parsing.html#cb614-3"></a>dir1</span>
+<span id="cb614-4"><a href="parsing.html#cb614-4"></a><span class="co">#&gt; {xml_node}</span></span>
+<span id="cb614-5"><a href="parsing.html#cb614-5"></a><span class="co">#&gt; &lt;director&gt;</span></span>
+<span id="cb614-6"><a href="parsing.html#cb614-6"></a><span class="co">#&gt; [1] &lt;first_name&gt;Gus&lt;/first_name&gt;</span></span>
+<span id="cb614-7"><a href="parsing.html#cb614-7"></a><span class="co">#&gt; [2] &lt;last_name&gt;Van Sant&lt;/last_name&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="parsing.html#cb615-1"></a><span class="kw">xml_children</span>(dir1)</span>
+<span id="cb615-2"><a href="parsing.html#cb615-2"></a><span class="co">#&gt; {xml_nodeset (2)}</span></span>
+<span id="cb615-3"><a href="parsing.html#cb615-3"></a><span class="co">#&gt; [1] &lt;first_name&gt;Gus&lt;/first_name&gt;</span></span>
+<span id="cb615-4"><a href="parsing.html#cb615-4"></a><span class="co">#&gt; [2] &lt;last_name&gt;Van Sant&lt;/last_name&gt;</span></span></code></pre></div>
+<p>To extract just the text, we use <code>xml_text()</code>:</p>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="parsing.html#cb616-1"></a><span class="kw">xml_text</span>(dir1)</span>
+<span id="cb616-2"><a href="parsing.html#cb616-2"></a><span class="co">#&gt; [1] &quot;GusVan Sant&quot;</span></span></code></pre></div>
+<p>The visual diagram for <code>good_will</code> with its director node is depicted in this
+figure:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-618"></span>
+<img src="images/html/xml-movies-tree4.svg" alt="Director node of 'Good Will Hunting'" width="85%" />
+<p class="caption">
+Figure 41.7: Director node of ‘Good Will Hunting’
 </p>
 </div>
 
