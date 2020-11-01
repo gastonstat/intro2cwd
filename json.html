@@ -722,16 +722,17 @@ is based on a handful of attractive aspects:</p>
 <ul>
 <li><p>It’s extremely lightweight and compact to send back and forth due to the small
 size file;</p></li>
-<li><p>It’s easy for both computers and people to read (and write) compared to
-something like XML since it’s much cleaner and there’s not as many opening and
+<li><p>It’s easy for both computers and people to read-and-write, compared to
+something like XML, since it’s much cleaner and there’s not as many opening and
 closing tags;</p></li>
 <li><p>It maps very easily onto the data structures used by most programming
 languages (numbers, strings, booleans, nulls, arrays and associative arrays);</p></li>
 <li><p>It also integrates very nicely with
 <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">javascript</a>
-since JSON is just a superset of javascript which means anything you write in
-JSON is valid javascript, which is a language used all throughout the web for
-front-end or back-end of applications.</p></li>
+since JSON is just a superset of
+<a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript" target="_blank">javascript</a>
+which means anything you write in JSON is valid javascript, which is a language
+used all throughout the web for front-end or back-end of applications.</p></li>
 <li><p>Also, every single major language has some form of library or packages with
 built-in functionality to parse JSON strings into objects or classes in that
 language which makes working with JSON data extremely easy inside of a
@@ -764,7 +765,7 @@ numbers, even numbers in scientific notation)</p></li>
 <h3><span class="header-section-number">42.2.2</span> Arrays</h3>
 <p>JSON also supports <strong>arrays</strong> (in JSON Sense) which are sets of data types
 defined within brackets, and contains a comma-separated list of values.
-For example <code>[1, 2, 2]</code> or <code>["computing", "with", "data"]</code>,
+For example <code>[1, 3, 3]</code> or <code>["computing", "with", "data"]</code>,
 which can be a set of any of the data types listed above.</p>
 <p>We typically use arrays when we have a set of unnamed values, this is why some
 people refer to them as <strong>ordered unnamed arrays</strong>. The closest R object to a
@@ -783,7 +784,9 @@ you to represent values that are key-value pairs:</p>
 <p>You use curly braces to define a JSON-object, and inside the braces you put
 key-value pairs. The key must be surrounded by double quotes, followed by a
 colon, followed by the value. The value can be a single data type, but it
-can also be a JSON-array (which in turn can contain a JSON-object).</p>
+can also be a JSON-array (which in turn can contain a JSON-object). Because
+you have the association of a <em>key</em> with its <em>value</em>, these JSON structures
+are also referred to as associative arrays.</p>
 <p>For example, say the key is <code>"year"</code> and the value <code>2000</code>, then a simple JSON
 object will look like this:</p>
 <p><code>{"year": 2000}</code></p>
@@ -795,7 +798,11 @@ object will look like this:</p>
   &quot;name2&quot;: &quot;Pleuni&quot;,
   &quot;name3&quot;: &quot;Rori&quot;
 }</code></pre>
-<p>A more complex object might look lokie this:</p>
+<p>A more complex object might look like the following example. In this case we
+have JSON-object that contains three key-value pairs. Each of the keys is a
+<code>"person"</code> and the associated pair corresponds to an array which in turn
+contains a JSON-object with two key-value pairs: the <em>first name</em>, and the
+<em>last name</em>:</p>
 <pre><code>{
   &quot;person1&quot;: [
     {
@@ -819,16 +826,22 @@ object will look like this:</p>
 <p>Because the data inside a JSON object is formed of key-value pairs, you could
 think of them as <strong>named arrays</strong>.</p>
 <p>What do JSON-objects correspond to in R? Well, there’s not really a unique
-correspondence between a JSON-object and its equivalent in R. For instance,
-we could use a named vector to store the same data in the JSON-object previously
-displayed:</p>
-<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="json.html#cb619-1"></a><span class="co"># named vector in R</span></span>
-<span id="cb619-2"><a href="json.html#cb619-2"></a><span class="kw">c</span>(<span class="st">&quot;name1&quot;</span> =<span class="st"> &quot;Nicole&quot;</span>, <span class="st">&quot;name2&quot;</span> =<span class="st"> &quot;Pleuni&quot;</span>, <span class="st">&quot;name3&quot;</span> =<span class="st"> &quot;Rori&quot;</span>)</span></code></pre></div>
-<p>Or we could also use a list:</p>
-<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="json.html#cb620-1"></a><span class="co"># named list in R</span></span>
-<span id="cb620-2"><a href="json.html#cb620-2"></a><span class="kw">list</span>(<span class="st">&quot;name1&quot;</span> =<span class="st"> &quot;Nicole&quot;</span>, <span class="st">&quot;name2&quot;</span> =<span class="st"> &quot;Pleuni&quot;</span>, <span class="st">&quot;name3&quot;</span> =<span class="st"> &quot;Rori&quot;</span>)</span></code></pre></div>
-<p>However, JSON-objects can be more complex than this basic example. Perhaps
-the similar container in R is a <code>list</code>.</p>
+correspondence between a JSON-object and its equivalent in structure R. For
+instance, let’s bring back one of the JSON-objects previously discussed:</p>
+<pre><code>{
+  &quot;name1&quot;: &quot;Nicole&quot;,
+  &quot;name2&quot;: &quot;Pleuni&quot;,
+  &quot;name3&quot;: &quot;Rori&quot;
+}</code></pre>
+<p>We could use a named R vector to store the same data:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="json.html#cb4-1"></a><span class="co"># named vector in R</span></span>
+<span id="cb4-2"><a href="json.html#cb4-2"></a><span class="kw">c</span>(<span class="st">&quot;name1&quot;</span> =<span class="st"> &quot;Nicole&quot;</span>, <span class="st">&quot;name2&quot;</span> =<span class="st"> &quot;Pleuni&quot;</span>, <span class="st">&quot;name3&quot;</span> =<span class="st"> &quot;Rori&quot;</span>)</span></code></pre></div>
+<p>But we could also use an R list:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="json.html#cb5-1"></a><span class="co"># named list in R</span></span>
+<span id="cb5-2"><a href="json.html#cb5-2"></a><span class="kw">list</span>(<span class="st">&quot;name1&quot;</span> =<span class="st"> &quot;Nicole&quot;</span>, <span class="st">&quot;name2&quot;</span> =<span class="st"> &quot;Pleuni&quot;</span>, <span class="st">&quot;name3&quot;</span> =<span class="st"> &quot;Rori&quot;</span>)</span></code></pre></div>
+<p>Keep in mind that JSON-objects can be more complex than this basic example.
+Because JSON objects can contain any other type of JSON data structure in them,
+the similar container in R to a JSON-object is a <code>list</code>.</p>
 </div>
 <div id="examples-of-json-data-containers" class="section level3">
 <h3><span class="header-section-number">42.2.4</span> Examples of JSON Data Containers</h3>
@@ -858,7 +871,7 @@ the similar container in R is a <code>list</code>.</p>
 </div>
 <div id="data-table-toy-example" class="section level3">
 <h3><span class="header-section-number">42.2.5</span> Data Table Toy Example</h3>
-<p>Let’s consider a less basic example</p>
+<p>Let’s consider a less basic example with some tabular data set:</p>
 <table>
 <thead>
 <tr class="header">
@@ -928,8 +941,9 @@ the similar container in R is a <code>list</code>.</p>
 </tr>
 </tbody>
 </table>
-<p>There are several ways to represent this data in JSON format. One option
-could be an array that contains objects. Each object represents an individual</p>
+<p>How can we store this tabular data in JSON format? There are several ways to
+represent this data in JSON format. One option could be a JSON-array containing
+JSON-objects. Each JSON-object represents an individual:</p>
 <pre><code>    [
         {
          &quot;Name&quot;: &quot;Anakin&quot;,
@@ -989,105 +1003,104 @@ We’ll focus on the functions from <code>"jsonlite"</code>.</p>
 <h4>Example: single number to JSON-array</h4>
 <p>Let’s begin with a super simple example by passing a single data value to the
 function <code>toJSON()</code>:</p>
-<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="json.html#cb625-1"></a><span class="kw">toJSON</span>(pi, <span class="dt">digits =</span> <span class="dv">4</span>)</span>
-<span id="cb625-2"><a href="json.html#cb625-2"></a><span class="co">#&gt; [3.1416]</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="json.html#cb10-1"></a><span class="kw">toJSON</span>(pi, <span class="dt">digits =</span> <span class="dv">4</span>)</span>
+<span id="cb10-2"><a href="json.html#cb10-2"></a><span class="co">#&gt; [3.1416]</span></span></code></pre></div>
 </div>
 <div id="example-vectors-to-json-arrays" class="section level4 unnumbered">
 <h4>Example: vectors to JSON-arrays</h4>
 <p>Consider the following vectors</p>
-<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="json.html#cb626-1"></a>num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb626-2"><a href="json.html#cb626-2"></a>lts &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)</span></code></pre></div>
-<p>Applying <code>toJSON()</code> to the vectors <code>num</code>, <code>lts</code>, and <code>both</code> produces JSON
-arrays:</p>
-<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="json.html#cb627-1"></a><span class="kw">toJSON</span>(num)</span>
-<span id="cb627-2"><a href="json.html#cb627-2"></a><span class="co">#&gt; [1,2,3,4,5]</span></span>
-<span id="cb627-3"><a href="json.html#cb627-3"></a></span>
-<span id="cb627-4"><a href="json.html#cb627-4"></a><span class="kw">toJSON</span>(lts)</span>
-<span id="cb627-5"><a href="json.html#cb627-5"></a><span class="co">#&gt; [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;]</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="json.html#cb11-1"></a>num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb11-2"><a href="json.html#cb11-2"></a>lts &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)</span></code></pre></div>
+<p>Applying <code>toJSON()</code> to the vectors <code>num</code> and <code>lts</code> produces JSON arrays:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="json.html#cb12-1"></a><span class="kw">toJSON</span>(num)</span>
+<span id="cb12-2"><a href="json.html#cb12-2"></a><span class="co">#&gt; [1,2,3,4,5]</span></span>
+<span id="cb12-3"><a href="json.html#cb12-3"></a></span>
+<span id="cb12-4"><a href="json.html#cb12-4"></a><span class="kw">toJSON</span>(lts)</span>
+<span id="cb12-5"><a href="json.html#cb12-5"></a><span class="co">#&gt; [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;]</span></span></code></pre></div>
 <p>The argument <code>pretty = TRUE</code> allows you to obtain a JSON string with added
 indentation whitespace:</p>
-<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="json.html#cb628-1"></a><span class="kw">toJSON</span>(num, <span class="dt">pretty =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb628-2"><a href="json.html#cb628-2"></a><span class="co">#&gt; [1, 2, 3, 4, 5]</span></span>
-<span id="cb628-3"><a href="json.html#cb628-3"></a></span>
-<span id="cb628-4"><a href="json.html#cb628-4"></a><span class="kw">toJSON</span>(lts, <span class="dt">pretty =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb628-5"><a href="json.html#cb628-5"></a><span class="co">#&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="json.html#cb13-1"></a><span class="kw">toJSON</span>(num, <span class="dt">pretty =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb13-2"><a href="json.html#cb13-2"></a><span class="co">#&gt; [1, 2, 3, 4, 5]</span></span>
+<span id="cb13-3"><a href="json.html#cb13-3"></a></span>
+<span id="cb13-4"><a href="json.html#cb13-4"></a><span class="kw">toJSON</span>(lts, <span class="dt">pretty =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb13-5"><a href="json.html#cb13-5"></a><span class="co">#&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]</span></span></code></pre></div>
 <p>What about an R vector with named elements? For example, here’s a vector <code>vec</code></p>
-<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="json.html#cb629-1"></a>vec &lt;-<span class="st"> </span>num</span>
-<span id="cb629-2"><a href="json.html#cb629-2"></a><span class="kw">names</span>(vec) &lt;-<span class="st"> </span>lts</span>
-<span id="cb629-3"><a href="json.html#cb629-3"></a>vec</span>
-<span id="cb629-4"><a href="json.html#cb629-4"></a><span class="co">#&gt; a b c d e </span></span>
-<span id="cb629-5"><a href="json.html#cb629-5"></a><span class="co">#&gt; 1 2 3 4 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="json.html#cb14-1"></a>vec &lt;-<span class="st"> </span>num</span>
+<span id="cb14-2"><a href="json.html#cb14-2"></a><span class="kw">names</span>(vec) &lt;-<span class="st"> </span>lts</span>
+<span id="cb14-3"><a href="json.html#cb14-3"></a>vec</span>
+<span id="cb14-4"><a href="json.html#cb14-4"></a><span class="co">#&gt; a b c d e </span></span>
+<span id="cb14-5"><a href="json.html#cb14-5"></a><span class="co">#&gt; 1 2 3 4 5</span></span></code></pre></div>
 <p>Converting <code>vec</code> to JSON, we get:</p>
-<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="json.html#cb630-1"></a><span class="kw">toJSON</span>(vec)</span>
-<span id="cb630-2"><a href="json.html#cb630-2"></a><span class="co">#&gt; [1,2,3,4,5]</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="json.html#cb15-1"></a><span class="kw">toJSON</span>(vec)</span>
+<span id="cb15-2"><a href="json.html#cb15-2"></a><span class="co">#&gt; [1,2,3,4,5]</span></span></code></pre></div>
 <p>As you can tell, the names of the elements in <code>vec</code> are lost in translation.</p>
 </div>
 <div id="example-matrix-to-json-array" class="section level4 unnumbered">
 <h4>Example: matrix to JSON-array</h4>
 <p>Here’s another example from an matrix to a JSON array:</p>
-<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="json.html#cb631-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">9</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb631-2"><a href="json.html#cb631-2"></a>mat</span>
-<span id="cb631-3"><a href="json.html#cb631-3"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb631-4"><a href="json.html#cb631-4"></a><span class="co">#&gt; [1,]    9    6    3</span></span>
-<span id="cb631-5"><a href="json.html#cb631-5"></a><span class="co">#&gt; [2,]    8    5    2</span></span>
-<span id="cb631-6"><a href="json.html#cb631-6"></a><span class="co">#&gt; [3,]    7    4    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="json.html#cb16-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">9</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb16-2"><a href="json.html#cb16-2"></a>mat</span>
+<span id="cb16-3"><a href="json.html#cb16-3"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb16-4"><a href="json.html#cb16-4"></a><span class="co">#&gt; [1,]    9    6    3</span></span>
+<span id="cb16-5"><a href="json.html#cb16-5"></a><span class="co">#&gt; [2,]    8    5    2</span></span>
+<span id="cb16-6"><a href="json.html#cb16-6"></a><span class="co">#&gt; [3,]    7    4    1</span></span></code></pre></div>
 <p><code>toJSON()</code> converts an R matrix into a JSON-array</p>
-<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="json.html#cb632-1"></a><span class="kw">toJSON</span>(mat)</span>
-<span id="cb632-2"><a href="json.html#cb632-2"></a><span class="co">#&gt; [[9,6,3],[8,5,2],[7,4,1]]</span></span></code></pre></div>
-<p>Notice that the array output arranges the values of the matrix row-by-row,
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="json.html#cb17-1"></a><span class="kw">toJSON</span>(mat)</span>
+<span id="cb17-2"><a href="json.html#cb17-2"></a><span class="co">#&gt; [[9,6,3],[8,5,2],[7,4,1]]</span></span></code></pre></div>
+<p>Notice that the returned output arranges the values of the matrix row-by-row,
 also referred to as <em>row-major</em>. This means that when the input is an R matrix,
 <code>toJSON()</code> uses its argument <code>matrix = "rowmajor"</code>.</p>
-<p>You can change the arrangemnt to <em>column-major</em> by specifying the argument
+<p>You can change the arrangement to <em>column-major</em> by specifying the argument
 <code>matrix = "columnmajor"</code>:</p>
-<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="json.html#cb633-1"></a><span class="kw">toJSON</span>(mat, <span class="dt">matrix =</span> <span class="st">&quot;columnmajor&quot;</span>)</span>
-<span id="cb633-2"><a href="json.html#cb633-2"></a><span class="co">#&gt; [[9,8,7],[6,5,4],[3,2,1]]</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="json.html#cb18-1"></a><span class="kw">toJSON</span>(mat, <span class="dt">matrix =</span> <span class="st">&quot;columnmajor&quot;</span>)</span>
+<span id="cb18-2"><a href="json.html#cb18-2"></a><span class="co">#&gt; [[9,8,7],[6,5,4],[3,2,1]]</span></span></code></pre></div>
 </div>
 <div id="example-data-frame-to-json-object" class="section level4 unnumbered">
 <h4>Example: data frame to JSON-object</h4>
 <p>We can also use <code>toJSON()</code> on data frames. Here’s an example of an assembled
 data frame <code>swdf</code> which will be converted to a JSON-object:</p>
-<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="json.html#cb634-1"></a><span class="co"># toy data</span></span>
-<span id="cb634-2"><a href="json.html#cb634-2"></a>sw_data &lt;-<span class="st"> </span><span class="kw">rbind</span>(</span>
-<span id="cb634-3"><a href="json.html#cb634-3"></a>  <span class="kw">c</span>(<span class="st">&quot;Anakin&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;Tatooine&quot;</span>, <span class="st">&quot;41.9BBY&quot;</span>,  <span class="st">&quot;yes&quot;</span>),  </span>
-<span id="cb634-4"><a href="json.html#cb634-4"></a>  <span class="kw">c</span>(<span class="st">&quot;Amidala&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;Naboo&quot;</span>, <span class="st">&quot;46BBY&quot;</span>, <span class="st">&quot;no&quot;</span>),</span>
-<span id="cb634-5"><a href="json.html#cb634-5"></a>  <span class="kw">c</span>(<span class="st">&quot;Luke&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;Tatooine&quot;</span>, <span class="st">&quot;19BBY&quot;</span>, <span class="st">&quot;yes&quot;</span>),</span>
-<span id="cb634-6"><a href="json.html#cb634-6"></a>  <span class="kw">c</span>(<span class="st">&quot;Leia&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;Alderaan&quot;</span>, <span class="st">&quot;19BBY&quot;</span>, <span class="st">&quot;no&quot;</span>)</span>
-<span id="cb634-7"><a href="json.html#cb634-7"></a>)</span>
-<span id="cb634-8"><a href="json.html#cb634-8"></a></span>
-<span id="cb634-9"><a href="json.html#cb634-9"></a><span class="co"># convert to data.frame and add column names</span></span>
-<span id="cb634-10"><a href="json.html#cb634-10"></a>swdf &lt;-<span class="st"> </span><span class="kw">data.frame</span>(sw_data, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb634-11"><a href="json.html#cb634-11"></a><span class="kw">names</span>(swdf) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Name&quot;</span>, <span class="st">&quot;Gender&quot;</span>, <span class="st">&quot;Homeworld&quot;</span>, <span class="st">&quot;Born&quot;</span>, <span class="st">&quot;Jedi&quot;</span>)</span>
-<span id="cb634-12"><a href="json.html#cb634-12"></a>swdf</span>
-<span id="cb634-13"><a href="json.html#cb634-13"></a><span class="co">#&gt;      Name Gender Homeworld    Born Jedi</span></span>
-<span id="cb634-14"><a href="json.html#cb634-14"></a><span class="co">#&gt; 1  Anakin   male  Tatooine 41.9BBY  yes</span></span>
-<span id="cb634-15"><a href="json.html#cb634-15"></a><span class="co">#&gt; 2 Amidala female     Naboo   46BBY   no</span></span>
-<span id="cb634-16"><a href="json.html#cb634-16"></a><span class="co">#&gt; 3    Luke   male  Tatooine   19BBY  yes</span></span>
-<span id="cb634-17"><a href="json.html#cb634-17"></a><span class="co">#&gt; 4    Leia female  Alderaan   19BBY   no</span></span></code></pre></div>
-<p>The feault output when you pass a data frame to <code>jsonlite::toJSON()</code> is</p>
-<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="json.html#cb635-1"></a><span class="co"># convert R data.frame to JSON</span></span>
-<span id="cb635-2"><a href="json.html#cb635-2"></a>sw_json =<span class="st"> </span><span class="kw">toJSON</span>(swdf)</span>
-<span id="cb635-3"><a href="json.html#cb635-3"></a>sw_json</span>
-<span id="cb635-4"><a href="json.html#cb635-4"></a><span class="co">#&gt; [{&quot;Name&quot;:&quot;Anakin&quot;,&quot;Gender&quot;:&quot;male&quot;,&quot;Homeworld&quot;:&quot;Tatooine&quot;,&quot;Born&quot;:&quot;41.9BBY&quot;,&quot;Jedi&quot;:&quot;yes&quot;},{&quot;Name&quot;:&quot;Amidala&quot;,&quot;Gender&quot;:&quot;female&quot;,&quot;Homeworld&quot;:&quot;Naboo&quot;,&quot;Born&quot;:&quot;46BBY&quot;,&quot;Jedi&quot;:&quot;no&quot;},{&quot;Name&quot;:&quot;Luke&quot;,&quot;Gender&quot;:&quot;male&quot;,&quot;Homeworld&quot;:&quot;Tatooine&quot;,&quot;Born&quot;:&quot;19BBY&quot;,&quot;Jedi&quot;:&quot;yes&quot;},{&quot;Name&quot;:&quot;Leia&quot;,&quot;Gender&quot;:&quot;female&quot;,&quot;Homeworld&quot;:&quot;Alderaan&quot;,&quot;Born&quot;:&quot;19BBY&quot;,&quot;Jedi&quot;:&quot;no&quot;}]</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="json.html#cb19-1"></a><span class="co"># toy data</span></span>
+<span id="cb19-2"><a href="json.html#cb19-2"></a>sw_data &lt;-<span class="st"> </span><span class="kw">rbind</span>(</span>
+<span id="cb19-3"><a href="json.html#cb19-3"></a>  <span class="kw">c</span>(<span class="st">&quot;Anakin&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;Tatooine&quot;</span>, <span class="st">&quot;41.9BBY&quot;</span>,  <span class="st">&quot;yes&quot;</span>),  </span>
+<span id="cb19-4"><a href="json.html#cb19-4"></a>  <span class="kw">c</span>(<span class="st">&quot;Amidala&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;Naboo&quot;</span>, <span class="st">&quot;46BBY&quot;</span>, <span class="st">&quot;no&quot;</span>),</span>
+<span id="cb19-5"><a href="json.html#cb19-5"></a>  <span class="kw">c</span>(<span class="st">&quot;Luke&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;Tatooine&quot;</span>, <span class="st">&quot;19BBY&quot;</span>, <span class="st">&quot;yes&quot;</span>),</span>
+<span id="cb19-6"><a href="json.html#cb19-6"></a>  <span class="kw">c</span>(<span class="st">&quot;Leia&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;Alderaan&quot;</span>, <span class="st">&quot;19BBY&quot;</span>, <span class="st">&quot;no&quot;</span>)</span>
+<span id="cb19-7"><a href="json.html#cb19-7"></a>)</span>
+<span id="cb19-8"><a href="json.html#cb19-8"></a></span>
+<span id="cb19-9"><a href="json.html#cb19-9"></a><span class="co"># convert to data.frame and add column names</span></span>
+<span id="cb19-10"><a href="json.html#cb19-10"></a>swdf &lt;-<span class="st"> </span><span class="kw">data.frame</span>(sw_data, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb19-11"><a href="json.html#cb19-11"></a><span class="kw">names</span>(swdf) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Name&quot;</span>, <span class="st">&quot;Gender&quot;</span>, <span class="st">&quot;Homeworld&quot;</span>, <span class="st">&quot;Born&quot;</span>, <span class="st">&quot;Jedi&quot;</span>)</span>
+<span id="cb19-12"><a href="json.html#cb19-12"></a>swdf</span>
+<span id="cb19-13"><a href="json.html#cb19-13"></a><span class="co">#&gt;      Name Gender Homeworld    Born Jedi</span></span>
+<span id="cb19-14"><a href="json.html#cb19-14"></a><span class="co">#&gt; 1  Anakin   male  Tatooine 41.9BBY  yes</span></span>
+<span id="cb19-15"><a href="json.html#cb19-15"></a><span class="co">#&gt; 2 Amidala female     Naboo   46BBY   no</span></span>
+<span id="cb19-16"><a href="json.html#cb19-16"></a><span class="co">#&gt; 3    Luke   male  Tatooine   19BBY  yes</span></span>
+<span id="cb19-17"><a href="json.html#cb19-17"></a><span class="co">#&gt; 4    Leia female  Alderaan   19BBY   no</span></span></code></pre></div>
+<p>The default output when you pass a data frame to <code>jsonlite::toJSON()</code> is</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="json.html#cb20-1"></a><span class="co"># convert R data.frame to JSON</span></span>
+<span id="cb20-2"><a href="json.html#cb20-2"></a>sw_json =<span class="st"> </span><span class="kw">toJSON</span>(swdf)</span>
+<span id="cb20-3"><a href="json.html#cb20-3"></a>sw_json</span>
+<span id="cb20-4"><a href="json.html#cb20-4"></a><span class="co">#&gt; [{&quot;Name&quot;:&quot;Anakin&quot;,&quot;Gender&quot;:&quot;male&quot;,&quot;Homeworld&quot;:&quot;Tatooine&quot;,&quot;Born&quot;:&quot;41.9BBY&quot;,&quot;Jedi&quot;:&quot;yes&quot;},{&quot;Name&quot;:&quot;Amidala&quot;,&quot;Gender&quot;:&quot;female&quot;,&quot;Homeworld&quot;:&quot;Naboo&quot;,&quot;Born&quot;:&quot;46BBY&quot;,&quot;Jedi&quot;:&quot;no&quot;},{&quot;Name&quot;:&quot;Luke&quot;,&quot;Gender&quot;:&quot;male&quot;,&quot;Homeworld&quot;:&quot;Tatooine&quot;,&quot;Born&quot;:&quot;19BBY&quot;,&quot;Jedi&quot;:&quot;yes&quot;},{&quot;Name&quot;:&quot;Leia&quot;,&quot;Gender&quot;:&quot;female&quot;,&quot;Homeworld&quot;:&quot;Alderaan&quot;,&quot;Born&quot;:&quot;19BBY&quot;,&quot;Jedi&quot;:&quot;no&quot;}]</span></span></code></pre></div>
 <p>The argument <code>dataframe</code> gives you more control on the output. This argument
 has three options:</p>
 <ul>
 <li><code>"rows"</code>: each row is converted to a JSON-object with <em>key-value</em> pairs
 formed by <code>"column_name": "row_value"</code>;</li>
 </ul>
-<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="json.html#cb636-1"></a><span class="kw">toJSON</span>(swdf, <span class="dt">dataframe =</span> <span class="st">&quot;rows&quot;</span>)</span>
-<span id="cb636-2"><a href="json.html#cb636-2"></a><span class="co">#&gt; [{&quot;Name&quot;:&quot;Anakin&quot;,&quot;Gender&quot;:&quot;male&quot;,&quot;Homeworld&quot;:&quot;Tatooine&quot;,&quot;Born&quot;:&quot;41.9BBY&quot;,&quot;Jedi&quot;:&quot;yes&quot;},{&quot;Name&quot;:&quot;Amidala&quot;,&quot;Gender&quot;:&quot;female&quot;,&quot;Homeworld&quot;:&quot;Naboo&quot;,&quot;Born&quot;:&quot;46BBY&quot;,&quot;Jedi&quot;:&quot;no&quot;},{&quot;Name&quot;:&quot;Luke&quot;,&quot;Gender&quot;:&quot;male&quot;,&quot;Homeworld&quot;:&quot;Tatooine&quot;,&quot;Born&quot;:&quot;19BBY&quot;,&quot;Jedi&quot;:&quot;yes&quot;},{&quot;Name&quot;:&quot;Leia&quot;,&quot;Gender&quot;:&quot;female&quot;,&quot;Homeworld&quot;:&quot;Alderaan&quot;,&quot;Born&quot;:&quot;19BBY&quot;,&quot;Jedi&quot;:&quot;no&quot;}]</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="json.html#cb21-1"></a><span class="kw">toJSON</span>(swdf, <span class="dt">dataframe =</span> <span class="st">&quot;rows&quot;</span>)</span>
+<span id="cb21-2"><a href="json.html#cb21-2"></a><span class="co">#&gt; [{&quot;Name&quot;:&quot;Anakin&quot;,&quot;Gender&quot;:&quot;male&quot;,&quot;Homeworld&quot;:&quot;Tatooine&quot;,&quot;Born&quot;:&quot;41.9BBY&quot;,&quot;Jedi&quot;:&quot;yes&quot;},{&quot;Name&quot;:&quot;Amidala&quot;,&quot;Gender&quot;:&quot;female&quot;,&quot;Homeworld&quot;:&quot;Naboo&quot;,&quot;Born&quot;:&quot;46BBY&quot;,&quot;Jedi&quot;:&quot;no&quot;},{&quot;Name&quot;:&quot;Luke&quot;,&quot;Gender&quot;:&quot;male&quot;,&quot;Homeworld&quot;:&quot;Tatooine&quot;,&quot;Born&quot;:&quot;19BBY&quot;,&quot;Jedi&quot;:&quot;yes&quot;},{&quot;Name&quot;:&quot;Leia&quot;,&quot;Gender&quot;:&quot;female&quot;,&quot;Homeworld&quot;:&quot;Alderaan&quot;,&quot;Born&quot;:&quot;19BBY&quot;,&quot;Jedi&quot;:&quot;no&quot;}]</span></span></code></pre></div>
 <ul>
 <li><code>"columns"</code>: each column is converted into a JSON-object with a single <em>key</em>
 for each column, and <em>values</em> stored as arrays;</li>
 </ul>
-<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="json.html#cb637-1"></a><span class="kw">toJSON</span>(swdf, <span class="dt">dataframe =</span> <span class="st">&quot;columns&quot;</span>)</span>
-<span id="cb637-2"><a href="json.html#cb637-2"></a><span class="co">#&gt; {&quot;Name&quot;:[&quot;Anakin&quot;,&quot;Amidala&quot;,&quot;Luke&quot;,&quot;Leia&quot;],&quot;Gender&quot;:[&quot;male&quot;,&quot;female&quot;,&quot;male&quot;,&quot;female&quot;],&quot;Homeworld&quot;:[&quot;Tatooine&quot;,&quot;Naboo&quot;,&quot;Tatooine&quot;,&quot;Alderaan&quot;],&quot;Born&quot;:[&quot;41.9BBY&quot;,&quot;46BBY&quot;,&quot;19BBY&quot;,&quot;19BBY&quot;],&quot;Jedi&quot;:[&quot;yes&quot;,&quot;no&quot;,&quot;yes&quot;,&quot;no&quot;]}</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="json.html#cb22-1"></a><span class="kw">toJSON</span>(swdf, <span class="dt">dataframe =</span> <span class="st">&quot;columns&quot;</span>)</span>
+<span id="cb22-2"><a href="json.html#cb22-2"></a><span class="co">#&gt; {&quot;Name&quot;:[&quot;Anakin&quot;,&quot;Amidala&quot;,&quot;Luke&quot;,&quot;Leia&quot;],&quot;Gender&quot;:[&quot;male&quot;,&quot;female&quot;,&quot;male&quot;,&quot;female&quot;],&quot;Homeworld&quot;:[&quot;Tatooine&quot;,&quot;Naboo&quot;,&quot;Tatooine&quot;,&quot;Alderaan&quot;],&quot;Born&quot;:[&quot;41.9BBY&quot;,&quot;46BBY&quot;,&quot;19BBY&quot;,&quot;19BBY&quot;],&quot;Jedi&quot;:[&quot;yes&quot;,&quot;no&quot;,&quot;yes&quot;,&quot;no&quot;]}</span></span></code></pre></div>
 <ul>
 <li><code>"values"</code>: the values in each column are converted to a JSON-array, and
 the names of the columns are lost.</li>
 </ul>
-<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="json.html#cb638-1"></a><span class="kw">toJSON</span>(swdf, <span class="dt">dataframe =</span> <span class="st">&quot;values&quot;</span>)</span>
-<span id="cb638-2"><a href="json.html#cb638-2"></a><span class="co">#&gt; [[&quot;Anakin&quot;,&quot;male&quot;,&quot;Tatooine&quot;,&quot;41.9BBY&quot;,&quot;yes&quot;],[&quot;Amidala&quot;,&quot;female&quot;,&quot;Naboo&quot;,&quot;46BBY&quot;,&quot;no&quot;],[&quot;Luke&quot;,&quot;male&quot;,&quot;Tatooine&quot;,&quot;19BBY&quot;,&quot;yes&quot;],[&quot;Leia&quot;,&quot;female&quot;,&quot;Alderaan&quot;,&quot;19BBY&quot;,&quot;no&quot;]]</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="json.html#cb23-1"></a><span class="kw">toJSON</span>(swdf, <span class="dt">dataframe =</span> <span class="st">&quot;values&quot;</span>)</span>
+<span id="cb23-2"><a href="json.html#cb23-2"></a><span class="co">#&gt; [[&quot;Anakin&quot;,&quot;male&quot;,&quot;Tatooine&quot;,&quot;41.9BBY&quot;,&quot;yes&quot;],[&quot;Amidala&quot;,&quot;female&quot;,&quot;Naboo&quot;,&quot;46BBY&quot;,&quot;no&quot;],[&quot;Luke&quot;,&quot;male&quot;,&quot;Tatooine&quot;,&quot;19BBY&quot;,&quot;yes&quot;],[&quot;Leia&quot;,&quot;female&quot;,&quot;Alderaan&quot;,&quot;19BBY&quot;,&quot;no&quot;]]</span></span></code></pre></div>
 </div>
 </div>
 <div id="function-fromjson" class="section level3">
@@ -1097,48 +1110,48 @@ common to have data in JSON format which needs to be converted into an R object.
 <p>The function <code>jsonlite::fromJSON()</code> converts a JSON-object to an R object.</p>
 <div id="example-json-array-to-r-vector" class="section level4 unnumbered">
 <h4>Example: JSON-array to R vector</h4>
-<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="json.html#cb639-1"></a>json_array &lt;-<span class="st"> &#39;[&quot;computing&quot;, &quot;with&quot;, &quot;data&quot;]&#39;</span></span>
-<span id="cb639-2"><a href="json.html#cb639-2"></a></span>
-<span id="cb639-3"><a href="json.html#cb639-3"></a><span class="kw">fromJSON</span>(json_array)</span>
-<span id="cb639-4"><a href="json.html#cb639-4"></a><span class="co">#&gt; [1] &quot;computing&quot; &quot;with&quot;      &quot;data&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="json.html#cb24-1"></a>json_array &lt;-<span class="st"> &#39;[&quot;computing&quot;, &quot;with&quot;, &quot;data&quot;]&#39;</span></span>
+<span id="cb24-2"><a href="json.html#cb24-2"></a></span>
+<span id="cb24-3"><a href="json.html#cb24-3"></a><span class="kw">fromJSON</span>(json_array)</span>
+<span id="cb24-4"><a href="json.html#cb24-4"></a><span class="co">#&gt; [1] &quot;computing&quot; &quot;with&quot;      &quot;data&quot;</span></span></code></pre></div>
 </div>
 <div id="example-json-object-to-r-object" class="section level4 unnumbered">
 <h4>Example: JSON-object to R object</h4>
 <p>Consider a simple JSON-object, and its conversion to R with
 <code>jsonlite::fromJSON()</code></p>
-<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="json.html#cb640-1"></a>json_obj1 &lt;-<span class="st"> &#39;{&quot;name&quot;: &quot;Jessica&quot;}&#39;</span></span>
-<span id="cb640-2"><a href="json.html#cb640-2"></a></span>
-<span id="cb640-3"><a href="json.html#cb640-3"></a><span class="kw">fromJSON</span>(json_obj1)</span>
-<span id="cb640-4"><a href="json.html#cb640-4"></a><span class="co">#&gt; $name</span></span>
-<span id="cb640-5"><a href="json.html#cb640-5"></a><span class="co">#&gt; [1] &quot;Jessica&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="json.html#cb25-1"></a>json_obj1 &lt;-<span class="st"> &#39;{&quot;name&quot;: &quot;Jessica&quot;}&#39;</span></span>
+<span id="cb25-2"><a href="json.html#cb25-2"></a></span>
+<span id="cb25-3"><a href="json.html#cb25-3"></a><span class="kw">fromJSON</span>(json_obj1)</span>
+<span id="cb25-4"><a href="json.html#cb25-4"></a><span class="co">#&gt; $name</span></span>
+<span id="cb25-5"><a href="json.html#cb25-5"></a><span class="co">#&gt; [1] &quot;Jessica&quot;</span></span></code></pre></div>
 <p>Notice that the obtained object is an R list in which the <em>key</em> becomes the
 name of the list, and the <em>value</em> becomes the content of the list’s element.</p>
 <p>Consider a less simple JSON-object:</p>
-<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="json.html#cb641-1"></a>json_obj2 &lt;-<span class="st"> &#39;{&quot;name1&quot;: &quot;Nicole&quot;, &quot;name2&quot;: &quot;Pleuni&quot;, &quot;name3&quot;: &quot;Rori&quot;}&#39;</span></span>
-<span id="cb641-2"><a href="json.html#cb641-2"></a></span>
-<span id="cb641-3"><a href="json.html#cb641-3"></a><span class="kw">fromJSON</span>(json_obj2)</span>
-<span id="cb641-4"><a href="json.html#cb641-4"></a><span class="co">#&gt; $name1</span></span>
-<span id="cb641-5"><a href="json.html#cb641-5"></a><span class="co">#&gt; [1] &quot;Nicole&quot;</span></span>
-<span id="cb641-6"><a href="json.html#cb641-6"></a><span class="co">#&gt; </span></span>
-<span id="cb641-7"><a href="json.html#cb641-7"></a><span class="co">#&gt; $name2</span></span>
-<span id="cb641-8"><a href="json.html#cb641-8"></a><span class="co">#&gt; [1] &quot;Pleuni&quot;</span></span>
-<span id="cb641-9"><a href="json.html#cb641-9"></a><span class="co">#&gt; </span></span>
-<span id="cb641-10"><a href="json.html#cb641-10"></a><span class="co">#&gt; $name3</span></span>
-<span id="cb641-11"><a href="json.html#cb641-11"></a><span class="co">#&gt; [1] &quot;Rori&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="json.html#cb26-1"></a>json_obj2 &lt;-<span class="st"> &#39;{&quot;name1&quot;: &quot;Nicole&quot;, &quot;name2&quot;: &quot;Pleuni&quot;, &quot;name3&quot;: &quot;Rori&quot;}&#39;</span></span>
+<span id="cb26-2"><a href="json.html#cb26-2"></a></span>
+<span id="cb26-3"><a href="json.html#cb26-3"></a><span class="kw">fromJSON</span>(json_obj2)</span>
+<span id="cb26-4"><a href="json.html#cb26-4"></a><span class="co">#&gt; $name1</span></span>
+<span id="cb26-5"><a href="json.html#cb26-5"></a><span class="co">#&gt; [1] &quot;Nicole&quot;</span></span>
+<span id="cb26-6"><a href="json.html#cb26-6"></a><span class="co">#&gt; </span></span>
+<span id="cb26-7"><a href="json.html#cb26-7"></a><span class="co">#&gt; $name2</span></span>
+<span id="cb26-8"><a href="json.html#cb26-8"></a><span class="co">#&gt; [1] &quot;Pleuni&quot;</span></span>
+<span id="cb26-9"><a href="json.html#cb26-9"></a><span class="co">#&gt; </span></span>
+<span id="cb26-10"><a href="json.html#cb26-10"></a><span class="co">#&gt; $name3</span></span>
+<span id="cb26-11"><a href="json.html#cb26-11"></a><span class="co">#&gt; [1] &quot;Rori&quot;</span></span></code></pre></div>
 <p>Another example:</p>
-<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="json.html#cb642-1"></a><span class="kw">fromJSON</span>(<span class="st">&#39;{&quot;name&quot;: [&quot;X&quot;, &quot;Y&quot;], &quot;grams&quot;: [30, 20], &quot;qty&quot;: [4, null],</span></span>
-<span id="cb642-2"><a href="json.html#cb642-2"></a><span class="st">&quot;new&quot;: [true, false]}&#39;</span>)</span>
-<span id="cb642-3"><a href="json.html#cb642-3"></a><span class="co">#&gt; $name</span></span>
-<span id="cb642-4"><a href="json.html#cb642-4"></a><span class="co">#&gt; [1] &quot;X&quot; &quot;Y&quot;</span></span>
-<span id="cb642-5"><a href="json.html#cb642-5"></a><span class="co">#&gt; </span></span>
-<span id="cb642-6"><a href="json.html#cb642-6"></a><span class="co">#&gt; $grams</span></span>
-<span id="cb642-7"><a href="json.html#cb642-7"></a><span class="co">#&gt; [1] 30 20</span></span>
-<span id="cb642-8"><a href="json.html#cb642-8"></a><span class="co">#&gt; </span></span>
-<span id="cb642-9"><a href="json.html#cb642-9"></a><span class="co">#&gt; $qty</span></span>
-<span id="cb642-10"><a href="json.html#cb642-10"></a><span class="co">#&gt; [1]  4 NA</span></span>
-<span id="cb642-11"><a href="json.html#cb642-11"></a><span class="co">#&gt; </span></span>
-<span id="cb642-12"><a href="json.html#cb642-12"></a><span class="co">#&gt; $new</span></span>
-<span id="cb642-13"><a href="json.html#cb642-13"></a><span class="co">#&gt; [1]  TRUE FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="json.html#cb27-1"></a><span class="kw">fromJSON</span>(<span class="st">&#39;{&quot;name&quot;: [&quot;X&quot;, &quot;Y&quot;], &quot;grams&quot;: [30, 20], &quot;qty&quot;: [4, null],</span></span>
+<span id="cb27-2"><a href="json.html#cb27-2"></a><span class="st">&quot;new&quot;: [true, false]}&#39;</span>)</span>
+<span id="cb27-3"><a href="json.html#cb27-3"></a><span class="co">#&gt; $name</span></span>
+<span id="cb27-4"><a href="json.html#cb27-4"></a><span class="co">#&gt; [1] &quot;X&quot; &quot;Y&quot;</span></span>
+<span id="cb27-5"><a href="json.html#cb27-5"></a><span class="co">#&gt; </span></span>
+<span id="cb27-6"><a href="json.html#cb27-6"></a><span class="co">#&gt; $grams</span></span>
+<span id="cb27-7"><a href="json.html#cb27-7"></a><span class="co">#&gt; [1] 30 20</span></span>
+<span id="cb27-8"><a href="json.html#cb27-8"></a><span class="co">#&gt; </span></span>
+<span id="cb27-9"><a href="json.html#cb27-9"></a><span class="co">#&gt; $qty</span></span>
+<span id="cb27-10"><a href="json.html#cb27-10"></a><span class="co">#&gt; [1]  4 NA</span></span>
+<span id="cb27-11"><a href="json.html#cb27-11"></a><span class="co">#&gt; </span></span>
+<span id="cb27-12"><a href="json.html#cb27-12"></a><span class="co">#&gt; $new</span></span>
+<span id="cb27-13"><a href="json.html#cb27-13"></a><span class="co">#&gt; [1]  TRUE FALSE</span></span></code></pre></div>
 </div>
 <div id="example-json-object-to-r-object-1" class="section level4 unnumbered">
 <h4>Example: JSON-object to R object</h4>
@@ -1153,49 +1166,51 @@ name of the list, and the <em>value</em> becomes the content of the list’s ele
 <p>and assume that the above data is stored as a single (continuous) string in
 an R character vector <code>json_sw</code>; applying <code>fromJSON()</code> to this string gives
 you the following list:</p>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="json.html#cb644-1"></a><span class="kw">fromJSON</span>(json_sw)</span>
-<span id="cb644-2"><a href="json.html#cb644-2"></a><span class="co">#&gt; $Name</span></span>
-<span id="cb644-3"><a href="json.html#cb644-3"></a><span class="co">#&gt; [1] &quot;Anakin&quot;  &quot;Amidala&quot; &quot;Luke&quot;    &quot;Leia&quot;   </span></span>
-<span id="cb644-4"><a href="json.html#cb644-4"></a><span class="co">#&gt; </span></span>
-<span id="cb644-5"><a href="json.html#cb644-5"></a><span class="co">#&gt; $Gender</span></span>
-<span id="cb644-6"><a href="json.html#cb644-6"></a><span class="co">#&gt; [1] &quot;male&quot;   &quot;female&quot; &quot;male&quot;   &quot;female&quot;</span></span>
-<span id="cb644-7"><a href="json.html#cb644-7"></a><span class="co">#&gt; </span></span>
-<span id="cb644-8"><a href="json.html#cb644-8"></a><span class="co">#&gt; $Homeworld</span></span>
-<span id="cb644-9"><a href="json.html#cb644-9"></a><span class="co">#&gt; [1] &quot;Tatooine&quot; &quot;Naboo&quot;    &quot;Tatooine&quot; &quot;Alderaan&quot;</span></span>
-<span id="cb644-10"><a href="json.html#cb644-10"></a><span class="co">#&gt; </span></span>
-<span id="cb644-11"><a href="json.html#cb644-11"></a><span class="co">#&gt; $Born</span></span>
-<span id="cb644-12"><a href="json.html#cb644-12"></a><span class="co">#&gt; [1] &quot;41.9BBY&quot; &quot;46BBY&quot;   &quot;19BBY&quot;   &quot;19BBY&quot;  </span></span>
-<span id="cb644-13"><a href="json.html#cb644-13"></a><span class="co">#&gt; </span></span>
-<span id="cb644-14"><a href="json.html#cb644-14"></a><span class="co">#&gt; $Jedi</span></span>
-<span id="cb644-15"><a href="json.html#cb644-15"></a><span class="co">#&gt; [1] &quot;yes&quot; &quot;no&quot;  &quot;yes&quot; &quot;no&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="json.html#cb29-1"></a><span class="kw">fromJSON</span>(json_sw)</span>
+<span id="cb29-2"><a href="json.html#cb29-2"></a><span class="co">#&gt; $Name</span></span>
+<span id="cb29-3"><a href="json.html#cb29-3"></a><span class="co">#&gt; [1] &quot;Anakin&quot;  &quot;Amidala&quot; &quot;Luke&quot;    &quot;Leia&quot;   </span></span>
+<span id="cb29-4"><a href="json.html#cb29-4"></a><span class="co">#&gt; </span></span>
+<span id="cb29-5"><a href="json.html#cb29-5"></a><span class="co">#&gt; $Gender</span></span>
+<span id="cb29-6"><a href="json.html#cb29-6"></a><span class="co">#&gt; [1] &quot;male&quot;   &quot;female&quot; &quot;male&quot;   &quot;female&quot;</span></span>
+<span id="cb29-7"><a href="json.html#cb29-7"></a><span class="co">#&gt; </span></span>
+<span id="cb29-8"><a href="json.html#cb29-8"></a><span class="co">#&gt; $Homeworld</span></span>
+<span id="cb29-9"><a href="json.html#cb29-9"></a><span class="co">#&gt; [1] &quot;Tatooine&quot; &quot;Naboo&quot;    &quot;Tatooine&quot; &quot;Alderaan&quot;</span></span>
+<span id="cb29-10"><a href="json.html#cb29-10"></a><span class="co">#&gt; </span></span>
+<span id="cb29-11"><a href="json.html#cb29-11"></a><span class="co">#&gt; $Born</span></span>
+<span id="cb29-12"><a href="json.html#cb29-12"></a><span class="co">#&gt; [1] &quot;41.9BBY&quot; &quot;46BBY&quot;   &quot;19BBY&quot;   &quot;19BBY&quot;  </span></span>
+<span id="cb29-13"><a href="json.html#cb29-13"></a><span class="co">#&gt; </span></span>
+<span id="cb29-14"><a href="json.html#cb29-14"></a><span class="co">#&gt; $Jedi</span></span>
+<span id="cb29-15"><a href="json.html#cb29-15"></a><span class="co">#&gt; [1] &quot;yes&quot; &quot;no&quot;  &quot;yes&quot; &quot;no&quot;</span></span></code></pre></div>
 <p>Can this be transformed into a data frame? Yes, by passing the obtained list
 to the function <code>data.frame()</code>:</p>
-<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="json.html#cb645-1"></a><span class="kw">data.frame</span>(<span class="kw">fromJSON</span>(json_sw))</span>
-<span id="cb645-2"><a href="json.html#cb645-2"></a><span class="co">#&gt;      Name Gender Homeworld    Born Jedi</span></span>
-<span id="cb645-3"><a href="json.html#cb645-3"></a><span class="co">#&gt; 1  Anakin   male  Tatooine 41.9BBY  yes</span></span>
-<span id="cb645-4"><a href="json.html#cb645-4"></a><span class="co">#&gt; 2 Amidala female     Naboo   46BBY   no</span></span>
-<span id="cb645-5"><a href="json.html#cb645-5"></a><span class="co">#&gt; 3    Luke   male  Tatooine   19BBY  yes</span></span>
-<span id="cb645-6"><a href="json.html#cb645-6"></a><span class="co">#&gt; 4    Leia female  Alderaan   19BBY   no</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="json.html#cb30-1"></a><span class="kw">data.frame</span>(<span class="kw">fromJSON</span>(json_sw))</span>
+<span id="cb30-2"><a href="json.html#cb30-2"></a><span class="co">#&gt;      Name Gender Homeworld    Born Jedi</span></span>
+<span id="cb30-3"><a href="json.html#cb30-3"></a><span class="co">#&gt; 1  Anakin   male  Tatooine 41.9BBY  yes</span></span>
+<span id="cb30-4"><a href="json.html#cb30-4"></a><span class="co">#&gt; 2 Amidala female     Naboo   46BBY   no</span></span>
+<span id="cb30-5"><a href="json.html#cb30-5"></a><span class="co">#&gt; 3    Luke   male  Tatooine   19BBY  yes</span></span>
+<span id="cb30-6"><a href="json.html#cb30-6"></a><span class="co">#&gt; 4    Leia female  Alderaan   19BBY   no</span></span></code></pre></div>
 </div>
 </div>
 <div id="reading-json-data" class="section level3">
 <h3><span class="header-section-number">42.3.3</span> Reading JSON Data</h3>
-<p>How do we read JSON data from the Web? We read JSON data in several ways. One
-way is to pass the url directly to <code>fromJSON()</code>. Another way is by passing
-<code>fromJSON()</code> the name of the file with the JSON content as a single string.</p>
+<p>Now that we have discussed the basics of JSON, and the common ways to convert
+<code>fromJSON()</code> and <code>toJSON()</code>, let’s see how to read JSON data from the Web.</p>
+<p>One of the typical ways to import JSON data from the Web to R is by passing
+the url directly to <code>fromJSON()</code>. Another way is by passing the name of the
+file with the JSON content as a single string to the function <code>fromJSON()</code>.</p>
 <p>Here’s an example reading a JSON string from the website <em>Advice Slip</em>.
 The url <a href="https://api.adviceslip.com/advice" target="_blank">https://api.adviceslip.com/advice</a>
 gives you a random advice (see figure below):</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-642"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
 <img src="images/api/advice-slip-happiness.png" alt="Random advice from Advice Slip" width="80%" />
 <p class="caption">
 Figure 42.1: Random advice from Advice Slip
 </p>
 </div>
 <p>As you can tell, the content is a simple JSON string</p>
-<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="json.html#cb646-1"></a>advice_url &lt;-<span class="st"> &quot;https://api.adviceslip.com/advice&quot;</span></span>
-<span id="cb646-2"><a href="json.html#cb646-2"></a></span>
-<span id="cb646-3"><a href="json.html#cb646-3"></a><span class="kw">fromJSON</span>(advice_url)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="json.html#cb31-1"></a>advice_url &lt;-<span class="st"> &quot;https://api.adviceslip.com/advice&quot;</span></span>
+<span id="cb31-2"><a href="json.html#cb31-2"></a></span>
+<span id="cb31-3"><a href="json.html#cb31-3"></a><span class="kw">fromJSON</span>(advice_url)</span></code></pre></div>
 <pre><code>#&gt; $slip
 #&gt; $slip$id
 #&gt; [1] 9
@@ -1204,39 +1219,44 @@ Figure 42.1: Random advice from Advice Slip
 #&gt; [1] &quot;True happiness always resides in the quest!&quot;</code></pre>
 <div id="example-colors-in-hexadecimal-notation" class="section level4 unnumbered">
 <h4>Example: Colors in Hexadecimal Notation</h4>
-<p>The following data from on of Dave Eddy’s github repositories:</p>
+<p>The following data comes from one of Dave Eddy’s github repositories:</p>
 <p><a href="https://raw.githubusercontent.com/bahamas10/css-color-names/master/css-color-names.json" class="uri">https://raw.githubusercontent.com/bahamas10/css-color-names/master/css-color-names.json</a></p>
+<p>This is a JSON-object in which the <em>keys</em> are color-names, and the <em>values</em> are
+the hexadecimal digits of the corresponding color:</p>
 <pre><code>{
   &quot;aliceblue&quot;: &quot;#f0f8ff&quot;,
   &quot;antiquewhite&quot;: &quot;#faebd7&quot;,
   &quot;aqua&quot;: &quot;#00ffff&quot;,
   &quot;aquamarine&quot;: &quot;#7fffd4&quot;,
   &quot;azure&quot;: &quot;#f0ffff&quot;,
-  &quot;beige&quot;: &quot;#f5f5dc&quot;,
-  &quot;bisque&quot;: &quot;#ffe4c4&quot;,
-  &quot;black&quot;: &quot;#000000&quot;,
-  ...</code></pre>
+  ...
+  &quot;wheat&quot;: &quot;#f5deb3&quot;,
+  &quot;white&quot;: &quot;#ffffff&quot;,
+  &quot;whitesmoke&quot;: &quot;#f5f5f5&quot;,
+  &quot;yellow&quot;: &quot;#ffff00&quot;,
+  &quot;yellowgreen&quot;: &quot;#9acd32&quot;
+}</code></pre>
 <p>We pass the url to <code>jsonlite::fromJSON()</code></p>
-<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="json.html#cb649-1"></a>colors_json &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/bahamas10/css-color-names/master/css-color-names.json&quot;</span></span>
-<span id="cb649-2"><a href="json.html#cb649-2"></a></span>
-<span id="cb649-3"><a href="json.html#cb649-3"></a>hex_colors &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(colors_json)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="json.html#cb34-1"></a>colors_json &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/bahamas10/css-color-names/master/css-color-names.json&quot;</span></span>
+<span id="cb34-2"><a href="json.html#cb34-2"></a></span>
+<span id="cb34-3"><a href="json.html#cb34-3"></a>hex_colors &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(colors_json)</span></code></pre></div>
 <p>The output in <code>hex_colors</code> is a list with 148 elements;
 the first five elements are displayed below:</p>
-<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="json.html#cb650-1"></a>hex_colors[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
-<span id="cb650-2"><a href="json.html#cb650-2"></a><span class="co">#&gt; $aliceblue</span></span>
-<span id="cb650-3"><a href="json.html#cb650-3"></a><span class="co">#&gt; [1] &quot;#f0f8ff&quot;</span></span>
-<span id="cb650-4"><a href="json.html#cb650-4"></a><span class="co">#&gt; </span></span>
-<span id="cb650-5"><a href="json.html#cb650-5"></a><span class="co">#&gt; $antiquewhite</span></span>
-<span id="cb650-6"><a href="json.html#cb650-6"></a><span class="co">#&gt; [1] &quot;#faebd7&quot;</span></span>
-<span id="cb650-7"><a href="json.html#cb650-7"></a><span class="co">#&gt; </span></span>
-<span id="cb650-8"><a href="json.html#cb650-8"></a><span class="co">#&gt; $aqua</span></span>
-<span id="cb650-9"><a href="json.html#cb650-9"></a><span class="co">#&gt; [1] &quot;#00ffff&quot;</span></span>
-<span id="cb650-10"><a href="json.html#cb650-10"></a><span class="co">#&gt; </span></span>
-<span id="cb650-11"><a href="json.html#cb650-11"></a><span class="co">#&gt; $aquamarine</span></span>
-<span id="cb650-12"><a href="json.html#cb650-12"></a><span class="co">#&gt; [1] &quot;#7fffd4&quot;</span></span>
-<span id="cb650-13"><a href="json.html#cb650-13"></a><span class="co">#&gt; </span></span>
-<span id="cb650-14"><a href="json.html#cb650-14"></a><span class="co">#&gt; $azure</span></span>
-<span id="cb650-15"><a href="json.html#cb650-15"></a><span class="co">#&gt; [1] &quot;#f0ffff&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="json.html#cb35-1"></a>hex_colors[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb35-2"><a href="json.html#cb35-2"></a><span class="co">#&gt; $aliceblue</span></span>
+<span id="cb35-3"><a href="json.html#cb35-3"></a><span class="co">#&gt; [1] &quot;#f0f8ff&quot;</span></span>
+<span id="cb35-4"><a href="json.html#cb35-4"></a><span class="co">#&gt; </span></span>
+<span id="cb35-5"><a href="json.html#cb35-5"></a><span class="co">#&gt; $antiquewhite</span></span>
+<span id="cb35-6"><a href="json.html#cb35-6"></a><span class="co">#&gt; [1] &quot;#faebd7&quot;</span></span>
+<span id="cb35-7"><a href="json.html#cb35-7"></a><span class="co">#&gt; </span></span>
+<span id="cb35-8"><a href="json.html#cb35-8"></a><span class="co">#&gt; $aqua</span></span>
+<span id="cb35-9"><a href="json.html#cb35-9"></a><span class="co">#&gt; [1] &quot;#00ffff&quot;</span></span>
+<span id="cb35-10"><a href="json.html#cb35-10"></a><span class="co">#&gt; </span></span>
+<span id="cb35-11"><a href="json.html#cb35-11"></a><span class="co">#&gt; $aquamarine</span></span>
+<span id="cb35-12"><a href="json.html#cb35-12"></a><span class="co">#&gt; [1] &quot;#7fffd4&quot;</span></span>
+<span id="cb35-13"><a href="json.html#cb35-13"></a><span class="co">#&gt; </span></span>
+<span id="cb35-14"><a href="json.html#cb35-14"></a><span class="co">#&gt; $azure</span></span>
+<span id="cb35-15"><a href="json.html#cb35-15"></a><span class="co">#&gt; [1] &quot;#f0ffff&quot;</span></span></code></pre></div>
 
 </div>
 </div>
@@ -1298,20 +1318,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
