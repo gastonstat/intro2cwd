@@ -1027,7 +1027,7 @@ required URL that we can pass to <code>read_xml()</code>:</p>
 <span id="cb10-3"><a href="pubmed.html#cb10-3"></a>  <span class="st">&quot;db=pubmed&amp;id=&quot;</span>, </span>
 <span id="cb10-4"><a href="pubmed.html#cb10-4"></a>  <span class="kw">paste</span>(ids, <span class="dt">collapse =</span> <span class="st">&quot;,&quot;</span>))</span>
 <span id="cb10-5"><a href="pubmed.html#cb10-5"></a></span>
-<span id="cb10-6"><a href="pubmed.html#cb10-6"></a><span class="co"># assemble an essumary URL</span></span>
+<span id="cb10-6"><a href="pubmed.html#cb10-6"></a><span class="co"># assemble an esummary URL</span></span>
 <span id="cb10-7"><a href="pubmed.html#cb10-7"></a>summaries_query &lt;-<span class="st"> </span><span class="kw">paste0</span>(entrez_url, esummary, params_esummary)</span>
 <span id="cb10-8"><a href="pubmed.html#cb10-8"></a></span>
 <span id="cb10-9"><a href="pubmed.html#cb10-9"></a>summaries_xml &lt;-<span class="st"> </span><span class="kw">read_xml</span>(summaries_query)</span></code></pre></div>
@@ -1073,7 +1073,10 @@ with <code>xml_text()</code>:</p>
 <span id="cb12-7"><a href="pubmed.html#cb12-7"></a><span class="co">#&gt; [4] &quot;Effects of Dietary Bisphenol A on the Reproductive Function of Gilthead Sea Bream (&lt;i&gt;Sparus aurata&lt;/i&gt;) Testes.&quot;                                                                          </span></span>
 <span id="cb12-8"><a href="pubmed.html#cb12-8"></a><span class="co">#&gt; [5] &quot;Urinary bisphenol A concentration is correlated with poorer oocyte retrieval and embryo implantation outcomes in patients with tubal factor infertility undergoing in vitro fertilisation.&quot;</span></span>
 <span id="cb12-9"><a href="pubmed.html#cb12-9"></a><span class="co">#&gt; [6] &quot;In utero exposure to persistent and nonpersistent endocrine-disrupting chemicals and anogenital distance. A systematic review of epidemiological studies†.&quot;</span></span></code></pre></div>
-<p>We can make a wordcloud</p>
+<p>Finally, we can make a <a href="https://en.wikipedia.org/wiki/Tag_cloud" target="_blank">wordcloud</a>.
+The code below has a series of commands to perform some text processing
+(with functions from the text mining package <code>"tm"</code>) with the main terms
+or words used to create the wordcloud.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="pubmed.html#cb13-1"></a><span class="co"># title words</span></span>
 <span id="cb13-2"><a href="pubmed.html#cb13-2"></a>twords &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">str_split</span>(titles, <span class="st">&quot; &quot;</span>))</span>
 <span id="cb13-3"><a href="pubmed.html#cb13-3"></a>twords &lt;-<span class="st"> </span><span class="kw">tolower</span>(twords)</span>
