@@ -837,7 +837,7 @@ slightly from those returned in the web version of PubMed. As of this writing
 a specific set of rules, that you can use to make a request to one of its nine
 servers.</p>
 <p>Behind the scenes, the assembled E-utilities URL is translated into a standard
-set of input parameters that used as the values necessary for various NCBI
+set of input parameters that are used as the values necessary for various NCBI
 software components to search for and retrieve the requested data.
 In other words, the URLs direct requests to servers that are used only by the
 E-utilities and that are optimized to give users the best performance.</p>
@@ -849,7 +849,7 @@ either weekends or between 9:00 PM and 5:00 AM Eastern time during weekdays.”<
 </blockquote>
 <p>By the way, you can obtain an API Key offering you enhanced levels of supported
 access to the E-utilities. This is totally optional but worth knowing. In our
-examples, we won’t need an API, but if you plan to use PubMed more intensively
+examples, we won’t need an API key, but if you plan to use PubMed more intensively
 then consider getting an API Key.</p>
 <div id="api-requests" class="section level4 unnumbered">
 <h4>API Requests</h4>
@@ -928,8 +928,8 @@ URL would look something like this:</p>
 <li><p><code>efetch.fcgi?</code> indicates the E-utility (<em>EFectch</em> in this case)</p></li>
 <li><p><code>db=pubmed</code>: indicates that the searched database is PubMed.</p></li>
 <li><p><code>id=33073741,33073726</code>: includes the PMIDs of the records.</p></li>
-<li><p><code>retmode=abstract</code>: indicates <code>the</code>abstract` as the <em>return mode</em>.</p></li>
-<li><p><code>rettype=text</code>: determines <code>the</code>text` as the <em>return type</em> format.</p></li>
+<li><p><code>retmode=abstract</code>: indicates the <code>abstract</code> as the <em>return mode</em>.</p></li>
+<li><p><code>rettype=text</code>: determines the <code>text</code> as the <em>return type</em> format.</p></li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="images/api/pubmed-efetch.png" alt="Return type in text format for abstract of specified IDs" width="80%" />
